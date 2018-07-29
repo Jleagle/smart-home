@@ -1,0 +1,15 @@
+version: '3'
+services:
+
+  hydra:
+    image: linuxserver/hydra:latest
+    restart: "unless-stopped"
+    ports:
+    - "5075:5075"
+    volumes:
+    - /home/james/Docker/NZBHydra/Config:/config
+    - /home/james/Docker/NZBHydra/Downloads:/downloads
+    environment:
+    - PGID=1000
+    - PUID=1000
+    - TZ=Europe/London
