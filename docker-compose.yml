@@ -33,3 +33,14 @@ services:
     volumes:
     - /home/james/Docker/NZBGet/Config:/config
     - /home/james/Docker/NZBGet/Downloads:/downloads
+
+  ombi:
+    image: linuxserver/ombi:latest
+    restart: "unless-stopped"
+    ports:
+    - "3579:3579"
+    volumes:
+    - /home/james/Docker/Ombi/Config:/config
+    environment:
+    - PGID=1000
+    - TZ=Europe/London
