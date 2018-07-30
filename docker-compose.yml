@@ -115,3 +115,15 @@ services:
     - /mnt/34D26DEED26DB4B0/Television:/tv
     - /home/james/Docker/NZBGet/Downloads:/downloads
 
+  tautulli:
+    image: linuxserver/tautulli:latest
+    restart: "unless-stopped"
+    ports:
+    - "8181:8181"
+    volumes:
+    - /home/james/Docker/Tautulli/Config:/config
+    - /home/james/Docker/Tautulli/Logs:/logs
+    environment:
+    - TZ=Europe/London
+    - PUID=1000
+    - PGID=1000
