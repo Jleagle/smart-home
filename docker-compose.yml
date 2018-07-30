@@ -127,3 +127,14 @@ services:
     - TZ=Europe/London
     - PUID=1000
     - PGID=1000
+
+  nfs:
+    image: itsthenetwork/nfs-server-alpine:latest
+    restart: "unless-stopped"
+    ports:
+    - "2049:2049"
+    volumes:
+    - /data1/:/nfsshare
+    environment:
+    - SHARED_DIRECTORY=/mnt/34D26DEED26DB4B0
+    - READ_ONLY=true
