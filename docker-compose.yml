@@ -20,3 +20,16 @@ services:
     volumes:
     - /home/james/Docker/HomeAssistant/Config:/config
     - /etc/localtime:/etc/localtime
+
+  nzbget:
+    image: linuxserver/nzbget:latest
+    restart: "unless-stopped"
+    ports:
+    - "6789:6789"
+    environment:
+    - PGID=1000
+    - PUID=1000
+    - TZ=Europe/London
+    volumes:
+    - /home/james/Docker/NZBGet/Config:/config
+    - /home/james/Docker/NZBGet/Downloads:/downloads
