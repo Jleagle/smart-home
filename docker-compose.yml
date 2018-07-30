@@ -1,6 +1,36 @@
 version: '3'
 services:
 
+  radarr:
+  image: linuxserver/radarr:latest
+  restart: "unless-stopped"
+  ports:
+  - "7878:7878"
+  volumes:
+  - /home/james/Docker/Radarr/Config:/config
+  - /home/james/Docker/NZBGet/Downloads:/downloads
+  - /mnt/34D26DEED26DB4B0/Video:/movies
+  - /etc/localtime:/etc/localtime:ro
+  environment:
+  - TZ=Europe/London
+  - PUID=1000
+  - PGID=1000
+
+  sonarr:
+    image: linuxserver/sonarr:latest
+    restart: "unless-stopped"
+    ports:
+    - "8989:8989"
+    environment:
+    - TZ=Europe/London
+    - PUID=1000
+    - PGID=1000
+    volumes:
+    - /etc/localtime:/etc/localtime:ro
+    - /home/james/Docker/Sonarr/Config:/config
+    - /mnt/34D26DEED26DB4B0/Television:/tv
+    - /home/james/Docker/NZBGet/Downloads:/downloads
+
   hydra:
     image: linuxserver/hydra:latest
     restart: "unless-stopped"
@@ -13,13 +43,6 @@ services:
     - PGID=1000
     - PUID=1000
     - TZ=Europe/London
-
-  hass:
-    image: homeassistant/home-assistant:latest
-    restart: "unless-stopped"
-    volumes:
-    - /home/james/Docker/HomeAssistant/Config:/config
-    - /etc/localtime:/etc/localtime
 
   nzbget:
     image: linuxserver/nzbget:latest
@@ -34,26 +57,18 @@ services:
     - /home/james/Docker/NZBGet/Config:/config
     - /home/james/Docker/NZBGet/Downloads:/downloads
 
-  ombi:
-    image: linuxserver/ombi:latest
+  tautulli:
+    image: linuxserver/tautulli:latest
     restart: "unless-stopped"
     ports:
-    - "3579:3579"
+    - "8181:8181"
     volumes:
-    - /home/james/Docker/Ombi/Config:/config
+    - /home/james/Docker/Tautulli/Config:/config
+    - /home/james/Docker/Tautulli/Logs:/logs
     environment:
-    - PGID=1000
     - TZ=Europe/London
-
-  phlex:
-    image: digitalhigh/phlex:latest
-    restart: "unless-stopped"
-    volumes:
-    - /home/james/Docker/Phlex/Config:/config
-    environment:
-    - PGID=1000
     - PUID=1000
-    - TZ=Europe/London
+    - PGID=1000
 
   plex:
     image: linuxserver/plex:latest
@@ -76,65 +91,50 @@ services:
     - /mnt/34D26DEED26DB4B0/Video:/data/movies
     - /home/james/Docker/Plex/Transcoding:/transcode
 
-  portainer:
-    image: portainer/portainer:latest
-    restart: "unless-stopped"
-    ports:
-    - "9000:9000"
-    volumes:
-    - /var/run/docker.sock:/var/run/docker.sock
-    - /home/james/Docker/Portainer/Data:/data
+#  ombi:
+#    image: linuxserver/ombi:latest
+#    restart: "unless-stopped"
+#    ports:
+#    - "3579:3579"
+#    volumes:
+#    - /home/james/Docker/Ombi/Config:/config
+#    environment:
+#    - PGID=1000
+#    - TZ=Europe/London
 
-  radarr:
-    image: linuxserver/radarr:latest
-    restart: "unless-stopped"
-    ports:
-    - "7878:7878"
-    volumes:
-    - /home/james/Docker/Radarr/Config:/config
-    - /home/james/Docker/NZBGet/Downloads:/downloads
-    - /mnt/34D26DEED26DB4B0/Video:/movies
-    - /etc/localtime:/etc/localtime:ro
-    environment:
-    - TZ=Europe/London
-    - PUID=1000
-    - PGID=1000
+#  phlex:
+#    image: digitalhigh/phlex:latest
+#    restart: "unless-stopped"
+#    volumes:
+#    - /home/james/Docker/Phlex/Config:/config
+#    environment:
+#    - PGID=1000
+#    - PUID=1000
+#    - TZ=Europe/London
 
-  sonarr:
-    image: linuxserver/sonarr:latest
-    restart: "unless-stopped"
-    ports:
-    - "8989:8989"
-    environment:
-    - TZ=Europe/London
-    - PUID=1000
-    - PGID=1000
-    volumes:
-    - /etc/localtime:/etc/localtime:ro
-    - /home/james/Docker/Sonarr/Config:/config
-    - /mnt/34D26DEED26DB4B0/Television:/tv
-    - /home/james/Docker/NZBGet/Downloads:/downloads
+#  portainer:
+#    image: portainer/portainer:latest
+#    restart: "unless-stopped"
+#    ports:
+#    - "9000:9000"
+#    volumes:
+#    - /var/run/docker.sock:/var/run/docker.sock
+#    - /home/james/Docker/Portainer/Data:/data
 
-  tautulli:
-    image: linuxserver/tautulli:latest
-    restart: "unless-stopped"
-    ports:
-    - "8181:8181"
-    volumes:
-    - /home/james/Docker/Tautulli/Config:/config
-    - /home/james/Docker/Tautulli/Logs:/logs
-    environment:
-    - TZ=Europe/London
-    - PUID=1000
-    - PGID=1000
+#  nfs:
+#    image: itsthenetwork/nfs-server-alpine:latest
+#    restart: "unless-stopped"
+#    ports:
+#    - "2049:2049"
+#    volumes:
+#    - /data1/:/nfsshare
+#    environment:
+#    - SHARED_DIRECTORY=/mnt/34D26DEED26DB4B0
+#    - READ_ONLY=true
 
-  nfs:
-    image: itsthenetwork/nfs-server-alpine:latest
-    restart: "unless-stopped"
-    ports:
-    - "2049:2049"
-    volumes:
-    - /data1/:/nfsshare
-    environment:
-    - SHARED_DIRECTORY=/mnt/34D26DEED26DB4B0
-    - READ_ONLY=true
+#  hass:
+#    image: homeassistant/home-assistant:latest
+#    restart: "unless-stopped"
+#    volumes:
+#    - /home/james/Docker/HomeAssistant/Config:/config
+#    - /etc/localtime:/etc/localtime
