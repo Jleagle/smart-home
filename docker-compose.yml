@@ -75,3 +75,11 @@ services:
     - /mnt/34D26DEED26DB4B0/Television:/data/tvshows
     - /mnt/34D26DEED26DB4B0/Video:/data/movies
     - /home/james/Docker/Plex/Transcoding:/transcode
+
+  portainer:
+    restart: "unless-stopped"
+    ports:
+    - "9000:9000"
+    volumes:
+    - /var/run/docker.sock:/var/run/docker.sock
+    - /home/james/Docker/Portainer/Data:/data
