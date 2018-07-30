@@ -44,3 +44,13 @@ services:
     environment:
     - PGID=1000
     - TZ=Europe/London
+
+  phlex:
+    image: digitalhigh/phlex:latest
+    restart: "unless-stopped"
+    volumes:
+    - /home/james/Docker/Phlex/Config:/config
+    environment:
+    - PGID=1000
+    - PUID=1000
+    - TZ=Europe/London
