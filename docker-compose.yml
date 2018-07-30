@@ -54,3 +54,24 @@ services:
     - PGID=1000
     - PUID=1000
     - TZ=Europe/London
+
+  plex:
+    image: linuxserver/plex:latest
+    restart: "unless-stopped"
+    ports:
+    - "32400:32400"
+    - "32400:32400/udp"
+    - "32469:32469"
+    - "32469:32469/udp"
+    - "5353:5353/udp"
+    - "1900:1900/udp"
+    environment:
+    - VERSION=latest
+    - PUID=1000
+    - PGID=1000
+    - TZ=Europe/London
+    volumes:
+    - /mnt/34D26DEED26DB4B0/Docker/Plex/Config:/config
+    - /mnt/34D26DEED26DB4B0/Television:/data/tvshows
+    - /mnt/34D26DEED26DB4B0/Video:/data/movies
+    - /home/james/Docker/Plex/Transcoding:/transcode
