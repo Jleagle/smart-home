@@ -26,10 +26,10 @@ services:
     - PUID=1000
     - PGID=1000
     volumes:
-    - /etc/localtime:/etc/localtime:ro
     - /home/james/Docker/Sonarr/Config:/config
-    - /mnt/34D26DEED26DB4B0/Television:/tv
     - /home/james/Docker/NZBGet/Downloads:/downloads
+    - /mnt/34D26DEED26DB4B0/Television:/tv
+    - /etc/localtime:/etc/localtime:ro
 
   hydra:
     image: linuxserver/hydra:latest
@@ -86,10 +86,10 @@ services:
     - PGID=1000
     - TZ=Europe/London
     volumes:
+    - /home/james/Docker/Plex/Transcoding:/transcode
     - /mnt/34D26DEED26DB4B0/Docker/Plex/Config:/config
     - /mnt/34D26DEED26DB4B0/Television:/data/tvshows
     - /mnt/34D26DEED26DB4B0/Video:/data/movies
-    - /home/james/Docker/Plex/Transcoding:/transcode
 
   watchtower:
     container_name: watchtower
@@ -130,8 +130,8 @@ services:
 #    ports:
 #    - "9000:9000"
 #    volumes:
-#    - /var/run/docker.sock:/var/run/docker.sock
 #    - /home/james/Docker/Portainer/Data:/data
+#    - /var/run/docker.sock:/var/run/docker.sock
 
 #  nfs:
 #    image: itsthenetwork/nfs-server-alpine:latest
@@ -149,4 +149,4 @@ services:
 #    restart: "unless-stopped"
 #    volumes:
 #    - /home/james/Docker/HomeAssistant/Config:/config
-#    - /etc/localtime:/etc/localtime
+#    - /etc/localtime:/etc/localtime:ro
