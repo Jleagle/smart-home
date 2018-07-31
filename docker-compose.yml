@@ -91,6 +91,18 @@ services:
     - /mnt/34D26DEED26DB4B0/Video:/data/movies
     - /home/james/Docker/Plex/Transcoding:/transcode
 
+  watchtower:
+    container_name: watchtower
+    hostname: watchtower
+    image: v2tec/watchtower:0.3
+    restart: "unless-stopped"
+    volumes:
+    - /var/run/docker.sock:/var/run/docker.sock
+    command: --schedule "0 1 12 * * *" --cleanup
+    environment:
+    - WATCHTOWER_NOTIFICATIONS=slack
+    - WATCHTOWER_NOTIFICATION_SLACK_HOOK_URL=xx # todo
+
 #  ombi:
 #    image: linuxserver/ombi:latest
 #    restart: "unless-stopped"
