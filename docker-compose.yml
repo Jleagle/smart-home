@@ -14,9 +14,9 @@ services:
   - /mnt/34D26DEED26DB4B0/Video:/movies
   - /etc/localtime:/etc/localtime:ro
   environment:
-  - TZ=Europe/London
-  - PUID=1000
   - PGID=1000
+  - PUID=1000
+  - TZ=Europe/London
 
   sonarr:
     image: linuxserver/sonarr:latest
@@ -26,9 +26,9 @@ services:
     ports:
     - "8989:8989"
     environment:
-    - TZ=Europe/London
-    - PUID=1000
     - PGID=1000
+    - PUID=1000
+    - TZ=Europe/London
     volumes:
     - /home/james/Docker/Sonarr/Config:/config
     - /home/james/Docker/NZBGet/Downloads:/downloads
@@ -76,9 +76,9 @@ services:
     - /home/james/Docker/Tautulli/Config:/config
     - /home/james/Docker/Tautulli/Logs:/logs
     environment:
-    - TZ=Europe/London
-    - PUID=1000
     - PGID=1000
+    - PUID=1000
+    - TZ=Europe/London
 
   plex:
     image: linuxserver/plex:latest
@@ -93,10 +93,10 @@ services:
     - "5353:5353/udp"
     - "1900:1900/udp"
     environment:
-    - VERSION=latest
-    - PUID=1000
     - PGID=1000
+    - PUID=1000
     - TZ=Europe/London
+    - VERSION=latest
     volumes:
     - /home/james/Docker/Plex/Transcoding:/transcode
     - /mnt/34D26DEED26DB4B0/Docker/Plex/Config:/config
