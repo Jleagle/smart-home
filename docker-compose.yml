@@ -3,6 +3,8 @@ services:
 
   radarr:
   image: linuxserver/radarr:latest
+  hostname: radarr
+  container_name: radarr
   restart: "unless-stopped"
   ports:
   - "7878:7878"
@@ -18,6 +20,8 @@ services:
 
   sonarr:
     image: linuxserver/sonarr:latest
+    hostname: sonarr
+    container_name: sonarr
     restart: "unless-stopped"
     ports:
     - "8989:8989"
@@ -33,6 +37,8 @@ services:
 
   hydra:
     image: linuxserver/hydra:latest
+    hostname: hydra
+    container_name: hydra
     restart: "unless-stopped"
     ports:
     - "5075:5075"
@@ -46,6 +52,8 @@ services:
 
   nzbget:
     image: linuxserver/nzbget:latest
+    hostname: nzbget
+    container_name: nzbget
     restart: "unless-stopped"
     ports:
     - "6789:6789"
@@ -59,6 +67,8 @@ services:
 
   tautulli:
     image: linuxserver/tautulli:latest
+    hostname: tautulli
+    container_name: tautulli
     restart: "unless-stopped"
     ports:
     - "8181:8181"
@@ -72,6 +82,8 @@ services:
 
   plex:
     image: linuxserver/plex:latest
+    hostname: plex
+    container_name: plex
     restart: "unless-stopped"
     ports:
     - "32400:32400"
@@ -92,9 +104,9 @@ services:
     - /mnt/34D26DEED26DB4B0/Video:/data/movies
 
   watchtower:
-    container_name: watchtower
-    hostname: watchtower
     image: v2tec/watchtower:0.3
+    hostname: watchtower
+    container_name: watchtower
     restart: "unless-stopped"
     volumes:
     - /var/run/docker.sock:/var/run/docker.sock
@@ -105,6 +117,8 @@ services:
 
 #  ombi:
 #    image: linuxserver/ombi:latest
+#    hostname: ombi
+#    container_name: ombi
 #    restart: "unless-stopped"
 #    ports:
 #    - "3579:3579"
@@ -116,6 +130,8 @@ services:
 
 #  phlex:
 #    image: digitalhigh/phlex:latest
+#    hostname: phlex
+#    container_name: phlex
 #    restart: "unless-stopped"
 #    volumes:
 #    - /home/james/Docker/Phlex/Config:/config
@@ -126,6 +142,8 @@ services:
 
 #  portainer:
 #    image: portainer/portainer:latest
+#    hostname: portainer
+#    container_name: portainer
 #    restart: "unless-stopped"
 #    ports:
 #    - "9000:9000"
@@ -135,6 +153,8 @@ services:
 
 #  nfs:
 #    image: itsthenetwork/nfs-server-alpine:latest
+#    hostname: nfs
+#    container_name: nfs
 #    restart: "unless-stopped"
 #    ports:
 #    - "2049:2049"
@@ -146,6 +166,8 @@ services:
 
 #  hass:
 #    image: homeassistant/home-assistant:latest
+#    hostname: hass
+#    container_name: hass
 #    restart: "unless-stopped"
 #    volumes:
 #    - /home/james/Docker/HomeAssistant/Config:/config
