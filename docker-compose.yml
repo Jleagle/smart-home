@@ -2,21 +2,21 @@ version: '3'
 services:
 
   radarr:
-  image: linuxserver/radarr:latest
-  hostname: radarr
-  container_name: radarr
-  restart: "unless-stopped"
-  ports:
-  - "7878:7878"
-  volumes:
-  - /home/james/Docker/Radarr/Config:/config
-  - /home/james/Docker/NZBGet/Downloads:/downloads
-  - /mnt/34D26DEED26DB4B0/Video:/movies
-  - /etc/localtime:/etc/localtime:ro
-  environment:
-  - PGID=1000
-  - PUID=1000
-  - TZ=Europe/London
+    image: linuxserver/radarr:latest
+    hostname: radarr
+    container_name: radarr
+    restart: "unless-stopped"
+    ports:
+    - "7878:7878"
+    volumes:
+    - /home/james/Docker/Radarr/Config:/config
+    - /home/james/Docker/NZBGet/Downloads:/downloads
+    - /mnt/34D26DEED26DB4B0/Video:/movies
+    - /etc/localtime:/etc/localtime:ro
+    environment:
+    - PGID=1000
+    - PUID=1000
+    - TZ=Europe/London
 
   sonarr:
     image: linuxserver/sonarr:latest
