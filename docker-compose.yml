@@ -113,7 +113,18 @@ services:
     command: --schedule "0 1 12 * * *" --cleanup
     environment:
     - WATCHTOWER_NOTIFICATIONS=slack
-    - WATCHTOWER_NOTIFICATION_SLACK_HOOK_URL=xx # todo
+    - WATCHTOWER_NOTIFICATION_SLACK_HOOK_URL=${STEAM_WATCHTOWER_WEBHOOK}
+
+  portainer:
+    image: portainer/portainer:latest
+    hostname: portainer
+    container_name: portainer
+    restart: "unless-stopped"
+    ports:
+    - "9000:9000"
+    volumes:
+    - /home/james/Docker/Portainer/Data:/data
+    - /var/run/docker.sock:/var/run/docker.sock
 
 #  ombi:
 #    image: linuxserver/ombi:latest
@@ -139,17 +150,6 @@ services:
 #    - PGID=1000
 #    - PUID=1000
 #    - TZ=Europe/London
-
-#  portainer:
-#    image: portainer/portainer:latest
-#    hostname: portainer
-#    container_name: portainer
-#    restart: "unless-stopped"
-#    ports:
-#    - "9000:9000"
-#    volumes:
-#    - /home/james/Docker/Portainer/Data:/data
-#    - /var/run/docker.sock:/var/run/docker.sock
 
 #  nfs:
 #    image: itsthenetwork/nfs-server-alpine:latest
