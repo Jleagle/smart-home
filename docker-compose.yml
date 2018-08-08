@@ -104,7 +104,7 @@ services:
     - /mnt/34D26DEED26DB4B0/Video:/data/movies
 
   watchtower:
-    image: v2tec/watchtower:0.3
+    image: v2tec/watchtower:latest
     hostname: watchtower
     container_name: watchtower
     restart: "unless-stopped"
