@@ -113,7 +113,7 @@ services:
     command: --schedule "0 1 12 * * *" --cleanup
     environment:
     - WATCHTOWER_NOTIFICATIONS=slack
-    - WATCHTOWER_NOTIFICATION_SLACK_HOOK_URL=${STEAM_WATCHTOWER_WEBHOOK}
+    - WATCHTOWER_NOTIFICATION_SLACK_HOOK_URL=${WATCHTOWER_WEBHOOK}
 
   portainer:
     image: portainer/portainer:latest
