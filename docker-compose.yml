@@ -126,6 +126,19 @@ services:
     - ${DOCKER_DATA}/Portainer/Data:/data
     - /var/run/docker.sock:/var/run/docker.sock
 
+  noip:
+    container_name: noip
+    hostname: noip
+    image: coppit/no-ip:latest
+    restart: "unless-stopped"
+    environment:
+    - USERNAME=${NOIP_USERNAME}
+    - PASSWORD=${NOIP_PASSWORD}
+    - DOMAINS=${NOIP_DOMAINS}
+    - INTERVAL
+    volumes:
+    - /etc/localtime:/etc/localtime:ro
+
 #  ombi:
 #    image: linuxserver/ombi:latest
 #    hostname: ombi
