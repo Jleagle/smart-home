@@ -9,8 +9,8 @@ services:
     ports:
     - "7878:7878"
     volumes:
-    - /home/james/Docker/Radarr/Config:/config
-    - /home/james/Docker/NZBGet/Downloads:/downloads
+    - ${DOCKER_DATA}/Radarr/Config:/config
+    - ${DOCKER_DATA}/NZBGet/Downloads:/downloads
     - /mnt/34D26DEED26DB4B0/Video:/movies
     - /etc/localtime:/etc/localtime:ro
     environment:
@@ -30,8 +30,8 @@ services:
     - PUID=1000
     - TZ=Europe/London
     volumes:
-    - /home/james/Docker/Sonarr/Config:/config
-    - /home/james/Docker/NZBGet/Downloads:/downloads
+    - ${DOCKER_DATA}/Sonarr/Config:/config
+    - ${DOCKER_DATA}/NZBGet/Downloads:/downloads
     - /mnt/34D26DEED26DB4B0/Television:/tv
     - /etc/localtime:/etc/localtime:ro
 
@@ -43,8 +43,8 @@ services:
     ports:
     - "5075:5075"
     volumes:
-    - /home/james/Docker/NZBHydra/Config:/config
-    - /home/james/Docker/NZBHydra/Downloads:/downloads
+    - ${DOCKER_DATA}/NZBHydra/Config:/config
+    - ${DOCKER_DATA}/NZBHydra/Downloads:/downloads
     environment:
     - PGID=1000
     - PUID=1000
@@ -62,8 +62,8 @@ services:
     - PUID=1000
     - TZ=Europe/London
     volumes:
-    - /home/james/Docker/NZBGet/Config:/config
-    - /home/james/Docker/NZBGet/Downloads:/downloads
+    - ${DOCKER_DATA}/NZBGet/Config:/config
+    - ${DOCKER_DATA}/NZBGet/Downloads:/downloads
 
   tautulli:
     image: linuxserver/tautulli:latest
@@ -73,8 +73,8 @@ services:
     ports:
     - "8181:8181"
     volumes:
-    - /home/james/Docker/Tautulli/Config:/config
-    - /home/james/Docker/Tautulli/Logs:/logs
+    - ${DOCKER_DATA}/Tautulli/Config:/config
+    - ${DOCKER_DATA}/Tautulli/Logs:/logs
     environment:
     - PGID=1000
     - PUID=1000
@@ -98,7 +98,7 @@ services:
     - TZ=Europe/London
     - VERSION=latest
     volumes:
-    - /home/james/Docker/Plex/Transcoding:/transcode
+    - ${DOCKER_DATA}/Plex/Transcoding:/transcode
     - /mnt/34D26DEED26DB4B0/Docker/Plex/Config:/config
     - /mnt/34D26DEED26DB4B0/Television:/data/tvshows
     - /mnt/34D26DEED26DB4B0/Video:/data/movies
@@ -123,7 +123,7 @@ services:
     ports:
     - "9000:9000"
     volumes:
-    - /home/james/Docker/Portainer/Data:/data
+    - ${DOCKER_DATA}/Portainer/Data:/data
     - /var/run/docker.sock:/var/run/docker.sock
 
 #  ombi:
@@ -134,7 +134,7 @@ services:
 #    ports:
 #    - "3579:3579"
 #    volumes:
-#    - /home/james/Docker/Ombi/Config:/config
+#    - ${DOCKER_DATA}/Ombi/Config:/config
 #    environment:
 #    - PGID=1000
 #    - TZ=Europe/London
@@ -145,7 +145,7 @@ services:
 #    container_name: phlex
 #    restart: "unless-stopped"
 #    volumes:
-#    - /home/james/Docker/Phlex/Config:/config
+#    - ${DOCKER_DATA}/Phlex/Config:/config
 #    environment:
 #    - PGID=1000
 #    - PUID=1000
@@ -170,5 +170,5 @@ services:
 #    container_name: hass
 #    restart: "unless-stopped"
 #    volumes:
-#    - /home/james/Docker/HomeAssistant/Config:/config
+#    - ${DOCKER_DATA}/HomeAssistant/Config:/config
 #    - /etc/localtime:/etc/localtime:ro
