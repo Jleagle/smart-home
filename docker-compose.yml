@@ -135,8 +135,9 @@ services:
     - USERNAME=${NOIP_USERNAME}
     - PASSWORD=${NOIP_PASSWORD}
     - DOMAINS=${NOIP_DOMAINS}
-    - INTERVAL
+    - INTERVAL=30
     volumes:
+    - ${DOCKER_DATA}/no-ip/config:/config
     - /etc/localtime:/etc/localtime:ro
 
 #  ombi:
