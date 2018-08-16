@@ -131,11 +131,11 @@ services:
     hostname: noip
     image: coppit/no-ip:latest
     restart: "unless-stopped"
-    environment:
-    - USERNAME=${NOIP_USERNAME}
-    - PASSWORD=${NOIP_PASSWORD}
-    - DOMAINS=${NOIP_DOMAINS}
-    - INTERVAL=30
+    #    environment:
+    #    - USERNAME=${NOIP_USERNAME}
+    #    - PASSWORD=${NOIP_PASSWORD}
+    #    - DOMAINS=${NOIP_DOMAINS}
+    #    - INTERVAL=30m
     volumes:
     - ${DOCKER_DATA}/no-ip/config:/config
     - /etc/localtime:/etc/localtime:ro
