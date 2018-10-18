@@ -11,7 +11,7 @@ services:
     volumes:
     - ${DOCKER_DATA}/Radarr/Config:/config
     - ${DOCKER_DATA}/NZBGet/Downloads:/downloads
-    - /mnt/34D26DEED26DB4B0/Video:/movies
+    - ${MEDIA_DATA}/Video:/movies
     - /etc/localtime:/etc/localtime:ro
     environment:
     - PGID=1000
@@ -32,7 +32,7 @@ services:
     volumes:
     - ${DOCKER_DATA}/Sonarr/Config:/config
     - ${DOCKER_DATA}/NZBGet/Downloads:/downloads
-    - /mnt/34D26DEED26DB4B0/Television:/tv
+    - ${MEDIA_DATA}/Television:/tv
     - /etc/localtime:/etc/localtime:ro
 
   hydra:
@@ -93,9 +93,9 @@ services:
     - VERSION=latest
     volumes:
     - ${DOCKER_DATA}/Plex/Transcoding:/transcode
-    - /mnt/34D26DEED26DB4B0/Docker/Plex/Config:/config
-    - /mnt/34D26DEED26DB4B0/Television:/data/tvshows
-    - /mnt/34D26DEED26DB4B0/Video:/data/movies
+    - ${MEDIA_DATA}/Docker/Plex/Config:/config
+    - ${MEDIA_DATA}/Television:/data/tvshows
+    - ${MEDIA_DATA}/Video:/data/movies
 
   watchtower:
     image: v2tec/watchtower:latest
@@ -169,7 +169,7 @@ services:
 #    volumes:
 #    - /data1/:/nfsshare
 #    environment:
-#    - SHARED_DIRECTORY=/mnt/34D26DEED26DB4B0
+#    - SHARED_DIRECTORY=${MEDIA_DATA}
 #    - READ_ONLY=true
 
 #  hass:
