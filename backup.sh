@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-/usr/bin/rsync \
+/usr/bin/nice -n 10 /usr/bin/rsync \
 --human-readable \
 --archive \
 --delete \
