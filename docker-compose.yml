@@ -134,6 +134,20 @@ services:
     - ${DOCKER_DATA}/no-ip/config:/config
     - /etc/localtime:/etc/localtime:ro
 
+  emby:
+    image: emby/embyserver:latest
+    hostname: emby
+    container_name: emby
+    environment:
+    - UID=1000
+    - GID=1000
+    ports:
+    - "8096:8096"
+    volumes:
+    - ${MEDIA_DATA}/Docker/Emby/Config:/config
+    - ${MEDIA_DATA}/Television:/mnt/share1
+    - ${MEDIA_DATA}/Video:/mnt/share2
+
 #  ombi:
 #    image: linuxserver/ombi:latest
 #    hostname: ombi
