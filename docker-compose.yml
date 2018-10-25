@@ -138,6 +138,7 @@ services:
     image: emby/embyserver:latest
     hostname: emby
     container_name: emby
+    restart: "unless-stopped"
     environment:
     - UID=1000
     - GID=1000
