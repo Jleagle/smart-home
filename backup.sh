@@ -8,4 +8,4 @@
 --stats \
 --progress \
 --verbose \
-/mnt/34D26DEED26DB4B0/ /mnt/96848BE4848BC4E9/
+/mnt/96848BE4848BC4E9/ /mnt/34D26DEED26DB4B0/
