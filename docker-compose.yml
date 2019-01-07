@@ -134,6 +134,28 @@ services:
       - ${DOCKER_DATA}/no-ip/config:/config
       - /etc/localtime:/etc/localtime:ro
 
+  hass:
+    image: homeassistant/home-assistant:latest
+    hostname: hass
+    container_name: hass
+    restart: "unless-stopped"
+    network_mode: host
+    volumes:
+      - ${DOCKER_DATA}/HomeAssistant/Config:/config
+      - /etc/localtime:/etc/localtime:ro
+    environment:
+      - TZ=Europe/London
+
+  nodered:
+    image: nodered/node-red-docker:latest
+    hostname: nodered
+    container_name: nodered
+    restart: "unless-stopped"
+    ports:
+      - "1880:1880"
+    volumes:
+      - ${DOCKER_DATA}/NodeRed/Config:/data
+
 #  emby:
 #    image: emby/embyserver:latest
 #    hostname: emby
@@ -202,12 +224,3 @@ services:
 #    environment:
 #    - SHARED_DIRECTORY=${MEDIA_DATA}
 #    - READ_ONLY=true
-
-#  hass:
-#    image: homeassistant/home-assistant:latest
-#    hostname: hass
-#    container_name: hass
-#    restart: "unless-stopped"
-#    volumes:
-#    - ${DOCKER_DATA}/HomeAssistant/Config:/config
-#    - /etc/localtime:/etc/localtime:ro
