@@ -150,6 +150,7 @@ services:
     image: nodered/node-red-docker:latest
     hostname: nodered
     container_name: nodered
+    user: "1000"
     restart: "unless-stopped"
     ports:
       - "1880:1880"
