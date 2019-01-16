@@ -192,21 +192,6 @@ services:
 #    # - '/var/log/pihole.log:/var/log/pihole.log'
 #    restart: always
 
-#  emby:
-#    image: emby/embyserver:latest
-#    hostname: emby
-#    container_name: emby
-#    restart: "unless-stopped"
-#    environment:
-#    - UID=1000
-#    - GID=1000
-#    ports:
-#    - "8096:8096"
-#    volumes:
-#    - ${MEDIA_DATA}/Docker/Emby/Config:/config
-#    - ${MEDIA_DATA}/Television:/mnt/share1
-#    - ${MEDIA_DATA}/Video:/mnt/share2
-
 #  netdata:
 #    image: netdata/netdata:latest
 #    hostname: netdata
