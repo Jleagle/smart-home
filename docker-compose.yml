@@ -157,6 +157,18 @@ services:
     volumes:
       - ${DOCKER_DATA}/NodeRed/Config:/data
 
+  mosquitto:
+    image: eclipse-mosquitto:latest
+    hostname: mosquitto
+    container_name: mosquitto
+    ports:
+      - "1883:1883"
+      - "9001:9001"
+    volumes:
+      - ./mosquitto/mosquitto.conf:/mosquitto/config/mosquitto.conf
+      - ${DOCKER_DATA}/Mosquitto/Log/mosquitto.log:/mosquitto/log/mosquitto.log
+      - ${DOCKER_DATA}/Mosquitto/Data:/mosquitto/data
+
 #  pihole:
 #    image: pihole/pihole:latest
 #    dns:
