@@ -98,7 +98,7 @@ services:
       - ${MEDIA_DATA}/Video:/data/movies
 
   watchtower:
-    image: v2tec/watchtower:latest
+    image: KopfKrieg/watchtower:latest
     hostname: watchtower
     container_name: watchtower
     restart: "unless-stopped"
