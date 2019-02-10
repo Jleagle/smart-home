@@ -97,17 +97,19 @@ services:
       - ${MEDIA_DATA}/Television:/data/tvshows
       - ${MEDIA_DATA}/Video:/data/movies
 
-  watchtower:
-    image: KopfKrieg/watchtower:latest
-    hostname: watchtower
-    container_name: watchtower
+  ouroboros:
+    image: pyouroboros/ouroboros:latest
+    hostname: ouroboros
+    container_name: ouroboros
     restart: "unless-stopped"
+    environment:
+      - CLEANUP=true
+      - SELF_UPDATE=true
+      - LOG_LEVEL=info
+      - NOTIFIERS=${OUROBOROS_SLACK_TOKEN}
+      - CRON="2 12 * * *"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-    command: --schedule "0 1 12 * * *" --cleanup
-    environment:
-      - WATCHTOWER_NOTIFICATIONS=slack
-      - WATCHTOWER_NOTIFICATION_SLACK_HOOK_URL=${WATCHTOWER_WEBHOOK}
 
   portainer:
     image: portainer/portainer:latest
