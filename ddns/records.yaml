@@ -1,2 +1,3 @@
-- domain: jimeagle.com
-  subdomain: nas
+---
+jimeagle.com:
+  - nas
