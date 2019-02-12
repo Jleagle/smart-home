@@ -171,6 +171,18 @@ services:
       - ${DOCKER_DATA}/Mosquitto/Log/mosquitto.log:/mosquitto/log/mosquitto.log
       - ${DOCKER_DATA}/Mosquitto/Data:/mosquitto/data
 
+  ddns:
+    container_name: ddns
+    hostname: ddns
+    image: jimeagle/digital-ocean-ddns:latest
+    restart: "unless-stopped"
+    environment:
+      - KEY=${DO_DDNS_KEY}
+      - ONE_TIME=false
+      - ON_LOAD=true
+    volumes:
+      - ./ddns/records.yaml:/root/records.yaml:ro
+
 #  pihole:
 #    image: pihole/pihole:latest
 #    dns:
