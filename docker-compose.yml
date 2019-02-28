@@ -107,7 +107,8 @@ services:
       - SELF_UPDATE=true
       - LOG_LEVEL=info
       - NOTIFIERS=${OUROBOROS_SLACK_TOKEN}
-      - CRON="2 12 * * *"
+      - RUN_ONCE=true
+      #- CRON="2 12 * * *"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
 
