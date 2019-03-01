@@ -101,7 +101,7 @@ services:
     image: pyouroboros/ouroboros:latest
     hostname: ouroboros
     container_name: ouroboros
-    restart: "unless-stopped"
+    restart: "on-failure"
     environment:
       - CLEANUP=true
       - SELF_UPDATE=true
