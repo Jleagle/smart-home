@@ -170,6 +170,21 @@ services:
     volumes:
       - ./ddns/records.yaml:/root/records.yaml:ro
 
+  phlex:
+    image: digitalhigh/phlex:latest
+    hostname: phlex
+    container_name: phlex
+    restart: "unless-stopped"
+    volumes:
+      - ${DOCKER_DATA}/Phlex/Config:/config
+    environment:
+      - PGID=1000
+      - PUID=1000
+      - TZ=Europe/London
+    ports:
+      - "5666:80"
+      - "5667:443"
+
 #  pihole:
 #    image: pihole/pihole:latest
 #    dns:
@@ -232,18 +247,6 @@ services:
 #    - ${DOCKER_DATA}/Ombi/Config:/config
 #    environment:
 #    - PGID=1000
-#    - TZ=Europe/London
-
-#  phlex:
-#    image: digitalhigh/phlex:latest
-#    hostname: phlex
-#    container_name: phlex
-#    restart: "unless-stopped"
-#    volumes:
-#    - ${DOCKER_DATA}/Phlex/Config:/config
-#    environment:
-#    - PGID=1000
-#    - PUID=1000
 #    - TZ=Europe/London
 
 #  nfs:
