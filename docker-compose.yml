@@ -65,21 +65,6 @@ services:
       - ${DOCKER_DATA}/NZBGet/Config:/config
       - ${DOCKER_DATA}/NZBGet/Downloads:/downloads
 
-  tautulli:
-    image: linuxserver/tautulli:latest
-    hostname: tautulli
-    container_name: tautulli
-    restart: "unless-stopped"
-    ports:
-      - "8181:8181"
-    volumes:
-      - ${DOCKER_DATA}/Tautulli/Config:/config
-      - ${DOCKER_DATA}/Tautulli/Logs:/logs
-    environment:
-      - PGID=1000
-      - PUID=1000
-      - TZ=Europe/London
-
   plex:
     image: linuxserver/plex:latest
     hostname: plex
