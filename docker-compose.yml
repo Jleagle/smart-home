@@ -86,14 +86,14 @@ services:
     image: pyouroboros/ouroboros:latest
     hostname: ouroboros
     container_name: ouroboros
-    restart: "on-failure"
+    restart: "unless-stopped"
     environment:
       - CLEANUP=true
       - SELF_UPDATE=true
+      - MONITOR="radarr sonarr hydra nzbget plex portainer hass nodered mosquitto ddns phlex"
+      - CRON="2 12 * * *"
       - LOG_LEVEL=info
       - NOTIFIERS=${OUROBOROS_SLACK_TOKEN}
-      - RUN_ONCE=true
-      #- CRON="2 12 * * *"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
 
