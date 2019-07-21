@@ -170,6 +170,23 @@ services:
       - "5666:80"
       - "5667:443"
 
+  bazarr:
+    image: linuxserver/bazarr:latest
+    hostname: bazarr
+    container_name: bazarr
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/London
+      - UMASK_SET=022 #optional
+    volumes:
+      - ${DOCKER_DATA}/Bazarr/Config:/config
+      - ${MEDIA_DATA}/Video:/movies
+      - ${MEDIA_DATA}/Television:/tv
+    ports:
+      - 6767:6767
+    restart: unless-stopped
+
 #  pihole:
 #    image: pihole/pihole:latest
 #    dns:
