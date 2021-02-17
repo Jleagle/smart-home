@@ -187,6 +187,21 @@ services:
       - 6767:6767
     restart: unless-stopped
 
+  tubesync:
+    image: ghcr.io/meeb/tubesync:v0.8
+    hostname: tubesync
+    container_name: tubesync
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/London
+    volumes:
+      - ${DOCKER_DATA}/TubeSync/Config:/config
+      - ${MEDIA_DATA}/YouTube:/downloads
+    ports:
+      - 4848:4848
+    restart: unless-stopped
+
 #  pihole:
 #    image: pihole/pihole:latest
 #    dns:
