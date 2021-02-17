@@ -98,6 +98,34 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
 
+  ddns:
+    container_name: ddns
+    hostname: ddns
+    image: jimeagle/digital-ocean-ddns:latest
+    restart: "unless-stopped"
+    environment:
+      - KEY=${DO_DDNS_KEY}
+      - ONE_TIME=false
+      - ON_LOAD=true
+    volumes:
+      - ./ddns/records.yaml:/root/records.yaml:ro
+
+  tubesync:
+    image: ghcr.io/meeb/tubesync:v0.8
+    hostname: tubesync
+    container_name: tubesync
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/London
+    volumes:
+      - ${DOCKER_DATA}/TubeSync/Config:/config
+      - ${MEDIA_DATA}/YouTube:/downloads
+    ports:
+      - 4848:4848
+    restart: unless-stopped
+
+
   #  portainer:
   #    image: portainer/portainer:latest
   #    hostname: portainer
@@ -144,18 +172,6 @@ services:
   #      - ${DOCKER_DATA}/Mosquitto/Log/mosquitto.log:/mosquitto/log/mosquitto.log
   #      - ${DOCKER_DATA}/Mosquitto/Data:/mosquitto/data
 
-  ddns:
-    container_name: ddns
-    hostname: ddns
-    image: jimeagle/digital-ocean-ddns:latest
-    restart: "unless-stopped"
-    environment:
-      - KEY=${DO_DDNS_KEY}
-      - ONE_TIME=false
-      - ON_LOAD=true
-    volumes:
-      - ./ddns/records.yaml:/root/records.yaml:ro
-
   #  phlex:
   #    image: digitalhigh/phlex:latest
   #    hostname: phlex
@@ -188,94 +204,79 @@ services:
   #      - 6767:6767
   #    restart: unless-stopped
 
-  tubesync:
-    image: ghcr.io/meeb/tubesync:v0.8
-    hostname: tubesync
-    container_name: tubesync
-    environment:
-      - PUID=1000
-      - PGID=1000
-      - TZ=Europe/London
-    volumes:
-      - ${DOCKER_DATA}/TubeSync/Config:/config
-      - ${MEDIA_DATA}/YouTube:/downloads
-    ports:
-      - 4848:4848
-    restart: unless-stopped
+  #  pihole:
+  #    image: pihole/pihole:latest
+  #    dns:
+  #      - 127.0.0.1
+  #      - 1.1.1.1
+  #    ports:
+  #      - "53:53/tcp"
+  #      - "53:53/udp"
+  #      - "80:80/tcp"
+  #      - "443:443/tcp"
+  #    # The 3 lines below are required if Pi-hole is to provide DHCP
+  #    # cap_add:
+  #    #  - NET_ADMIN
+  #    # network_mode: "host"
+  #    environment:
+  #      # enter your docker host IP here
+  #      ServerIP:
+  #      # IPv6 Address if your network supports it
+  #      #ServerIPv6: 192.168.1.55
+  #      # jwilder/proxy envs, see readme for more info
+  #      PROXY_LOCATION: pihole
+  #      VIRTUAL_HOST: pihole.yourdomain.local
+  #      VIRTUAL_PORT: 80
+  #    # Add your own custom hostnames you need for your domain
+  #    extra_hosts:
+  #      #   Point any of the jwilder virtual_host addresses
+  #      # to your docker host ip address
+  #      - 'pihole.yourdomain.local:192.168.1.55'
+  #    volumes:
+  #    # - '/etc/pihole/:/etc/pihole/'
+  #    # WARNING: if this log don't exist as a file on the host already
+  #    # docker will try to create a directory in it's place making for lots of errors
+  #    # - '/var/log/pihole.log:/var/log/pihole.log'
+  #    restart: always
 
-#  pihole:
-#    image: pihole/pihole:latest
-#    dns:
-#      - 127.0.0.1
-#      - 1.1.1.1
-#    ports:
-#      - "53:53/tcp"
-#      - "53:53/udp"
-#      - "80:80/tcp"
-#      - "443:443/tcp"
-#    # The 3 lines below are required if Pi-hole is to provide DHCP
-#    # cap_add:
-#    #  - NET_ADMIN
-#    # network_mode: "host"
-#    environment:
-#      # enter your docker host IP here
-#      ServerIP:
-#      # IPv6 Address if your network supports it
-#      #ServerIPv6: 192.168.1.55
-#      # jwilder/proxy envs, see readme for more info
-#      PROXY_LOCATION: pihole
-#      VIRTUAL_HOST: pihole.yourdomain.local
-#      VIRTUAL_PORT: 80
-#    # Add your own custom hostnames you need for your domain
-#    extra_hosts:
-#      #   Point any of the jwilder virtual_host addresses
-#      # to your docker host ip address
-#      - 'pihole.yourdomain.local:192.168.1.55'
-#    volumes:
-#    # - '/etc/pihole/:/etc/pihole/'
-#    # WARNING: if this log don't exist as a file on the host already
-#    # docker will try to create a directory in it's place making for lots of errors
-#    # - '/var/log/pihole.log:/var/log/pihole.log'
-#    restart: always
+  #  netdata:
+  #    image: netdata/netdata:latest
+  #    hostname: netdata
+  #    container_name: netdata
+  #    restart: "unless-stopped"
+  #    ports:
+  #    - 19999:19999
+  #    cap_add:
+  #    - SYS_PTRACE
+  #    security_opt:
+  #    - apparmor:unconfined
+  #    volumes:
+  #    - /proc:/host/proc:ro
+  #    - /sys:/host/sys:ro
+  #    - /var/run/docker.sock:/var/run/docker.sock:ro
 
-#  netdata:
-#    image: netdata/netdata:latest
-#    hostname: netdata
-#    container_name: netdata
-#    restart: "unless-stopped"
-#    ports:
-#    - 19999:19999
-#    cap_add:
-#    - SYS_PTRACE
-#    security_opt:
-#    - apparmor:unconfined
-#    volumes:
-#    - /proc:/host/proc:ro
-#    - /sys:/host/sys:ro
-#    - /var/run/docker.sock:/var/run/docker.sock:ro
+  #  ombi:
+  #    image: linuxserver/ombi:latest
+  #    hostname: ombi
+  #    container_name: ombi
+  #    restart: "unless-stopped"
+  #    ports:
+  #    - "3579:3579"
+  #    volumes:
+  #    - ${DOCKER_DATA}/Ombi/Config:/config
+  #    environment:
+  #    - PGID=1000
+  #    - TZ=Europe/London
 
-#  ombi:
-#    image: linuxserver/ombi:latest
-#    hostname: ombi
-#    container_name: ombi
-#    restart: "unless-stopped"
-#    ports:
-#    - "3579:3579"
-#    volumes:
-#    - ${DOCKER_DATA}/Ombi/Config:/config
-#    environment:
-#    - PGID=1000
-#    - TZ=Europe/London
-
-#  nfs:
-#    image: itsthenetwork/nfs-server-alpine:latest
-#    hostname: nfs
-#    container_name: nfs
-#    restart: "unless-stopped"
-#    ports:
-#    - "2049:2049"
-#    volumes:
-#    - /data1/:/nfsshare
-#    environment:
-#    - SHARED_DIRECTORY=${MEDIA_DATA}
-#    - READ_ONLY=true
+  #  nfs:
+  #    image: itsthenetwork/nfs-server-alpine:latest
+  #    hostname: nfs
+  #    container_name: nfs
+  #    restart: "unless-stopped"
+  #    ports:
+  #    - "2049:2049"
+  #    volumes:
+  #    - /data1/:/nfsshare
+  #    environment:
+  #    - SHARED_DIRECTORY=${MEDIA_DATA}
+  #    - READ_ONLY=true
