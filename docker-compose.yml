@@ -81,6 +81,7 @@ services:
       - ${MEDIA_DATA}/Docker/Plex/Config:/config
       - ${MEDIA_DATA}/Television:/data/tvshows
       - ${MEDIA_DATA}/Video:/data/movies
+      - ${MEDIA_DATA}/YouTube:/data/youtube
 
   ouroboros:
     image: pyouroboros/ouroboros:latest
