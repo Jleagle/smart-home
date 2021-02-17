@@ -97,51 +97,51 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
 
-  portainer:
-    image: portainer/portainer:latest
-    hostname: portainer
-    container_name: portainer
-    restart: "unless-stopped"
-    ports:
-      - "9000:9000"
-    volumes:
-      - ${DOCKER_DATA}/Portainer/Data:/data
-      - /var/run/docker.sock:/var/run/docker.sock
+  #  portainer:
+  #    image: portainer/portainer:latest
+  #    hostname: portainer
+  #    container_name: portainer
+  #    restart: "unless-stopped"
+  #    ports:
+  #      - "9000:9000"
+  #    volumes:
+  #      - ${DOCKER_DATA}/Portainer/Data:/data
+  #      - /var/run/docker.sock:/var/run/docker.sock
 
-  hass:
-    image: homeassistant/home-assistant:latest
-    hostname: hass
-    container_name: hass
-    restart: "unless-stopped"
-    network_mode: host
-    volumes:
-      - ${DOCKER_DATA}/HomeAssistant/Config:/config
-      - /etc/localtime:/etc/localtime:ro
-    environment:
-      - TZ=Europe/London
+  #  hass:
+  #    image: homeassistant/home-assistant:latest
+  #    hostname: hass
+  #    container_name: hass
+  #    restart: "unless-stopped"
+  #    network_mode: host
+  #    volumes:
+  #      - ${DOCKER_DATA}/HomeAssistant/Config:/config
+  #      - /etc/localtime:/etc/localtime:ro
+  #    environment:
+  #      - TZ=Europe/London
 
-  nodered:
-    image: nodered/node-red-docker:latest
-    hostname: nodered
-    container_name: nodered
-    user: "1000"
-    restart: "unless-stopped"
-    ports:
-      - "1880:1880"
-    volumes:
-      - ${DOCKER_DATA}/NodeRed/Config:/data
+  #  nodered:
+  #    image: nodered/node-red-docker:latest
+  #    hostname: nodered
+  #    container_name: nodered
+  #    user: "1000"
+  #    restart: "unless-stopped"
+  #    ports:
+  #      - "1880:1880"
+  #    volumes:
+  #      - ${DOCKER_DATA}/NodeRed/Config:/data
 
-  mosquitto:
-    image: eclipse-mosquitto:latest
-    hostname: mosquitto
-    container_name: mosquitto
-    ports:
-      - "1883:1883"
-      - "9001:9001"
-    volumes:
-      - ./mosquitto/mosquitto.conf:/mosquitto/config/mosquitto.conf
-      - ${DOCKER_DATA}/Mosquitto/Log/mosquitto.log:/mosquitto/log/mosquitto.log
-      - ${DOCKER_DATA}/Mosquitto/Data:/mosquitto/data
+  #  mosquitto:
+  #    image: eclipse-mosquitto:latest
+  #    hostname: mosquitto
+  #    container_name: mosquitto
+  #    ports:
+  #      - "1883:1883"
+  #      - "9001:9001"
+  #    volumes:
+  #      - ./mosquitto/mosquitto.conf:/mosquitto/config/mosquitto.conf
+  #      - ${DOCKER_DATA}/Mosquitto/Log/mosquitto.log:/mosquitto/log/mosquitto.log
+  #      - ${DOCKER_DATA}/Mosquitto/Data:/mosquitto/data
 
   ddns:
     container_name: ddns
@@ -155,37 +155,37 @@ services:
     volumes:
       - ./ddns/records.yaml:/root/records.yaml:ro
 
-  phlex:
-    image: digitalhigh/phlex:latest
-    hostname: phlex
-    container_name: phlex
-    restart: "unless-stopped"
-    volumes:
-      - ${DOCKER_DATA}/Phlex/Config:/config
-    environment:
-      - PGID=1000
-      - PUID=1000
-      - TZ=Europe/London
-    ports:
-      - "5666:80"
-      - "5667:443"
+  #  phlex:
+  #    image: digitalhigh/phlex:latest
+  #    hostname: phlex
+  #    container_name: phlex
+  #    restart: "unless-stopped"
+  #    volumes:
+  #      - ${DOCKER_DATA}/Phlex/Config:/config
+  #    environment:
+  #      - PGID=1000
+  #      - PUID=1000
+  #      - TZ=Europe/London
+  #    ports:
+  #      - "5666:80"
+  #      - "5667:443"
 
-  bazarr:
-    image: linuxserver/bazarr:latest
-    hostname: bazarr
-    container_name: bazarr
-    environment:
-      - PUID=1000
-      - PGID=1000
-      - TZ=Europe/London
-      - UMASK_SET=022 #optional
-    volumes:
-      - ${DOCKER_DATA}/Bazarr/Config:/config
-      - ${MEDIA_DATA}/Video:/movies
-      - ${MEDIA_DATA}/Television:/tv
-    ports:
-      - 6767:6767
-    restart: unless-stopped
+  #  bazarr:
+  #    image: linuxserver/bazarr:latest
+  #    hostname: bazarr
+  #    container_name: bazarr
+  #    environment:
+  #      - PUID=1000
+  #      - PGID=1000
+  #      - TZ=Europe/London
+  #      - UMASK_SET=022 #optional
+  #    volumes:
+  #      - ${DOCKER_DATA}/Bazarr/Config:/config
+  #      - ${MEDIA_DATA}/Video:/movies
+  #      - ${MEDIA_DATA}/Television:/tv
+  #    ports:
+  #      - 6767:6767
+  #    restart: unless-stopped
 
   tubesync:
     image: ghcr.io/meeb/tubesync:v0.8
