@@ -8,5 +8,5 @@
 --stats \
 --progress \
 --verbose \
---exclude '*cache*' \
+--exclude '*/cache/*' \
 /mnt/96848BE4848BC4E9/ /mnt/34D26DEED26DB4B0/
