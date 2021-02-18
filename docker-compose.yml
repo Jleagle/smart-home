@@ -114,6 +114,7 @@ services:
     image: ghcr.io/meeb/tubesync:v0.8
     hostname: tubesync
     container_name: tubesync
+    network_mode: "host" # To match Plex
     environment:
       - PUID=1000
       - PGID=1000
