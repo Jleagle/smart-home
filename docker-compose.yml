@@ -119,6 +119,8 @@ services:
       - PUID=1000
       - PGID=1000
       - TZ=Europe/London
+      - HTTP_USER=$TUBE_SYNC_USER
+      - HTTP_PASS=$TUBE_SYNC_PASS
     volumes:
       - ${DOCKER_DATA}/TubeSync/Config:/config
       - ${MEDIA_DATA}/YouTube:/downloads
