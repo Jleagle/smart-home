@@ -111,7 +111,7 @@ services:
       - ./ddns/records.yaml:/root/records.yaml:ro
 
   tubesync:
-    image: ghcr.io/meeb/tubesync:v0.8
+    image: ghcr.io/meeb/tubesync:v0.9
     hostname: tubesync
     container_name: tubesync
     network_mode: "host" # To match Plex
