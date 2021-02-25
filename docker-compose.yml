@@ -271,6 +271,18 @@ services:
   #    - PGID=1000
   #    - TZ=Europe/London
 
+  overseerr:
+    image: sctx/overseerr:latest
+    hostname: overseerr
+    container_name: overseerr
+    restart: "unless-stopped"
+    ports:
+      - "5055:5055"
+    volumes:
+      - ${DOCKER_DATA}/Overseerr/Config:/app/config
+    environment:
+      - TZ=Europe/London
+
   #  nfs:
   #    image: itsthenetwork/nfs-server-alpine:latest
   #    hostname: nfs
