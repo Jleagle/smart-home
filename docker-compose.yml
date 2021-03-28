@@ -110,24 +110,23 @@ services:
     volumes:
       - ./ddns/records.yaml:/root/records.yaml:ro
 
-  tubesync:
-    image: ghcr.io/meeb/tubesync:v0.9.1
-    hostname: tubesync
-    container_name: tubesync
-    network_mode: "host" # To match Plex
-    environment:
-      - PUID=1000
-      - PGID=1000
-      - TZ=Europe/London
-      - HTTP_USER=$TUBE_SYNC_USER
-      - HTTP_PASS=$TUBE_SYNC_PASS
-    volumes:
-      - ${DOCKER_DATA}/TubeSync/Config:/config
-      - ${MEDIA_DATA}/YouTube:/downloads
-    ports:
-      - 4848:4848
-    restart: unless-stopped
-
+  #  tubesync:
+  #    image: ghcr.io/meeb/tubesync:v0.9.1
+  #    hostname: tubesync
+  #    container_name: tubesync
+  #    network_mode: "host" # To match Plex
+  #    environment:
+  #      - PUID=1000
+  #      - PGID=1000
+  #      - TZ=Europe/London
+  #      - HTTP_USER=$TUBE_SYNC_USER
+  #      - HTTP_PASS=$TUBE_SYNC_PASS
+  #    volumes:
+  #      - ${DOCKER_DATA}/TubeSync/Config:/config
+  #      - ${MEDIA_DATA}/YouTube:/downloads
+  #    ports:
+  #      - 4848:4848
+  #    restart: unless-stopped
 
   #  portainer:
   #    image: portainer/portainer:latest
