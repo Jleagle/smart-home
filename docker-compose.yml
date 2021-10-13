@@ -294,3 +294,19 @@ services:
   #    environment:
   #    - SHARED_DIRECTORY=${MEDIA_DATA}
   #    - READ_ONLY=true
+
+  #  jackett:
+  #    image: linuxserver/jackett:latest
+  #    container_name: jackett
+  #    restart: unless-stopped
+  #    ports:
+  #      - ${JACKETT_EXTPORT}:${JACKETT_INTPORT}
+  #    volumes:
+  #      - ${DOCKERDIR}/jackett:/config
+  #      - ${DOCKERDIR}/Downloads:/downloads
+  #    environment:
+  #      PUID: $PUID
+  #      PGID: $PGID
+  #      TZ: $TZ
+  #    security_opt:
+  #      - no-new-privileges:true
