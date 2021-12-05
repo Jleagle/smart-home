@@ -164,6 +164,25 @@ services:
     volumes:
       - ${DOCKER_DATA}/NodeRed/Config:/data
 
+  grafana:
+    container_name: grafana
+    hostname: grafana
+    image: grafana/grafana:latest
+    restart: "unless-stopped"
+    user: "0"
+    volumes:
+      - ${DOCKER_DATA}/grafana/grafana.ini:/etc/grafana/grafana.ini:ro
+      - ${DOCKER_DATA}/grafana/key.json:/etc/grafana/key.json:ro
+      - ${DOCKER_DATA}/grafana/lib:/var/lib/grafana
+
+  grafana-image-renderer:
+    container_name: grafana-image-renderer
+    hostname: grafana-image-renderer
+    image: grafana/grafana-image-renderer:latest
+    restart: "unless-stopped"
+    environment:
+      ENABLE_METRICS: 'false'
+
   #  mosquitto:
   #    image: eclipse-mosquitto:latest
   #    hostname: mosquitto
