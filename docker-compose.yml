@@ -139,28 +139,30 @@ services:
   #      - ${DOCKER_DATA}/Portainer/Data:/data
   #      - /var/run/docker.sock:/var/run/docker.sock
 
-  #  hass:
-  #    image: homeassistant/home-assistant:latest
-  #    hostname: hass
-  #    container_name: hass
-  #    restart: "unless-stopped"
-  #    network_mode: host
-  #    volumes:
-  #      - ${DOCKER_DATA}/HomeAssistant/Config:/config
-  #      - /etc/localtime:/etc/localtime:ro
-  #    environment:
-  #      - TZ=Europe/London
+  hass:
+    image: homeassistant/home-assistant:latest
+    hostname: hass
+    container_name: hass
+    restart: "unless-stopped"
+    network_mode: host
+    privileged: true
+    volumes:
+      - ${DOCKER_DATA}/HomeAssistant/Config:/config
+      - /etc/localtime:/etc/localtime:ro
+    environment:
+      - TZ=Europe/London
 
-  #  nodered:
-  #    image: nodered/node-red:latest
-  #    hostname: nodered
-  #    container_name: nodered
-  #    user: "1000"
-  #    restart: "unless-stopped"
-  #    ports:
-  #      - "1880:1880"
-  #    volumes:
-  #      - ${DOCKER_DATA}/NodeRed/Config:/data
+  nodered:
+    image: nodered/node-red:latest
+    hostname: nodered
+    container_name: nodered
+    restart: "unless-stopped"
+    environment:
+      - TZ=Europe/London
+    ports:
+      - "1880:1880"
+    volumes:
+      - ${DOCKER_DATA}/NodeRed/Config:/data
 
   #  mosquitto:
   #    image: eclipse-mosquitto:latest
