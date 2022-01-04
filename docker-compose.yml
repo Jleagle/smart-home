@@ -151,6 +151,8 @@ services:
       - /etc/localtime:/etc/localtime:ro
     environment:
       - TZ=Europe/London
+  #    devices:
+  #      - /dev/ttyUSB0:/dev/ttyUSB0
 
   nodered:
     image: nodered/node-red:latest
