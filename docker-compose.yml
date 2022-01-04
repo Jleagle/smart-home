@@ -171,9 +171,9 @@ services:
     restart: "unless-stopped"
     user: "0"
     volumes:
-      - ${DOCKER_DATA}/grafana/grafana.ini:/etc/grafana/grafana.ini:ro
-      - ${DOCKER_DATA}/grafana/key.json:/etc/grafana/key.json:ro
-      - ${DOCKER_DATA}/grafana/lib:/var/lib/grafana
+      - ${DOCKER_DATA}/Grafana/grafana.ini:/etc/grafana/grafana.ini:ro
+      - ${DOCKER_DATA}/Grafana/key.json:/etc/grafana/key.json:ro
+      - ${DOCKER_DATA}/Grafana/lib:/var/lib/grafana
 
   grafana-image-renderer:
     container_name: grafana-image-renderer
