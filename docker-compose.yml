@@ -163,6 +163,7 @@ services:
       - TZ=Europe/London
     ports:
       - "1880:1880"
+      - "1881:1881"
     volumes:
       - ${DOCKER_DATA}/NodeRed/Config:/data
 
