@@ -15,11 +15,8 @@ services:
       - "--api.dashboard=false"
       - "--experimental.http3=true"
 
-      - "--entrypoints.name.enablehttp3=true"
+      - "--entrypoints.web.enablehttp3=true"
       - "--entrypoints.web.address=:80"
-      - "--entrypoints.web.http.redirections.entryPoint.to=websecure"
-      - "--entrypoints.web.http.redirections.entryPoint.scheme=https"
-      - "--entrypoints.websecure.address=:443"
 
       - "--certificatesresolvers.myresolver.acme.email=jimeagle@gmail.com"
       - "--certificatesresolvers.myresolver.acme.storage=/acme.json"
@@ -27,10 +24,9 @@ services:
       - "--certificatesresolvers.myresolver.acme.dnschallenge.delaybeforecheck=10"
     ports:
       - "80:80"
-      - "443:443"
     environment:
-      CF_DNS_API_TOKEN: "${CF_}"
-      CF_ZONE_API_TOKEN: "${CF_}"
+      CLOUDFLARE_DNS_API_TOKEN: "${CLOUDFLARE_DNS_API_TOKEN}"
+      CLOUDFLARE_ZONE_API_TOKEN: "${CLOUDFLARE_ZONE_API_TOKEN}"
     volumes:
       - "${HOME}/Traefik/acme.json:/acme.json"
       - "/var/run/docker.sock:/var/run/docker.sock:ro"
@@ -51,6 +47,14 @@ services:
       - PGID=1000
       - PUID=1000
       - TZ=Europe/London
+    labels:
+      - "traefik.enable=true"
+      - "traefik.port=7878"
+      - "traefik.http.routers.frontend.entrypoints=web"
+      - "traefik.http.routers.frontend.rule=Host(`radarr.jimeagle.com`)"
+      - "traefik.http.routers.frontend.tls=true"
+      - "traefik.http.routers.frontend.tls.certresolver=myresolver"
+      - "traefik.http.services.frontend.loadbalancer.server.port=80"
 
   sonarr:
     image: linuxserver/sonarr:latest
@@ -68,14 +72,22 @@ services:
       - ${HOME}/NZBGet/Downloads:/downloads
       - ${HOME}/Media/Television:/tv
       - /etc/localtime:/etc/localtime:ro
+    labels:
+      - "traefik.enable=true"
+      - "traefik.port=8989"
+      - "traefik.http.routers.frontend.entrypoints=web"
+      - "traefik.http.routers.frontend.rule=Host(`sonarr.jimeagle.com`)"
+      - "traefik.http.routers.frontend.tls=true"
+      - "traefik.http.routers.frontend.tls.certresolver=myresolver"
+      - "traefik.http.services.frontend.loadbalancer.server.port=80"
 
   hydra:
-    image: linuxserver/hydra:latest
+    image: linuxserver/hydra2:latest
     hostname: hydra
     container_name: hydra
     restart: "unless-stopped"
     ports:
-      - "5075:5075"
+      - "5076:5076"
     volumes:
       - ${HOME}/Hydra/Config:/config
       - ${HOME}/Hydra/Downloads:/downloads
@@ -83,6 +95,14 @@ services:
       - PGID=1000
       - PUID=1000
       - TZ=Europe/London
+    labels:
+      - "traefik.enable=true"
+      - "traefik.port=5076"
+      - "traefik.http.routers.frontend.entrypoints=web"
+      - "traefik.http.routers.frontend.rule=Host(`hydra.jimeagle.com`)"
+      - "traefik.http.routers.frontend.tls=true"
+      - "traefik.http.routers.frontend.tls.certresolver=myresolver"
+      - "traefik.http.services.frontend.loadbalancer.server.port=80"
 
   nzbget:
     image: linuxserver/nzbget:latest
@@ -98,6 +118,14 @@ services:
     volumes:
       - ${HOME}/NZBGet/Config:/config
       - ${HOME}/NZBGet/Downloads:/downloads
+    labels:
+      - "traefik.enable=true"
+      - "traefik.port=6789"
+      - "traefik.http.routers.frontend.entrypoints=web"
+      - "traefik.http.routers.frontend.rule=Host(`nzbget.jimeagle.com`)"
+      - "traefik.http.routers.frontend.tls=true"
+      - "traefik.http.routers.frontend.tls.certresolver=myresolver"
+      - "traefik.http.services.frontend.loadbalancer.server.port=80"
 
   plex:
     image: linuxserver/plex:latest
@@ -138,28 +166,37 @@ services:
     image: jimeagle/digital-ocean-ddns:latest
     restart: "unless-stopped"
     environment:
-      - KEY=${DO_DDNS_KEY}
+      - DO_KEY=${DDNS_DO_KEY}
+      - CF_KEY=${DDNS_CF_KEY}
       - ONE_TIME=false
       - ON_LOAD=true
     volumes:
-      - ./ddns/records.yaml:/root/records.yaml:ro
+      - ${HOME}/DDNS/records.yaml:/root/records.yaml:ro
 
-  #  tubesync:
-  #    image: ghcr.io/meeb/tubesync:v0.9.1
-  #    hostname: tubesync
-  #    container_name: tubesync
-  #    environment:
-  #      - PUID=1000
-  #      - PGID=1000
-  #      - TZ=Europe/London
-  #      - HTTP_USER=$TUBE_SYNC_USER
-  #      - HTTP_PASS=$TUBE_SYNC_PASS
-  #    volumes:
-  #      - ${HOME}/TubeSync:/config
-  #      - ${HOME}/Media/YouTube:/downloads
-  #    ports:
-  #      - 4848:4848
-  #    restart: unless-stopped
+  tubesync:
+    image: ghcr.io/meeb/tubesync:v0.9.1
+    hostname: tubesync
+    container_name: tubesync
+    ports:
+      - "4848:4848"
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/London
+      - HTTP_USER=$TUBE_SYNC_USER
+      - HTTP_PASS=$TUBE_SYNC_PASS
+    volumes:
+      - ${HOME}/TubeSync:/config
+      - ${HOME}/Media/YouTube:/downloads
+    restart: unless-stopped
+    labels:
+      - "traefik.enable=true"
+      - "traefik.port=4848"
+      - "traefik.http.routers.frontend.entrypoints=web"
+      - "traefik.http.routers.frontend.rule=Host(`tubesync.jimeagle.com`)"
+      - "traefik.http.routers.frontend.tls=true"
+      - "traefik.http.routers.frontend.tls.certresolver=myresolver"
+      - "traefik.http.services.frontend.loadbalancer.server.port=80"
 
   #  portainer:
   #    image: portainer/portainer:latest
@@ -184,8 +221,16 @@ services:
       - /etc/localtime:/etc/localtime:ro
     environment:
       - TZ=Europe/London
-  #    devices:
-  #      - /dev/ttyUSB0:/dev/ttyUSB0
+    #    devices:
+    #      - /dev/ttyUSB0:/dev/ttyUSB0
+    labels:
+      - "traefik.enable=true"
+      - "traefik.port=8123"
+      - "traefik.http.routers.frontend.entrypoints=web"
+      - "traefik.http.routers.frontend.rule=Host(`hass.jimeagle.com`)"
+      - "traefik.http.routers.frontend.tls=true"
+      - "traefik.http.routers.frontend.tls.certresolver=myresolver"
+      - "traefik.http.services.frontend.loadbalancer.server.port=80"
 
   nodered:
     image: nodered/node-red:latest
@@ -199,17 +244,35 @@ services:
       - "1881:1881"
     volumes:
       - ${HOME}/NodeRed:/data
+    labels:
+      - "traefik.enable=true"
+      - "traefik.port=1880"
+      - "traefik.http.routers.frontend.entrypoints=web"
+      - "traefik.http.routers.frontend.rule=Host(`nodered.jimeagle.com`)"
+      - "traefik.http.routers.frontend.tls=true"
+      - "traefik.http.routers.frontend.tls.certresolver=myresolver"
+      - "traefik.http.services.frontend.loadbalancer.server.port=80"
 
   grafana:
     container_name: grafana
     hostname: grafana
     image: grafana/grafana:latest
     restart: "unless-stopped"
+    ports:
+      - "3000:3000"
     user: "0"
     volumes:
       - ./grafana/grafana.ini:/etc/grafana/grafana.ini:ro
       - ./grafana/key.json:/etc/grafana/key.json:ro
       - ${HOME}/Grafana/lib:/var/lib/grafana
+    labels:
+      - "traefik.enable=true"
+      - "traefik.port=3000"
+      - "traefik.http.routers.frontend.entrypoints=web"
+      - "traefik.http.routers.frontend.rule=Host(`grafana.jimeagle.com`)"
+      - "traefik.http.routers.frontend.tls=true"
+      - "traefik.http.routers.frontend.tls.certresolver=myresolver"
+      - "traefik.http.services.frontend.loadbalancer.server.port=80"
 
   grafana-image-renderer:
     container_name: grafana-image-renderer
@@ -218,6 +281,77 @@ services:
     restart: "unless-stopped"
     environment:
       ENABLE_METRICS: 'false'
+
+  phlex:
+    image: digitalhigh/phlex:latest
+    hostname: phlex
+    container_name: phlex
+    restart: "unless-stopped"
+    volumes:
+      - ${HOME}/Phlex:/config
+    environment:
+      - PGID=1000
+      - PUID=1000
+      - TZ=Europe/London
+    ports:
+      - "5666:80"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.port=5666"
+      - "traefik.http.routers.frontend.entrypoints=web"
+      - "traefik.http.routers.frontend.rule=Host(`phlex.jimeagle.com`)"
+      - "traefik.http.routers.frontend.tls=true"
+      - "traefik.http.routers.frontend.tls.certresolver=myresolver"
+      - "traefik.http.services.frontend.loadbalancer.server.port=80"
+
+  bazarr:
+    image: linuxserver/bazarr:latest
+    hostname: bazarr
+    container_name: bazarr
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/London
+      - UMASK_SET=022 #optional
+    volumes:
+      - ${HOME}/Bazarr:/config
+      - ${HOME}/Media/Movies:/movies
+      - ${HOME}/Media/Television:/tv
+    ports:
+      - "6767:6767"
+    restart: unless-stopped
+    labels:
+      - "traefik.enable=true"
+      - "traefik.port=6767"
+      - "traefik.http.routers.frontend.entrypoints=web"
+      - "traefik.http.routers.frontend.rule=Host(`bazarr.jimeagle.com`)"
+      - "traefik.http.routers.frontend.tls=true"
+      - "traefik.http.routers.frontend.tls.certresolver=myresolver"
+      - "traefik.http.services.frontend.loadbalancer.server.port=80"
+
+  netdata:
+    image: netdata/netdata:latest
+    hostname: netdata
+    container_name: netdata
+    restart: "unless-stopped"
+    ports:
+      - "19999:19999"
+    cap_add:
+      - SYS_PTRACE
+    security_opt:
+      - apparmor:unconfined
+    volumes:
+      - /proc:/host/proc:ro
+      - /sys:/host/sys:ro
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    labels:
+      - "traefik.enable=true"
+      - "traefik.port=19999"
+      - "traefik.http.routers.frontend.entrypoints=web"
+      - "traefik.http.routers.frontend.rule=Host(`netdata.jimeagle.com`)"
+      - "traefik.http.routers.frontend.tls=true"
+      - "traefik.http.routers.frontend.tls.certresolver=myresolver"
+      - "traefik.http.services.frontend.loadbalancer.server.port=80"
 
   #  mosquitto:
   #    image: eclipse-mosquitto:latest
@@ -231,37 +365,30 @@ services:
   #      - ${HOME}/Mosquitto/Log/mosquitto.log:/mosquitto/log/mosquitto.log
   #      - ${HOME}/Mosquitto/Data:/mosquitto/data
 
-  #  phlex:
-  #    image: digitalhigh/phlex:latest
-  #    hostname: phlex
-  #    container_name: phlex
+  #  ombi:
+  #    image: linuxserver/ombi:latest
+  #    hostname: ombi
+  #    container_name: ombi
   #    restart: "unless-stopped"
-  #    volumes:
-  #      - ${HOME}/Phlex:/config
-  #    environment:
-  #      - PGID=1000
-  #      - PUID=1000
-  #      - TZ=Europe/London
   #    ports:
-  #      - "5666:80"
-  #      - "5667:443"
+  #    - "3579:3579"
+  #    volumes:
+  #    - ${HOME}/Ombi:/config
+  #    environment:
+  #    - PGID=1000
+  #    - TZ=Europe/London
 
-  #  bazarr:
-  #    image: linuxserver/bazarr:latest
-  #    hostname: bazarr
-  #    container_name: bazarr
-  #    environment:
-  #      - PUID=1000
-  #      - PGID=1000
-  #      - TZ=Europe/London
-  #      - UMASK_SET=022 #optional
-  #    volumes:
-  #      - ${HOME}/Bazarr:/config
-  #      - ${HOME}/Media/Movies:/movies
-  #      - ${HOME}/Media/Television:/tv
+  #  overseerr:
+  #    image: sctx/overseerr:latest
+  #    hostname: overseerr
+  #    container_name: overseerr
+  #    restart: "unless-stopped"
   #    ports:
-  #      - 6767:6767
-  #    restart: unless-stopped
+  #      - "5055:5055"
+  #    volumes:
+  #      - ${HOME}/Overseerr:/app/config
+  #    environment:
+  #      - TZ=Europe/London
 
   #  pihole:
   #    image: pihole/pihole:latest
@@ -297,73 +424,3 @@ services:
   #    # docker will try to create a directory in it's place making for lots of errors
   #    # - '/var/log/pihole.log:/var/log/pihole.log'
   #    restart: always
-
-  #  netdata:
-  #    image: netdata/netdata:latest
-  #    hostname: netdata
-  #    container_name: netdata
-  #    restart: "unless-stopped"
-  #    ports:
-  #    - 19999:19999
-  #    cap_add:
-  #    - SYS_PTRACE
-  #    security_opt:
-  #    - apparmor:unconfined
-  #    volumes:
-  #    - /proc:/host/proc:ro
-  #    - /sys:/host/sys:ro
-  #    - /var/run/docker.sock:/var/run/docker.sock:ro
-
-  #  ombi:
-  #    image: linuxserver/ombi:latest
-  #    hostname: ombi
-  #    container_name: ombi
-  #    restart: "unless-stopped"
-  #    ports:
-  #    - "3579:3579"
-  #    volumes:
-  #    - ${HOME}/Ombi:/config
-  #    environment:
-  #    - PGID=1000
-  #    - TZ=Europe/London
-
-  #  overseerr:
-  #    image: sctx/overseerr:latest
-  #    hostname: overseerr
-  #    container_name: overseerr
-  #    restart: "unless-stopped"
-  #    ports:
-  #      - "5055:5055"
-  #    volumes:
-  #      - ${HOME}/Overseerr:/app/config
-  #    environment:
-  #      - TZ=Europe/London
-
-  #  nfs:
-  #    image: itsthenetwork/nfs-server-alpine:latest
-  #    hostname: nfs
-  #    container_name: nfs
-  #    restart: "unless-stopped"
-  #    ports:
-  #    - "2049:2049"
-  #    volumes:
-  #    - /data1/:/nfsshare
-  #    environment:
-  #    - SHARED_DIRECTORY=${HOME}
-  #    - READ_ONLY=true
-
-  #  jackett:
-  #    image: linuxserver/jackett:latest
-  #    container_name: jackett
-  #    restart: unless-stopped
-  #    ports:
-  #      - ${JACKETT_EXTPORT}:${JACKETT_INTPORT}
-  #    volumes:
-  #      - ${HOME}/Jackett/Config:/config
-  #      - ${HOME}/Jackett/Downloads:/downloads
-  #    environment:
-  #      PUID: $PUID
-  #      PGID: $PGID
-  #      TZ: $TZ
-  #    security_opt:
-  #      - no-new-privileges:true
