@@ -64,7 +64,7 @@ services:
       - PUID=1000
       - TZ=Europe/London
     volumes:
-      - ${HOME}/Sonarr/Config:/config
+      - ${HOME}/Sonarr:/config
       - ${HOME}/NZBGet/Downloads:/downloads
       - ${HOME}/Media/Television:/tv
       - /etc/localtime:/etc/localtime:ro
