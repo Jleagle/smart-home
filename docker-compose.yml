@@ -9,9 +9,9 @@ services:
     ports:
       - "7878:7878"
     volumes:
-      - ${DOCKER_DATA}/Radarr/Config:/config
-      - ${DOCKER_DATA}/NZBGet/Downloads:/downloads
-      - ${MEDIA_DATA}/Video:/movies
+      - ${HOME}/Radarr:/config
+      - ${HOME}/NZBGet/Downloads:/downloads
+      - ${HOME}/Media/Movies:/movies
       - /etc/localtime:/etc/localtime:ro
     environment:
       - PGID=1000
@@ -30,9 +30,9 @@ services:
       - PUID=1000
       - TZ=Europe/London
     volumes:
-      - ${DOCKER_DATA}/Sonarr/Config:/config
-      - ${DOCKER_DATA}/NZBGet/Downloads:/downloads
-      - ${MEDIA_DATA}/Television:/tv
+      - ${HOME}/Sonarr/Config:/config
+      - ${HOME}/NZBGet/Downloads:/downloads
+      - ${HOME}/Media/Television:/tv
       - /etc/localtime:/etc/localtime:ro
 
   hydra:
@@ -43,8 +43,8 @@ services:
     ports:
       - "5075:5075"
     volumes:
-      - ${DOCKER_DATA}/NZBHydra/Config:/config
-      - ${DOCKER_DATA}/NZBHydra/Downloads:/downloads
+      - ${HOME}/Hydra/Config:/config
+      - ${HOME}/Hydra/Downloads:/downloads
     environment:
       - PGID=1000
       - PUID=1000
@@ -62,8 +62,8 @@ services:
       - PUID=1000
       - TZ=Europe/London
     volumes:
-      - ${DOCKER_DATA}/NZBGet/Config:/config
-      - ${DOCKER_DATA}/NZBGet/Downloads:/downloads
+      - ${HOME}/NZBGet/Config:/config
+      - ${HOME}/NZBGet/Downloads:/downloads
 
   plex:
     image: linuxserver/plex:latest
@@ -77,11 +77,11 @@ services:
       - TZ=Europe/London
       - VERSION=latest
     volumes:
-      - ${DOCKER_DATA}/Plex/Transcoding:/transcode
-      - ${MEDIA_DATA}/Docker/Plex/Config:/config
-      - ${MEDIA_DATA}/Television:/data/tvshows
-      - ${MEDIA_DATA}/Video:/data/movies
-      - ${MEDIA_DATA}/YouTube:/data/youtube
+      - ${HOME}/Plex/Transcoding:/transcode
+      - ${HOME}/Plex/Config:/config
+      - ${HOME}/Media/Television:/data/tvshows
+      - ${HOME}/Media/Movies:/data/movies
+      - ${HOME}/Media/YouTube:/data/youtube
 
   ouroboros:
     image: pyouroboros/ouroboros:latest
@@ -121,8 +121,8 @@ services:
   #      - HTTP_USER=$TUBE_SYNC_USER
   #      - HTTP_PASS=$TUBE_SYNC_PASS
   #    volumes:
-  #      - ${DOCKER_DATA}/TubeSync/Config:/config
-  #      - ${MEDIA_DATA}/YouTube:/downloads
+  #      - ${HOME}/TubeSync/Config:/config
+  #      - ${HOME}/Media/YouTube:/downloads
   #    ports:
   #      - 4848:4848
   #    restart: unless-stopped
@@ -135,7 +135,7 @@ services:
   #    ports:
   #      - "9000:9000"
   #    volumes:
-  #      - ${DOCKER_DATA}/Portainer/Data:/data
+  #      - ${HOME}/Portainer/Data:/data
   #      - /var/run/docker.sock:/var/run/docker.sock
 
   hass:
@@ -146,7 +146,7 @@ services:
     network_mode: host
     privileged: true
     volumes:
-      - ${DOCKER_DATA}/HomeAssistant/Config:/config
+      - ${HOME}/HomeAssistant/Config:/config
       - /etc/localtime:/etc/localtime:ro
     environment:
       - TZ=Europe/London
@@ -164,7 +164,7 @@ services:
       - "1880:1880"
       - "1881:1881"
     volumes:
-      - ${DOCKER_DATA}/NodeRed/Config:/data
+      - ${HOME}/NodeRed/Config:/data
 
   grafana:
     container_name: grafana
@@ -173,9 +173,9 @@ services:
     restart: "unless-stopped"
     user: "0"
     volumes:
-      - ${DOCKER_DATA}/Grafana/Config/grafana.ini:/etc/grafana/grafana.ini:ro
-      - ${DOCKER_DATA}/Grafana/Config/key.json:/etc/grafana/key.json:ro
-      - ${DOCKER_DATA}/Grafana/Config/lib:/var/lib/grafana
+      - ${HOME}/Grafana/Config/grafana.ini:/etc/grafana/grafana.ini:ro
+      - ${HOME}/Grafana/Config/key.json:/etc/grafana/key.json:ro
+      - ${HOME}/Grafana/Config/lib:/var/lib/grafana
 
   grafana-image-renderer:
     container_name: grafana-image-renderer
@@ -194,8 +194,8 @@ services:
   #      - "9001:9001"
   #    volumes:
   #      - ./mosquitto/mosquitto.conf:/mosquitto/config/mosquitto.conf
-  #      - ${DOCKER_DATA}/Mosquitto/Log/mosquitto.log:/mosquitto/log/mosquitto.log
-  #      - ${DOCKER_DATA}/Mosquitto/Data:/mosquitto/data
+  #      - ${HOME}/Mosquitto/Log/mosquitto.log:/mosquitto/log/mosquitto.log
+  #      - ${HOME}/Mosquitto/Data:/mosquitto/data
 
   #  phlex:
   #    image: digitalhigh/phlex:latest
@@ -203,7 +203,7 @@ services:
   #    container_name: phlex
   #    restart: "unless-stopped"
   #    volumes:
-  #      - ${DOCKER_DATA}/Phlex/Config:/config
+  #      - ${HOME}/Phlex/Config:/config
   #    environment:
   #      - PGID=1000
   #      - PUID=1000
@@ -222,9 +222,9 @@ services:
   #      - TZ=Europe/London
   #      - UMASK_SET=022 #optional
   #    volumes:
-  #      - ${DOCKER_DATA}/Bazarr/Config:/config
-  #      - ${MEDIA_DATA}/Video:/movies
-  #      - ${MEDIA_DATA}/Television:/tv
+  #      - ${HOME}/Bazarr/Config:/config
+  #      - ${HOME}/Media/Movies:/movies
+  #      - ${HOME}/Media/Television:/tv
   #    ports:
   #      - 6767:6767
   #    restart: unless-stopped
@@ -288,7 +288,7 @@ services:
   #    ports:
   #    - "3579:3579"
   #    volumes:
-  #    - ${DOCKER_DATA}/Ombi/Config:/config
+  #    - ${HOME}/Ombi/Config:/config
   #    environment:
   #    - PGID=1000
   #    - TZ=Europe/London
@@ -301,7 +301,7 @@ services:
   #    ports:
   #      - "5055:5055"
   #    volumes:
-  #      - ${DOCKER_DATA}/Overseerr/Config:/app/config
+  #      - ${HOME}/Overseerr/Config:/app/config
   #    environment:
   #      - TZ=Europe/London
 
@@ -315,7 +315,7 @@ services:
   #    volumes:
   #    - /data1/:/nfsshare
   #    environment:
-  #    - SHARED_DIRECTORY=${MEDIA_DATA}
+  #    - SHARED_DIRECTORY=${HOME}
   #    - READ_ONLY=true
 
   #  jackett:
