@@ -1,6 +1,40 @@
 version: '3'
 services:
 
+  traefik:
+    container_name: "traefik"
+    hostname: "traefik"
+    image: "traefik:v2.5"
+    restart: unless-stopped
+    command:
+      - "--providers.docker=true"
+      - "--providers.docker.watch=true"
+      - "--providers.docker.exposedbydefault=false"
+
+      - "--accesslog=false"
+      - "--api.dashboard=false"
+      - "--experimental.http3=true"
+
+      - "--entrypoints.name.enablehttp3=true"
+      - "--entrypoints.web.address=:80"
+      - "--entrypoints.web.http.redirections.entryPoint.to=websecure"
+      - "--entrypoints.web.http.redirections.entryPoint.scheme=https"
+      - "--entrypoints.websecure.address=:443"
+
+      - "--certificatesresolvers.myresolver.acme.email=jimeagle@gmail.com"
+      - "--certificatesresolvers.myresolver.acme.storage=/acme.json"
+      - "--certificatesresolvers.myresolver.acme.dnschallenge.provider=cloudflare"
+      - "--certificatesresolvers.myresolver.acme.dnschallenge.delaybeforecheck=10"
+    ports:
+      - "80:80"
+      - "443:443"
+    environment:
+      CF_DNS_API_TOKEN: "${CF_}"
+      CF_ZONE_API_TOKEN: "${CF_}"
+    volumes:
+      - "${HOME}/Traefik/acme.json:/acme.json"
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
+
   radarr:
     image: linuxserver/radarr:latest
     hostname: radarr
