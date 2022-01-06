@@ -155,7 +155,7 @@ services:
   #      - HTTP_USER=$TUBE_SYNC_USER
   #      - HTTP_PASS=$TUBE_SYNC_PASS
   #    volumes:
-  #      - ${HOME}/TubeSync/Config:/config
+  #      - ${HOME}/TubeSync:/config
   #      - ${HOME}/Media/YouTube:/downloads
   #    ports:
   #      - 4848:4848
@@ -169,7 +169,7 @@ services:
   #    ports:
   #      - "9000:9000"
   #    volumes:
-  #      - ${HOME}/Portainer/Data:/data
+  #      - ${HOME}/Portainer:/data
   #      - /var/run/docker.sock:/var/run/docker.sock
 
   hass:
@@ -207,8 +207,8 @@ services:
     restart: "unless-stopped"
     user: "0"
     volumes:
-      - ${HOME}/Grafana/grafana.ini:/etc/grafana/grafana.ini:ro
-      - ${HOME}/Grafana/key.json:/etc/grafana/key.json:ro
+      - ./grafana/grafana.ini:/etc/grafana/grafana.ini:ro
+      - ./grafana/key.json:/etc/grafana/key.json:ro
       - ${HOME}/Grafana/lib:/var/lib/grafana
 
   grafana-image-renderer:
