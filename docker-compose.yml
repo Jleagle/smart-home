@@ -180,7 +180,7 @@ services:
     network_mode: host
     privileged: true
     volumes:
-      - ${HOME}/HomeAssistant/Config:/config
+      - ${HOME}/Hass:/config
       - /etc/localtime:/etc/localtime:ro
     environment:
       - TZ=Europe/London
@@ -198,7 +198,7 @@ services:
       - "1880:1880"
       - "1881:1881"
     volumes:
-      - ${HOME}/NodeRed/Config:/data
+      - ${HOME}/NodeRed:/data
 
   grafana:
     container_name: grafana
@@ -207,9 +207,9 @@ services:
     restart: "unless-stopped"
     user: "0"
     volumes:
-      - ${HOME}/Grafana/Config/grafana.ini:/etc/grafana/grafana.ini:ro
-      - ${HOME}/Grafana/Config/key.json:/etc/grafana/key.json:ro
-      - ${HOME}/Grafana/Config/lib:/var/lib/grafana
+      - ${HOME}/Grafana/grafana.ini:/etc/grafana/grafana.ini:ro
+      - ${HOME}/Grafana/key.json:/etc/grafana/key.json:ro
+      - ${HOME}/Grafana/lib:/var/lib/grafana
 
   grafana-image-renderer:
     container_name: grafana-image-renderer
