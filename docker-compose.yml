@@ -237,7 +237,7 @@ services:
   #    container_name: phlex
   #    restart: "unless-stopped"
   #    volumes:
-  #      - ${HOME}/Phlex/Config:/config
+  #      - ${HOME}/Phlex:/config
   #    environment:
   #      - PGID=1000
   #      - PUID=1000
@@ -256,7 +256,7 @@ services:
   #      - TZ=Europe/London
   #      - UMASK_SET=022 #optional
   #    volumes:
-  #      - ${HOME}/Bazarr/Config:/config
+  #      - ${HOME}/Bazarr:/config
   #      - ${HOME}/Media/Movies:/movies
   #      - ${HOME}/Media/Television:/tv
   #    ports:
@@ -322,7 +322,7 @@ services:
   #    ports:
   #    - "3579:3579"
   #    volumes:
-  #    - ${HOME}/Ombi/Config:/config
+  #    - ${HOME}/Ombi:/config
   #    environment:
   #    - PGID=1000
   #    - TZ=Europe/London
@@ -335,7 +335,7 @@ services:
   #    ports:
   #      - "5055:5055"
   #    volumes:
-  #      - ${HOME}/Overseerr/Config:/app/config
+  #      - ${HOME}/Overseerr:/app/config
   #    environment:
   #      - TZ=Europe/London
 
