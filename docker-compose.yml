@@ -72,7 +72,7 @@ services:
       - "traefik.http.services.frontend.loadbalancer.server.port=80"
 
   hydra:
-    image: linuxserver/hydra2:latest
+    image: linuxserver/nzbhydra2:latest
     hostname: hydra
     container_name: hydra
     restart: "unless-stopped"
