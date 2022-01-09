@@ -207,9 +207,8 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.port=8123"
-      - "traefik.http.routers.frontend.entrypoints=web"
-      - "traefik.http.routers.frontend.rule=Host(`hass.jimeagle.com`)"
-      - "traefik.http.services.frontend.loadbalancer.server.port=80"
+      - "traefik.http.routers.hass.entrypoints=web"
+      - "traefik.http.routers.hass.rule=Host(`hass.jimeagle.com`)"
 
   nodered:
     image: nodered/node-red:latest
