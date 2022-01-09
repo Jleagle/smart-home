@@ -150,21 +150,6 @@ services:
       - ${HOME}/Media/Movies:/data/movies
       - ${HOME}/Media/YouTube:/data/youtube
 
-  ouroboros:
-    image: pyouroboros/ouroboros:latest
-    hostname: ouroboros
-    container_name: ouroboros
-    restart: "unless-stopped"
-    environment:
-      - CLEANUP=true
-      - SELF_UPDATE=true
-      - MONITOR="radarr sonarr hydra nzbget plex portainer hass nodered mosquitto ddns phlex"
-      - CRON="2 12 * * *"
-      - LOG_LEVEL=info
-      - NOTIFIERS=${OUROBOROS_SLACK_TOKEN}
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-
   ddns:
     container_name: ddns
     hostname: ddns
@@ -343,6 +328,21 @@ services:
       - "traefik.http.routers.frontend.entrypoints=web"
       - "traefik.http.routers.frontend.rule=Host(`netdata.jimeagle.com`)"
       - "traefik.http.services.frontend.loadbalancer.server.port=80"
+
+  #  ouroboros:
+  #    image: pyouroboros/ouroboros:latest
+  #    hostname: ouroboros
+  #    container_name: ouroboros
+  #    restart: "unless-stopped"
+  #    environment:
+  #      - CLEANUP=true
+  #      - SELF_UPDATE=true
+  #      - MONITOR="radarr sonarr hydra nzbget plex portainer hass nodered mosquitto ddns phlex"
+  #      - CRON="2 12 * * *"
+  #      - LOG_LEVEL=info
+  #      - NOTIFIERS=${OUROBOROS_SLACK_TOKEN}
+  #    volumes:
+  #      - /var/run/docker.sock:/var/run/docker.sock
 
   #  mosquitto:
   #    image: eclipse-mosquitto:latest
