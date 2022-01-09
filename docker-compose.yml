@@ -149,7 +149,7 @@ services:
   ddns:
     container_name: ddns
     hostname: ddns
-    image: jimeagle/digital-ocean-ddns:latest
+    image: ghcr.io/jleagle/ddns:latest
     restart: "unless-stopped"
     environment:
       - DO_KEY=${DDNS_DO_KEY}
