@@ -39,9 +39,8 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.port=8080"
-      - "traefik.http.routers.frontend.entrypoints=web"
-      - "traefik.http.routers.frontend.rule=Host(`seven.jimeagle.com`) || Host(`nas.jimeagle.com`)"
-      - "traefik.http.services.frontend.loadbalancer.server.port=80"
+      - "traefik.http.routers.homer.entrypoints=web"
+      - "traefik.http.routers.homer.rule=Host(`seven.jimeagle.com`) || Host(`nas.jimeagle.com`)"
 
   radarr:
     image: linuxserver/radarr:latest
@@ -62,9 +61,8 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.port=7878"
-      - "traefik.http.routers.frontend.entrypoints=web"
-      - "traefik.http.routers.frontend.rule=Host(`radarr.jimeagle.com`)"
-      - "traefik.http.services.frontend.loadbalancer.server.port=80"
+      - "traefik.http.routers.radarr.entrypoints=web"
+      - "traefik.http.routers.radarr.rule=Host(`radarr.jimeagle.com`)"
 
   sonarr:
     image: linuxserver/sonarr:latest
@@ -85,9 +83,8 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.port=8989"
-      - "traefik.http.routers.frontend.entrypoints=web"
-      - "traefik.http.routers.frontend.rule=Host(`sonarr.jimeagle.com`)"
-      - "traefik.http.services.frontend.loadbalancer.server.port=80"
+      - "traefik.http.routers.sonarr.entrypoints=web"
+      - "traefik.http.routers.sonarr.rule=Host(`sonarr.jimeagle.com`)"
 
   hydra:
     image: linuxserver/nzbhydra2:latest
@@ -106,9 +103,8 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.port=5076"
-      - "traefik.http.routers.frontend.entrypoints=web"
-      - "traefik.http.routers.frontend.rule=Host(`hydra.jimeagle.com`)"
-      - "traefik.http.services.frontend.loadbalancer.server.port=80"
+      - "traefik.http.routers.hydra.entrypoints=web"
+      - "traefik.http.routers.hydra.rule=Host(`hydra.jimeagle.com`)"
 
   nzbget:
     image: linuxserver/nzbget:latest
@@ -127,9 +123,8 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.port=6789"
-      - "traefik.http.routers.frontend.entrypoints=web"
-      - "traefik.http.routers.frontend.rule=Host(`nzbget.jimeagle.com`)"
-      - "traefik.http.services.frontend.loadbalancer.server.port=80"
+      - "traefik.http.routers.nzbget.entrypoints=web"
+      - "traefik.http.routers.nzbget.rule=Host(`nzbget.jimeagle.com`)"
 
   plex:
     image: linuxserver/plex:latest
@@ -181,9 +176,8 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.port=4848"
-      - "traefik.http.routers.frontend.entrypoints=web"
-      - "traefik.http.routers.frontend.rule=Host(`tubesync.jimeagle.com`)"
-      - "traefik.http.services.frontend.loadbalancer.server.port=80"
+      - "traefik.http.routers.tubesync.entrypoints=web"
+      - "traefik.http.routers.tubesync.rule=Host(`tubesync.jimeagle.com`)"
 
   #  portainer:
   #    image: portainer/portainer:latest
@@ -232,9 +226,8 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.port=1880"
-      - "traefik.http.routers.frontend.entrypoints=web"
-      - "traefik.http.routers.frontend.rule=Host(`nodered.jimeagle.com`)"
-      - "traefik.http.services.frontend.loadbalancer.server.port=80"
+      - "traefik.http.routers.nodered.entrypoints=web"
+      - "traefik.http.routers.nodered.rule=Host(`nodered.jimeagle.com`)"
 
   grafana:
     container_name: grafana
@@ -251,9 +244,8 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.port=3000"
-      - "traefik.http.routers.frontend.entrypoints=web"
-      - "traefik.http.routers.frontend.rule=Host(`grafana.jimeagle.com`)"
-      - "traefik.http.services.frontend.loadbalancer.server.port=80"
+      - "traefik.http.routers.grafana.entrypoints=web"
+      - "traefik.http.routers.grafana.rule=Host(`grafana.jimeagle.com`)"
 
   grafana-image-renderer:
     container_name: grafana-image-renderer
@@ -279,9 +271,8 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.port=5666"
-      - "traefik.http.routers.frontend.entrypoints=web"
-      - "traefik.http.routers.frontend.rule=Host(`phlex.jimeagle.com`)"
-      - "traefik.http.services.frontend.loadbalancer.server.port=80"
+      - "traefik.http.routers.phlex.entrypoints=web"
+      - "traefik.http.routers.phlex.rule=Host(`phlex.jimeagle.com`)"
 
   bazarr:
     image: linuxserver/bazarr:latest
@@ -302,9 +293,8 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.port=6767"
-      - "traefik.http.routers.frontend.entrypoints=web"
-      - "traefik.http.routers.frontend.rule=Host(`bazarr.jimeagle.com`)"
-      - "traefik.http.services.frontend.loadbalancer.server.port=80"
+      - "traefik.http.routers.bazarr.entrypoints=web"
+      - "traefik.http.routers.bazarr.rule=Host(`bazarr.jimeagle.com`)"
 
   netdata:
     image: netdata/netdata:latest
@@ -324,9 +314,8 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.port=19999"
-      - "traefik.http.routers.frontend.entrypoints=web"
-      - "traefik.http.routers.frontend.rule=Host(`netdata.jimeagle.com`)"
-      - "traefik.http.services.frontend.loadbalancer.server.port=80"
+      - "traefik.http.routers.netdata.entrypoints=web"
+      - "traefik.http.routers.netdata.rule=Host(`netdata.jimeagle.com`)"
 
   #  ouroboros:
   #    image: pyouroboros/ouroboros:latest
