@@ -31,7 +31,7 @@ services:
     image: b4bz/homer
     restart: unless-stopped
     volumes:
-      - /your/local/assets/:/www/assets
+      - ${HOME}/Homer:/www/assets
     ports:
       - "8080:8080"
     #environment:
