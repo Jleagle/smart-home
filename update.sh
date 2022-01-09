@@ -1,10 +1,8 @@
 #!/usr/bin/env bash
 
-bash ./pull.sh
+git fetch origin
+git reset --hard origin/main
 
 docker-compose pull
-docker-compose up -d --remove-orphans
-
+docker-compose up --detach --remove-orphans
 docker system prune -a -f
-
-watch -n 2 docker-compose ps
