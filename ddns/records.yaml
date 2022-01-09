@@ -1,5 +1,6 @@
 ---
 cloudflare:
   - seven.jimeagle.com
+  - nas.jimeagle.com
 digitalocean:
   - nas.jimeagle.com
