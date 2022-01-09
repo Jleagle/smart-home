@@ -15,7 +15,6 @@ services:
       - "--api.dashboard=false"
       - "--experimental.http3=true"
 
-      - "--entrypoints.web.enablehttp3=true"
       - "--entrypoints.web.address=:80"
     ports:
       - "80:80"
