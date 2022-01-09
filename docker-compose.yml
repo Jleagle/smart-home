@@ -37,6 +37,12 @@ services:
     #environment:
     #  - UID=1000
     #  - GID=1000
+    labels:
+      - "traefik.enable=true"
+      - "traefik.port=8080"
+      - "traefik.http.routers.frontend.entrypoints=web"
+      - "traefik.http.routers.frontend.rule=Host(`seven.jimeagle.com`) || Host(`nas.jimeagle.com`)"
+      - "traefik.http.services.frontend.loadbalancer.server.port=80"
 
   radarr:
     image: linuxserver/radarr:latest
