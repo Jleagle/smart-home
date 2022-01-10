@@ -158,7 +158,7 @@ services:
       - ${HOME}/DDNS/records.yaml:/root/records.yaml:ro
 
   tubesync:
-    image: ghcr.io/meeb/tubesync:v0.9.1
+    image: ghcr.io/meeb/tubesync:latest
     hostname: tubesync
     container_name: tubesync
     ports:
