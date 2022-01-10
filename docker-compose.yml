@@ -23,6 +23,8 @@ services:
       CLOUDFLARE_ZONE_API_TOKEN: "${CLOUDFLARE_ZONE_API_TOKEN}"
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock:ro"
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"
 
   homer:
     container_name: homer
@@ -41,6 +43,7 @@ services:
       - "traefik.port=8080"
       - "traefik.http.routers.homer.entrypoints=web"
       - "traefik.http.routers.homer.rule=Host(`seven.jimeagle.com`)"
+      - "com.centurylinklabs.watchtower.enable=true"
 
   radarr:
     image: linuxserver/radarr:latest
@@ -63,6 +66,7 @@ services:
       - "traefik.port=7878"
       - "traefik.http.routers.radarr.entrypoints=web"
       - "traefik.http.routers.radarr.rule=Host(`radarr.jimeagle.com`)"
+      - "com.centurylinklabs.watchtower.enable=true"
 
   sonarr:
     image: linuxserver/sonarr:latest
@@ -85,6 +89,7 @@ services:
       - "traefik.port=8989"
       - "traefik.http.routers.sonarr.entrypoints=web"
       - "traefik.http.routers.sonarr.rule=Host(`sonarr.jimeagle.com`)"
+      - "com.centurylinklabs.watchtower.enable=true"
 
   hydra:
     image: linuxserver/nzbhydra2:latest
@@ -105,6 +110,7 @@ services:
       - "traefik.port=5076"
       - "traefik.http.routers.hydra.entrypoints=web"
       - "traefik.http.routers.hydra.rule=Host(`hydra.jimeagle.com`)"
+      - "com.centurylinklabs.watchtower.enable=true"
 
   nzbget:
     image: linuxserver/nzbget:latest
@@ -125,6 +131,7 @@ services:
       - "traefik.port=6789"
       - "traefik.http.routers.nzbget.entrypoints=web"
       - "traefik.http.routers.nzbget.rule=Host(`nzbget.jimeagle.com`)"
+      - "com.centurylinklabs.watchtower.enable=true"
 
   plex:
     image: linuxserver/plex:latest
@@ -143,6 +150,8 @@ services:
       - ${HOME}/Media/Television:/data/tvshows
       - ${HOME}/Media/Movies:/data/movies
       - ${HOME}/Media/YouTube:/data/youtube
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"
 
   ddns:
     container_name: ddns
@@ -156,6 +165,8 @@ services:
       - ON_LOAD=true
     volumes:
       - ${HOME}/DDNS/records.yaml:/root/records.yaml:ro
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"
 
   tubesync:
     image: ghcr.io/meeb/tubesync:latest
@@ -178,6 +189,7 @@ services:
       - "traefik.port=4848"
       - "traefik.http.routers.tubesync.entrypoints=web"
       - "traefik.http.routers.tubesync.rule=Host(`tubesync.jimeagle.com`)"
+      - "com.centurylinklabs.watchtower.enable=true"
 
   hass:
     image: homeassistant/home-assistant:latest
@@ -198,6 +210,7 @@ services:
       - "traefik.port=8123"
       - "traefik.http.routers.hass.entrypoints=web"
       - "traefik.http.routers.hass.rule=Host(`hass.jimeagle.com`)"
+      - "com.centurylinklabs.watchtower.enable=true"
 
   nodered:
     image: nodered/node-red:latest
@@ -216,6 +229,7 @@ services:
       - "traefik.port=1880"
       - "traefik.http.routers.nodered.entrypoints=web"
       - "traefik.http.routers.nodered.rule=Host(`nodered.jimeagle.com`)"
+      - "com.centurylinklabs.watchtower.enable=true"
 
   grafana:
     container_name: grafana
@@ -226,14 +240,15 @@ services:
       - "3000:3000"
     user: "0"
     volumes:
-      - ./grafana/grafana.ini:/etc/grafana/grafana.ini:ro
       - ${HOME}/Grafana/key.json:/etc/grafana/key.json:ro
       - ${HOME}/Grafana/lib:/var/lib/grafana
+      - ./grafana/grafana.ini:/etc/grafana/grafana.ini:ro
     labels:
       - "traefik.enable=true"
       - "traefik.port=3000"
       - "traefik.http.routers.grafana.entrypoints=web"
       - "traefik.http.routers.grafana.rule=Host(`grafana.jimeagle.com`)"
+      - "com.centurylinklabs.watchtower.enable=true"
 
   grafana-image-renderer:
     container_name: grafana-image-renderer
@@ -242,6 +257,8 @@ services:
     restart: "unless-stopped"
     environment:
       ENABLE_METRICS: 'false'
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"
 
   phlex:
     image: digitalhigh/phlex:latest
@@ -261,6 +278,7 @@ services:
       - "traefik.port=5666"
       - "traefik.http.routers.phlex.entrypoints=web"
       - "traefik.http.routers.phlex.rule=Host(`phlex.jimeagle.com`)"
+      - "com.centurylinklabs.watchtower.enable=true"
 
   bazarr:
     image: linuxserver/bazarr:latest
@@ -283,6 +301,7 @@ services:
       - "traefik.port=6767"
       - "traefik.http.routers.bazarr.entrypoints=web"
       - "traefik.http.routers.bazarr.rule=Host(`bazarr.jimeagle.com`)"
+      - "com.centurylinklabs.watchtower.enable=true"
 
   netdata:
     image: netdata/netdata:latest
@@ -304,21 +323,28 @@ services:
       - "traefik.port=19999"
       - "traefik.http.routers.netdata.entrypoints=web"
       - "traefik.http.routers.netdata.rule=Host(`netdata.jimeagle.com`)"
+      - "com.centurylinklabs.watchtower.enable=true"
 
-  #  ouroboros:
-  #    image: pyouroboros/ouroboros:latest
-  #    hostname: ouroboros
-  #    container_name: ouroboros
-  #    restart: "unless-stopped"
-  #    environment:
-  #      - CLEANUP=true
-  #      - SELF_UPDATE=true
-  #      - MONITOR="radarr sonarr hydra nzbget plex portainer hass nodered mosquitto ddns phlex"
-  #      - CRON="2 12 * * *"
-  #      - LOG_LEVEL=info
-  #      - NOTIFIERS=${OUROBOROS_SLACK_TOKEN}
-  #    volumes:
-  #      - /var/run/docker.sock:/var/run/docker.sock
+  watchtower:
+    container_name: watchtower
+    hostname: watchtower
+    image: containrrr/watchtower:latest
+    restart: "unless-stopped"
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"
+    volumes:
+      - ${HOME}/Watchtower/config.json:/config.json
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /etc/localtime:/etc/localtime:ro
+    environment:
+      - TZ=Europe/London
+      - WATCHTOWER_CLEANUP=true
+      - WATCHTOWER_NOTIFICATIONS=slack
+      - WATCHTOWER_NOTIFICATION_SLACK_HOOK_URL=${WATCHTOWER_WEBHOOK}
+      - WATCHTOWER_NOTIFICATIONS_LEVEL=error
+      - WATCHTOWER_SCHEDULE=0 0 0 * * *
+      - WATCHTOWER_LABEL_ENABLE=true
+      - WATCHTOWER_NO_STARTUP_MESSAGE=true
 
   #  mosquitto:
   #    image: eclipse-mosquitto:latest
@@ -328,9 +354,11 @@ services:
   #      - "1883:1883"
   #      - "9001:9001"
   #    volumes:
-  #      - ./mosquitto/mosquitto.conf:/mosquitto/config/mosquitto.conf
   #      - ${HOME}/Mosquitto/Log/mosquitto.log:/mosquitto/log/mosquitto.log
   #      - ${HOME}/Mosquitto/Data:/mosquitto/data
+  #      - ./mosquitto/mosquitto.conf:/mosquitto/config/mosquitto.conf
+  #    labels:
+  #      - "com.centurylinklabs.watchtower.enable=true"
 
   #  ombi:
   #    image: linuxserver/ombi:latest
@@ -344,6 +372,8 @@ services:
   #    environment:
   #    - PGID=1000
   #    - TZ=Europe/London
+  #    labels:
+  #      - "com.centurylinklabs.watchtower.enable=true"
 
   #  overseerr:
   #    image: sctx/overseerr:latest
@@ -356,6 +386,8 @@ services:
   #      - ${HOME}/Overseerr:/app/config
   #    environment:
   #      - TZ=Europe/London
+  #    labels:
+  #      - "com.centurylinklabs.watchtower.enable=true"
 
   #  pihole:
   #    image: pihole/pihole:latest
@@ -391,3 +423,5 @@ services:
   #    # docker will try to create a directory in its place making for lots of errors
   #    # - '/var/log/pihole.log:/var/log/pihole.log'
   #    restart: always
+  #    labels:
+  #      - "com.centurylinklabs.watchtower.enable=true"
