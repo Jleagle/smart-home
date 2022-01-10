@@ -325,6 +325,22 @@ services:
       - "traefik.http.routers.netdata.rule=Host(`netdata.jimeagle.com`)"
       - "com.centurylinklabs.watchtower.enable=true"
 
+  doubletake:
+    container_name: doubletake
+    hostname: doubletake
+    image: jakowenko/double-take
+    restart: unless-stopped
+    volumes:
+      - ${HOME}/DoubleTake:/.storage
+    ports:
+      - "3001:3000"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.port=3001"
+      - "traefik.http.routers.bazarr.entrypoints=web"
+      - "traefik.http.routers.bazarr.rule=Host(`doubletake.jimeagle.com`)"
+      - "com.centurylinklabs.watchtower.enable=true"
+
   watchtower:
     container_name: watchtower
     hostname: watchtower
