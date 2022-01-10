@@ -40,7 +40,7 @@ services:
       - "traefik.enable=true"
       - "traefik.port=8080"
       - "traefik.http.routers.homer.entrypoints=web"
-      - "traefik.http.routers.homer.rule=Host(`seven.jimeagle.com`) || Host(`nas.jimeagle.com`)"
+      - "traefik.http.routers.homer.rule=Host(`seven.jimeagle.com`)"
 
   radarr:
     image: linuxserver/radarr:latest
