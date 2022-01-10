@@ -183,6 +183,8 @@ services:
     image: homeassistant/home-assistant:latest
     hostname: hass
     container_name: hass
+    ports:
+      - "8123:8123"
     restart: "unless-stopped"
     network_mode: host
     privileged: true
