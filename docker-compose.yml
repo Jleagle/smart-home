@@ -342,8 +342,8 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.port=5000"
-      - "traefik.http.routers.bazarr.entrypoints=websecure"
-      - "traefik.http.routers.bazarr.rule=Host(`frigate.jimeagle.com`)"
+      - "traefik.http.routers.frigate.entrypoints=websecure"
+      - "traefik.http.routers.frigate.rule=Host(`frigate.jimeagle.com`)"
       - "com.centurylinklabs.watchtower.enable=true"
 
   doubletake:
@@ -358,8 +358,8 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.port=3001"
-      - "traefik.http.routers.bazarr.entrypoints=websecure"
-      - "traefik.http.routers.bazarr.rule=Host(`doubletake.jimeagle.com`)"
+      - "traefik.http.routers.doubletake.entrypoints=websecure"
+      - "traefik.http.routers.doubletake.rule=Host(`doubletake.jimeagle.com`)"
       - "com.centurylinklabs.watchtower.enable=true"
 
   watchtower:
