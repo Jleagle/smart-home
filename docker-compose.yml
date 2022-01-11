@@ -348,6 +348,12 @@ services:
       - "1935:1935" # RTMP feeds
     environment:
       FRIGATE_RTSP_PASSWORD: "password"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.port=5000"
+      - "traefik.http.routers.bazarr.entrypoints=web"
+      - "traefik.http.routers.bazarr.rule=Host(`frigate.jimeagle.com`)"
+      - "com.centurylinklabs.watchtower.enable=true"
 
   doubletake:
     container_name: doubletake
