@@ -20,12 +20,24 @@ services:
       - "--experimental.http3=true"
 
       - "--entrypoints.web.address=:80"
+      - "--entrypoints.web.http.redirections.entryPoint.to=websecure"
+      - "--entrypoints.web.http.redirections.entryPoint.scheme=https"
+      - "--entrypoints.websecure.address=:443"
+      - "--entrypoints.websecure.http.tls=true"
+      - "--entrypoints.websecure.http.tls.certresolver=myresolver"
+
+      - "--certificatesresolvers.myresolver.acme.email=jimeagle@gmail.com"
+      - "--certificatesresolvers.myresolver.acme.storage=/acme.json"
+      - "--certificatesresolvers.myresolver.acme.dnschallenge.provider=cloudflare"
+      - "--certificatesresolvers.myresolver.acme.dnschallenge.delaybeforecheck=10"
     ports:
       - "80:80"
+      - "443:443"
     environment:
       CLOUDFLARE_DNS_API_TOKEN: "${CLOUDFLARE_DNS_API_TOKEN}"
       CLOUDFLARE_ZONE_API_TOKEN: "${CLOUDFLARE_ZONE_API_TOKEN}"
     volumes:
+      - "${HOME}/Traefik/acme.json:/acme.json"
       - "/var/run/docker.sock:/var/run/docker.sock:ro"
     labels:
       - "com.centurylinklabs.watchtower.enable=true"
@@ -45,7 +57,7 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.port=8080"
-      - "traefik.http.routers.homer.entrypoints=web"
+      - "traefik.http.routers.homer.entrypoints=websecure"
       - "traefik.http.routers.homer.rule=Host(`seven.jimeagle.com`)"
       - "com.centurylinklabs.watchtower.enable=true"
 
@@ -68,7 +80,7 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.port=7878"
-      - "traefik.http.routers.radarr.entrypoints=web"
+      - "traefik.http.routers.radarr.entrypoints=websecure"
       - "traefik.http.routers.radarr.rule=Host(`radarr.jimeagle.com`)"
       - "com.centurylinklabs.watchtower.enable=true"
 
@@ -91,7 +103,7 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.port=8989"
-      - "traefik.http.routers.sonarr.entrypoints=web"
+      - "traefik.http.routers.sonarr.entrypoints=websecure"
       - "traefik.http.routers.sonarr.rule=Host(`sonarr.jimeagle.com`)"
       - "com.centurylinklabs.watchtower.enable=true"
 
@@ -112,7 +124,7 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.port=5076"
-      - "traefik.http.routers.hydra.entrypoints=web"
+      - "traefik.http.routers.hydra.entrypoints=websecure"
       - "traefik.http.routers.hydra.rule=Host(`hydra.jimeagle.com`)"
       - "com.centurylinklabs.watchtower.enable=true"
 
@@ -133,7 +145,7 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.port=6789"
-      - "traefik.http.routers.nzbget.entrypoints=web"
+      - "traefik.http.routers.nzbget.entrypoints=websecure"
       - "traefik.http.routers.nzbget.rule=Host(`nzbget.jimeagle.com`)"
       - "com.centurylinklabs.watchtower.enable=true"
 
@@ -191,7 +203,7 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.port=4848"
-      - "traefik.http.routers.tubesync.entrypoints=web"
+      - "traefik.http.routers.tubesync.entrypoints=websecure"
       - "traefik.http.routers.tubesync.rule=Host(`tubesync.jimeagle.com`)"
       - "com.centurylinklabs.watchtower.enable=true"
 
@@ -212,7 +224,7 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.port=8123"
-      - "traefik.http.routers.hass.entrypoints=web"
+      - "traefik.http.routers.hass.entrypoints=websecure"
       - "traefik.http.routers.hass.rule=Host(`hass.jimeagle.com`)"
       - "com.centurylinklabs.watchtower.enable=true"
 
@@ -231,7 +243,7 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.port=1880"
-      - "traefik.http.routers.nodered.entrypoints=web"
+      - "traefik.http.routers.nodered.entrypoints=websecure"
       - "traefik.http.routers.nodered.rule=Host(`nodered.jimeagle.com`)"
       - "com.centurylinklabs.watchtower.enable=true"
 
@@ -250,7 +262,7 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.port=3000"
-      - "traefik.http.routers.grafana.entrypoints=web"
+      - "traefik.http.routers.grafana.entrypoints=websecure"
       - "traefik.http.routers.grafana.rule=Host(`grafana.jimeagle.com`)"
       - "com.centurylinklabs.watchtower.enable=true"
 
@@ -280,7 +292,7 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.port=5666"
-      - "traefik.http.routers.phlex.entrypoints=web"
+      - "traefik.http.routers.phlex.entrypoints=websecure"
       - "traefik.http.routers.phlex.rule=Host(`phlex.jimeagle.com`)"
       - "com.centurylinklabs.watchtower.enable=true"
 
@@ -303,7 +315,7 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.port=6767"
-      - "traefik.http.routers.bazarr.entrypoints=web"
+      - "traefik.http.routers.bazarr.entrypoints=websecure"
       - "traefik.http.routers.bazarr.rule=Host(`bazarr.jimeagle.com`)"
       - "com.centurylinklabs.watchtower.enable=true"
 
@@ -325,7 +337,7 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.port=19999"
-      - "traefik.http.routers.netdata.entrypoints=web"
+      - "traefik.http.routers.netdata.entrypoints=websecure"
       - "traefik.http.routers.netdata.rule=Host(`netdata.jimeagle.com`)"
       - "com.centurylinklabs.watchtower.enable=true"
 
@@ -355,7 +367,7 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.port=5000"
-      - "traefik.http.routers.bazarr.entrypoints=web"
+      - "traefik.http.routers.bazarr.entrypoints=websecure"
       - "traefik.http.routers.bazarr.rule=Host(`frigate.jimeagle.com`)"
       - "com.centurylinklabs.watchtower.enable=true"
 
@@ -371,7 +383,7 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.port=3001"
-      - "traefik.http.routers.bazarr.entrypoints=web"
+      - "traefik.http.routers.bazarr.entrypoints=websecure"
       - "traefik.http.routers.bazarr.rule=Host(`doubletake.jimeagle.com`)"
       - "com.centurylinklabs.watchtower.enable=true"
 
