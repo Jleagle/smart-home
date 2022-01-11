@@ -1,0 +1,13 @@
+[http.routers]
+[http.routers.nasweb]
+rule = "Host(`test.jimeagle.com.com`)"
+entrypoints = ["websecure"]
+service = "nas"
+[http.routers.nasweb.tls]
+certResolver = "myhttpchallenge"
+
+
+[http.services]
+[http.services.nas.loadBalancer]
+[[http.services.nas.loadBalancer.servers]]
+url = "http://192.168.0.165:80"

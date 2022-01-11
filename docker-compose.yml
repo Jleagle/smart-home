@@ -12,6 +12,9 @@ services:
       - "--providers.docker.watch=true"
       - "--providers.docker.exposedbydefault=false"
 
+      #      - "--providers.file=true"
+      #      - "--providers.file.filename=/etc/traefik/rules.toml"
+
       - "--accesslog=false"
       - "--api.dashboard=false"
       - "--experimental.http3=true"
@@ -36,6 +39,7 @@ services:
     volumes:
       - "${HOME}/Traefik/acme.json:/acme.json"
       - "/var/run/docker.sock:/var/run/docker.sock:ro"
+      #      - "./traefik/rules.toml:/etc/traefik/rules.toml"
     labels:
       - "com.centurylinklabs.watchtower.enable=true"
 
