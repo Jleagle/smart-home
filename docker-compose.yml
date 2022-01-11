@@ -33,6 +33,8 @@ services:
     ports:
       - "80:80"
       - "443:443"
+    networks:
+      - traefik
     environment:
       CLOUDFLARE_DNS_API_TOKEN: "${CLOUDFLARE_DNS_API_TOKEN}"
       CLOUDFLARE_ZONE_API_TOKEN: "${CLOUDFLARE_ZONE_API_TOKEN}"
@@ -207,6 +209,8 @@ services:
     volumes:
       - ${HOME}/Hass:/config
       - /etc/localtime:/etc/localtime:ro
+    networks:
+      - traefik
     environment:
       - TZ=Europe/London
     #    devices:
