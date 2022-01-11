@@ -370,6 +370,20 @@ services:
       - "traefik.http.routers.doubletake.rule=Host(`doubletake.jimeagle.com`)"
       - "com.centurylinklabs.watchtower.enable=true"
 
+  #  traefik-forward-auth:
+  #    image: thomseddon/traefik-forward-auth:2
+  #    environment:
+  #      - PROVIDERS_GOOGLE_CLIENT_ID=${GOOGLE_CLIENT_ID}
+  #      - PROVIDERS_GOOGLE_CLIENT_SECRET=${GOOGLE_CLIENT_SECRET}
+  #      - SECRET=${AUTH_SECRET}
+  #      - CONFIG=/config.json
+  #      - WHITELIST=jimeagle@gmail.com
+  #    volumes:
+  #      - ${HOME}/Auth/config.json:/config.json
+  #    labels:
+  #      - "traefik.http.middlewares.traefik-forward-auth.forwardauth.address=http://traefik-forward-auth:4181"
+  #      - "traefik.http.middlewares.traefik-forward-auth.forwardauth.authResponseHeaders=X-Forwarded-User"
+
   watchtower:
     container_name: watchtower
     hostname: watchtower
