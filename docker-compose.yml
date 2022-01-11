@@ -49,8 +49,6 @@ services:
     restart: unless-stopped
     volumes:
       - ${HOME}/Homer:/www/assets
-    ports:
-      - "8080:8080"
     #environment:
     #  - UID=1000
     #  - GID=1000
@@ -66,8 +64,6 @@ services:
     hostname: radarr
     container_name: radarr
     restart: "unless-stopped"
-    ports:
-      - "7878:7878"
     volumes:
       - ${HOME}/Radarr:/config
       - ${HOME}/NZBGet/Downloads:/downloads
@@ -89,8 +85,6 @@ services:
     hostname: sonarr
     container_name: sonarr
     restart: "unless-stopped"
-    ports:
-      - "8989:8989"
     environment:
       - PGID=1000
       - PUID=1000
@@ -112,8 +106,6 @@ services:
     hostname: hydra
     container_name: hydra
     restart: "unless-stopped"
-    ports:
-      - "5076:5076"
     volumes:
       - ${HOME}/Hydra/Config:/config
       - ${HOME}/Hydra/Downloads:/downloads
@@ -133,8 +125,6 @@ services:
     hostname: nzbget
     container_name: nzbget
     restart: "unless-stopped"
-    ports:
-      - "6789:6789"
     environment:
       - PGID=1000
       - PUID=1000
@@ -188,8 +178,6 @@ services:
     image: ghcr.io/meeb/tubesync:latest
     hostname: tubesync
     container_name: tubesync
-    ports:
-      - "4848:4848"
     environment:
       - PUID=1000
       - PGID=1000
@@ -235,9 +223,6 @@ services:
     restart: "unless-stopped"
     environment:
       - TZ=Europe/London
-    ports:
-      - "1880:1880"
-      - "1881:1881"
     volumes:
       - ${HOME}/NodeRed:/data
     labels:
@@ -252,8 +237,6 @@ services:
     hostname: grafana
     image: grafana/grafana:latest
     restart: "unless-stopped"
-    ports:
-      - "3000:3000"
     user: "0"
     volumes:
       - ${HOME}/Grafana/key.json:/etc/grafana/key.json:ro
@@ -287,8 +270,6 @@ services:
       - PGID=1000
       - PUID=1000
       - TZ=Europe/London
-    ports:
-      - "5666:80"
     labels:
       - "traefik.enable=true"
       - "traefik.port=5666"
@@ -309,8 +290,6 @@ services:
       - ${HOME}/Bazarr:/config
       - ${HOME}/Media/Movies:/movies
       - ${HOME}/Media/Television:/tv
-    ports:
-      - "6767:6767"
     restart: unless-stopped
     labels:
       - "traefik.enable=true"
@@ -324,8 +303,6 @@ services:
     hostname: netdata
     container_name: netdata
     restart: "unless-stopped"
-    ports:
-      - "19999:19999"
     cap_add:
       - SYS_PTRACE
     security_opt:
@@ -360,7 +337,6 @@ services:
         tmpfs:
           size: 1000000000
     ports:
-      - "5000:5000"
       - "1935:1935" # RTMP feeds
     environment:
       FRIGATE_RTSP_PASSWORD: "password"
