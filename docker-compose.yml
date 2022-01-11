@@ -22,7 +22,9 @@ services:
       - "--entrypoints.web.address=:80"
       - "--entrypoints.web.http.redirections.entryPoint.to=websecure"
       - "--entrypoints.web.http.redirections.entryPoint.scheme=https"
+
       - "--entrypoints.websecure.address=:443"
+      - "--entrypoints.websecure.http.tls.certresolver=myresolver"
 
       - "--certificatesresolvers.myresolver.acme.email=jimeagle@gmail.com"
       - "--certificatesresolvers.myresolver.acme.storage=/acme.json"
