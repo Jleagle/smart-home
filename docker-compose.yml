@@ -23,8 +23,6 @@ services:
       - "--entrypoints.web.http.redirections.entryPoint.to=websecure"
       - "--entrypoints.web.http.redirections.entryPoint.scheme=https"
       - "--entrypoints.websecure.address=:443"
-      - "--entrypoints.websecure.http.tls=true"
-      - "--entrypoints.websecure.http.tls.certresolver=myresolver"
 
       - "--certificatesresolvers.myresolver.acme.email=jimeagle@gmail.com"
       - "--certificatesresolvers.myresolver.acme.storage=/acme.json"
@@ -57,6 +55,7 @@ services:
       - "traefik.port=8080"
       - "traefik.http.routers.homer.entrypoints=websecure"
       - "traefik.http.routers.homer.rule=Host(`seven.jimeagle.com`)"
+      - "traefik.http.routers.homer.tls.certresolver=myresolver"
       - "com.centurylinklabs.watchtower.enable=true"
 
   radarr:
