@@ -15,7 +15,7 @@ services:
       #      - "--providers.file=true"
       #      - "--providers.file.filename=/etc/traefik/rules.toml"
 
-      - "--accesslog=false"
+      - "--accesslog=true"
       - "--api.dashboard=false"
       - "--experimental.http3=true"
 
