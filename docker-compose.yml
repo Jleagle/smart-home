@@ -20,8 +20,8 @@ services:
       - "--experimental.http3=true"
 
       - "--entrypoints.web.address=:80"
-      #      - "--entrypoints.web.http.redirections.entryPoint.to=websecure"
-      #      - "--entrypoints.web.http.redirections.entryPoint.scheme=https"
+      - "--entrypoints.web.http.redirections.entryPoint.to=websecure"
+      - "--entrypoints.web.http.redirections.entryPoint.scheme=https"
 
       - "--entrypoints.websecure.address=:443"
       - "--entrypoints.websecure.http.tls.certresolver=myresolver"
