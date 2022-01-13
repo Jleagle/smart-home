@@ -41,18 +41,6 @@ services:
     labels:
       - "com.centurylinklabs.watchtower.enable=true"
 
-  whoami:
-    container_name: whoami
-    hostname: whoami
-    image: traefik/whoami
-    restart: unless-stopped
-    labels:
-      - "traefik.enable=true"
-      - "traefik.port=80"
-      - "traefik.http.routers.whoami.entrypoints=websecure"
-      - "traefik.http.routers.whoami.rule=Host(`test.jimeagle.com`)"
-      - "com.centurylinklabs.watchtower.enable=true"
-
   homer:
     container_name: homer
     hostname: homer
