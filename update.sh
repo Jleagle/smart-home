@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-./pull.sh
+bash ./pull.sh
 
 docker-compose pull
 docker-compose up --detach --remove-orphans
