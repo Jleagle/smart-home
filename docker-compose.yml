@@ -28,6 +28,7 @@ services:
 
       - "--certificatesresolvers.myresolver.acme.email=jimeagle@gmail.com"
       - "--certificatesresolvers.myresolver.acme.storage=/acme.json"
+      - "--certificatesresolvers.myresolver.acme.dnschallenge=true"
       - "--certificatesresolvers.myresolver.acme.dnschallenge.provider=cloudflare"
       - "--certificatesresolvers.myresolver.acme.dnschallenge.delaybeforecheck=10"
     ports:
