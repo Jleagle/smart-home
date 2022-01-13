@@ -1,4 +1,5 @@
 version: '3'
+
 services:
 
   traefik:
@@ -11,11 +12,24 @@ services:
       - "--providers.docker.watch=true"
       - "--providers.docker.exposedbydefault=false"
 
+      #      - "--providers.file=true"
+      #      - "--providers.file.filename=/etc/traefik/rules.toml"
+
       - "--accesslog=false"
       - "--api.dashboard=false"
       - "--experimental.http3=true"
 
       - "--entrypoints.web.address=:80"
+      #      - "--entrypoints.web.http.redirections.entryPoint.to=websecure"
+      #      - "--entrypoints.web.http.redirections.entryPoint.scheme=https"
+
+      - "--entrypoints.websecure.address=:443"
+      - "--entrypoints.websecure.http.tls.certresolver=myresolver"
+
+      - "--certificatesresolvers.myresolver.acme.email=jimeagle@gmail.com"
+      - "--certificatesresolvers.myresolver.acme.storage=/acme.json"
+      - "--certificatesresolvers.myresolver.acme.dnschallenge.provider=cloudflare"
+      - "--certificatesresolvers.myresolver.acme.dnschallenge.delaybeforecheck=10"
     ports:
       - "80:80"
       - "443:443"
@@ -23,8 +37,24 @@ services:
       CLOUDFLARE_DNS_API_TOKEN: "${CLOUDFLARE_DNS_API_TOKEN}"
       CLOUDFLARE_ZONE_API_TOKEN: "${CLOUDFLARE_ZONE_API_TOKEN}"
     volumes:
+      - "${HOME}/Traefik/acme.json:/acme.json"
       - "/var/run/docker.sock:/var/run/docker.sock:ro"
+      #      - "./traefik/rules.toml:/etc/traefik/rules.toml"
     labels:
+      - "com.centurylinklabs.watchtower.enable=true"
+
+  whoami:
+    container_name: whoami
+    hostname: whoami
+    image: traefik/whoami
+    restart: unless-stopped
+    labels:
+      - "traefik.enable=true"
+      - "traefik.port=80"
+      - "traefik.http.routers.whoami.entrypoints=web"
+      - "traefik.http.routers.whoami.rule=Host(`test.jimeagle.com`)"
+      #      - "traefik.http.routers.whoami.tls=true"
+      #      - "traefik.http.routers.whoami.tls.certresolver=myresolver"
       - "com.centurylinklabs.watchtower.enable=true"
 
   homer:
@@ -34,16 +64,16 @@ services:
     restart: unless-stopped
     volumes:
       - ${HOME}/Homer:/www/assets
-    ports:
-      - "8080:8080"
     #environment:
     #  - UID=1000
     #  - GID=1000
     labels:
       - "traefik.enable=true"
       - "traefik.port=8080"
-      - "traefik.http.routers.homer.entrypoints=web"
+      - "traefik.http.routers.homer.entrypoints=websecure"
       - "traefik.http.routers.homer.rule=Host(`seven.jimeagle.com`)"
+      - "traefik.http.routers.homer.tls=true"
+      - "traefik.http.routers.homer.tls.certresolver=myresolver"
       - "com.centurylinklabs.watchtower.enable=true"
 
   radarr:
@@ -51,8 +81,6 @@ services:
     hostname: radarr
     container_name: radarr
     restart: "unless-stopped"
-    ports:
-      - "7878:7878"
     volumes:
       - ${HOME}/Radarr:/config
       - ${HOME}/NZBGet/Downloads:/downloads
@@ -65,7 +93,7 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.port=7878"
-      - "traefik.http.routers.radarr.entrypoints=web"
+      - "traefik.http.routers.radarr.entrypoints=websecure"
       - "traefik.http.routers.radarr.rule=Host(`radarr.jimeagle.com`)"
       - "com.centurylinklabs.watchtower.enable=true"
 
@@ -74,8 +102,6 @@ services:
     hostname: sonarr
     container_name: sonarr
     restart: "unless-stopped"
-    ports:
-      - "8989:8989"
     environment:
       - PGID=1000
       - PUID=1000
@@ -88,7 +114,7 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.port=8989"
-      - "traefik.http.routers.sonarr.entrypoints=web"
+      - "traefik.http.routers.sonarr.entrypoints=websecure"
       - "traefik.http.routers.sonarr.rule=Host(`sonarr.jimeagle.com`)"
       - "com.centurylinklabs.watchtower.enable=true"
 
@@ -97,8 +123,6 @@ services:
     hostname: hydra
     container_name: hydra
     restart: "unless-stopped"
-    ports:
-      - "5076:5076"
     volumes:
       - ${HOME}/Hydra/Config:/config
       - ${HOME}/Hydra/Downloads:/downloads
@@ -109,7 +133,7 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.port=5076"
-      - "traefik.http.routers.hydra.entrypoints=web"
+      - "traefik.http.routers.hydra.entrypoints=websecure"
       - "traefik.http.routers.hydra.rule=Host(`hydra.jimeagle.com`)"
       - "com.centurylinklabs.watchtower.enable=true"
 
@@ -118,8 +142,6 @@ services:
     hostname: nzbget
     container_name: nzbget
     restart: "unless-stopped"
-    ports:
-      - "6789:6789"
     environment:
       - PGID=1000
       - PUID=1000
@@ -130,7 +152,7 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.port=6789"
-      - "traefik.http.routers.nzbget.entrypoints=web"
+      - "traefik.http.routers.nzbget.entrypoints=websecure"
       - "traefik.http.routers.nzbget.rule=Host(`nzbget.jimeagle.com`)"
       - "com.centurylinklabs.watchtower.enable=true"
 
@@ -173,8 +195,6 @@ services:
     image: ghcr.io/meeb/tubesync:latest
     hostname: tubesync
     container_name: tubesync
-    ports:
-      - "4848:4848"
     environment:
       - PUID=1000
       - PGID=1000
@@ -188,7 +208,7 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.port=4848"
-      - "traefik.http.routers.tubesync.entrypoints=web"
+      - "traefik.http.routers.tubesync.entrypoints=websecure"
       - "traefik.http.routers.tubesync.rule=Host(`tubesync.jimeagle.com`)"
       - "com.centurylinklabs.watchtower.enable=true"
 
@@ -209,8 +229,9 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.port=8123"
-      - "traefik.http.routers.hass.entrypoints=web"
+      - "traefik.http.routers.hass.entrypoints=websecure"
       - "traefik.http.routers.hass.rule=Host(`hass.jimeagle.com`)"
+      - "traefik.http.services.hass.loadbalancer.server.port=8123"
       - "com.centurylinklabs.watchtower.enable=true"
 
   nodered:
@@ -220,15 +241,12 @@ services:
     restart: "unless-stopped"
     environment:
       - TZ=Europe/London
-    ports:
-      - "1880:1880"
-      - "1881:1881"
     volumes:
       - ${HOME}/NodeRed:/data
     labels:
       - "traefik.enable=true"
       - "traefik.port=1880"
-      - "traefik.http.routers.nodered.entrypoints=web"
+      - "traefik.http.routers.nodered.entrypoints=websecure"
       - "traefik.http.routers.nodered.rule=Host(`nodered.jimeagle.com`)"
       - "com.centurylinklabs.watchtower.enable=true"
 
@@ -237,8 +255,6 @@ services:
     hostname: grafana
     image: grafana/grafana:latest
     restart: "unless-stopped"
-    ports:
-      - "3000:3000"
     user: "0"
     volumes:
       - ${HOME}/Grafana/key.json:/etc/grafana/key.json:ro
@@ -247,7 +263,7 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.port=3000"
-      - "traefik.http.routers.grafana.entrypoints=web"
+      - "traefik.http.routers.grafana.entrypoints=websecure"
       - "traefik.http.routers.grafana.rule=Host(`grafana.jimeagle.com`)"
       - "com.centurylinklabs.watchtower.enable=true"
 
@@ -272,12 +288,10 @@ services:
       - PGID=1000
       - PUID=1000
       - TZ=Europe/London
-    ports:
-      - "5666:80"
     labels:
       - "traefik.enable=true"
       - "traefik.port=5666"
-      - "traefik.http.routers.phlex.entrypoints=web"
+      - "traefik.http.routers.phlex.entrypoints=websecure"
       - "traefik.http.routers.phlex.rule=Host(`phlex.jimeagle.com`)"
       - "com.centurylinklabs.watchtower.enable=true"
 
@@ -294,13 +308,11 @@ services:
       - ${HOME}/Bazarr:/config
       - ${HOME}/Media/Movies:/movies
       - ${HOME}/Media/Television:/tv
-    ports:
-      - "6767:6767"
     restart: unless-stopped
     labels:
       - "traefik.enable=true"
       - "traefik.port=6767"
-      - "traefik.http.routers.bazarr.entrypoints=web"
+      - "traefik.http.routers.bazarr.entrypoints=websecure"
       - "traefik.http.routers.bazarr.rule=Host(`bazarr.jimeagle.com`)"
       - "com.centurylinklabs.watchtower.enable=true"
 
@@ -309,8 +321,6 @@ services:
     hostname: netdata
     container_name: netdata
     restart: "unless-stopped"
-    ports:
-      - "19999:19999"
     cap_add:
       - SYS_PTRACE
     security_opt:
@@ -322,33 +332,38 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.port=19999"
-      - "traefik.http.routers.netdata.entrypoints=web"
+      - "traefik.http.routers.netdata.entrypoints=websecure"
       - "traefik.http.routers.netdata.rule=Host(`netdata.jimeagle.com`)"
       - "com.centurylinklabs.watchtower.enable=true"
 
-  frigate:
-    container_name: frigate
-    #privileged: true # this may not be necessary for all setups
-    restart: unless-stopped
-    image: blakeblackshear/frigate:latest
-    shm_size: "64mb" # update for your cameras based on calculation above
-#    devices:
-#      - /dev/bus/usb:/dev/bus/usb # passes the USB Coral, needs to be modified for other versions
-#      - /dev/apex_0:/dev/apex_0 # passes a PCIe Coral, follow driver instructions here https://coral.ai/docs/m2/get-started/#2a-on-linux
-#      - /dev/dri/renderD128 # for intel hwaccel, needs to be updated for your hardware
-    volumes:
-      - ${HOME}/Frigate/config.yml:/config/config.yml:ro
-      - ${HOME}/Media/Frigate:/media/frigate
-      - /etc/localtime:/etc/localtime:ro
-      - type: tmpfs # Optional: 1GB of memory, reduces SSD/SD Card wear
-        target: /tmp/cache
-        tmpfs:
-          size: 1000000000
-    ports:
-      - "5000:5000"
-      - "1935:1935" # RTMP feeds
-    environment:
-      FRIGATE_RTSP_PASSWORD: "password"
+  #  frigate:
+  #    container_name: frigate
+  #    #privileged: true # this may not be necessary for all setups
+  #    restart: unless-stopped
+  #    image: blakeblackshear/frigate:0.9.4-amd64
+  #    shm_size: "64mb" # update for your cameras based on calculation above
+  #    #    devices:
+  #    #      - /dev/bus/usb:/dev/bus/usb # passes the USB Coral, needs to be modified for other versions
+  #    #      - /dev/apex_0:/dev/apex_0 # passes a PCIe Coral, follow driver instructions here https://coral.ai/docs/m2/get-started/#2a-on-linux
+  #    #      - /dev/dri/renderD128 # for intel hwaccel, needs to be updated for your hardware
+  #    volumes:
+  #      - ${HOME}/Frigate/config.yml:/config/config.yml:ro
+  #      - ${HOME}/Media/Frigate:/media/frigate
+  #      - /etc/localtime:/etc/localtime:ro
+  #      - type: tmpfs # Optional: 1GB of memory, reduces SSD/SD Card wear
+  #        target: /tmp/cache
+  #        tmpfs:
+  #          size: 1000000000
+  #    ports:
+  #      - "1935:1935" # RTMP feeds
+  #    environment:
+  #      FRIGATE_RTSP_PASSWORD: "password"
+  #    labels:
+  #      - "traefik.enable=true"
+  #      - "traefik.port=5000"
+  #      - "traefik.http.routers.frigate.entrypoints=websecure"
+  #      - "traefik.http.routers.frigate.rule=Host(`frigate.jimeagle.com`)"
+  #      - "com.centurylinklabs.watchtower.enable=true"
 
   doubletake:
     container_name: doubletake
@@ -362,17 +377,29 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.port=3001"
-      - "traefik.http.routers.bazarr.entrypoints=web"
-      - "traefik.http.routers.bazarr.rule=Host(`doubletake.jimeagle.com`)"
+      - "traefik.http.routers.doubletake.entrypoints=websecure"
+      - "traefik.http.routers.doubletake.rule=Host(`doubletake.jimeagle.com`)"
       - "com.centurylinklabs.watchtower.enable=true"
+
+  #  traefik-forward-auth:
+  #    image: thomseddon/traefik-forward-auth:2
+  #    environment:
+  #      - PROVIDERS_GOOGLE_CLIENT_ID=${GOOGLE_CLIENT_ID}
+  #      - PROVIDERS_GOOGLE_CLIENT_SECRET=${GOOGLE_CLIENT_SECRET}
+  #      - SECRET=${AUTH_SECRET}
+  #      - CONFIG=/config.json
+  #      - WHITELIST=jimeagle@gmail.com
+  #    volumes:
+  #      - ${HOME}/Auth/config.json:/config.json
+  #    labels:
+  #      - "traefik.http.middlewares.traefik-forward-auth.forwardauth.address=http://traefik-forward-auth:4181"
+  #      - "traefik.http.middlewares.traefik-forward-auth.forwardauth.authResponseHeaders=X-Forwarded-User"
 
   watchtower:
     container_name: watchtower
     hostname: watchtower
     image: containrrr/watchtower:latest
     restart: "unless-stopped"
-    labels:
-      - "com.centurylinklabs.watchtower.enable=true"
     volumes:
       - ${HOME}/Watchtower/config.json:/config.json
       - /var/run/docker.sock:/var/run/docker.sock
@@ -386,20 +413,19 @@ services:
       - WATCHTOWER_SCHEDULE=0 0 0 * * *
       - WATCHTOWER_LABEL_ENABLE=true
       - WATCHTOWER_NO_STARTUP_MESSAGE=true
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"
 
-  #  mosquitto:
-  #    image: eclipse-mosquitto:latest
-  #    hostname: mosquitto
-  #    container_name: mosquitto
-  #    ports:
-  #      - "1883:1883"
-  #      - "9001:9001"
-  #    volumes:
-  #      - ${HOME}/Mosquitto/Log/mosquitto.log:/mosquitto/log/mosquitto.log
-  #      - ${HOME}/Mosquitto/Data:/mosquitto/data
-  #      - ./mosquitto/mosquitto.conf:/mosquitto/config/mosquitto.conf
-  #    labels:
-  #      - "com.centurylinklabs.watchtower.enable=true"
+  mosquitto:
+    image: eclipse-mosquitto:latest
+    hostname: mosquitto
+    container_name: mosquitto
+    volumes:
+      - ${HOME}/Mosquitto/Log/mosquitto.log:/mosquitto/log/mosquitto.log
+      - ${HOME}/Mosquitto/Data:/mosquitto/data
+      - ./mosquitto/mosquitto.conf:/mosquitto/config/mosquitto.conf
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"
 
   #  ombi:
   #    image: linuxserver/ombi:latest
