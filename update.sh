@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
-git fetch origin
-git reset --hard origin/master
+./pull.sh
 
 docker-compose pull
 docker-compose up --detach --remove-orphans
