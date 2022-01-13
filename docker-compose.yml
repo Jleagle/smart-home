@@ -54,8 +54,6 @@ services:
       - "traefik.port=80"
       - "traefik.http.routers.whoami.entrypoints=web"
       - "traefik.http.routers.whoami.rule=Host(`test.jimeagle.com`)"
-      #      - "traefik.http.routers.whoami.tls=true"
-      #      - "traefik.http.routers.whoami.tls.certresolver=myresolver"
       - "com.centurylinklabs.watchtower.enable=true"
 
   homer:
@@ -73,8 +71,6 @@ services:
       - "traefik.port=8080"
       - "traefik.http.routers.homer.entrypoints=websecure"
       - "traefik.http.routers.homer.rule=Host(`seven.jimeagle.com`)"
-      - "traefik.http.routers.homer.tls=true"
-      - "traefik.http.routers.homer.tls.certresolver=myresolver"
       - "com.centurylinklabs.watchtower.enable=true"
 
   radarr:
