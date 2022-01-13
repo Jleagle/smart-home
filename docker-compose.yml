@@ -8,13 +8,13 @@ services:
     image: "traefik:v2.6"
     restart: unless-stopped
     command:
-      - "--providers.docker=true"
-      - "--providers.docker.watch=true"
-      - "--providers.docker.exposedbydefault=false"
-
       - "--accesslog=false"
       - "--api.dashboard=false"
       - "--experimental.http3=true"
+
+      - "--providers.docker=true"
+      - "--providers.docker.watch=true"
+      - "--providers.docker.exposedbydefault=false"
 
       - "--entrypoints.web.address=:80"
       - "--entrypoints.web.http.redirections.entryPoint.to=websecure"
