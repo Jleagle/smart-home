@@ -12,7 +12,7 @@ services:
       - "--providers.docker.watch=true"
       - "--providers.docker.exposedbydefault=false"
 
-      - "--accesslog=true"
+      - "--accesslog=false"
       - "--api.dashboard=false"
       - "--experimental.http3=true"
 
