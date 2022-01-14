@@ -156,6 +156,7 @@ services:
       - ${HOME}/Media/Television:/data/tvshows
       - ${HOME}/Media/Movies:/data/movies
       - ${HOME}/Media/YouTube:/data/youtube
+      - /dev/dri:/dev/dri # Quicksync
     labels:
       - "com.centurylinklabs.watchtower.enable=true"
 
@@ -187,6 +188,7 @@ services:
     volumes:
       - ${HOME}/TubeSync:/config
       - ${HOME}/Media/YouTube:/downloads
+      - /dev/dri:/dev/dri # Quicksync
     restart: unless-stopped
     labels:
       - "traefik.enable=true"
