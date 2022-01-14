@@ -233,32 +233,32 @@ services:
       - "traefik.http.routers.nodered.rule=Host(`nodered.jimeagle.com`)"
       - "com.centurylinklabs.watchtower.enable=true"
 
-  grafana:
-    container_name: grafana
-    hostname: grafana
-    image: grafana/grafana:latest
-    restart: "unless-stopped"
-    user: "0"
-    volumes:
-      - ${HOME}/Grafana/key.json:/etc/grafana/key.json:ro
-      - ${HOME}/Grafana/lib:/var/lib/grafana
-      - ./grafana/grafana.ini:/etc/grafana/grafana.ini:ro
-    labels:
-      - "traefik.enable=true"
-      - "traefik.port=3000"
-      - "traefik.http.routers.grafana.entrypoints=websecure"
-      - "traefik.http.routers.grafana.rule=Host(`grafana.jimeagle.com`)"
-      - "com.centurylinklabs.watchtower.enable=true"
+  #  grafana:
+  #    container_name: grafana
+  #    hostname: grafana
+  #    image: grafana/grafana:latest
+  #    restart: "unless-stopped"
+  #    user: "0"
+  #    volumes:
+  #      - ${HOME}/Grafana/key.json:/etc/grafana/key.json:ro
+  #      - ${HOME}/Grafana/lib:/var/lib/grafana
+  #      - ./grafana/grafana.ini:/etc/grafana/grafana.ini:ro
+  #    labels:
+  #      - "traefik.enable=true"
+  #      - "traefik.port=3000"
+  #      - "traefik.http.routers.grafana.entrypoints=websecure"
+  #      - "traefik.http.routers.grafana.rule=Host(`grafana.jimeagle.com`)"
+  #      - "com.centurylinklabs.watchtower.enable=true"
 
-  grafana-image-renderer:
-    container_name: grafana-image-renderer
-    hostname: grafana-image-renderer
-    image: grafana/grafana-image-renderer:latest
-    restart: "unless-stopped"
-    environment:
-      ENABLE_METRICS: 'false'
-    labels:
-      - "com.centurylinklabs.watchtower.enable=true"
+  #  grafana-image-renderer:
+  #    container_name: grafana-image-renderer
+  #    hostname: grafana-image-renderer
+  #    image: grafana/grafana-image-renderer:latest
+  #    restart: "unless-stopped"
+  #    environment:
+  #      ENABLE_METRICS: 'false'
+  #    labels:
+  #      - "com.centurylinklabs.watchtower.enable=true"
 
   phlex:
     image: digitalhigh/phlex:latest
@@ -299,25 +299,25 @@ services:
       - "traefik.http.routers.bazarr.rule=Host(`bazarr.jimeagle.com`)"
       - "com.centurylinklabs.watchtower.enable=true"
 
-  netdata:
-    image: netdata/netdata:latest
-    hostname: netdata
-    container_name: netdata
-    restart: "unless-stopped"
-    cap_add:
-      - SYS_PTRACE
-    security_opt:
-      - apparmor:unconfined
-    volumes:
-      - /proc:/host/proc:ro
-      - /sys:/host/sys:ro
-      - /var/run/docker.sock:/var/run/docker.sock:ro
-    labels:
-      - "traefik.enable=true"
-      - "traefik.port=19999"
-      - "traefik.http.routers.netdata.entrypoints=websecure"
-      - "traefik.http.routers.netdata.rule=Host(`netdata.jimeagle.com`)"
-      - "com.centurylinklabs.watchtower.enable=true"
+  #  netdata:
+  #    image: netdata/netdata:latest
+  #    hostname: netdata
+  #    container_name: netdata
+  #    restart: "unless-stopped"
+  #    cap_add:
+  #      - SYS_PTRACE
+  #    security_opt:
+  #      - apparmor:unconfined
+  #    volumes:
+  #      - /proc:/host/proc:ro
+  #      - /sys:/host/sys:ro
+  #      - /var/run/docker.sock:/var/run/docker.sock:ro
+  #    labels:
+  #      - "traefik.enable=true"
+  #      - "traefik.port=19999"
+  #      - "traefik.http.routers.netdata.entrypoints=websecure"
+  #      - "traefik.http.routers.netdata.rule=Host(`netdata.jimeagle.com`)"
+  #      - "com.centurylinklabs.watchtower.enable=true"
 
   #  frigate:
   #    container_name: frigate
