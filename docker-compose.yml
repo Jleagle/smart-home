@@ -158,6 +158,10 @@ services:
       - ${HOME}/Media/YouTube:/data/youtube
       - /dev/dri:/dev/dri # Quicksync
     labels:
+      - "traefik.enable=true"
+      - "traefik.port=32400"
+      - "traefik.http.routers.plex.entrypoints=websecure"
+      - "traefik.http.routers.plex.rule=Host(`plex.jimeagle.com`)"
       - "com.centurylinklabs.watchtower.enable=true"
 
   ddns:
@@ -357,11 +361,9 @@ services:
     restart: unless-stopped
     volumes:
       - ${HOME}/DoubleTake:/.storage
-    ports:
-      - "3001:3000"
     labels:
       - "traefik.enable=true"
-      - "traefik.port=3001"
+      - "traefik.port=3000"
       - "traefik.http.routers.doubletake.entrypoints=websecure"
       - "traefik.http.routers.doubletake.rule=Host(`doubletake.jimeagle.com`)"
       - "com.centurylinklabs.watchtower.enable=true"
@@ -417,14 +419,17 @@ services:
   #    hostname: ombi
   #    container_name: ombi
   #    restart: "unless-stopped"
-  #    ports:
-  #    - "3579:3579"
   #    volumes:
   #    - ${HOME}/Ombi:/config
   #    environment:
   #    - PGID=1000
   #    - TZ=Europe/London
   #    labels:
+  #    labels:
+  #      - "traefik.enable=true"
+  #      - "traefik.port=3579"
+  #      - "traefik.http.routers.ombi.entrypoints=websecure"
+  #      - "traefik.http.routers.ombi.rule=Host(`frigate.jimeagle.com`)"
   #      - "com.centurylinklabs.watchtower.enable=true"
 
   #  overseerr:
@@ -432,13 +437,16 @@ services:
   #    hostname: overseerr
   #    container_name: overseerr
   #    restart: "unless-stopped"
-  #    ports:
-  #      - "5055:5055"
   #    volumes:
   #      - ${HOME}/Overseerr:/app/config
   #    environment:
   #      - TZ=Europe/London
   #    labels:
+  #    labels:
+  #      - "traefik.enable=true"
+  #      - "traefik.port=5055"
+  #      - "traefik.http.routers.overseerr.entrypoints=websecure"
+  #      - "traefik.http.routers.overseerr.rule=Host(`frigate.jimeagle.com`)"
   #      - "com.centurylinklabs.watchtower.enable=true"
 
   #  pihole:
