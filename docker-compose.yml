@@ -48,7 +48,7 @@ services:
     restart: unless-stopped
     volumes:
       - ${HOME}/Homer:/www/assets
-      - ./homer:/www/assets/config.yml
+      - ./homer/config.yml:/www/assets/config.yml:ro
     #environment:
     #  - UID=1000
     #  - GID=1000
