@@ -172,14 +172,14 @@ services:
       - "traefik.http.routers.plex.rule=Host(`plex.jimeagle.com`)"
       - "com.centurylinklabs.watchtower.enable=true"
 
-  plexmeta:
-    image: meisnate12/plex-meta-manager:latest
-    hostname: plexmeta
-    container_name: plexmeta
-    network_mode: "host" # For plex
-    restart: "unless-stopped"
-    volumes:
-      - ${HOME}/PlexMeta:/config
+  #  plexmeta:
+  #    image: meisnate12/plex-meta-manager:latest
+  #    hostname: plexmeta
+  #    container_name: plexmeta
+  #    network_mode: "host" # For plex
+  #    restart: "unless-stopped"
+  #    volumes:
+  #      - ${HOME}/PlexMeta:/config
 
   ddns:
     container_name: ddns
