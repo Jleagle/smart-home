@@ -172,15 +172,6 @@ services:
       - "traefik.http.routers.plex.rule=Host(`plex.jimeagle.com`)"
       - "com.centurylinklabs.watchtower.enable=true"
 
-  #  plexmeta:
-  #    image: meisnate12/plex-meta-manager:latest
-  #    hostname: plexmeta
-  #    container_name: plexmeta
-  #    network_mode: "host" # For plex
-  #    restart: "unless-stopped"
-  #    volumes:
-  #      - ${HOME}/PlexMeta:/config
-
   ddns:
     container_name: ddns
     hostname: ddns
@@ -262,33 +253,6 @@ services:
       - "traefik.http.routers.nodered.rule=Host(`nodered.jimeagle.com`)"
       - "com.centurylinklabs.watchtower.enable=true"
 
-  #  grafana:
-  #    container_name: grafana
-  #    hostname: grafana
-  #    image: grafana/grafana:latest
-  #    restart: "unless-stopped"
-  #    user: "0"
-  #    volumes:
-  #      - ${HOME}/Grafana/key.json:/etc/grafana/key.json:ro
-  #      - ${HOME}/Grafana/lib:/var/lib/grafana
-  #      - ./grafana/grafana.ini:/etc/grafana/grafana.ini:ro
-  #    labels:
-  #      - "traefik.enable=true"
-  #      - "traefik.port=3000"
-  #      - "traefik.http.routers.grafana.entrypoints=websecure"
-  #      - "traefik.http.routers.grafana.rule=Host(`grafana.jimeagle.com`)"
-  #      - "com.centurylinklabs.watchtower.enable=true"
-
-  #  grafana-image-renderer:
-  #    container_name: grafana-image-renderer
-  #    hostname: grafana-image-renderer
-  #    image: grafana/grafana-image-renderer:latest
-  #    restart: "unless-stopped"
-  #    environment:
-  #      ENABLE_METRICS: 'false'
-  #    labels:
-  #      - "com.centurylinklabs.watchtower.enable=true"
-
   phlex:
     image: digitalhigh/phlex:latest
     hostname: phlex
@@ -331,6 +295,90 @@ services:
       - "traefik.http.routers.bazarr.entrypoints=websecure"
       - "traefik.http.routers.bazarr.rule=Host(`bazarr.jimeagle.com`)"
       - "com.centurylinklabs.watchtower.enable=true"
+
+  doubletake:
+    container_name: doubletake
+    hostname: doubletake
+    image: jakowenko/double-take
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    volumes:
+      - ${HOME}/DoubleTake:/.storage
+    labels:
+      - "traefik.enable=true"
+      - "traefik.port=3000"
+      - "traefik.http.routers.doubletake.entrypoints=websecure"
+      - "traefik.http.routers.doubletake.rule=Host(`doubletake.jimeagle.com`)"
+      - "com.centurylinklabs.watchtower.enable=true"
+
+  watchtower:
+    container_name: watchtower
+    hostname: watchtower
+    image: containrrr/watchtower:latest
+    restart: "unless-stopped"
+    volumes:
+      - ${HOME}/Watchtower/config.json:/config.json
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /etc/localtime:/etc/localtime:ro
+    environment:
+      - TZ=Europe/London
+      - WATCHTOWER_CLEANUP=true
+      - WATCHTOWER_NOTIFICATIONS=slack
+      - WATCHTOWER_NOTIFICATION_SLACK_HOOK_URL=${WATCHTOWER_WEBHOOK}
+      - WATCHTOWER_NOTIFICATIONS_LEVEL=error
+      - WATCHTOWER_SCHEDULE=0 0 0 * * *
+      - WATCHTOWER_LABEL_ENABLE=true
+      - WATCHTOWER_NO_STARTUP_MESSAGE=true
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"
+
+  mosquitto:
+    image: eclipse-mosquitto:latest
+    hostname: mosquitto
+    container_name: mosquitto
+    volumes:
+      - ${HOME}/Mosquitto/Log/mosquitto.log:/mosquitto/log/mosquitto.log
+      - ${HOME}/Mosquitto/Data:/mosquitto/data
+      - ./mosquitto/mosquitto.conf:/mosquitto/config/mosquitto.conf
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"
+
+  #  plexmeta:
+  #    image: meisnate12/plex-meta-manager:latest
+  #    hostname: plexmeta
+  #    container_name: plexmeta
+  #    network_mode: "host" # For plex
+  #    restart: "unless-stopped"
+  #    volumes:
+  #      - ${HOME}/PlexMeta:/config
+
+  #  grafana:
+  #    container_name: grafana
+  #    hostname: grafana
+  #    image: grafana/grafana:latest
+  #    restart: "unless-stopped"
+  #    user: "0"
+  #    volumes:
+  #      - ${HOME}/Grafana/key.json:/etc/grafana/key.json:ro
+  #      - ${HOME}/Grafana/lib:/var/lib/grafana
+  #      - ./grafana/grafana.ini:/etc/grafana/grafana.ini:ro
+  #    labels:
+  #      - "traefik.enable=true"
+  #      - "traefik.port=3000"
+  #      - "traefik.http.routers.grafana.entrypoints=websecure"
+  #      - "traefik.http.routers.grafana.rule=Host(`grafana.jimeagle.com`)"
+  #      - "com.centurylinklabs.watchtower.enable=true"
+
+  #  grafana-image-renderer:
+  #    container_name: grafana-image-renderer
+  #    hostname: grafana-image-renderer
+  #    image: grafana/grafana-image-renderer:latest
+  #    restart: "unless-stopped"
+  #    environment:
+  #      ENABLE_METRICS: 'false'
+  #    labels:
+  #      - "com.centurylinklabs.watchtower.enable=true"
 
   #  netdata:
   #    image: netdata/netdata:latest
@@ -381,22 +429,6 @@ services:
   #      - "traefik.http.routers.frigate.rule=Host(`frigate.jimeagle.com`)"
   #      - "com.centurylinklabs.watchtower.enable=true"
 
-  doubletake:
-    container_name: doubletake
-    hostname: doubletake
-    image: jakowenko/double-take
-    restart: unless-stopped
-    ports:
-      - "3000:3000"
-    volumes:
-      - ${HOME}/DoubleTake:/.storage
-    labels:
-      - "traefik.enable=true"
-      - "traefik.port=3000"
-      - "traefik.http.routers.doubletake.entrypoints=websecure"
-      - "traefik.http.routers.doubletake.rule=Host(`doubletake.jimeagle.com`)"
-      - "com.centurylinklabs.watchtower.enable=true"
-
   #  traefik-forward-auth:
   #    image: thomseddon/traefik-forward-auth:2
   #    environment:
@@ -410,38 +442,6 @@ services:
   #    labels:
   #      - "traefik.http.middlewares.traefik-forward-auth.forwardauth.address=http://traefik-forward-auth:4181"
   #      - "traefik.http.middlewares.traefik-forward-auth.forwardauth.authResponseHeaders=X-Forwarded-User"
-
-  watchtower:
-    container_name: watchtower
-    hostname: watchtower
-    image: containrrr/watchtower:latest
-    restart: "unless-stopped"
-    volumes:
-      - ${HOME}/Watchtower/config.json:/config.json
-      - /var/run/docker.sock:/var/run/docker.sock
-      - /etc/localtime:/etc/localtime:ro
-    environment:
-      - TZ=Europe/London
-      - WATCHTOWER_CLEANUP=true
-      - WATCHTOWER_NOTIFICATIONS=slack
-      - WATCHTOWER_NOTIFICATION_SLACK_HOOK_URL=${WATCHTOWER_WEBHOOK}
-      - WATCHTOWER_NOTIFICATIONS_LEVEL=error
-      - WATCHTOWER_SCHEDULE=0 0 0 * * *
-      - WATCHTOWER_LABEL_ENABLE=true
-      - WATCHTOWER_NO_STARTUP_MESSAGE=true
-    labels:
-      - "com.centurylinklabs.watchtower.enable=true"
-
-  mosquitto:
-    image: eclipse-mosquitto:latest
-    hostname: mosquitto
-    container_name: mosquitto
-    volumes:
-      - ${HOME}/Mosquitto/Log/mosquitto.log:/mosquitto/log/mosquitto.log
-      - ${HOME}/Mosquitto/Data:/mosquitto/data
-      - ./mosquitto/mosquitto.conf:/mosquitto/config/mosquitto.conf
-    labels:
-      - "com.centurylinklabs.watchtower.enable=true"
 
   #  ombi:
   #    image: linuxserver/ombi:latest
