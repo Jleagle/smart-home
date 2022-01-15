@@ -183,6 +183,8 @@ services:
     image: ghcr.io/meeb/tubesync:latest
     hostname: tubesync
     container_name: tubesync
+    ports:
+      - "4848:4848"
     environment:
       - PUID=1000
       - PGID=1000
