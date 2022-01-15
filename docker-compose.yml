@@ -64,6 +64,8 @@ services:
     hostname: radarr
     container_name: radarr
     restart: "unless-stopped"
+    ports:
+      - "7878:7878"
     volumes:
       - ${HOME}/Radarr:/config
       - ${HOME}/NZBGet/Downloads:/downloads
@@ -85,6 +87,8 @@ services:
     hostname: sonarr
     container_name: sonarr
     restart: "unless-stopped"
+    ports:
+      - "8989:8989"
     environment:
       - PGID=1000
       - PUID=1000
@@ -106,6 +110,8 @@ services:
     hostname: hydra
     container_name: hydra
     restart: "unless-stopped"
+    ports:
+      - "5076:5076"
     volumes:
       - ${HOME}/Hydra/Config:/config
       - ${HOME}/Hydra/Downloads:/downloads
@@ -125,6 +131,8 @@ services:
     hostname: nzbget
     container_name: nzbget
     restart: "unless-stopped"
+    ports:
+      - "6789:6789"
     environment:
       - PGID=1000
       - PUID=1000
@@ -219,6 +227,8 @@ services:
     restart: "unless-stopped"
     network_mode: host
     privileged: true
+    ports:
+      - "8123:8123"
     volumes:
       - ${HOME}/Hass:/config
       - /etc/localtime:/etc/localtime:ro
@@ -239,6 +249,8 @@ services:
     hostname: nodered
     container_name: nodered
     restart: "unless-stopped"
+    ports:
+      - "1880:1880"
     environment:
       - TZ=Europe/London
     volumes:
@@ -282,6 +294,8 @@ services:
     hostname: phlex
     container_name: phlex
     restart: "unless-stopped"
+    ports:
+      - "5666:5666"
     volumes:
       - ${HOME}/Phlex:/config
     environment:
@@ -299,6 +313,8 @@ services:
     image: linuxserver/bazarr:latest
     hostname: bazarr
     container_name: bazarr
+    ports:
+      - "6767:6767"
     environment:
       - PUID=1000
       - PGID=1000
@@ -370,6 +386,8 @@ services:
     hostname: doubletake
     image: jakowenko/double-take
     restart: unless-stopped
+    ports:
+      - "3000:3000"
     volumes:
       - ${HOME}/DoubleTake:/.storage
     labels:
