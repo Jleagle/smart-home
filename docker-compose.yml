@@ -41,24 +41,6 @@ services:
     labels:
       - "com.centurylinklabs.watchtower.enable=true"
 
-  homer:
-    container_name: homer
-    hostname: homer
-    image: b4bz/homer
-    restart: unless-stopped
-    volumes:
-      - ${HOME}/Homer:/www/assets
-      - ./homer/config.yml:/www/assets/config.yml:ro
-    #environment:
-    #  - UID=1000
-    #  - GID=1000
-    labels:
-      - "traefik.enable=true"
-      - "traefik.port=8080"
-      - "traefik.http.routers.homer.entrypoints=websecure"
-      - "traefik.http.routers.homer.rule=Host(`seven.jimeagle.com`)"
-      - "com.centurylinklabs.watchtower.enable=true"
-
   radarr:
     image: linuxserver/radarr:latest
     hostname: radarr
@@ -353,53 +335,6 @@ services:
   #    volumes:
   #      - ${HOME}/PlexMeta:/config
 
-  #  grafana:
-  #    container_name: grafana
-  #    hostname: grafana
-  #    image: grafana/grafana:latest
-  #    restart: "unless-stopped"
-  #    user: "0"
-  #    volumes:
-  #      - ${HOME}/Grafana/key.json:/etc/grafana/key.json:ro
-  #      - ${HOME}/Grafana/lib:/var/lib/grafana
-  #      - ./grafana/grafana.ini:/etc/grafana/grafana.ini:ro
-  #    labels:
-  #      - "traefik.enable=true"
-  #      - "traefik.port=3000"
-  #      - "traefik.http.routers.grafana.entrypoints=websecure"
-  #      - "traefik.http.routers.grafana.rule=Host(`grafana.jimeagle.com`)"
-  #      - "com.centurylinklabs.watchtower.enable=true"
-
-  #  grafana-image-renderer:
-  #    container_name: grafana-image-renderer
-  #    hostname: grafana-image-renderer
-  #    image: grafana/grafana-image-renderer:latest
-  #    restart: "unless-stopped"
-  #    environment:
-  #      ENABLE_METRICS: 'false'
-  #    labels:
-  #      - "com.centurylinklabs.watchtower.enable=true"
-
-  #  netdata:
-  #    image: netdata/netdata:latest
-  #    hostname: netdata
-  #    container_name: netdata
-  #    restart: "unless-stopped"
-  #    cap_add:
-  #      - SYS_PTRACE
-  #    security_opt:
-  #      - apparmor:unconfined
-  #    volumes:
-  #      - /proc:/host/proc:ro
-  #      - /sys:/host/sys:ro
-  #      - /var/run/docker.sock:/var/run/docker.sock:ro
-  #    labels:
-  #      - "traefik.enable=true"
-  #      - "traefik.port=19999"
-  #      - "traefik.http.routers.netdata.entrypoints=websecure"
-  #      - "traefik.http.routers.netdata.rule=Host(`netdata.jimeagle.com`)"
-  #      - "com.centurylinklabs.watchtower.enable=true"
-
   #  frigate:
   #    container_name: frigate
   #    #privileged: true # this may not be necessary for all setups
@@ -442,41 +377,6 @@ services:
   #    labels:
   #      - "traefik.http.middlewares.traefik-forward-auth.forwardauth.address=http://traefik-forward-auth:4181"
   #      - "traefik.http.middlewares.traefik-forward-auth.forwardauth.authResponseHeaders=X-Forwarded-User"
-
-  #  ombi:
-  #    image: linuxserver/ombi:latest
-  #    hostname: ombi
-  #    container_name: ombi
-  #    restart: "unless-stopped"
-  #    volumes:
-  #    - ${HOME}/Ombi:/config
-  #    environment:
-  #    - PGID=1000
-  #    - TZ=Europe/London
-  #    labels:
-  #    labels:
-  #      - "traefik.enable=true"
-  #      - "traefik.port=3579"
-  #      - "traefik.http.routers.ombi.entrypoints=websecure"
-  #      - "traefik.http.routers.ombi.rule=Host(`frigate.jimeagle.com`)"
-  #      - "com.centurylinklabs.watchtower.enable=true"
-
-  #  overseerr:
-  #    image: sctx/overseerr:latest
-  #    hostname: overseerr
-  #    container_name: overseerr
-  #    restart: "unless-stopped"
-  #    volumes:
-  #      - ${HOME}/Overseerr:/app/config
-  #    environment:
-  #      - TZ=Europe/London
-  #    labels:
-  #    labels:
-  #      - "traefik.enable=true"
-  #      - "traefik.port=5055"
-  #      - "traefik.http.routers.overseerr.entrypoints=websecure"
-  #      - "traefik.http.routers.overseerr.rule=Host(`frigate.jimeagle.com`)"
-  #      - "com.centurylinklabs.watchtower.enable=true"
 
   #  pihole:
   #    image: pihole/pihole:latest
