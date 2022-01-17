@@ -378,26 +378,26 @@ services:
   #      - "traefik.http.middlewares.traefik-forward-auth.forwardauth.address=http://traefik-forward-auth:4181"
   #      - "traefik.http.middlewares.traefik-forward-auth.forwardauth.authResponseHeaders=X-Forwarded-User"
 
-  #  pihole:
-  #    image: pihole/pihole:latest
-  #    hostname: pihole
-  #    container_name: pihole
-  #    restart: unless-stopped
-  #    ports:
-  #      - "53:53/tcp"
-  #      - "53:53/udp"
-  #      - "67:67/udp"
-  #    environment:
-  #      TZ: Europe/London
-  #      ServerIP: 192.168.0.7
-  #      WEBPASSWORD: ${PIHOLE_PASSWORD}
-  #      ADMIN_EMAIL: jimeagle@gmail.com
-  #      PIHOLE_DNS_: 1.1.1.1;8.8.8.8
-  #    volumes:
-  #      - ${HOME}/PiHole/:/etc/pihole/
-  #    labels:
-  #      - "traefik.enable=true"
-  #      - "traefik.port=80"
-  #      - "traefik.http.routers.pihole.entrypoints=websecure"
-  #      - "traefik.http.routers.pihole.rule=Host(`pihole.jimeagle.com`)"
-  #      - "com.centurylinklabs.watchtower.enable=true"
+  pihole:
+    image: pihole/pihole:latest
+    hostname: pihole
+    container_name: pihole
+    restart: unless-stopped
+    ports:
+      - "53:53/tcp"
+      - "53:53/udp"
+      - "67:67/udp"
+    environment:
+      TZ: Europe/London
+      ServerIP: 192.168.0.7
+      WEBPASSWORD: ${PIHOLE_PASSWORD}
+      ADMIN_EMAIL: jimeagle@gmail.com
+      PIHOLE_DNS_: 1.1.1.1;8.8.8.8
+    volumes:
+      - ${HOME}/PiHole/:/etc/pihole/
+    labels:
+      - "traefik.enable=true"
+      - "traefik.port=80"
+      - "traefik.http.routers.pihole.entrypoints=websecure"
+      - "traefik.http.routers.pihole.rule=Host(`pihole.jimeagle.com`)"
+      - "com.centurylinklabs.watchtower.enable=true"
