@@ -200,8 +200,6 @@ services:
     restart: "unless-stopped"
     network_mode: host
     privileged: true
-    ports:
-      - "8123:8123"
     volumes:
       - ${HOME}/Hass:/config
       - /etc/localtime:/etc/localtime:ro
