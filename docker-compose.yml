@@ -380,37 +380,24 @@ services:
 
   #  pihole:
   #    image: pihole/pihole:latest
-  #    dns:
-  #      - 127.0.0.1
-  #      - 1.1.1.1
+  #    hostname: pihole
+  #    container_name: pihole
+  #    restart: unless-stopped
   #    ports:
   #      - "53:53/tcp"
   #      - "53:53/udp"
-  #      - "80:80/tcp"
-  #      - "443:443/tcp"
-  #    # The 3 lines below are required if Pi-hole is to provide DHCP
-  #    # cap_add:
-  #    #  - NET_ADMIN
-  #    # network_mode: "host"
+  #      - "67:67/udp"
   #    environment:
-  #      # enter your docker host IP here
-  #      ServerIP:
-  #      # IPv6 Address if your network supports it
-  #      #ServerIPv6: 192.168.1.55
-  #      # jwilder/proxy envs, see readme for more info
-  #      PROXY_LOCATION: pihole
-  #      VIRTUAL_HOST: pihole.yourdomain.local
-  #      VIRTUAL_PORT: 80
-  #    # Add your own custom hostnames you need for your domain
-  #    extra_hosts:
-  #      #   Point any of the jwilder virtual_host addresses
-  #      # to your docker host ip address
-  #      - 'pihole.yourdomain.local:192.168.1.55'
+  #      TZ: Europe/London
+  #      ServerIP: 192.168.0.7
+  #      WEBPASSWORD: ${PIHOLE_PASSWORD}
+  #      ADMIN_EMAIL: jimeagle@gmail.com
+  #      PIHOLE_DNS_: 1.1.1.1;8.8.8.8
   #    volumes:
-  #    # - '/etc/pihole/:/etc/pihole/'
-  #    # WARNING: if this log doesn't exist as a file on the host already
-  #    # docker will try to create a directory in its place making for lots of errors
-  #    # - '/var/log/pihole.log:/var/log/pihole.log'
-  #    restart: always
+  #      - ${HOME}/PiHole/:/etc/pihole/
   #    labels:
+  #      - "traefik.enable=true"
+  #      - "traefik.port=80"
+  #      - "traefik.http.routers.pihole.entrypoints=websecure"
+  #      - "traefik.http.routers.pihole.rule=Host(`pihole.jimeagle.com`)"
   #      - "com.centurylinklabs.watchtower.enable=true"
