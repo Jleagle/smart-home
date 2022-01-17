@@ -385,6 +385,7 @@ services:
       - "53:53/tcp"
       - "53:53/udp"
       - "67:67/udp"
+      - "81:80"
     environment:
       TZ: Europe/London
       ServerIP: 192.168.0.7
