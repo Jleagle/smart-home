@@ -221,6 +221,7 @@ services:
     hostname: nodered
     container_name: nodered
     restart: "unless-stopped"
+    user: root
     ports:
       - "1880:1880"
     environment:
