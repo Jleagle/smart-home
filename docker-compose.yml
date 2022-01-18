@@ -395,6 +395,7 @@ services:
       WEBPASSWORD: ${PIHOLE_PASSWORD}
       ADMIN_EMAIL: jimeagle@gmail.com
       PIHOLE_DNS_: 1.1.1.1;8.8.8.8
+      VIRTUAL_HOST: pihole.jimeagle.com
     volumes:
       - ${HOME}/PiHole/:/etc/pihole/
     labels:
