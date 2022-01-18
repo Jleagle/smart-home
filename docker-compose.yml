@@ -22,7 +22,7 @@ services:
 
       - "--entrypoints.websecure.address=:443"
       - "--entrypoints.websecure.http.tls.certresolver=myresolver"
-      - "--entrypoints.websecure.http.middlewares=traefik-forward-auth"
+      #- "--entrypoints.websecure.http.middlewares=traefik-forward-auth"
 
       - "--certificatesresolvers.myresolver.acme.email=jimeagle@gmail.com"
       - "--certificatesresolvers.myresolver.acme.storage=/acme.json"
@@ -63,6 +63,7 @@ services:
       - "traefik.port=7878"
       - "traefik.http.routers.radarr.entrypoints=websecure"
       - "traefik.http.routers.radarr.rule=Host(`radarr.jimeagle.com`)"
+      - "traefik.http.routers.radarr.middlewares=traefik-forward-auth"
       - "com.centurylinklabs.watchtower.enable=true"
 
   sonarr:
@@ -365,8 +366,8 @@ services:
   #      - "com.centurylinklabs.watchtower.enable=true"
 
   traefik-forward-auth:
-    hostname: auth
-    container_name: auth
+    #hostname: auth
+    #container_name: auth
     image: thomseddon/traefik-forward-auth:2
     environment:
       - PROVIDERS_GOOGLE_CLIENT_ID=${GOOGLE_CLIENT_ID}
@@ -377,8 +378,9 @@ services:
     volumes:
       - ${HOME}/Auth/config.json:/config.json
     labels:
-      - "traefik.http.middlewares.traefik-forward-auth.forwardauth.address=http://auth:4181"
+      - "traefik.http.middlewares.traefik-forward-auth.forwardauth.address=http://traefik-forward-auth:4181"
       - "traefik.http.middlewares.traefik-forward-auth.forwardauth.authResponseHeaders=X-Forwarded-User"
+      - "traefik.http.services.traefik-forward-auth.loadbalancer.server.port=4181"
 
   pihole:
     image: pihole/pihole:latest
