@@ -352,8 +352,8 @@ services:
   #      - "com.centurylinklabs.watchtower.enable=true"
 
   traefik-forward-auth:
-    #hostname: auth
-    #container_name: auth
+    hostname: traefik-forward-auth
+    container_name: traefik-forward-auth
     image: thomseddon/traefik-forward-auth:2
     environment:
       - PROVIDERS_GOOGLE_CLIENT_ID=${GOOGLE_CLIENT_ID}
