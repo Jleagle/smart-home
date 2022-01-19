@@ -12,7 +12,7 @@ services:
       - "--api.dashboard=false"
       - "--experimental.http3=true"
 
-      - "--providers.docker=true"
+      - "--providers.docker=false"
       - "--providers.docker.watch=true"
       - "--providers.docker.exposedbydefault=false"
 
@@ -37,6 +37,7 @@ services:
       CLOUDFLARE_ZONE_API_TOKEN: "${CLOUDFLARE_ZONE_API_TOKEN}"
     volumes:
       - "${HOME}/Traefik/acme.json:/acme.json"
+      - "./traefik/traefik.yaml:/etc/traefik/traefik.yaml"
       - "/var/run/docker.sock:/var/run/docker.sock:ro"
     labels:
       - "com.centurylinklabs.watchtower.enable=true"
