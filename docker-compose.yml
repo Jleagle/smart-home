@@ -38,7 +38,6 @@ services:
     volumes:
       - "${HOME}/Traefik/acme.json:/acme.json"
       - "/var/run/docker.sock:/var/run/docker.sock:ro"
-      #      - "./traefik/rules.toml:/etc/traefik/rules.toml"
     labels:
       - "com.centurylinklabs.watchtower.enable=true"
 
