@@ -160,6 +160,27 @@ services:
       - "traefik.http.routers.plex.rule=Host(`plex.jimeagle.com`)"
       - "com.centurylinklabs.watchtower.enable=true"
 
+  tautulli:
+    image: lscr.io/linuxserver/tautulli
+    hostname: tautulli
+    container_name: tautulli
+    restart: unless-stopped
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/London
+    volumes:
+      - ${HOME}/Tautulli:/config
+    ports:
+      - "8181:8181"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.port=8181"
+      - "traefik.http.routers.tautulli.entrypoints=websecure"
+      - "traefik.http.routers.tautulli.rule=Host(`tautulli.jimeagle.com`)"
+      - "traefik.http.services.tautulli.loadbalancer.server.port=8181"
+      - "com.centurylinklabs.watchtower.enable=true"
+
   ddns:
     container_name: ddns
     hostname: ddns
