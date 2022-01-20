@@ -37,7 +37,7 @@ providers:
     swarmMode: false
     watch: true
   file:
-    filename: "/config/dynamic.yml"
+    filename: "/config/providers.yml"
     watch: true
 
 certificatesResolvers:
