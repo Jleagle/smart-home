@@ -1,0 +1,26 @@
+http:
+  routers:
+    hass-route:
+      rule: "Host(`hass.jimeagle.com`)"
+      service: hass-service
+      #      middlewares:
+      #        - authentication
+      entryPoints:
+        - websecure
+    plex-route:
+      rule: "Host(`plex.jimeagle.com`)"
+      service: plex-service
+      #      middlewares:
+      #        - authentication
+      entryPoints:
+        - websecure
+
+  services:
+    hass-service:
+      loadBalancer:
+        servers:
+          - url: "http://192.168.0.7:8123"
+    plex-service:
+      loadBalancer:
+        servers:
+          - url: "http://192.168.0.7:32400"

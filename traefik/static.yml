@@ -1,0 +1,49 @@
+log:
+  level: INFO
+
+api:
+  insecure: false
+  dashboard: false
+
+accessLog: { }
+
+pilot:
+  token: "ac9a8268-0454-410b-894b-98ba0c6d34b8"
+
+entryPoints:
+  web:
+    address: ":80"
+    http:
+      redirections:
+        entryPoint:
+          to: websecure
+          scheme: https
+          permanent: true
+  websecure:
+    address: ":443"
+    http:
+      middlewares:
+        - traefik-forward-auth
+      tls:
+        certResolver: leresolver
+
+providers:
+  docker:
+    endpoint: "unix:///var/run/docker.sock"
+    exposedByDefault: false
+    swarmMode: false
+    watch: false
+  file:
+    directory: "/config"
+
+certificatesResolvers:
+  leresolver:
+    acme:
+      storage: /acme.json
+      email: jimeagle@gmail.com
+      dnsChallenge:
+        provider: cloudflare
+        delayBeforeCheck: 10
+        resolvers:
+          - "1.1.1.1:53"
+          - "8.8.8.8:53"
