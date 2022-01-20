@@ -175,30 +175,6 @@ services:
     labels:
       - "com.centurylinklabs.watchtower.enable=true"
 
-  tubesync:
-    image: ghcr.io/meeb/tubesync:latest
-    hostname: tubesync
-    container_name: tubesync
-    ports:
-      - "4848:4848"
-    environment:
-      - PUID=1000
-      - PGID=1000
-      - TZ=Europe/London
-      - HTTP_USER=$TUBE_SYNC_USER
-      - HTTP_PASS=$TUBE_SYNC_PASS
-    volumes:
-      - ${HOME}/TubeSync:/config
-      - ${HOME}/Media/YouTube:/downloads
-      - /dev/dri:/dev/dri # Quicksync
-    restart: unless-stopped
-    labels:
-      - "traefik.enable=true"
-      - "traefik.port=4848"
-      - "traefik.http.routers.tubesync.entrypoints=websecure"
-      - "traefik.http.routers.tubesync.rule=Host(`tubesync.jimeagle.com`)"
-      - "com.centurylinklabs.watchtower.enable=true"
-
   hass:
     image: homeassistant/home-assistant:latest
     hostname: hass
