@@ -6,7 +6,7 @@ services:
     container_name: "traefik"
     hostname: "traefik"
     image: "traefik:v2.6"
-    restart: unless-stopped
+    restart: "unless-stopped"
     network_mode: "host"
     #    ports:
     #      - "80:80"
@@ -23,21 +23,21 @@ services:
       - "com.centurylinklabs.watchtower.enable=true"
 
   radarr:
-    image: linuxserver/radarr:latest
-    hostname: radarr
-    container_name: radarr
+    image: "linuxserver/radarr:latest"
+    hostname: "radarr"
+    container_name: "radarr"
     restart: "unless-stopped"
     ports:
       - "7878:7878"
     volumes:
-      - ${HOME}/Radarr:/config
-      - ${HOME}/NZBGet/Downloads:/downloads
-      - ${HOME}/Media/Movies:/movies
-      - /etc/localtime:/etc/localtime:ro
+      - "${HOME}/Radarr:/config"
+      - "${HOME}/NZBGet/Downloads:/downloads"
+      - "${HOME}/Media/Movies:/movies"
+      - "/etc/localtime:/etc/localtime:ro"
     environment:
-      - PGID=1000
-      - PUID=1000
-      - TZ=Europe/London
+      - "PGID=1000"
+      - "PUID=1000"
+      - "TZ=Europe/London"
     labels:
       - "traefik.enable=true"
       - "traefik.port=7878"
@@ -48,21 +48,21 @@ services:
       - "com.centurylinklabs.watchtower.enable=true"
 
   sonarr:
-    image: linuxserver/sonarr:latest
-    hostname: sonarr
-    container_name: sonarr
+    image: "linuxserver/sonarr:latest"
+    hostname: "sonarr"
+    container_name: "sonarr"
     restart: "unless-stopped"
     ports:
       - "8989:8989"
     environment:
-      - PGID=1000
-      - PUID=1000
-      - TZ=Europe/London
+      - "PGID=1000"
+      - "PUID=1000"
+      - "TZ=Europe/London"
     volumes:
-      - ${HOME}/Sonarr:/config
-      - ${HOME}/NZBGet/Downloads:/downloads
-      - ${HOME}/Media/Television:/tv
-      - /etc/localtime:/etc/localtime:ro
+      - "${HOME}/Sonarr:/config"
+      - "${HOME}/NZBGet/Downloads:/downloads"
+      - "${HOME}/Media/Television:/tv"
+      - "/etc/localtime:/etc/localtime:ro"
     labels:
       - "traefik.enable=true"
       - "traefik.port=8989"
@@ -72,19 +72,19 @@ services:
       - "com.centurylinklabs.watchtower.enable=true"
 
   hydra:
-    image: linuxserver/nzbhydra2:latest
-    hostname: hydra
-    container_name: hydra
+    image: "linuxserver/nzbhydra2:latest"
+    hostname: "hydra"
+    container_name: "hydra"
     restart: "unless-stopped"
     ports:
       - "5076:5076"
     volumes:
-      - ${HOME}/Hydra/Config:/config
-      - ${HOME}/Hydra/Downloads:/downloads
+      - "${HOME}/Hydra/Config:/config"
+      - "${HOME}/Hydra/Downloads:/downloads"
     environment:
-      - PGID=1000
-      - PUID=1000
-      - TZ=Europe/London
+      - "PGID=1000"
+      - "PUID=1000"
+      - "TZ=Europe/London"
     labels:
       - "traefik.enable=true"
       - "traefik.port=5076"
@@ -94,19 +94,19 @@ services:
       - "com.centurylinklabs.watchtower.enable=true"
 
   nzbget:
-    image: linuxserver/nzbget:latest
-    hostname: nzbget
-    container_name: nzbget
+    image: "linuxserver/nzbget:latest"
+    hostname: "nzbget"
+    container_name: "nzbget"
     restart: "unless-stopped"
     ports:
       - "6789:6789"
     environment:
-      - PGID=1000
-      - PUID=1000
-      - TZ=Europe/London
+      - "PGID=1000"
+      - "PUID=1000"
+      - "TZ=Europe/London"
     volumes:
-      - ${HOME}/NZBGet/Config:/config
-      - ${HOME}/NZBGet/Downloads:/downloads
+      - "${HOME}/NZBGet/Config:/config"
+      - "${HOME}/NZBGet/Downloads:/downloads"
     labels:
       - "traefik.enable=true"
       - "traefik.port=6789"
@@ -116,37 +116,37 @@ services:
       - "com.centurylinklabs.watchtower.enable=true"
 
   plex:
-    image: linuxserver/plex:latest
-    hostname: plex
-    container_name: plex
+    image: "linuxserver/plex:latest"
+    hostname: "plex"
+    container_name: "plex"
     network_mode: "host"
     restart: "unless-stopped"
     environment:
-      - PGID=1000
-      - PUID=1000
-      - TZ=Europe/London
-      - VERSION=latest
+      - "PGID=1000"
+      - "PUID=1000"
+      - "TZ=Europe/London"
+      - "VERSION=latest"
     volumes:
-      - ${HOME}/Plex/Transcoding:/transcode
-      - ${HOME}/Plex/Config:/config
-      - ${HOME}/Media/Television:/data/tvshows
-      - ${HOME}/Media/Movies:/data/movies
-      - ${HOME}/Media/YouTube:/data/youtube
-      - /dev/dri:/dev/dri # Quicksync
+      - "${HOME}/Plex/Transcoding:/transcode"
+      - "${HOME}/Plex/Config:/config"
+      - "${HOME}/Media/Television:/data/tvshows"
+      - "${HOME}/Media/Movies:/data/movies"
+      - "${HOME}/Media/YouTube:/data/youtube"
+      - "/dev/dri:/dev/dri" # Quicksync
     labels:
       - "com.centurylinklabs.watchtower.enable=true"
 
   tautulli:
-    image: lscr.io/linuxserver/tautulli
-    hostname: tautulli
-    container_name: tautulli
-    restart: unless-stopped
+    image: "lscr.io/linuxserver/tautulli"
+    hostname: "tautulli"
+    container_name: "tautulli"
+    restart: "unless-stopped"
     environment:
-      - PUID=1000
-      - PGID=1000
-      - TZ=Europe/London
+      - "PUID=1000"
+      - "PGID=1000"
+      - "TZ=Europe/London"
     volumes:
-      - ${HOME}/Tautulli:/config
+      - "${HOME}/Tautulli:/config"
     ports:
       - "8181:8181"
     labels:
@@ -158,47 +158,47 @@ services:
       - "com.centurylinklabs.watchtower.enable=true"
 
   ddns:
-    container_name: ddns
-    hostname: ddns
-    image: ghcr.io/jleagle/ddns:latest
+    container_name: "ddns"
+    hostname: "ddns"
+    image: "ghcr.io/jleagle/ddns:latest"
     restart: "unless-stopped"
     environment:
-      - DO_KEY=${DDNS_DO_KEY}
-      - CF_KEY=${DDNS_CF_KEY}
-      - ONE_TIME=false
-      - ON_LOAD=true
+      - "DO_KEY=${DDNS_DO_KEY}"
+      - "CF_KEY=${DDNS_CF_KEY}"
+      - "ONE_TIME=false"
+      - "ON_LOAD=true"
     volumes:
-      - ${HOME}/DDNS/records.yaml:/root/records.yaml:ro
+      - "${HOME}/DDNS/records.yaml:/root/records.yaml:ro"
     labels:
       - "com.centurylinklabs.watchtower.enable=true"
 
   hass:
-    image: homeassistant/home-assistant:latest
-    hostname: hass
-    container_name: hass
+    image: "homeassistant/home-assistant:latest"
+    hostname: "hass"
+    container_name: "hass"
     restart: "unless-stopped"
-    network_mode: host
+    network_mode: "host"
     privileged: true
     volumes:
-      - ${HOME}/Hass:/config
-      - /etc/localtime:/etc/localtime:ro
+      - "${HOME}/Hass:/config"
+      - "/etc/localtime:/etc/localtime:ro"
     environment:
-      - TZ=Europe/London
+      - "TZ=Europe/London"
     labels:
       - "com.centurylinklabs.watchtower.enable=true"
 
   nodered:
-    image: nodered/node-red:latest
-    hostname: nodered
-    container_name: nodered
+    image: "nodered/node-red:latest"
+    hostname: "nodered"
+    container_name: "nodered"
     restart: "unless-stopped"
-    user: root
+    user: "root"
     ports:
       - "1880:1880"
     environment:
-      - TZ=Europe/London
+      - "TZ=Europe/London"
     volumes:
-      - ${HOME}/NodeRed:/data
+      - "${HOME}/NodeRed:/data"
     labels:
       - "traefik.enable=true"
       - "traefik.port=1880"
@@ -208,18 +208,18 @@ services:
       - "com.centurylinklabs.watchtower.enable=true"
 
   flextv:
-    image: digitalhigh/flextv:latest
-    hostname: flextv
-    container_name: flextv
+    image: "digitalhigh/flextv:latest"
+    hostname: "flextv"
+    container_name: "flextv"
     restart: "unless-stopped"
     ports:
       - "82:80"
     volumes:
-      - ${HOME}/FlexTV:/config
+      - "${HOME}/FlexTV:/config"
     environment:
-      - PUID=1000
-      - PGID=1000
-      - TZ=Europe/London
+      - "PUID=1000"
+      - "PGID=1000"
+      - "TZ=Europe/London"
     labels:
       - "traefik.enable=true"
       - "traefik.port=80"
@@ -229,21 +229,21 @@ services:
       - "com.centurylinklabs.watchtower.enable=true"
 
   bazarr:
-    image: linuxserver/bazarr:latest
-    hostname: bazarr
-    container_name: bazarr
+    image: "linuxserver/bazarr:latest"
+    hostname: "bazarr"
+    container_name: "bazarr"
     ports:
       - "6767:6767"
     environment:
-      - PUID=1000
-      - PGID=1000
-      - TZ=Europe/London
-      - UMASK_SET=022 #optional
+      - "PUID=1000"
+      - "PGID=1000"
+      - "TZ=Europe/London"
+      - "UMASK_SET=022" #optional
     volumes:
-      - ${HOME}/Bazarr:/config
-      - ${HOME}/Media/Movies:/movies
-      - ${HOME}/Media/Television:/tv
-    restart: unless-stopped
+      - "${HOME}/Bazarr:/config"
+      - "${HOME}/Media/Movies:/movies"
+      - "${HOME}/Media/Television:/tv"
+    restart: "unless-stopped"
     labels:
       - "traefik.enable=true"
       - "traefik.port=6767"
@@ -253,15 +253,15 @@ services:
       - "com.centurylinklabs.watchtower.enable=true"
 
   doubletake:
-    container_name: doubletake
-    hostname: doubletake
-    image: jakowenko/double-take
-    restart: unless-stopped
+    container_name: "doubletake"
+    hostname: "doubletake"
+    image: "jakowenko/double-take"
+    restart: "unless-stopped"
     ports:
       - "3000:3000"
     volumes:
-      - ${HOME}/DoubleTake:/.storage
-      - ./doubletake/config.yml:/.storage/config.yml
+      - "${HOME}/DoubleTake:/.storage"
+      - "./doubletake/config.yml:/.storage/config.yml"
     labels:
       - "traefik.enable=true"
       - "traefik.port=3000"
@@ -271,22 +271,22 @@ services:
       - "com.centurylinklabs.watchtower.enable=true"
 
   watchtower:
-    container_name: watchtower
-    hostname: watchtower
-    image: containrrr/watchtower:latest
+    container_name: "watchtower"
+    hostname: "watchtower"
+    image: "containrrr/watchtower:latest"
     restart: "unless-stopped"
     volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-      - /etc/localtime:/etc/localtime:ro
+      - "/var/run/docker.sock:/var/run/docker.sock"
+      - "/etc/localtime:/etc/localtime:ro"
     environment:
-      - TZ=Europe/London
-      - WATCHTOWER_CLEANUP=true
-      - WATCHTOWER_NOTIFICATIONS=slack
-      - WATCHTOWER_NOTIFICATION_SLACK_HOOK_URL=${WATCHTOWER_WEBHOOK}
-      - WATCHTOWER_NOTIFICATIONS_LEVEL=error
-      - WATCHTOWER_SCHEDULE=0 0 0 * * *
-      - WATCHTOWER_LABEL_ENABLE=true
-      - WATCHTOWER_NO_STARTUP_MESSAGE=true
+      - "TZ=Europe/London"
+      - "WATCHTOWER_CLEANUP=true"
+      - "WATCHTOWER_NOTIFICATIONS=slack"
+      - "WATCHTOWER_NOTIFICATION_SLACK_HOOK_URL=${WATCHTOWER_WEBHOOK}"
+      - "WATCHTOWER_NOTIFICATIONS_LEVEL=error"
+      - "WATCHTOWER_SCHEDULE=0 0 0 * * *"
+      - "WATCHTOWER_LABEL_ENABLE=true"
+      - "WATCHTOWER_NO_STARTUP_MESSAGE=true"
     labels:
       - "com.centurylinklabs.watchtower.enable=true"
 
@@ -329,43 +329,43 @@ services:
   #      - "com.centurylinklabs.watchtower.enable=true"
 
   traefik-forward-auth:
-    hostname: traefik-forward-auth
-    container_name: traefik-forward-auth
-    image: thomseddon/traefik-forward-auth:2
+    hostname: "traefik-forward-auth"
+    container_name: "traefik-forward-auth"
+    image: "thomseddon/traefik-forward-auth:2"
     ports:
       - "4181:4181"
     environment:
-      - PROVIDERS_GOOGLE_CLIENT_ID=${GOOGLE_CLIENT_ID}
-      - PROVIDERS_GOOGLE_CLIENT_SECRET=${GOOGLE_CLIENT_SECRET}
-      - SECRET=${AUTH_SECRET}
-      - CONFIG=/config.json
-      - WHITELIST=jimeagle@gmail.com
+      - "PROVIDERS_GOOGLE_CLIENT_ID=${GOOGLE_CLIENT_ID}"
+      - "PROVIDERS_GOOGLE_CLIENT_SECRET=${GOOGLE_CLIENT_SECRET}"
+      - "SECRET=${AUTH_SECRET}"
+      - "CONFIG=/config.json"
+      - "WHITELIST=jimeagle@gmail.com"
     volumes:
-      - ${HOME}/Auth/config.json:/config.json
+      - "${HOME}/Auth/config.json:/config.json"
     labels:
       - "traefik.http.middlewares.traefik-forward-auth.forwardauth.address=http://traefik-forward-auth:4181"
       - "traefik.http.middlewares.traefik-forward-auth.forwardauth.authResponseHeaders=X-Forwarded-User"
       - "traefik.http.services.traefik-forward-auth.loadbalancer.server.port=4181"
 
   pihole:
-    image: pihole/pihole:latest
-    hostname: pihole
-    container_name: pihole
-    restart: unless-stopped
+    image: "pihole/pihole:latest"
+    hostname: "pihole"
+    container_name: "pihole"
+    restart: "unless-stopped"
     ports:
       - "53:53/tcp"
       - "53:53/udp"
       - "67:67/udp"
       - "81:80"
     environment:
-      TZ: Europe/London
-      ServerIP: 192.168.0.7
-      WEBPASSWORD: ${PIHOLE_PASSWORD}
-      ADMIN_EMAIL: jimeagle@gmail.com
-      PIHOLE_DNS_: 1.1.1.1;8.8.8.8
-      VIRTUAL_HOST: pihole.jimeagle.com
+      TZ: "Europe/London"
+      ServerIP: "192.168.0.7"
+      WEBPASSWORD: "${PIHOLE_PASSWORD}"
+      ADMIN_EMAIL: "jimeagle@gmail.com"
+      PIHOLE_DNS_: "1.1.1.1;8.8.8.8"
+      VIRTUAL_HOST: "pihole.jimeagle.com"
     volumes:
-      - ${HOME}/PiHole/:/etc/pihole/
+      - "${HOME}/PiHole/:/etc/pihole/"
     labels:
       - "traefik.enable=true"
       - "traefik.port=80"
