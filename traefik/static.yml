@@ -32,9 +32,10 @@ providers:
     endpoint: "unix:///var/run/docker.sock"
     exposedByDefault: false
     swarmMode: false
-    watch: false
+    watch: true
   file:
-    directory: "/config"
+    filename: "/config/dynamic.yml"
+    watch: true
 
 certificatesResolvers:
   leresolver:
