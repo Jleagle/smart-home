@@ -64,6 +64,7 @@ services:
       - "traefik.http.routers.radarr.entrypoints=websecure"
       - "traefik.http.routers.radarr.rule=Host(`radarr.jimeagle.com`)"
       - "traefik.http.routers.radarr.middlewares=traefik-forward-auth"
+      - "traefik.http.services.radarr.loadbalancer.server.port=7878"
       - "com.centurylinklabs.watchtower.enable=true"
 
   sonarr:
@@ -87,6 +88,7 @@ services:
       - "traefik.port=8989"
       - "traefik.http.routers.sonarr.entrypoints=websecure"
       - "traefik.http.routers.sonarr.rule=Host(`sonarr.jimeagle.com`)"
+      - "traefik.http.services.sonarr.loadbalancer.server.port=8989"
       - "com.centurylinklabs.watchtower.enable=true"
 
   hydra:
@@ -108,6 +110,7 @@ services:
       - "traefik.port=5076"
       - "traefik.http.routers.hydra.entrypoints=websecure"
       - "traefik.http.routers.hydra.rule=Host(`hydra.jimeagle.com`)"
+      - "traefik.http.services.hydra.loadbalancer.server.port=5076"
       - "com.centurylinklabs.watchtower.enable=true"
 
   nzbget:
@@ -129,6 +132,7 @@ services:
       - "traefik.port=6789"
       - "traefik.http.routers.nzbget.entrypoints=websecure"
       - "traefik.http.routers.nzbget.rule=Host(`nzbget.jimeagle.com`)"
+      - "traefik.http.services.nzbget.loadbalancer.server.port=6789"
       - "com.centurylinklabs.watchtower.enable=true"
 
   plex:
@@ -232,6 +236,7 @@ services:
       - "traefik.port=1880"
       - "traefik.http.routers.nodered.entrypoints=websecure"
       - "traefik.http.routers.nodered.rule=Host(`nodered.jimeagle.com`)"
+      - "traefik.http.services.nodered.loadbalancer.server.port=1880"
       - "com.centurylinklabs.watchtower.enable=true"
 
   phlex:
@@ -275,6 +280,7 @@ services:
       - "traefik.port=6767"
       - "traefik.http.routers.bazarr.entrypoints=websecure"
       - "traefik.http.routers.bazarr.rule=Host(`bazarr.jimeagle.com`)"
+      - "traefik.http.services.bazarr.loadbalancer.server.port=6767"
       - "com.centurylinklabs.watchtower.enable=true"
 
   doubletake:
@@ -292,6 +298,7 @@ services:
       - "traefik.port=3000"
       - "traefik.http.routers.doubletake.entrypoints=websecure"
       - "traefik.http.routers.doubletake.rule=Host(`doubletake.jimeagle.com`)"
+      - "traefik.http.services.doubletake.loadbalancer.server.port=3000"
       - "com.centurylinklabs.watchtower.enable=true"
 
   watchtower:
@@ -350,12 +357,15 @@ services:
   #      - "traefik.port=5000"
   #      - "traefik.http.routers.frigate.entrypoints=websecure"
   #      - "traefik.http.routers.frigate.rule=Host(`frigate.jimeagle.com`)"
+  #      - "traefik.http.services.frigate.loadbalancer.server.port=5000"
   #      - "com.centurylinklabs.watchtower.enable=true"
 
   traefik-forward-auth:
     hostname: traefik-forward-auth
     container_name: traefik-forward-auth
     image: thomseddon/traefik-forward-auth:2
+    ports:
+      - "4181:4181"
     environment:
       - PROVIDERS_GOOGLE_CLIENT_ID=${GOOGLE_CLIENT_ID}
       - PROVIDERS_GOOGLE_CLIENT_SECRET=${GOOGLE_CLIENT_SECRET}
@@ -393,4 +403,5 @@ services:
       - "traefik.port=80"
       - "traefik.http.routers.pihole.entrypoints=websecure"
       - "traefik.http.routers.pihole.rule=Host(`pihole.jimeagle.com`)"
+      - "traefik.http.services.pihole.loadbalancer.server.port=80"
       - "com.centurylinklabs.watchtower.enable=true"
