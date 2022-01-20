@@ -215,24 +215,25 @@ services:
       - "traefik.http.services.nodered.loadbalancer.server.port=1880"
       - "com.centurylinklabs.watchtower.enable=true"
 
-  phlex:
-    image: digitalhigh/phlex:latest
-    hostname: phlex
-    container_name: phlex
+  flextv:
+    image: digitalhigh/flextv:latest
+    hostname: flextv
+    container_name: flextv
     restart: "unless-stopped"
     ports:
-      - "5666:5666"
+      - "82:80"
     volumes:
-      - ${HOME}/Phlex:/config
+      - ${HOME}/FlexTV:/config
     environment:
-      - PGID=1000
       - PUID=1000
+      - PGID=1000
       - TZ=Europe/London
     labels:
       - "traefik.enable=true"
-      - "traefik.port=5666"
-      - "traefik.http.routers.phlex.entrypoints=websecure"
-      - "traefik.http.routers.phlex.rule=Host(`phlex.jimeagle.com`)"
+      - "traefik.port=80"
+      - "traefik.http.routers.flextv.entrypoints=websecure"
+      - "traefik.http.routers.flextv.rule=Host(`flextv.jimeagle.com`)"
+      - "traefik.http.services.flextv.loadbalancer.server.port=80"
       - "com.centurylinklabs.watchtower.enable=true"
 
   bazarr:
