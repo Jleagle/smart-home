@@ -9,9 +9,9 @@ services:
     restart: unless-stopped
     network_mode: "host"
     command: "--providers.file.directory=/config"
-    ports:
-      - "80:80"
-      - "443:443"
+    #    ports:
+    #      - "80:80"
+    #      - "443:443"
     environment:
       CLOUDFLARE_DNS_API_TOKEN: "${CLOUDFLARE_DNS_API_TOKEN}"
       CLOUDFLARE_ZONE_API_TOKEN: "${CLOUDFLARE_ZONE_API_TOKEN}"
