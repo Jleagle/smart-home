@@ -323,7 +323,6 @@ services:
   #    image: meisnate12/plex-meta-manager:latest
   #    hostname: plexmeta
   #    container_name: plexmeta
-  #    network_mode: "host" # For plex
   #    restart: "unless-stopped"
   #    volumes:
   #      - ${HOME}/PlexMeta:/config
