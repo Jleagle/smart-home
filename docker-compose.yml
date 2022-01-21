@@ -340,8 +340,7 @@ services:
       - "SECRET=${AUTH_SECRET}"
       - "CONFIG=/config.json"
       - "WHITELIST=jimeagle@gmail.com"
-    volumes:
-      - "${HOME}/Auth/config.json:/config.json"
+      - "INSECURE_COOKIE=true"
     labels:
       - "traefik.http.middlewares.traefik-forward-auth.forwardauth.address=http://traefik-forward-auth:4181"
       - "traefik.http.middlewares.traefik-forward-auth.forwardauth.authResponseHeaders=X-Forwarded-User"
