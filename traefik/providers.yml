@@ -20,3 +20,10 @@ http:
       loadBalancer:
         servers:
           - url: "http://localhost:32400"
+
+  middlewares:
+    traefik-forward-auth:
+      forwardAuth:
+        address: "http://localhost:4181"
+        authResponseHeaders:
+          - "X-Forwarded-User"
