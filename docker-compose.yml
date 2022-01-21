@@ -43,7 +43,6 @@ services:
       - "traefik.port=7878"
       - "traefik.http.routers.radarr.entrypoints=websecure"
       - "traefik.http.routers.radarr.rule=Host(`radarr.jimeagle.com`)"
-      - "traefik.http.routers.radarr.middlewares=traefik-forward-auth"
       - "traefik.http.services.radarr.loadbalancer.server.port=7878"
       - "com.centurylinklabs.watchtower.enable=true"
 
