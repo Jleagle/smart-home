@@ -3,15 +3,11 @@ http:
     hass-route:
       rule: "Host(`hass.jimeagle.com`)"
       service: hass-service
-      #      middlewares:
-      #        - authentication
       entryPoints:
         - websecure
     plex-route:
       rule: "Host(`plex.jimeagle.com`)"
       service: plex-service
-      #      middlewares:
-      #        - authentication
       entryPoints:
         - websecure
 
