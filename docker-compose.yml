@@ -181,6 +181,7 @@ services:
     privileged: true
     volumes:
       - "${HOME}/Hass:/config"
+      - "./hass/config.yml:/config/configuration.yaml"
       - "/etc/localtime:/etc/localtime:ro"
     environment:
       - "TZ=Europe/London"

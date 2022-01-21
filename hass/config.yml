@@ -1,0 +1,90 @@
+# Configure a default setup of Home Assistant (frontend, api, etc)
+default_config:
+
+homeassistant:
+  name: Home
+  latitude: !secret home_lat
+  longitude: !secret home_lon
+  elevation: 14
+  unit_system: metric
+  currency: GBP
+  time_zone: "Europe/London"
+  external_url: "https://hass.jimeagle.com"
+  internal_url: "http://192.168.0.7:8123"
+  auth_providers:
+    - type: trusted_networks
+      trusted_networks:
+        - 192.168.0.8 # PC
+        - 192.168.0.9 # Phone
+    - type: homeassistant
+
+http:
+  use_x_forwarded_for: true
+  trusted_proxies:
+    - 192.168.0.7
+
+#sensor:
+#  - platform: radarr
+#    api_key: !secret radarr
+#    host: radarr
+#    port: 443
+#    monitored_conditions:
+#      - movies
+#      - upcoming
+#      - commands
+#      - diskspace
+#      - status
+#    days: 7
+#    ssl: true
+#    unit: GB
+
+#device_tracker:
+#  - platform: arris_tg2492lg
+#    host: 192.168.0.1
+#    password: !secret router_password
+#    interval_seconds: 60
+#    consider_home: 300
+#    new_device_defaults:
+#      track_new_devices: false
+
+ffmpeg:
+
+camera:
+  - platform: onvif
+    host: !secret camera_host
+    name: 'driveway'
+    username: admin
+    password: !secret camera_pass
+
+webostv:
+  host: 192.168.0.9
+  name: TV
+  turn_on_action:
+    service: persistent_notification.create
+    data:
+      message: "Turn on action"
+  customize:
+    sources:
+      - livetv
+      - netflix
+
+spotify:
+  client_id: !secret spotify_id
+  client_secret: !secret spotify_secret
+
+media_player:
+
+wake_on_lan:
+
+system_health:
+
+notify:
+
+# Text to speech
+tts:
+  - platform: google_translate
+
+group: !include groups.yaml
+automation: !include automations.yaml
+script: !include scripts.yaml
+scene: !include scenes.yaml
