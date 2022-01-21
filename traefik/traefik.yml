@@ -2,7 +2,7 @@ global:
   sendAnonymousUsage: false
 
 log:
-  level: INFO
+  level: "INFO"
 
 api:
   insecure: false
@@ -19,16 +19,16 @@ entryPoints:
     http:
       redirections:
         entryPoint:
-          to: websecure
-          scheme: https
+          to: "websecure"
+          scheme: "https"
           permanent: true
   websecure:
     address: ":443"
     http:
       middlewares:
-        - traefik-forward-auth
+        - "traefik-forward-auth"
       tls:
-        certResolver: leresolver
+        certResolver: "leresolver"
 
 providers:
   docker:
@@ -43,10 +43,10 @@ providers:
 certificatesResolvers:
   leresolver:
     acme:
-      storage: /acme.json
-      email: jimeagle@gmail.com
+      storage: "/acme.json"
+      email: "jimeagle@gmail.com"
       dnsChallenge:
-        provider: cloudflare
+        provider: "cloudflare"
         delayBeforeCheck: 10
         resolvers:
           - "1.1.1.1:53"

@@ -2,14 +2,14 @@ http:
   routers:
     hass-route:
       rule: "Host(`hass.jimeagle.com`)"
-      service: hass-service
+      service: "hass-service"
       entryPoints:
-        - websecure
+        - "websecure"
     plex-route:
       rule: "Host(`plex.jimeagle.com`)"
-      service: plex-service
+      service: "plex-service"
       entryPoints:
-        - websecure
+        - "websecure"
 
   services:
     hass-service:
