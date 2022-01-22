@@ -27,6 +27,7 @@ mkdir -p ~/Traefik
 touch ~/Auth/config.json
 touch ~/DDNS/records.yaml
 touch ~/Frigate/config.yml
+touch ~/Hass/assistant_service_account.json
 touch ~/Traefik/acme.json
 
 chmod 600 ~/Traefik/acme.json
