@@ -64,6 +64,23 @@ spotify:
   client_id: !secret spotify_id
   client_secret: !secret spotify_secret
 
+google_assistant:
+  project_id: !secret assistant_project_id
+  service_account: !include assistant_service_account.json
+  report_state: true
+  exposed_domains:
+    - switch
+    - light
+  entity_config:
+    switch.kitchen:
+      name: CUSTOM_NAME_FOR_GOOGLE_ASSISTANT
+      aliases:
+        - BRIGHT_LIGHTS
+        - ENTRY_LIGHTS
+    light.living_room:
+      expose: false
+      room: LIVING_ROOM
+
 media_player:
 
 wake_on_lan:
