@@ -68,6 +68,7 @@ google_assistant:
   project_id: !secret assistant_project_id
   service_account: !include assistant_service_account.json
   report_state: true
+  expose_by_default: true
   exposed_domains:
     - switch
     - light
