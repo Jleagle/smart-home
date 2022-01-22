@@ -37,7 +37,7 @@ providers:
     swarmMode: false
     watch: true
   file:
-    filename: "/config/providers.yml"
+    filename: "/etc/traefik/providers.yml"
     watch: true
 
 certificatesResolvers:
