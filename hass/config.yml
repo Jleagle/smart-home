@@ -28,19 +28,19 @@ sensor:
   - platform: tautulli
     api_key: !secret tautulli
     host: "192.168.0.7:8181"
-#  - platform: radarr
-#    api_key: !secret radarr
-#    host: radarr
-#    port: 443
-#    monitored_conditions:
-#      - movies
-#      - upcoming
-#      - commands
-#      - diskspace
-#      - status
-#    days: 7
-#    ssl: true
-#    unit: GB
+  - platform: radarr
+    api_key: !secret radarr
+    host: radarr
+    port: 443
+    monitored_conditions:
+      - movies
+      - upcoming
+      - commands
+      - diskspace
+      - status
+    days: 7
+    ssl: true
+    unit: GB
 
 ffmpeg:
 
