@@ -24,7 +24,10 @@ http:
     - 192.168.0.7
     - ::1
 
-#sensor:
+sensor:
+  - platform: tautulli
+    api_key: !secret tautulli
+    host: "192.168.0.7:8181"
 #  - platform: radarr
 #    api_key: !secret radarr
 #    host: radarr
