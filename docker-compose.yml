@@ -204,6 +204,7 @@ services:
       - "traefik.port=1880"
       - "traefik.http.routers.nodered.entrypoints=websecure"
       - "traefik.http.routers.nodered.rule=Host(`nodered.jimeagle.com`)"
+      - "traefik.http.routers.nodered.middlewares=traefik-forward-auth"
       - "traefik.http.services.nodered.loadbalancer.server.port=1880"
       - "com.centurylinklabs.watchtower.enable=true"
 
