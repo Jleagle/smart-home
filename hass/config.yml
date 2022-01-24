@@ -90,6 +90,10 @@ media_player:
 
 wake_on_lan:
 
+switch:
+  - platform: wake_on_lan
+    mac: !secret pc_mac_address
+
 system_health:
 
 notify:
