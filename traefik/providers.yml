@@ -3,15 +3,15 @@ http:
     hass-route:
       rule: "Host(`hass.jimeagle.com`)"
       service: "hass-service"
-      middlewares:
-        - "traefik-forward-auth"
+      #      middlewares:
+      #        - "traefik-forward-auth"
       entryPoints:
         - "websecure"
     plex-route:
       rule: "Host(`plex.jimeagle.com`)"
       service: "plex-service"
-      middlewares:
-        - "traefik-forward-auth"
+      #      middlewares:
+      #        - "traefik-forward-auth"
       entryPoints:
         - "websecure"
 
