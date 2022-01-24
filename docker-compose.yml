@@ -332,7 +332,7 @@ services:
   traefik-forward-auth:
     hostname: "traefik-forward-auth"
     container_name: "traefik-forward-auth"
-    image: "thomseddon/traefik-forward-auth:2"
+    image: "thomseddon/traefik-forward-auth:latest"
     ports:
       - "4181:4181"
     environment:
