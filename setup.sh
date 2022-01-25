@@ -5,9 +5,11 @@ mkdir -p ~/DDNS
 mkdir -p ~/DoubleTake
 mkdir -p ~/FlexTV
 mkdir -p ~/Frigate
+mkdir -p ~/Grafana/Data
 mkdir -p ~/Hass
 mkdir -p ~/Hydra/Config
 mkdir -p ~/Hydra/Downloads
+mkdir -p ~/Influx
 mkdir -p ~/Media/Frigate
 mkdir -p ~/Media/Movies
 mkdir -p ~/Media/Television
@@ -27,6 +29,7 @@ mkdir -p ~/Traefik
 touch ~/Auth/config.json
 touch ~/DDNS/records.yaml
 touch ~/Frigate/config.yml
+touch ~/Grafana/key.json
 touch ~/Hass/assistant_service_account.json
 touch ~/Traefik/acme.json
 
