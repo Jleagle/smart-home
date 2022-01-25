@@ -135,6 +135,14 @@ services:
     labels:
       - "com.centurylinklabs.watchtower.enable=true"
 
+  #  plexmeta:
+  #    image: meisnate12/plex-meta-manager:latest
+  #    hostname: plexmeta
+  #    container_name: plexmeta
+  #    restart: "unless-stopped"
+  #    volumes:
+  #      - ${HOME}/PlexMeta:/config
+
   tautulli:
     image: "lscr.io/linuxserver/tautulli"
     hostname: "tautulli"
@@ -156,19 +164,28 @@ services:
       - "traefik.http.services.tautulli.loadbalancer.server.port=8181"
       - "com.centurylinklabs.watchtower.enable=true"
 
-  ddns:
-    container_name: "ddns"
-    hostname: "ddns"
-    image: "ghcr.io/jleagle/ddns:latest"
-    restart: "unless-stopped"
+  bazarr:
+    image: "linuxserver/bazarr:latest"
+    hostname: "bazarr"
+    container_name: "bazarr"
+    ports:
+      - "6767:6767"
     environment:
-      - "DO_KEY=${DDNS_DO_KEY}"
-      - "CF_KEY=${DDNS_CF_KEY}"
-      - "ONE_TIME=false"
-      - "ON_LOAD=true"
+      - "PUID=1000"
+      - "PGID=1000"
+      - "TZ=Europe/London"
+      - "UMASK_SET=022" #optional
     volumes:
-      - "${HOME}/DDNS/records.yaml:/root/records.yaml:ro"
+      - "${HOME}/Bazarr:/config"
+      - "${HOME}/Media/Movies:/movies"
+      - "${HOME}/Media/Television:/tv"
+    restart: "unless-stopped"
     labels:
+      - "traefik.enable=true"
+      - "traefik.port=6767"
+      - "traefik.http.routers.bazarr.entrypoints=websecure"
+      - "traefik.http.routers.bazarr.rule=Host(`bazarr.jimeagle.com`)"
+      - "traefik.http.services.bazarr.loadbalancer.server.port=6767"
       - "com.centurylinklabs.watchtower.enable=true"
 
   hass:
@@ -230,30 +247,6 @@ services:
       - "traefik.http.services.flextv.loadbalancer.server.port=80"
       - "com.centurylinklabs.watchtower.enable=true"
 
-  bazarr:
-    image: "linuxserver/bazarr:latest"
-    hostname: "bazarr"
-    container_name: "bazarr"
-    ports:
-      - "6767:6767"
-    environment:
-      - "PUID=1000"
-      - "PGID=1000"
-      - "TZ=Europe/London"
-      - "UMASK_SET=022" #optional
-    volumes:
-      - "${HOME}/Bazarr:/config"
-      - "${HOME}/Media/Movies:/movies"
-      - "${HOME}/Media/Television:/tv"
-    restart: "unless-stopped"
-    labels:
-      - "traefik.enable=true"
-      - "traefik.port=6767"
-      - "traefik.http.routers.bazarr.entrypoints=websecure"
-      - "traefik.http.routers.bazarr.rule=Host(`bazarr.jimeagle.com`)"
-      - "traefik.http.services.bazarr.loadbalancer.server.port=6767"
-      - "com.centurylinklabs.watchtower.enable=true"
-
   doubletake:
     container_name: "doubletake"
     hostname: "doubletake"
@@ -292,45 +285,6 @@ services:
       - "WATCHTOWER_NO_STARTUP_MESSAGE=true"
     labels:
       - "com.centurylinklabs.watchtower.enable=true"
-
-  #  plexmeta:
-  #    image: meisnate12/plex-meta-manager:latest
-  #    hostname: plexmeta
-  #    container_name: plexmeta
-  #    restart: "unless-stopped"
-  #    volumes:
-  #      - ${HOME}/PlexMeta:/config
-
-  #  frigate:
-  #    container_name: frigate
-  #    #privileged: true # this may not be necessary for all setups
-  #    restart: unless-stopped
-  #    image: blakeblackshear/frigate:0.9.4-amd64
-  #    shm_size: "64mb" # update for your cameras based on calculation above
-  #    #    devices:
-  #    #      - /dev/bus/usb:/dev/bus/usb # passes the USB Coral, needs to be modified for other versions
-  #    #      - /dev/apex_0:/dev/apex_0 # passes a PCIe Coral, follow driver instructions here https://coral.ai/docs/m2/get-started/#2a-on-linux
-  #    #      - /dev/dri/renderD128 # for intel hwaccel, needs to be updated for your hardware
-  #    volumes:
-  #      - ${HOME}/Frigate/config.yml:/config/config.yml:ro
-  #      - ${HOME}/Media/Frigate:/media/frigate
-  #      - /etc/localtime:/etc/localtime:ro
-  #      - type: tmpfs # Optional: 1GB of memory, reduces SSD/SD Card wear
-  #        target: /tmp/cache
-  #        tmpfs:
-  #          size: 1000000000
-  #    ports:
-  #      - "1935:1935" # RTMP feeds
-  #    environment:
-  #      FRIGATE_RTSP_PASSWORD: "password"
-  #    labels:
-  #      - "traefik.enable=true"
-  #      - "traefik.port=5000"
-  #      - "traefik.http.routers.frigate.entrypoints=websecure"
-  #      - "traefik.http.routers.frigate.rule=Host(`frigate.jimeagle.com`)"
-  #     - "traefik.http.routers.frigate.middlewares=traefik-forward-auth@file"
-  #      - "traefik.http.services.frigate.loadbalancer.server.port=5000"
-  #      - "com.centurylinklabs.watchtower.enable=true"
 
   traefik-forward-auth:
     hostname: "traefik-forward-auth"
@@ -374,3 +328,49 @@ services:
       - "traefik.http.routers.pihole.rule=Host(`pihole.jimeagle.com`)"
       - "traefik.http.services.pihole.loadbalancer.server.port=80"
       - "com.centurylinklabs.watchtower.enable=true"
+
+  ddns:
+    container_name: "ddns"
+    hostname: "ddns"
+    image: "ghcr.io/jleagle/ddns:latest"
+    restart: "unless-stopped"
+    environment:
+      - "DO_KEY=${DDNS_DO_KEY}"
+      - "CF_KEY=${DDNS_CF_KEY}"
+      - "ONE_TIME=false"
+      - "ON_LOAD=true"
+    volumes:
+      - "${HOME}/DDNS/records.yaml:/root/records.yaml:ro"
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"
+
+  #  frigate:
+  #    container_name: frigate
+  #    #privileged: true # this may not be necessary for all setups
+  #    restart: unless-stopped
+  #    image: blakeblackshear/frigate:0.9.4-amd64
+  #    shm_size: "64mb" # update for your cameras based on calculation above
+  #    #    devices:
+  #    #      - /dev/bus/usb:/dev/bus/usb # passes the USB Coral, needs to be modified for other versions
+  #    #      - /dev/apex_0:/dev/apex_0 # passes a PCIe Coral, follow driver instructions here https://coral.ai/docs/m2/get-started/#2a-on-linux
+  #    #      - /dev/dri/renderD128 # for intel hwaccel, needs to be updated for your hardware
+  #    volumes:
+  #      - ${HOME}/Frigate/config.yml:/config/config.yml:ro
+  #      - ${HOME}/Media/Frigate:/media/frigate
+  #      - /etc/localtime:/etc/localtime:ro
+  #      - type: tmpfs # Optional: 1GB of memory, reduces SSD/SD Card wear
+  #        target: /tmp/cache
+  #        tmpfs:
+  #          size: 1000000000
+  #    ports:
+  #      - "1935:1935" # RTMP feeds
+  #    environment:
+  #      FRIGATE_RTSP_PASSWORD: "password"
+  #    labels:
+  #      - "traefik.enable=true"
+  #      - "traefik.port=5000"
+  #      - "traefik.http.routers.frigate.entrypoints=websecure"
+  #      - "traefik.http.routers.frigate.rule=Host(`frigate.jimeagle.com`)"
+  #     - "traefik.http.routers.frigate.middlewares=traefik-forward-auth@file"
+  #      - "traefik.http.services.frigate.loadbalancer.server.port=5000"
+  #      - "com.centurylinklabs.watchtower.enable=true"
