@@ -297,8 +297,7 @@ services:
     privileged: true
     user: "root"
     environment:
-      - "INFLUX_USERNAME=${INFLUX_USERNAME}"
-      - "INFLUX_PASSWORD=${INFLUX_PASSWORD}"
+      - "INFLUX_TOKEN=${TELEGRAF_INFLUX_TOKEN}"
       - "HOST_MOUNT_PREFIX=/hostfs"
       - "HOST_PROC=/hostfs/proc"
     volumes:
