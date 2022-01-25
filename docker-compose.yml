@@ -262,7 +262,7 @@ services:
       - "traefik.port=3001"
       - "traefik.http.routers.grafana.entrypoints=websecure"
       - "traefik.http.routers.grafana.rule=Host(`grafana.jimeagle.com`)"
-      - "traefik.http.services.flextv.loadbalancer.server.port=3001"
+      - "traefik.http.services.grafana.loadbalancer.server.port=3001"
       - "com.centurylinklabs.watchtower.enable=true"
 
   grafana-image-renderer:
@@ -286,7 +286,7 @@ services:
       - "traefik.port=8086"
       - "traefik.http.routers.influx.entrypoints=websecure"
       - "traefik.http.routers.influx.rule=Host(`influx.jimeagle.com`)"
-      - "traefik.http.services.flextv.loadbalancer.server.port=8086"
+      - "traefik.http.services.influx.loadbalancer.server.port=8086"
       - "com.centurylinklabs.watchtower.enable=true"
 
   telegraf:
