@@ -247,6 +247,66 @@ services:
       - "traefik.http.services.flextv.loadbalancer.server.port=80"
       - "com.centurylinklabs.watchtower.enable=true"
 
+  grafana:
+    container_name: "grafana"
+    hostname: "grafana"
+    image: "grafana/grafana:latest"
+    restart: "unless-stopped"
+    user: "0"
+    volumes:
+      - "${HOME}/Grafana/key.json:/etc/grafana/key.json:ro"
+      - "${HOME}/Grafana/Data:/var/lib/grafana"
+      - "./grafana/grafana.ini:/etc/grafana/grafana.ini:ro"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.port=3001"
+      - "traefik.http.routers.grafana.entrypoints=websecure"
+      - "traefik.http.routers.grafana.rule=Host(`grafana.jimeagle.com`)"
+      - "traefik.http.services.flextv.loadbalancer.server.port=3001"
+      - "com.centurylinklabs.watchtower.enable=true"
+
+  grafana-image-renderer:
+    container_name: "grafana-image-renderer"
+    hostname: "grafana-image-renderer"
+    image: "grafana/grafana-image-renderer:latest"
+    restart: "unless-stopped"
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"
+
+  influx:
+    container_name: "influx"
+    hostname: "influx"
+    image: "influxdb:2.1"
+    restart: "unless-stopped"
+    volumes:
+      - "${HOME}/Influx:/var/lib/influxdb2"
+      - "./influx/config.yml:/etc/influxdb2/config.yml:ro"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.port=8086"
+      - "traefik.http.routers.influx.entrypoints=websecure"
+      - "traefik.http.routers.influx.rule=Host(`influx.jimeagle.com`)"
+      - "traefik.http.services.flextv.loadbalancer.server.port=8086"
+      - "com.centurylinklabs.watchtower.enable=true"
+
+  telegraf:
+    container_name: "telegraf"
+    hostname: "telegraf"
+    image: "telegraf:latest"
+    restart: "unless-stopped"
+    privileged: true
+    environment:
+      - "INFLUX_USERNAME=${INFLUX_USERNAME}"
+      - "INFLUX_PASSWORD=${INFLUX_PASSWORD}"
+      - "HOST_MOUNT_PREFIX=/hostfs"
+      - "HOST_PROC=/hostfs/proc"
+    volumes:
+      - "./telegraf/telegraf.conf:/etc/telegraf/telegraf.conf:ro"
+      - "/:/hostfs:ro"
+      - "/var/run/docker.sock:/var/run/docker.sock"
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"
+
   doubletake:
     container_name: "doubletake"
     hostname: "doubletake"
