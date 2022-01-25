@@ -279,7 +279,7 @@ services:
     image: "influxdb:2.1"
     restart: "unless-stopped"
     volumes:
-      - "${HOME}/Influx:/root/.influxdbv2"
+      - "${HOME}/Influx:/home/influxdb/.influxdbv2/"
       - "./influx/config.yml:/etc/influxdb2/config.yml:ro"
     labels:
       - "traefik.enable=true"
