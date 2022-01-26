@@ -2,6 +2,8 @@
 
 bash ./pull.sh
 
+. ~/.bashrc
+
 docker-compose pull
 docker-compose up --detach --remove-orphans
 docker system prune -a -f
