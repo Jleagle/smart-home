@@ -295,7 +295,7 @@ services:
     image: "telegraf:latest"
     restart: "unless-stopped"
     privileged: true
-    user: "telegraf:1000"
+    user: "telegraf:998"
     environment:
       - "INFLUX_TOKEN=${TELEGRAF_INFLUX_TOKEN}"
       - "HOST_MOUNT_PREFIX=/hostfs"
