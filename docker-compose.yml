@@ -299,6 +299,8 @@ services:
     user: "telegraf:${DOCKER_USER_ID}"
     environment:
       - "INFLUX_TOKEN=${TELEGRAF_INFLUX_TOKEN}"
+      - "MINECRAFT_SERVER=${MINECRAFT_SERVER}"
+      - "MINECRAFT_PORT=${MINECRAFT_PORT}"
       - "HOST_MOUNT_PREFIX=/hostfs"
       - "HOST_PROC=/hostfs/proc"
     volumes:
