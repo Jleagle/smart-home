@@ -25,13 +25,15 @@ http:
     - ::1
 
 sensor:
+
   - platform: tautulli
     api_key: !secret tautulli
     host: "192.168.0.7:8181"
+
   - platform: radarr
     api_key: !secret radarr
-    host: radarr
-    port: 443
+    host: 192.168.0.7
+    port: 7878
     monitored_conditions:
       - movies
       - upcoming
