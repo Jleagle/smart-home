@@ -1,2 +1,3 @@
 reporting-disabled: true
 pprof-disabled: true
+log-level: error
