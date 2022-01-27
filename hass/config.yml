@@ -46,12 +46,13 @@ sensor:
 
 ffmpeg:
 
-camera:
-  - platform: onvif
-    host: !secret camera_host
-    name: 'driveway'
-    username: admin
-    password: !secret camera_pass
+#camera:
+
+#  - platform: onvif
+#    host: !secret camera_host
+#    name: 'driveway'
+#    username: admin
+#    password: !secret camera_pass
 
 webostv:
   host: 192.168.0.9
