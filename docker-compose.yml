@@ -291,6 +291,20 @@ services:
       - "traefik.http.services.influx.loadbalancer.server.port=8086"
       - "com.centurylinklabs.watchtower.enable=true"
 
+  mosquitto:
+    container_name: mosquitto
+    hostname: mosquitto
+    image: eclipse-mosquitto:latest
+    ports:
+      - "1883:1883"
+      - "9001:9001"
+    volumes:
+      - ${HOME}/Mosquitto/Log/mosquitto.log:/mosquitto/log/mosquitto.log
+      - ${HOME}/Mosquitto/Data:/mosquitto/data
+      - ./mosquitto/mosquitto.conf:/mosquitto/config/mosquitto.conf
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"
+
   telegraf:
     container_name: "telegraf"
     hostname: "telegraf"

@@ -14,6 +14,8 @@ mkdir -p ~/Media/Frigate
 mkdir -p ~/Media/Movies
 mkdir -p ~/Media/Television
 mkdir -p ~/Media/YouTube
+mkdir -p ~/Mosquitto/Log
+mkdir -p ~/Mosquitto/Data
 mkdir -p ~/NodeRed
 mkdir -p ~/NZBGet/Config
 mkdir -p ~/NZBGet/Downloads
@@ -31,6 +33,7 @@ touch ~/DDNS/records.yaml
 touch ~/Frigate/config.yml
 touch ~/Grafana/key.json
 touch ~/Hass/assistant_service_account.json
+touch ~/Mosquitto/Log/mosquitto.log
 touch ~/Traefik/acme.json
 
 chmod 600 ~/Traefik/acme.json
