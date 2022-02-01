@@ -214,9 +214,12 @@ services:
     ports:
       - "1880:1880"
     environment:
+      - "HTTP_USERNAME=${NODE_RED_HTTP_USERNAME}"
+      - "HTTP_PASSWORD=${NODE_RED_HTTP_PASSWORD}"
       - "TZ=Europe/London"
     volumes:
       - "${HOME}/NodeRed:/data"
+      - "./node-red/settings.js:/data/settings.js"
     labels:
       - "traefik.enable=true"
       - "traefik.port=1880"
