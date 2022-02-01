@@ -205,8 +205,7 @@ services:
       - "com.centurylinklabs.watchtower.enable=true"
 
   nodered:
-    #image: "nodered/node-red:latest"
-    build: "./node-red/"
+    image: "nodered/node-red:latest"
     hostname: "nodered"
     container_name: "nodered"
     restart: "unless-stopped"
