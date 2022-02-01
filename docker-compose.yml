@@ -219,7 +219,7 @@ services:
       - "TZ=Europe/London"
     volumes:
       - "${HOME}/NodeRed:/data"
-      - "./node-red/settings.js:/data/settings.js"
+      - "./node-red/settings.js:/data/settings.js:ro"
     labels:
       - "traefik.enable=true"
       - "traefik.port=1880"
