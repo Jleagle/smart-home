@@ -2,23 +2,290 @@ version: '3'
 
 services:
 
-  traefik:
-    container_name: "traefik"
-    hostname: "traefik"
-    image: "traefik:v2.6"
+  bazarr:
+    image: "linuxserver/bazarr:latest"
+    hostname: "bazarr"
+    container_name: "bazarr"
+    ports:
+      - "6767:6767"
+    environment:
+      - "PUID=1000"
+      - "PGID=1000"
+      - "TZ=Europe/London"
+      - "UMASK_SET=022" #optional
+    volumes:
+      - "${HOME}/Bazarr:/config"
+      - "${HOME}/Media/Movies:/movies"
+      - "${HOME}/Media/Television:/tv"
+    restart: "unless-stopped"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.port=6767"
+      - "traefik.http.routers.bazarr.entrypoints=websecure"
+      - "traefik.http.routers.bazarr.rule=Host(`bazarr.jimeagle.com`)"
+      - "traefik.http.services.bazarr.loadbalancer.server.port=6767"
+
+  ddns:
+    container_name: "ddns"
+    hostname: "ddns"
+    image: "ghcr.io/jleagle/ddns:latest"
+    restart: "unless-stopped"
+    environment:
+      - "DO_KEY=${DDNS_DO_KEY}"
+      - "CF_KEY=${DDNS_CF_KEY}"
+      - "ONE_TIME=false"
+      - "ON_LOAD=true"
+    volumes:
+      - "${HOME}/DDNS/records.yaml:/root/records.yaml:ro"
+
+  doubletake:
+    container_name: "doubletake"
+    hostname: "doubletake"
+    image: "jakowenko/double-take"
+    restart: "unless-stopped"
+    ports:
+      - "3000:3000"
+    volumes:
+      - "${HOME}/DoubleTake:/.storage"
+      - "./doubletake/config.yml:/.storage/config.yml"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.port=3000"
+      - "traefik.http.routers.doubletake.entrypoints=websecure"
+      - "traefik.http.routers.doubletake.rule=Host(`doubletake.jimeagle.com`)"
+      - "traefik.http.routers.doubletake.middlewares=traefik-forward-auth@file"
+      - "traefik.http.services.doubletake.loadbalancer.server.port=3000"
+
+  flextv:
+    image: "digitalhigh/flextv:latest"
+    hostname: "flextv"
+    container_name: "flextv"
+    restart: "unless-stopped"
+    ports:
+      - "82:80"
+    volumes:
+      - "${HOME}/FlexTV:/config"
+    environment:
+      - "PUID=1000"
+      - "PGID=1000"
+      - "TZ=Europe/London"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.port=80"
+      - "traefik.http.routers.flextv.entrypoints=websecure"
+      - "traefik.http.routers.flextv.rule=Host(`flextv.jimeagle.com`)"
+      - "traefik.http.routers.flextv.middlewares=traefik-forward-auth@file"
+      - "traefik.http.services.flextv.loadbalancer.server.port=80"
+
+  #  frigate:
+  #    container_name: frigate
+  #    #privileged: true # this may not be necessary for all setups
+  #    restart: unless-stopped
+  #    image: blakeblackshear/frigate:0.9.4-amd64
+  #    shm_size: "64mb" # update for your cameras based on calculation above
+  #    #    devices:
+  #    #      - /dev/bus/usb:/dev/bus/usb # passes the USB Coral, needs to be modified for other versions
+  #    #      - /dev/apex_0:/dev/apex_0 # passes a PCIe Coral, follow driver instructions here https://coral.ai/docs/m2/get-started/#2a-on-linux
+  #    #      - /dev/dri/renderD128 # for intel hwaccel, needs to be updated for your hardware
+  #    volumes:
+  #      - ${HOME}/Frigate/config.yml:/config/config.yml:ro
+  #      - ${HOME}/Media/Frigate:/media/frigate
+  #      - /etc/localtime:/etc/localtime:ro
+  #      - type: tmpfs # Optional: 1GB of memory, reduces SSD/SD Card wear
+  #        target: /tmp/cache
+  #        tmpfs:
+  #          size: 1000000000
+  #    ports:
+  #      - "1935:1935" # RTMP feeds
+  #    environment:
+  #      FRIGATE_RTSP_PASSWORD: "password"
+  #    labels:
+  #      - "traefik.enable=true"
+  #      - "traefik.port=5000"
+  #      - "traefik.http.routers.frigate.entrypoints=websecure"
+  #      - "traefik.http.routers.frigate.rule=Host(`frigate.jimeagle.com`)"
+  #     - "traefik.http.routers.frigate.middlewares=traefik-forward-auth@file"
+  #      - "traefik.http.services.frigate.loadbalancer.server.port=5000"
+
+  grafana:
+    container_name: "grafana"
+    hostname: "grafana"
+    image: "grafana/grafana:main"
+    restart: "unless-stopped"
+    user: "0"
+    volumes:
+      - "${HOME}/Grafana/key.json:/etc/grafana/key.json:ro"
+      - "${HOME}/Grafana/Data:/var/lib/grafana"
+      - "./grafana/grafana.ini:/etc/grafana/grafana.ini:ro"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.port=3001"
+      - "traefik.http.routers.grafana.entrypoints=websecure"
+      - "traefik.http.routers.grafana.rule=Host(`grafana.jimeagle.com`)"
+      - "traefik.http.services.grafana.loadbalancer.server.port=3001"
+
+  grafana-image-renderer:
+    container_name: "grafana-image-renderer"
+    hostname: "grafana-image-renderer"
+    image: "grafana/grafana-image-renderer:latest"
+    restart: "unless-stopped"
+
+  hass:
+    image: "homeassistant/home-assistant:latest"
+    hostname: "hass"
+    container_name: "hass"
     restart: "unless-stopped"
     network_mode: "host"
-    #    ports:
-    #      - "80:80"
-    #      - "443:443"
-    environment:
-      CLOUDFLARE_DNS_API_TOKEN: "${CLOUDFLARE_DNS_API_TOKEN}"
-      CLOUDFLARE_ZONE_API_TOKEN: "${CLOUDFLARE_ZONE_API_TOKEN}"
+    privileged: true
     volumes:
-      - "${HOME}/Traefik/acme.json:/acme.json"
-      - "./traefik/traefik.yml:/etc/traefik/traefik.yml:ro"
-      - "./traefik/providers.yml:/etc/traefik/providers.yml:ro"
-      - "/var/run/docker.sock:/var/run/docker.sock:ro"
+      - "${HOME}/Hass:/config"
+      - "./hass/config.yml:/config/configuration.yaml"
+      - "/etc/localtime:/etc/localtime:ro"
+    environment:
+      - "TZ=Europe/London"
+
+  hydra:
+    image: "linuxserver/nzbhydra2:latest"
+    hostname: "hydra"
+    container_name: "hydra"
+    restart: "unless-stopped"
+    ports:
+      - "5076:5076"
+    volumes:
+      - "${HOME}/Hydra/Config:/config"
+      - "${HOME}/Hydra/Downloads:/downloads"
+    environment:
+      - "PGID=1000"
+      - "PUID=1000"
+      - "TZ=Europe/London"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.port=5076"
+      - "traefik.http.routers.hydra.entrypoints=websecure"
+      - "traefik.http.routers.hydra.rule=Host(`hydra.jimeagle.com`)"
+      - "traefik.http.services.hydra.loadbalancer.server.port=5076"
+
+  influx:
+    container_name: "influx"
+    hostname: "influx"
+    image: "influxdb:2.1"
+    restart: "unless-stopped"
+    volumes:
+      - "${HOME}/Influx:/home/influxdb/.influxdbv2/"
+      - "./influx/config.yml:/etc/influxdb2/config.yml:ro"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.port=8086"
+      - "traefik.http.routers.influx.entrypoints=websecure"
+      - "traefik.http.routers.influx.rule=Host(`influx.jimeagle.com`)"
+      - "traefik.http.services.influx.loadbalancer.server.port=8086"
+
+  mosquitto:
+    container_name: mosquitto
+    hostname: mosquitto
+    image: eclipse-mosquitto:latest
+    ports:
+      - "1883:1883"
+    volumes:
+      - ${HOME}/Mosquitto/Log/mosquitto.log:/mosquitto/log/mosquitto.log
+      - ${HOME}/Mosquitto/Data:/mosquitto/data
+      - ./mosquitto/mosquitto.conf:/mosquitto/config/mosquitto.conf
+
+  nodered:
+    image: "nodered/node-red:latest"
+    hostname: "nodered"
+    container_name: "nodered"
+    restart: "unless-stopped"
+    user: "root"
+    ports:
+      - "1880:1880"
+    environment:
+      - "HTTP_USERNAME=${NODE_RED_HTTP_USERNAME}"
+      - "HTTP_PASSWORD=${NODE_RED_HTTP_PASSWORD}"
+      - "TZ=Europe/London"
+    volumes:
+      - "${HOME}/NodeRed:/data"
+      - "./node-red/settings.js:/data/settings.js:ro"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.port=1880"
+      - "traefik.http.routers.nodered.entrypoints=websecure"
+      - "traefik.http.routers.nodered.rule=Host(`nodered.jimeagle.com`)"
+      - "traefik.http.services.nodered.loadbalancer.server.port=1880"
+
+  nzbget:
+    image: "linuxserver/nzbget:latest"
+    hostname: "nzbget"
+    container_name: "nzbget"
+    restart: "unless-stopped"
+    ports:
+      - "6789:6789"
+    environment:
+      - "PGID=1000"
+      - "PUID=1000"
+      - "TZ=Europe/London"
+    volumes:
+      - "${HOME}/NZBGet/Config:/config"
+      - "${HOME}/NZBGet/Downloads:/downloads"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.port=6789"
+      - "traefik.http.routers.nzbget.entrypoints=websecure"
+      - "traefik.http.routers.nzbget.rule=Host(`nzbget.jimeagle.com`)"
+      - "traefik.http.services.nzbget.loadbalancer.server.port=6789"
+
+  pihole:
+    image: "pihole/pihole:latest"
+    hostname: "pihole"
+    container_name: "pihole"
+    restart: "unless-stopped"
+    ports:
+      - "53:53/tcp"
+      - "53:53/udp"
+      - "67:67/udp"
+      - "81:80"
+    environment:
+      TZ: "Europe/London"
+      ServerIP: "192.168.0.7"
+      WEBPASSWORD: "${PIHOLE_PASSWORD}"
+      ADMIN_EMAIL: "jimeagle@gmail.com"
+      PIHOLE_DNS_: "1.1.1.1;8.8.8.8"
+      VIRTUAL_HOST: "pihole.jimeagle.com"
+    volumes:
+      - "${HOME}/PiHole/:/etc/pihole/"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.port=80"
+      - "traefik.http.routers.pihole.entrypoints=websecure"
+      - "traefik.http.routers.pihole.rule=Host(`pihole.jimeagle.com`)"
+      - "traefik.http.services.pihole.loadbalancer.server.port=80"
+
+  plex:
+    image: "linuxserver/plex:latest"
+    hostname: "plex"
+    container_name: "plex"
+    network_mode: "host"
+    restart: "unless-stopped"
+    environment:
+      - "PGID=1000"
+      - "PUID=1000"
+      - "TZ=Europe/London"
+      - "VERSION=latest"
+    volumes:
+      - "${HOME}/Plex/Transcoding:/transcode"
+      - "${HOME}/Plex/Config:/config"
+      - "${HOME}/Media/Television:/data/tvshows"
+      - "${HOME}/Media/Movies:/data/movies"
+      - "${HOME}/Media/YouTube:/data/youtube"
+      - "/dev/dri:/dev/dri" # Quicksync
+
+  #  plexmeta:
+  #    image: meisnate12/plex-meta-manager:latest
+  #    hostname: plexmeta
+  #    container_name: plexmeta
+  #    restart: "unless-stopped"
+  #    volumes:
+  #      - ${HOME}/PlexMeta:/config
 
   radarr:
     image: "linuxserver/radarr:latest"
@@ -66,75 +333,6 @@ services:
       - "traefik.http.routers.sonarr.rule=Host(`sonarr.jimeagle.com`)"
       - "traefik.http.services.sonarr.loadbalancer.server.port=8989"
 
-  hydra:
-    image: "linuxserver/nzbhydra2:latest"
-    hostname: "hydra"
-    container_name: "hydra"
-    restart: "unless-stopped"
-    ports:
-      - "5076:5076"
-    volumes:
-      - "${HOME}/Hydra/Config:/config"
-      - "${HOME}/Hydra/Downloads:/downloads"
-    environment:
-      - "PGID=1000"
-      - "PUID=1000"
-      - "TZ=Europe/London"
-    labels:
-      - "traefik.enable=true"
-      - "traefik.port=5076"
-      - "traefik.http.routers.hydra.entrypoints=websecure"
-      - "traefik.http.routers.hydra.rule=Host(`hydra.jimeagle.com`)"
-      - "traefik.http.services.hydra.loadbalancer.server.port=5076"
-
-  nzbget:
-    image: "linuxserver/nzbget:latest"
-    hostname: "nzbget"
-    container_name: "nzbget"
-    restart: "unless-stopped"
-    ports:
-      - "6789:6789"
-    environment:
-      - "PGID=1000"
-      - "PUID=1000"
-      - "TZ=Europe/London"
-    volumes:
-      - "${HOME}/NZBGet/Config:/config"
-      - "${HOME}/NZBGet/Downloads:/downloads"
-    labels:
-      - "traefik.enable=true"
-      - "traefik.port=6789"
-      - "traefik.http.routers.nzbget.entrypoints=websecure"
-      - "traefik.http.routers.nzbget.rule=Host(`nzbget.jimeagle.com`)"
-      - "traefik.http.services.nzbget.loadbalancer.server.port=6789"
-
-  plex:
-    image: "linuxserver/plex:latest"
-    hostname: "plex"
-    container_name: "plex"
-    network_mode: "host"
-    restart: "unless-stopped"
-    environment:
-      - "PGID=1000"
-      - "PUID=1000"
-      - "TZ=Europe/London"
-      - "VERSION=latest"
-    volumes:
-      - "${HOME}/Plex/Transcoding:/transcode"
-      - "${HOME}/Plex/Config:/config"
-      - "${HOME}/Media/Television:/data/tvshows"
-      - "${HOME}/Media/Movies:/data/movies"
-      - "${HOME}/Media/YouTube:/data/youtube"
-      - "/dev/dri:/dev/dri" # Quicksync
-
-  #  plexmeta:
-  #    image: meisnate12/plex-meta-manager:latest
-  #    hostname: plexmeta
-  #    container_name: plexmeta
-  #    restart: "unless-stopped"
-  #    volumes:
-  #      - ${HOME}/PlexMeta:/config
-
   tautulli:
     image: "lscr.io/linuxserver/tautulli"
     hostname: "tautulli"
@@ -155,135 +353,6 @@ services:
       - "traefik.http.routers.tautulli.rule=Host(`tautulli.jimeagle.com`)"
       - "traefik.http.services.tautulli.loadbalancer.server.port=8181"
 
-  bazarr:
-    image: "linuxserver/bazarr:latest"
-    hostname: "bazarr"
-    container_name: "bazarr"
-    ports:
-      - "6767:6767"
-    environment:
-      - "PUID=1000"
-      - "PGID=1000"
-      - "TZ=Europe/London"
-      - "UMASK_SET=022" #optional
-    volumes:
-      - "${HOME}/Bazarr:/config"
-      - "${HOME}/Media/Movies:/movies"
-      - "${HOME}/Media/Television:/tv"
-    restart: "unless-stopped"
-    labels:
-      - "traefik.enable=true"
-      - "traefik.port=6767"
-      - "traefik.http.routers.bazarr.entrypoints=websecure"
-      - "traefik.http.routers.bazarr.rule=Host(`bazarr.jimeagle.com`)"
-      - "traefik.http.services.bazarr.loadbalancer.server.port=6767"
-
-  hass:
-    image: "homeassistant/home-assistant:latest"
-    hostname: "hass"
-    container_name: "hass"
-    restart: "unless-stopped"
-    network_mode: "host"
-    privileged: true
-    volumes:
-      - "${HOME}/Hass:/config"
-      - "./hass/config.yml:/config/configuration.yaml"
-      - "/etc/localtime:/etc/localtime:ro"
-    environment:
-      - "TZ=Europe/London"
-
-  nodered:
-    image: "nodered/node-red:latest"
-    hostname: "nodered"
-    container_name: "nodered"
-    restart: "unless-stopped"
-    user: "root"
-    ports:
-      - "1880:1880"
-    environment:
-      - "HTTP_USERNAME=${NODE_RED_HTTP_USERNAME}"
-      - "HTTP_PASSWORD=${NODE_RED_HTTP_PASSWORD}"
-      - "TZ=Europe/London"
-    volumes:
-      - "${HOME}/NodeRed:/data"
-      - "./node-red/settings.js:/data/settings.js:ro"
-    labels:
-      - "traefik.enable=true"
-      - "traefik.port=1880"
-      - "traefik.http.routers.nodered.entrypoints=websecure"
-      - "traefik.http.routers.nodered.rule=Host(`nodered.jimeagle.com`)"
-      - "traefik.http.services.nodered.loadbalancer.server.port=1880"
-
-  flextv:
-    image: "digitalhigh/flextv:latest"
-    hostname: "flextv"
-    container_name: "flextv"
-    restart: "unless-stopped"
-    ports:
-      - "82:80"
-    volumes:
-      - "${HOME}/FlexTV:/config"
-    environment:
-      - "PUID=1000"
-      - "PGID=1000"
-      - "TZ=Europe/London"
-    labels:
-      - "traefik.enable=true"
-      - "traefik.port=80"
-      - "traefik.http.routers.flextv.entrypoints=websecure"
-      - "traefik.http.routers.flextv.rule=Host(`flextv.jimeagle.com`)"
-      - "traefik.http.routers.flextv.middlewares=traefik-forward-auth@file"
-      - "traefik.http.services.flextv.loadbalancer.server.port=80"
-
-  grafana:
-    container_name: "grafana"
-    hostname: "grafana"
-    image: "grafana/grafana:main"
-    restart: "unless-stopped"
-    user: "0"
-    volumes:
-      - "${HOME}/Grafana/key.json:/etc/grafana/key.json:ro"
-      - "${HOME}/Grafana/Data:/var/lib/grafana"
-      - "./grafana/grafana.ini:/etc/grafana/grafana.ini:ro"
-    labels:
-      - "traefik.enable=true"
-      - "traefik.port=3001"
-      - "traefik.http.routers.grafana.entrypoints=websecure"
-      - "traefik.http.routers.grafana.rule=Host(`grafana.jimeagle.com`)"
-      - "traefik.http.services.grafana.loadbalancer.server.port=3001"
-
-  grafana-image-renderer:
-    container_name: "grafana-image-renderer"
-    hostname: "grafana-image-renderer"
-    image: "grafana/grafana-image-renderer:latest"
-    restart: "unless-stopped"
-
-  influx:
-    container_name: "influx"
-    hostname: "influx"
-    image: "influxdb:2.1"
-    restart: "unless-stopped"
-    volumes:
-      - "${HOME}/Influx:/home/influxdb/.influxdbv2/"
-      - "./influx/config.yml:/etc/influxdb2/config.yml:ro"
-    labels:
-      - "traefik.enable=true"
-      - "traefik.port=8086"
-      - "traefik.http.routers.influx.entrypoints=websecure"
-      - "traefik.http.routers.influx.rule=Host(`influx.jimeagle.com`)"
-      - "traefik.http.services.influx.loadbalancer.server.port=8086"
-
-  mosquitto:
-    container_name: mosquitto
-    hostname: mosquitto
-    image: eclipse-mosquitto:latest
-    ports:
-      - "1883:1883"
-    volumes:
-      - ${HOME}/Mosquitto/Log/mosquitto.log:/mosquitto/log/mosquitto.log
-      - ${HOME}/Mosquitto/Data:/mosquitto/data
-      - ./mosquitto/mosquitto.conf:/mosquitto/config/mosquitto.conf
-
   telegraf:
     container_name: "telegraf"
     hostname: "telegraf"
@@ -302,23 +371,23 @@ services:
       - "/:/hostfs:ro"
       - "/var/run/docker.sock:/var/run/docker.sock"
 
-  doubletake:
-    container_name: "doubletake"
-    hostname: "doubletake"
-    image: "jakowenko/double-take"
+  traefik:
+    container_name: "traefik"
+    hostname: "traefik"
+    image: "traefik:v2.6"
     restart: "unless-stopped"
-    ports:
-      - "3000:3000"
+    network_mode: "host"
+    #    ports:
+    #      - "80:80"
+    #      - "443:443"
+    environment:
+      CLOUDFLARE_DNS_API_TOKEN: "${CLOUDFLARE_DNS_API_TOKEN}"
+      CLOUDFLARE_ZONE_API_TOKEN: "${CLOUDFLARE_ZONE_API_TOKEN}"
     volumes:
-      - "${HOME}/DoubleTake:/.storage"
-      - "./doubletake/config.yml:/.storage/config.yml"
-    labels:
-      - "traefik.enable=true"
-      - "traefik.port=3000"
-      - "traefik.http.routers.doubletake.entrypoints=websecure"
-      - "traefik.http.routers.doubletake.rule=Host(`doubletake.jimeagle.com`)"
-      - "traefik.http.routers.doubletake.middlewares=traefik-forward-auth@file"
-      - "traefik.http.services.doubletake.loadbalancer.server.port=3000"
+      - "${HOME}/Traefik/acme.json:/acme.json"
+      - "./traefik/traefik.yml:/etc/traefik/traefik.yml:ro"
+      - "./traefik/providers.yml:/etc/traefik/providers.yml:ro"
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
 
   traefik-forward-auth:
     hostname: "traefik-forward-auth"
@@ -335,72 +404,3 @@ services:
       - "INSECURE_COOKIE=true"
     labels:
       - "traefik.http.services.traefik-forward-auth.loadbalancer.server.port=4181"
-
-  pihole:
-    image: "pihole/pihole:latest"
-    hostname: "pihole"
-    container_name: "pihole"
-    restart: "unless-stopped"
-    ports:
-      - "53:53/tcp"
-      - "53:53/udp"
-      - "67:67/udp"
-      - "81:80"
-    environment:
-      TZ: "Europe/London"
-      ServerIP: "192.168.0.7"
-      WEBPASSWORD: "${PIHOLE_PASSWORD}"
-      ADMIN_EMAIL: "jimeagle@gmail.com"
-      PIHOLE_DNS_: "1.1.1.1;8.8.8.8"
-      VIRTUAL_HOST: "pihole.jimeagle.com"
-    volumes:
-      - "${HOME}/PiHole/:/etc/pihole/"
-    labels:
-      - "traefik.enable=true"
-      - "traefik.port=80"
-      - "traefik.http.routers.pihole.entrypoints=websecure"
-      - "traefik.http.routers.pihole.rule=Host(`pihole.jimeagle.com`)"
-      - "traefik.http.services.pihole.loadbalancer.server.port=80"
-
-  ddns:
-    container_name: "ddns"
-    hostname: "ddns"
-    image: "ghcr.io/jleagle/ddns:latest"
-    restart: "unless-stopped"
-    environment:
-      - "DO_KEY=${DDNS_DO_KEY}"
-      - "CF_KEY=${DDNS_CF_KEY}"
-      - "ONE_TIME=false"
-      - "ON_LOAD=true"
-    volumes:
-      - "${HOME}/DDNS/records.yaml:/root/records.yaml:ro"
-
-  #  frigate:
-  #    container_name: frigate
-  #    #privileged: true # this may not be necessary for all setups
-  #    restart: unless-stopped
-  #    image: blakeblackshear/frigate:0.9.4-amd64
-  #    shm_size: "64mb" # update for your cameras based on calculation above
-  #    #    devices:
-  #    #      - /dev/bus/usb:/dev/bus/usb # passes the USB Coral, needs to be modified for other versions
-  #    #      - /dev/apex_0:/dev/apex_0 # passes a PCIe Coral, follow driver instructions here https://coral.ai/docs/m2/get-started/#2a-on-linux
-  #    #      - /dev/dri/renderD128 # for intel hwaccel, needs to be updated for your hardware
-  #    volumes:
-  #      - ${HOME}/Frigate/config.yml:/config/config.yml:ro
-  #      - ${HOME}/Media/Frigate:/media/frigate
-  #      - /etc/localtime:/etc/localtime:ro
-  #      - type: tmpfs # Optional: 1GB of memory, reduces SSD/SD Card wear
-  #        target: /tmp/cache
-  #        tmpfs:
-  #          size: 1000000000
-  #    ports:
-  #      - "1935:1935" # RTMP feeds
-  #    environment:
-  #      FRIGATE_RTSP_PASSWORD: "password"
-  #    labels:
-  #      - "traefik.enable=true"
-  #      - "traefik.port=5000"
-  #      - "traefik.http.routers.frigate.entrypoints=websecure"
-  #      - "traefik.http.routers.frigate.rule=Host(`frigate.jimeagle.com`)"
-  #     - "traefik.http.routers.frigate.middlewares=traefik-forward-auth@file"
-  #      - "traefik.http.services.frigate.loadbalancer.server.port=5000"
