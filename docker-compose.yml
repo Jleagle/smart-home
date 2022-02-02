@@ -19,8 +19,6 @@ services:
       - "./traefik/traefik.yml:/etc/traefik/traefik.yml:ro"
       - "./traefik/providers.yml:/etc/traefik/providers.yml:ro"
       - "/var/run/docker.sock:/var/run/docker.sock:ro"
-    labels:
-      - "com.centurylinklabs.watchtower.enable=true"
 
   radarr:
     image: "linuxserver/radarr:latest"
@@ -44,7 +42,6 @@ services:
       - "traefik.http.routers.radarr.entrypoints=websecure"
       - "traefik.http.routers.radarr.rule=Host(`radarr.jimeagle.com`)"
       - "traefik.http.services.radarr.loadbalancer.server.port=7878"
-      - "com.centurylinklabs.watchtower.enable=true"
 
   sonarr:
     image: "linuxserver/sonarr:latest"
@@ -68,7 +65,6 @@ services:
       - "traefik.http.routers.sonarr.entrypoints=websecure"
       - "traefik.http.routers.sonarr.rule=Host(`sonarr.jimeagle.com`)"
       - "traefik.http.services.sonarr.loadbalancer.server.port=8989"
-      - "com.centurylinklabs.watchtower.enable=true"
 
   hydra:
     image: "linuxserver/nzbhydra2:latest"
@@ -90,7 +86,6 @@ services:
       - "traefik.http.routers.hydra.entrypoints=websecure"
       - "traefik.http.routers.hydra.rule=Host(`hydra.jimeagle.com`)"
       - "traefik.http.services.hydra.loadbalancer.server.port=5076"
-      - "com.centurylinklabs.watchtower.enable=true"
 
   nzbget:
     image: "linuxserver/nzbget:latest"
@@ -112,7 +107,6 @@ services:
       - "traefik.http.routers.nzbget.entrypoints=websecure"
       - "traefik.http.routers.nzbget.rule=Host(`nzbget.jimeagle.com`)"
       - "traefik.http.services.nzbget.loadbalancer.server.port=6789"
-      - "com.centurylinklabs.watchtower.enable=true"
 
   plex:
     image: "linuxserver/plex:latest"
@@ -132,8 +126,6 @@ services:
       - "${HOME}/Media/Movies:/data/movies"
       - "${HOME}/Media/YouTube:/data/youtube"
       - "/dev/dri:/dev/dri" # Quicksync
-    labels:
-      - "com.centurylinklabs.watchtower.enable=true"
 
   #  plexmeta:
   #    image: meisnate12/plex-meta-manager:latest
@@ -162,7 +154,6 @@ services:
       - "traefik.http.routers.tautulli.entrypoints=websecure"
       - "traefik.http.routers.tautulli.rule=Host(`tautulli.jimeagle.com`)"
       - "traefik.http.services.tautulli.loadbalancer.server.port=8181"
-      - "com.centurylinklabs.watchtower.enable=true"
 
   bazarr:
     image: "linuxserver/bazarr:latest"
@@ -186,7 +177,6 @@ services:
       - "traefik.http.routers.bazarr.entrypoints=websecure"
       - "traefik.http.routers.bazarr.rule=Host(`bazarr.jimeagle.com`)"
       - "traefik.http.services.bazarr.loadbalancer.server.port=6767"
-      - "com.centurylinklabs.watchtower.enable=true"
 
   hass:
     image: "homeassistant/home-assistant:latest"
@@ -201,8 +191,6 @@ services:
       - "/etc/localtime:/etc/localtime:ro"
     environment:
       - "TZ=Europe/London"
-    labels:
-      - "com.centurylinklabs.watchtower.enable=true"
 
   nodered:
     image: "nodered/node-red:latest"
@@ -225,7 +213,6 @@ services:
       - "traefik.http.routers.nodered.entrypoints=websecure"
       - "traefik.http.routers.nodered.rule=Host(`nodered.jimeagle.com`)"
       - "traefik.http.services.nodered.loadbalancer.server.port=1880"
-      - "com.centurylinklabs.watchtower.enable=true"
 
   flextv:
     image: "digitalhigh/flextv:latest"
@@ -247,7 +234,6 @@ services:
       - "traefik.http.routers.flextv.rule=Host(`flextv.jimeagle.com`)"
       - "traefik.http.routers.flextv.middlewares=traefik-forward-auth@file"
       - "traefik.http.services.flextv.loadbalancer.server.port=80"
-      - "com.centurylinklabs.watchtower.enable=true"
 
   grafana:
     container_name: "grafana"
@@ -265,15 +251,12 @@ services:
       - "traefik.http.routers.grafana.entrypoints=websecure"
       - "traefik.http.routers.grafana.rule=Host(`grafana.jimeagle.com`)"
       - "traefik.http.services.grafana.loadbalancer.server.port=3001"
-      - "com.centurylinklabs.watchtower.enable=true"
 
   grafana-image-renderer:
     container_name: "grafana-image-renderer"
     hostname: "grafana-image-renderer"
     image: "grafana/grafana-image-renderer:latest"
     restart: "unless-stopped"
-    labels:
-      - "com.centurylinklabs.watchtower.enable=true"
 
   influx:
     container_name: "influx"
@@ -289,7 +272,6 @@ services:
       - "traefik.http.routers.influx.entrypoints=websecure"
       - "traefik.http.routers.influx.rule=Host(`influx.jimeagle.com`)"
       - "traefik.http.services.influx.loadbalancer.server.port=8086"
-      - "com.centurylinklabs.watchtower.enable=true"
 
   mosquitto:
     container_name: mosquitto
@@ -301,8 +283,6 @@ services:
       - ${HOME}/Mosquitto/Log/mosquitto.log:/mosquitto/log/mosquitto.log
       - ${HOME}/Mosquitto/Data:/mosquitto/data
       - ./mosquitto/mosquitto.conf:/mosquitto/config/mosquitto.conf
-    labels:
-      - "com.centurylinklabs.watchtower.enable=true"
 
   telegraf:
     container_name: "telegraf"
@@ -321,8 +301,6 @@ services:
       - "./telegraf/telegraf.conf:/etc/telegraf/telegraf.conf:ro"
       - "/:/hostfs:ro"
       - "/var/run/docker.sock:/var/run/docker.sock"
-    labels:
-      - "com.centurylinklabs.watchtower.enable=true"
 
   doubletake:
     container_name: "doubletake"
@@ -341,27 +319,6 @@ services:
       - "traefik.http.routers.doubletake.rule=Host(`doubletake.jimeagle.com`)"
       - "traefik.http.routers.doubletake.middlewares=traefik-forward-auth@file"
       - "traefik.http.services.doubletake.loadbalancer.server.port=3000"
-      - "com.centurylinklabs.watchtower.enable=true"
-
-  watchtower:
-    container_name: "watchtower"
-    hostname: "watchtower"
-    image: "containrrr/watchtower:latest"
-    restart: "unless-stopped"
-    volumes:
-      - "/var/run/docker.sock:/var/run/docker.sock"
-      - "/etc/localtime:/etc/localtime:ro"
-    environment:
-      - "TZ=Europe/London"
-      - "WATCHTOWER_CLEANUP=true"
-      - "WATCHTOWER_NOTIFICATIONS=slack"
-      - "WATCHTOWER_NOTIFICATION_SLACK_HOOK_URL=${WATCHTOWER_WEBHOOK}"
-      - "WATCHTOWER_NOTIFICATIONS_LEVEL=error"
-      - "WATCHTOWER_SCHEDULE=0 0 0 * * *"
-      - "WATCHTOWER_LABEL_ENABLE=true"
-      - "WATCHTOWER_NO_STARTUP_MESSAGE=true"
-    labels:
-      - "com.centurylinklabs.watchtower.enable=true"
 
   traefik-forward-auth:
     hostname: "traefik-forward-auth"
@@ -404,7 +361,6 @@ services:
       - "traefik.http.routers.pihole.entrypoints=websecure"
       - "traefik.http.routers.pihole.rule=Host(`pihole.jimeagle.com`)"
       - "traefik.http.services.pihole.loadbalancer.server.port=80"
-      - "com.centurylinklabs.watchtower.enable=true"
 
   ddns:
     container_name: "ddns"
@@ -418,8 +374,6 @@ services:
       - "ON_LOAD=true"
     volumes:
       - "${HOME}/DDNS/records.yaml:/root/records.yaml:ro"
-    labels:
-      - "com.centurylinklabs.watchtower.enable=true"
 
   #  frigate:
   #    container_name: frigate
@@ -450,4 +404,3 @@ services:
   #      - "traefik.http.routers.frigate.rule=Host(`frigate.jimeagle.com`)"
   #     - "traefik.http.routers.frigate.middlewares=traefik-forward-auth@file"
   #      - "traefik.http.services.frigate.loadbalancer.server.port=5000"
-  #      - "com.centurylinklabs.watchtower.enable=true"
