@@ -297,7 +297,6 @@ services:
     image: eclipse-mosquitto:latest
     ports:
       - "1883:1883"
-      - "9001:9001"
     volumes:
       - ${HOME}/Mosquitto/Log/mosquitto.log:/mosquitto/log/mosquitto.log
       - ${HOME}/Mosquitto/Data:/mosquitto/data

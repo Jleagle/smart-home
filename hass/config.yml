@@ -24,6 +24,11 @@ http:
     - 192.168.0.7
     - ::1
 
+mqtt:
+  broker: "192.168.0.7"
+  port: "1883"
+  client_id: "hass"
+
 sensor:
 
   - platform: tautulli
@@ -47,7 +52,6 @@ sensor:
 ffmpeg:
 
 #camera:
-
 #  - platform: onvif
 #    host: !secret camera_host
 #    name: 'driveway'
