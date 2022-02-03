@@ -70,6 +70,15 @@ webostv:
       - livetv
       - netflix
 
+light:
+  - platform: group
+    name: All Lights
+    entities:
+      - light.night_light
+      - light.living_room_light
+      - light.bedroom
+      - light.big_light
+
 spotify:
   client_id: !secret spotify_id
   client_secret: !secret spotify_secret
