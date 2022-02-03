@@ -83,15 +83,6 @@ google_assistant:
     - switch
     - light
     - camera
-  entity_config:
-    switch.kitchen:
-      name: CUSTOM_NAME_FOR_GOOGLE_ASSISTANT
-      aliases:
-        - BRIGHT_LIGHTS
-        - ENTRY_LIGHTS
-    light.living_room:
-      expose: false
-      room: LIVING_ROOM
 
 media_player:
 
