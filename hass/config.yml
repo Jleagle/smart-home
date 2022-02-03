@@ -1,5 +1,36 @@
-# Configure a default setup of Home Assistant (frontend, api, etc)
-default_config:
+#automation:
+#cloud:
+counter:
+dhcp:
+diagnostics:
+energy:
+frontend:
+history:
+input_boolean:
+input_button:
+input_datetime:
+input_number:
+input_select:
+input_text:
+logbook:
+#map:
+media_source:
+mobile_app:
+my:
+network:
+person:
+#scene:
+#script:
+ssdp:
+sun:
+system_health:
+tag:
+timer:
+usb:
+updater:
+webhook:
+zeroconf:
+zone:
 
 homeassistant:
   name: Home
@@ -108,15 +139,13 @@ switch:
     name: pc
     host: 192.168.0.8
 
-system_health:
-
 notify:
 
 # Text to speech
 tts:
   - platform: google_translate
 
-group: !include groups.yaml
 automation: !include automations.yaml
-script: !include scripts.yaml
+group: !include groups.yaml
 scene: !include scenes.yaml
+script: !include scripts.yaml
