@@ -114,7 +114,6 @@ services:
     restart: "unless-stopped"
     user: "0"
     volumes:
-      - "${HOME}/Grafana/key.json:/etc/grafana/key.json:ro"
       - "${HOME}/Grafana/Data:/var/lib/grafana"
       - "./grafana/grafana.ini:/etc/grafana/grafana.ini:ro"
     labels:

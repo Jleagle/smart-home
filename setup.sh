@@ -31,7 +31,6 @@ mkdir -p ~/Traefik
 touch ~/Auth/config.json
 touch ~/DDNS/records.yaml
 touch ~/Frigate/config.yml
-touch ~/Grafana/key.json
 touch ~/Hass/assistant_service_account.json
 touch ~/Mosquitto/Log/mosquitto.log
 touch ~/Traefik/acme.json
