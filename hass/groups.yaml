@@ -1,0 +1,30 @@
+plugs:
+  name: Plugs
+  entities:
+    - switch.plug_1_socket_1
+    - switch.plug_2_socket_1
+    - switch.plug_3_socket_1
+    - switch.plug_4_socket_1
+
+#lightswitches:
+#  name: Shelly Light Switches
+#  entities:
+#    - sensor.xx
+#    - sensor.xx
+#    - sensor.xx
+#    - sensor.xx
+#    - sensor.xx
+
+bulbs:
+  name: Hue Bulbs
+  entities:
+    - light.night_light
+    - light.living_room_light
+    - light.bedroom
+    - light.big_light
+
+people:
+  name: People
+  entities:
+    - person.james_eagle
+    - person.gillian_mckinley

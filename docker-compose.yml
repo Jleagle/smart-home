@@ -140,6 +140,7 @@ services:
     volumes:
       - "${HOME}/Hass:/config"
       - "./hass/config.yml:/config/configuration.yaml"
+      - "./hass/groups.yml:/config/groups.yaml"
       - "/etc/localtime:/etc/localtime:ro"
     environment:
       - "TZ=Europe/London"
