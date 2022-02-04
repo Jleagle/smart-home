@@ -3,7 +3,7 @@
 counter:
 dhcp:
 diagnostics:
-energy:
+#energy:
 frontend:
 history:
 input_boolean:
