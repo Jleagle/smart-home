@@ -136,6 +136,8 @@ services:
     restart: "unless-stopped"
     network_mode: "host"
     privileged: true
+    #devices:
+    #  - "/dev/ttyUSB0:/dev/ttyUSB0"
     volumes:
       - "${HOME}/Hass:/config"
       - "./hass/config.yml:/config/configuration.yaml"
