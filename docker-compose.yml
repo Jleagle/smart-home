@@ -287,6 +287,20 @@ services:
   #    volumes:
   #      - ${HOME}/PlexMeta:/config
 
+  prowlarr:
+    image: "linuxserver/prowlarr:nightly-alpine"
+    hostname: "prowlarr"
+    container_name: "prowlarr"
+    restart: "unless-stopped"
+    ports:
+      - "9696:9696"
+    environment:
+      - "PUID=1000"
+      - "PGID=1000"
+      - "TZ=Europe/London"
+    volumes:
+      - "${HOME}/Prowlarr:/config"
+
   radarr:
     image: "linuxserver/radarr:latest"
     hostname: "radarr"
