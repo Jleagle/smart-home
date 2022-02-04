@@ -104,6 +104,7 @@ webostv:
       - netflix
 
 light:
+  - platform: blink1_status
   - platform: group
     name: All Lights
     entities:
