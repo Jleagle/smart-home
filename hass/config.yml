@@ -32,6 +32,10 @@ webhook:
 zeroconf:
 zone:
 
+ffmpeg:
+wake_on_lan:
+notify:
+
 homeassistant:
   name: Home
   latitude: !secret home_lat
@@ -79,8 +83,6 @@ sensor:
 #    days: 7
 #    ssl: true
 #    unit: GB
-
-ffmpeg:
 
 #camera:
 #  - platform: onvif
@@ -131,15 +133,11 @@ google_assistant:
 
 media_player:
 
-wake_on_lan:
-
 switch:
   - platform: wake_on_lan
     mac: !secret pc_mac_address
     name: pc
     host: 192.168.0.8
-
-notify:
 
 # Text to speech
 tts:
