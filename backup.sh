@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# https://restic.readthedocs.io/en/latest/index.html
+
 docker run --rm -v ${HOME}:/data \
   -e RESTIC_REPOSITORY=s3:s3.amazonaws.com/bucket_name \
   -e RESTIC_PASSWORD=my-secure-password \
