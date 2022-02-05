@@ -139,7 +139,8 @@ services:
     #devices:
     #  - "/dev/ttyUSB0:/dev/ttyUSB0"
     volumes:
-      - "${HOME}/Hass:/config"
+      - "${HOME}/Hass/Config:/config"
+      - "${HOME}/Hass/google_assistant_key.json:/config/google_assistant_key.json:ro"
       - "./hass/config.yml:/config/configuration.yaml"
       - "./hass/groups.yml:/config/groups.yaml"
       - "/etc/localtime:/etc/localtime:ro"
