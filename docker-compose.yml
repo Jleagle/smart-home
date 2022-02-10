@@ -113,6 +113,8 @@ services:
     image: "grafana/grafana:main"
     restart: "unless-stopped"
     user: "0"
+    environment:
+      - "GRAFANA_SMTP_PASS"
     volumes:
       - "${HOME}/Grafana/Data:/var/lib/grafana"
       - "./grafana/grafana.ini:/etc/grafana/grafana.ini:ro"
