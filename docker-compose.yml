@@ -303,6 +303,12 @@ services:
       - "TZ=Europe/London"
     volumes:
       - "${HOME}/Prowlarr:/config"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.port=9696"
+      - "traefik.http.routers.prowlarr.entrypoints=websecure"
+      - "traefik.http.routers.prowlarr.rule=Host(`prowlarr.jimeagle.com`)"
+      - "traefik.http.services.prowlarr.loadbalancer.server.port=9696"
 
   radarr:
     image: "linuxserver/radarr:latest"
