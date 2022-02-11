@@ -293,7 +293,7 @@ services:
   #      - ${HOME}/PlexMeta:/config
 
   prowlarr:
-    image: "linuxserver/prowlarr:nightly-alpine"
+    image: "linuxserver/prowlarr:develop"
     hostname: "prowlarr"
     container_name: "prowlarr"
     restart: "unless-stopped"
