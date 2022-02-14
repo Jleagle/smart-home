@@ -108,11 +108,9 @@ light:
   - platform: group
     name: All Lights
     entities:
-      - light.bedroom_ceiling_light
-      - light.bedroom_floor_light
-      - light.living_room_big_light
-      - light.living_room_ceiling_light
-      - light.spare_room_floor_light
+      - light.bedroom_light_group
+      - light.living_room_light_group
+      - light.spare_room_light_group
 
 media_player:
   - platform: group
