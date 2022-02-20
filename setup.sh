@@ -7,8 +7,6 @@ mkdir -p ~/FlexTV
 mkdir -p ~/Frigate
 mkdir -p ~/Grafana/Data
 mkdir -p ~/Hass
-mkdir -p ~/Hydra/Config
-mkdir -p ~/Hydra/Downloads
 mkdir -p ~/Influx
 mkdir -p ~/Media/Frigate
 mkdir -p ~/Media/Movies

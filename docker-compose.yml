@@ -161,27 +161,6 @@ services:
     environment:
       - "TZ=Europe/London"
 
-  hydra:
-    image: "linuxserver/nzbhydra2:latest"
-    container_name: "hydra"
-    hostname: "hydra"
-    restart: "unless-stopped"
-    ports:
-      - "5076:5076"
-    volumes:
-      - "${HOME}/Hydra/Config:/config"
-      - "${HOME}/Hydra/Downloads:/downloads"
-    environment:
-      - "PGID=1000"
-      - "PUID=1000"
-      - "TZ=Europe/London"
-    labels:
-      - "traefik.enable=true"
-      - "traefik.port=5076"
-      - "traefik.http.routers.hydra.entrypoints=websecure"
-      - "traefik.http.routers.hydra.rule=Host(`hydra.jimeagle.com`)"
-      - "traefik.http.services.hydra.loadbalancer.server.port=5076"
-
   influx:
     image: "influxdb:2.1"
     container_name: "influx"
