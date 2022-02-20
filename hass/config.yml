@@ -37,27 +37,27 @@ wake_on_lan:
 notify:
 
 homeassistant:
-  name: Home
+  name: "Home"
   latitude: !secret home_lat
   longitude: !secret home_lon
   elevation: 14
-  unit_system: metric
-  currency: GBP
+  unit_system: "metric"
+  currency: "GBP"
   time_zone: "Europe/London"
   external_url: "https://hass.jimeagle.com"
   internal_url: "http://192.168.0.7:8123"
   auth_providers:
-    - type: trusted_networks
+    - type: "trusted_networks"
       trusted_networks:
-        - 192.168.0.8 # PC
-        - 192.168.0.9 # Phone
-    - type: homeassistant
+        - "192.168.0.8" # PC
+        - "192.168.0.9" # Phone
+    - type: "homeassistant"
 
 http:
   use_x_forwarded_for: true
   trusted_proxies:
-    - 192.168.0.7
-    - ::1
+    - "192.168.0.7"
+    - "::1"
 
 mqtt:
   broker: "192.168.0.7"
@@ -72,7 +72,7 @@ button:
 
 sensor:
 
-  - platform: tautulli
+  - platform: "tautulli"
     api_key: !secret tautulli
     host: "192.168.0.7:8181"
 
@@ -98,34 +98,34 @@ sensor:
 #    password: !secret camera_pass
 
 webostv:
-  host: 192.168.0.9
-  name: TV
+  host: "192.168.0.9"
+  name: "TV"
   turn_on_action:
-    service: persistent_notification.create
+    service: "persistent_notification.create"
     data:
       message: "Turn on action"
   customize:
     sources:
-      - livetv
-      - netflix
+      - "livetv"
+      - "netflix"
 
 light:
-  - platform: blink1_status
-  - platform: group
-    name: All Lights
+  - platform: "blink1_status"
+  - platform: "group"
+    name: "All Lights"
     entities:
-      - light.bedroom_light_group
-      - light.living_room_light_group
-      - light.spare_room_light_group
+      - "light.bedroom_light_group"
+      - "light.living_room_light_group"
+      - "light.spare_room_light_group"
 
 media_player:
-  - platform: group
-    name: All Media Players
+  - platform: "group"
+    name: "All Media Players"
     entities:
-      - media_player.bedroom_speaker
-      - media_player.kitchen_speaker
-      - media_player.living_room_speaker
-      - media_player.tv
+      - "media_player.bedroom_speaker"
+      - "media_player.kitchen_speaker"
+      - "media_player.living_room_speaker"
+      - "media_player.tv"
 
 spotify:
   client_id: !secret spotify_id
@@ -138,23 +138,23 @@ google_assistant:
   expose_by_default: false
   entity_config:
     switch.nzbget_download:
-      name: Downloads
+      name: "Downloads"
     switch.pi_hole:
-      name: Pihole
+      name: "Pihole"
     switch.pc:
-      name: PC
+      name: "PC"
       aliases:
-        - Computer
+        - "Computer"
 
 switch:
-  - platform: wake_on_lan
+  - platform: "wake_on_lan"
     mac: !secret pc_mac_address
-    name: pc
-    host: 192.168.0.8
+    name: "pc"
+    host: "192.168.0.8"
 
 # Text to speech
 tts:
-  - platform: google_translate
+  - platform: "google_translate"
 
 automation: !include automations.yaml
 group: !include groups.yaml
