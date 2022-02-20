@@ -64,6 +64,10 @@ mqtt:
   port: "1883"
   client_id: "hass"
 
+button:
+  - platform: mqtt
+    command_topic: "home/heating/all-off"
+
 sensor:
 
   - platform: tautulli
