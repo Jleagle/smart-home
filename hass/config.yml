@@ -65,7 +65,9 @@ mqtt:
   client_id: "hass"
 
 button:
-  - platform: mqtt
+  - platform: "mqtt"
+    name: "Turn All Heating Off"
+    unique_id: "all-heating-off-button"
     command_topic: "home/heating/all-off"
 
 sensor:
