@@ -49,6 +49,20 @@ services:
     volumes:
       - "${HOME}/DDNS/records.yaml:/root/records.yaml:ro"
 
+  ddclient:
+    image: lscr.io/linuxserver/ddclient
+    container_name: ddclient
+    hostname: "ddclient"
+    restart: "unless-stopped"
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/London
+      - CF_API_EMAIL_FILE=/run/secrets/cloudflare_login_email
+      - CF_API_KEY_FILE=/run/secrets/cloudflare_api_token
+    volumes:
+      - ${HOME}/Ddclient:/config
+
   doubletake:
     image: "jakowenko/double-take"
     container_name: "doubletake"
