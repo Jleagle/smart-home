@@ -156,6 +156,7 @@ switch:
     command_topic: "home/work-alarms/set"
     name: "Work Alarms"
     device_class: "switch"
+    enabled_by_default: true
 
 # Text to speech
 tts:
