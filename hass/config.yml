@@ -152,11 +152,10 @@ switch:
     host: "192.168.0.8"
     mac: !secret pc_mac_address
   - platform: "mqtt"
-    state_topic: "home/work-alarms/get"
-    command_topic: "home/work-alarms/set"
     name: "Work Alarms"
     device_class: "switch"
-    enabled_by_default: true
+    state_topic: "home/work-alarms/get"
+    command_topic: "home/work-alarms/set"
 
 # Text to speech
 tts:
