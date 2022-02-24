@@ -143,13 +143,13 @@ google_assistant:
       name: "Downloads"
     switch.pi_hole:
       name: "Pihole"
-    switch.pc:
-      name: "PC"
-      aliases:
-        - "Computer"
+    switch.wake_desktop:
+      name: "Wake Desktop"
 
 switch:
   - platform: "wake_on_lan"
+    name: "Wake Desktop"
+    host: "192.168.0.8"
     mac: !secret pc_mac_address
   - platform: "mqtt"
     state_topic: "home/work-alarms/get"
