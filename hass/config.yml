@@ -137,6 +137,8 @@ google_assistant:
   report_state: true
   expose_by_default: false
   entity_config:
+    switch.alarms_on:
+      name: "Work Alarms"
     switch.nzbget_download:
       name: "Downloads"
     switch.pi_hole:
@@ -149,8 +151,11 @@ google_assistant:
 switch:
   - platform: "wake_on_lan"
     mac: !secret pc_mac_address
-    name: "pc"
-    host: "192.168.0.8"
+  - platform: "mqtt"
+    state_topic: "home/work-alarms/get"
+    command_topic: "home/work-alarms/set"
+    name: "Work Alarms"
+    device_class: "switch"
 
 # Text to speech
 tts:
