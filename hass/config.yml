@@ -137,7 +137,7 @@ google_assistant:
   report_state: true
   expose_by_default: false
   entity_config:
-    switch.alarms_on:
+    switch.work_alarms:
       name: "Work Alarms"
     switch.nzbget_download:
       name: "Downloads"
