@@ -139,6 +139,8 @@ google_assistant:
   entity_config:
     switch.work_alarms:
       name: "Work Alarms"
+    switch.guest_mode:
+      name: "Guest Mode"
     switch.nzbget_download:
       name: "Downloads"
     switch.pi_hole:
@@ -156,6 +158,11 @@ switch:
     device_class: "switch"
     state_topic: "home/work-alarms/get"
     command_topic: "home/work-alarms/set"
+  - platform: "mqtt"
+    name: "Guest Mode"
+    device_class: "switch"
+    state_topic: "home/guest-mode/get"
+    command_topic: "home/guest-mode/set"
 
 # Text to speech
 tts:
