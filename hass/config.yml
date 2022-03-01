@@ -155,6 +155,8 @@ google_assistant:
       name: "Pihole"
     switch.wake_desktop:
       name: "Wake Desktop"
+    button.everything_off:
+      name: "Everything Off"
 
 switch:
   - platform: "wake_on_lan"
