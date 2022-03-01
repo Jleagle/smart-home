@@ -73,9 +73,11 @@ button:
     name: "Reset heating to be on schedule"
     unique_id: "all-heating-schedule-button"
     command_topic: "home/heating/all-schedule"
+
+scene:
   - platform: "mqtt"
+    unique_id: "everything-off-scene"
     name: "Everything Off"
-    unique_id: "everything-off-button"
     command_topic: "home/everything-off"
 
 sensor:
@@ -155,7 +157,7 @@ google_assistant:
       name: "Pihole"
     switch.wake_desktop:
       name: "Wake Desktop"
-    button.everything_off:
+    scene.everything_off:
       name: "Everything Off"
 
 switch:
