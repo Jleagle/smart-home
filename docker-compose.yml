@@ -170,7 +170,6 @@ services:
       - "${HOME}/Hass/Config:/config"
       - "${HOME}/Hass/google_assistant_key.json:/config/google_assistant_key.json:ro"
       - "./hass/config.yml:/config/configuration.yaml"
-      - "./hass/groups.yml:/config/groups.yaml"
       - "/etc/localtime:/etc/localtime:ro"
     environment:
       - "TZ=Europe/London"

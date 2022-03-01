@@ -178,7 +178,24 @@ switch:
 tts:
   - platform: "google_translate"
 
-automation: !include automations.yaml
-group: !include groups.yaml
-scene: !include scenes.yaml
-script: !include scripts.yaml
+group:
+  alldevices:
+    name: All Devices
+    entities:
+      - light.all_lights
+      - media_player.all_media_players
+      - group.plugs
+
+  plugs:
+    name: All Plugs
+    entities:
+      - switch.plug_1_socket_1
+      - switch.plug_2_socket_1
+      - switch.plug_3_socket_1
+      - switch.plug_4_socket_1
+
+  people:
+    name: People
+    entities:
+      - person.james_eagle
+      - person.gillian_mckinley
