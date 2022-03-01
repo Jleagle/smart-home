@@ -69,6 +69,10 @@ button:
     name: "Turn All Heating Off"
     unique_id: "all-heating-off-button"
     command_topic: "home/heating/all-off"
+  - platform: "mqtt"
+    name: "Reset heating to be on schedule"
+    unique_id: "all-heating-schedule-button"
+    command_topic: "home/heating/all-schedule"
 
 sensor:
 
