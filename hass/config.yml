@@ -78,6 +78,8 @@ scene:
     name: "Everything Off"
     unique_id: "everything-off-scene"
     command_topic: "home/everything-off"
+    payload_on: "ON"
+    retain: false
 
 sensor:
 
