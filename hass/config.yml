@@ -76,8 +76,8 @@ button:
 
 scene:
   - platform: "mqtt"
-    unique_id: "everything-off-scene"
     name: "Everything Off"
+    unique_id: "everything-off-scene"
     command_topic: "home/everything-off"
 
 sensor:
