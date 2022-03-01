@@ -158,7 +158,7 @@ google_assistant:
     switch.wake_desktop:
       name: "Wake Desktop"
     scene.everything_off:
-      name: "Everything Off"
+      name: "Bedtime"
 
 switch:
   - platform: "wake_on_lan"
