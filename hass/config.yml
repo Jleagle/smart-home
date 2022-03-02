@@ -58,41 +58,18 @@ http:
     - "192.168.0.7"
     - "::1"
 
+# Text to speech
+tts:
+  - platform: "google_translate"
+
 mqtt:
   broker: "192.168.0.7"
   port: "1883"
   client_id: "hass"
 
-button:
-  - platform: "mqtt"
-    name: "Heating - Off"
-    unique_id: "all-heating-off-button"
-    command_topic: "home/heating/all-off"
-  - platform: "mqtt"
-    name: "Heating - Schedule"
-    unique_id: "all-heating-schedule-button"
-    command_topic: "home/heating/all-schedule"
-
-scene:
-  - platform: "mqtt"
-    name: "Everything Off"
-    unique_id: "everything-off-scene"
-    command_topic: "home/everything-off"
-    payload_on: "ON"
-    retain: false
-
-sensor:
-
-  - platform: "tautulli"
-    api_key: !secret tautulli
-    host: "192.168.0.7:8181"
-
-#camera:
-#  - platform: onvif
-#    host: !secret camera_host
-#    name: 'driveway'
-#    username: admin
-#    password: !secret camera_pass
+spotify:
+  client_id: !secret spotify_id
+  client_secret: !secret spotify_secret
 
 webostv:
   host: "192.168.0.9"
@@ -106,27 +83,12 @@ webostv:
       - "livetv"
       - "netflix"
 
-light:
-  - platform: "blink1_status"
-  - platform: "group"
-    name: "All Lights"
-    entities:
-      - "light.bedroom_light_group"
-      - "light.living_room_light_group"
-      - "light.spare_room_light_group"
-
-media_player:
-  - platform: "group"
-    name: "All Media Players"
-    entities:
-      - "media_player.bedroom_speaker"
-      - "media_player.kitchen_speaker"
-      - "media_player.living_room_speaker"
-      - "media_player.tv"
-
-spotify:
-  client_id: !secret spotify_id
-  client_secret: !secret spotify_secret
+#camera:
+#  - platform: onvif
+#    host: !secret camera_host
+#    name: 'driveway'
+#    username: admin
+#    password: !secret camera_pass
 
 google_assistant:
   project_id: !secret assistant_project_id
@@ -149,6 +111,42 @@ google_assistant:
     scene.everything_off:
       name: "Bedtime"
 
+button:
+  - platform: "mqtt"
+    name: "Heating - Off"
+    unique_id: "all-heating-off-button"
+    command_topic: "home/heating/all-off"
+  - platform: "mqtt"
+    name: "Heating - Schedule"
+    unique_id: "all-heating-schedule-button"
+    command_topic: "home/heating/all-schedule"
+
+scene:
+  - platform: "mqtt"
+    name: "Everything Off"
+    unique_id: "everything-off-scene"
+    command_topic: "home/everything-off"
+    payload_on: "ON"
+    retain: false
+
+light:
+  - platform: "blink1_status"
+  - platform: "group"
+    name: "All Lights"
+    entities:
+      - "light.bedroom_light_group"
+      - "light.living_room_light_group"
+      - "light.spare_room_light_group"
+
+media_player:
+  - platform: "group"
+    name: "All Media Players"
+    entities:
+      - "media_player.bedroom_speaker"
+      - "media_player.kitchen_speaker"
+      - "media_player.living_room_speaker"
+      - "media_player.tv"
+
 switch:
   - platform: "wake_on_lan"
     name: "Wake Desktop"
@@ -169,10 +167,6 @@ switch:
     device_class: "switch"
     state_topic: "home/heating/home/get"
     command_topic: "home/heating/home/set"
-
-# Text to speech
-tts:
-  - platform: "google_translate"
 
 group:
   alldevices:
