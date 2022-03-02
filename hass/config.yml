@@ -176,6 +176,11 @@ switch:
     device_class: "switch"
     state_topic: "home/guest-mode/get"
     command_topic: "home/guest-mode/set"
+  - platform: "mqtt"
+    name: "Heating Mode"
+    device_class: "switch"
+    state_topic: "home/heating/home/get"
+    command_topic: "home/heating/home/set"
 
 # Text to speech
 tts:
