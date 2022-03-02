@@ -165,8 +165,8 @@ switch:
   - platform: "mqtt"
     name: "Someone Home"
     device_class: "switch"
-    state_topic: "home/heating/home/get"
-    command_topic: "home/heating/home/set"
+    state_topic: "home/someone-home/get"
+    command_topic: "home/someone-home/set"
 
 group:
   alldevices:
