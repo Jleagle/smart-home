@@ -106,7 +106,7 @@ google_assistant:
       name: "Pihole"
     switch.wake_desktop:
       name: "Wake Desktop"
-    switch.heating_mode:
+    switch.someone_home:
       name: "Someone Home"
     scene.everything_off:
       name: "Bedtime"
