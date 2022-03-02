@@ -107,7 +107,7 @@ google_assistant:
     switch.wake_desktop:
       name: "Wake Desktop"
     switch.heating_mode:
-      name: "Heating Mode - Home"
+      name: "Someone Home"
     scene.everything_off:
       name: "Bedtime"
 
@@ -149,7 +149,7 @@ media_player:
 
 switch:
   - platform: "wake_on_lan"
-    name: "Wake Desktop"
+    name: "Desktop PC"
     host: "192.168.0.8"
     mac: !secret pc_mac_address
   - platform: "mqtt"
@@ -163,7 +163,7 @@ switch:
     state_topic: "home/guest-mode/get"
     command_topic: "home/guest-mode/set"
   - platform: "mqtt"
-    name: "Heating Mode"
+    name: "Someone Home"
     device_class: "switch"
     state_topic: "home/heating/home/get"
     command_topic: "home/heating/home/set"
