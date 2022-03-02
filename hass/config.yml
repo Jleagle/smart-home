@@ -158,6 +158,8 @@ google_assistant:
       name: "Pihole"
     switch.wake_desktop:
       name: "Wake Desktop"
+    switch.heating_mode:
+      name: "Heating Mode - Home"
     scene.everything_off:
       name: "Bedtime"
 
