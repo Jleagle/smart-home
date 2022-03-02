@@ -87,20 +87,6 @@ sensor:
     api_key: !secret tautulli
     host: "192.168.0.7:8181"
 
-#  - platform: radarr
-#    api_key: !secret radarr
-#    host: 192.168.0.7
-#    port: 7878
-#    monitored_conditions:
-#      - movies
-#      - upcoming
-#      - commands
-#      - diskspace
-#      - status
-#    days: 7
-#    ssl: true
-#    unit: GB
-
 #camera:
 #  - platform: onvif
 #    host: !secret camera_host
