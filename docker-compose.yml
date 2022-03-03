@@ -456,25 +456,25 @@ services:
     labels:
       - "traefik.http.services.traefik-forward-auth.loadbalancer.server.port=4181"
 
-  varken:
-    image: "boerderij/varken:latest"
-    hostname: "varken"
-    container_name: "varken"
-    restart: "unless-stopped"
-    environment:
-      - "TZ=Europe/London"
-      - "VRKN_GLOBAL_SONARR_SERVER_IDS=1"
-      - "VRKN_GLOBAL_RADARR_SERVER_IDS=1"
-      - "VRKN_GLOBAL_OMBI_SERVER_IDS=false"
-      - "VRKN_GLOBAL_MAXMIND_LICENSE_KEY"
-      - "VRKN_INFLUXDB_URL=influx"
-      - "VRKN_INFLUXDB_USERNAME"
-      - "VRKN_INFLUXDB_PASSWORD"
-      - "VRKN_TAUTULLI_1_URL=tautulli"
-      - "VRKN_TAUTULLI_1_APIKEY"
-      - "VRKN_SONARR_1_URL=sonarr"
-      - "VRKN_SONARR_1_APIKEY"
-      - "VRKN_RADARR_1_URL=radarr"
-      - "VRKN_RADARR_1_APIKEY"
-    volumes:
-      - "${HOME}/Varken:/config"
+  #  varken:
+  #    image: "boerderij/varken:latest"
+  #    hostname: "varken"
+  #    container_name: "varken"
+  #    restart: "unless-stopped"
+  #    environment:
+  #      - "TZ=Europe/London"
+  #      - "VRKN_GLOBAL_SONARR_SERVER_IDS=1"
+  #      - "VRKN_GLOBAL_RADARR_SERVER_IDS=1"
+  #      - "VRKN_GLOBAL_OMBI_SERVER_IDS=false"
+  #      - "VRKN_GLOBAL_MAXMIND_LICENSE_KEY"
+  #      - "VRKN_INFLUXDB_URL=influx"
+  #      - "VRKN_INFLUXDB_USERNAME"
+  #      - "VRKN_INFLUXDB_PASSWORD"
+  #      - "VRKN_TAUTULLI_1_URL=tautulli"
+  #      - "VRKN_TAUTULLI_1_APIKEY"
+  #      - "VRKN_SONARR_1_URL=sonarr"
+  #      - "VRKN_SONARR_1_APIKEY"
+  #      - "VRKN_RADARR_1_URL=radarr"
+  #      - "VRKN_RADARR_1_APIKEY"
+  #    volumes:
+  #      - "${HOME}/Varken:/config"
