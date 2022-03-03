@@ -3,15 +3,11 @@ http:
     hass-route:
       rule: "Host(`hass.jimeagle.com`)"
       service: "hass-service"
-      #      middlewares:
-      #        - "traefik-forward-auth"
       entryPoints:
         - "websecure"
     plex-route:
       rule: "Host(`plex.jimeagle.com`)"
       service: "plex-service"
-      #      middlewares:
-      #        - "traefik-forward-auth"
       entryPoints:
         - "websecure"
 
@@ -24,10 +20,3 @@ http:
       loadBalancer:
         servers:
           - url: "http://localhost:32400"
-
-  middlewares:
-    traefik-forward-auth:
-      forwardAuth:
-        address: "http://localhost:4181"
-        authResponseHeaders:
-          - "X-Forwarded-User"
