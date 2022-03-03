@@ -27,6 +27,7 @@ mkdir -p ~/Radarr
 mkdir -p ~/Sonarr
 mkdir -p ~/Tautulli
 mkdir -p ~/Traefik
+mkdir -p ~/Varken
 
 touch ~/Auth/config.json
 touch ~/DDNS/records.yaml
