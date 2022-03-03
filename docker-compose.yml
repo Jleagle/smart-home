@@ -50,7 +50,7 @@ services:
       - "${HOME}/DDNS/records.yaml:/root/records.yaml:ro"
 
   ddclient:
-    image: "lscr.io/linuxserver/ddclient"
+    image: "lscr.io/linuxserver/ddclient:latest"
     container_name: "ddclient"
     hostname: "ddclient"
     restart: "unless-stopped"
@@ -64,7 +64,7 @@ services:
       - "${HOME}/Ddclient:/config"
 
   doubletake:
-    image: "jakowenko/double-take"
+    image: "jakowenko/double-take:latest"
     container_name: "doubletake"
     hostname: "doubletake"
     restart: "unless-stopped"
@@ -245,7 +245,7 @@ services:
       - "traefik.http.services.nzbget.loadbalancer.server.port=6789"
 
   overseerr:
-    image: "linuxserver/overseerr"
+    image: "linuxserver/overseerr:latest"
     container_name: "overseerr"
     hostname: "overseerr"
     restart: "unless-stopped"
@@ -384,7 +384,7 @@ services:
       - "traefik.http.services.sonarr.loadbalancer.server.port=8989"
 
   tautulli:
-    image: "lscr.io/linuxserver/tautulli"
+    image: "lscr.io/linuxserver/tautulli:latest"
     container_name: "tautulli"
     hostname: "tautulli"
     restart: "unless-stopped"
@@ -457,7 +457,7 @@ services:
       - "traefik.http.services.traefik-forward-auth.loadbalancer.server.port=4181"
 
   varken:
-    image: "boerderij/varken"
+    image: "boerderij/varken:latest"
     hostname: "varken"
     container_name: "varken"
     restart: "unless-stopped"
