@@ -3,15 +3,15 @@ version: '3'
 services:
 
   autoheal:
-    image: willfarrell/autoheal:latest
-    container_name: autoheal
-    hostname: autoheal
+    image: "willfarrell/autoheal:latest"
+    container_name: "autoheal"
+    hostname: "autoheal"
     restart: "unless-stopped"
     environment:
-      - AUTOHEAL_CONTAINER_LABEL=all
-      - AUTOHEAL_INTERVAL=10
+      - "AUTOHEAL_CONTAINER_LABEL=all"
+      - "AUTOHEAL_INTERVAL=10"
     volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
+      - "/var/run/docker.sock:/var/run/docker.sock"
 
   bazarr:
     image: "linuxserver/bazarr:latest"
@@ -50,18 +50,18 @@ services:
       - "${HOME}/DDNS/records.yaml:/root/records.yaml:ro"
 
   ddclient:
-    image: lscr.io/linuxserver/ddclient
-    container_name: ddclient
+    image: "lscr.io/linuxserver/ddclient"
+    container_name: "ddclient"
     hostname: "ddclient"
     restart: "unless-stopped"
     environment:
-      - PUID=1000
-      - PGID=1000
-      - TZ=Europe/London
-      - CF_API_EMAIL_FILE=/run/secrets/cloudflare_login_email
-      - CF_API_KEY_FILE=/run/secrets/cloudflare_api_token
+      - "PUID=1000"
+      - "PGID=1000"
+      - "TZ=Europe/London"
+      - "CF_API_EMAIL_FILE=/run/secrets/cloudflare_login_email"
+      - "CF_API_KEY_FILE=/run/secrets/cloudflare_api_token"
     volumes:
-      - ${HOME}/Ddclient:/config
+      - "${HOME}/Ddclient:/config"
 
   doubletake:
     image: "jakowenko/double-take"
@@ -463,18 +463,18 @@ services:
     restart: "unless-stopped"
     environment:
       - "TZ=Europe/London"
-      - VRKN_GLOBAL_SONARR_SERVER_IDS=1
-      - VRKN_GLOBAL_RADARR_SERVER_IDS=1
-      - VRKN_GLOBAL_OMBI_SERVER_IDS=false
-      - VRKN_GLOBAL_MAXMIND_LICENSE_KEY
-      - VRKN_INFLUXDB_URL="influx"
-      - VRKN_INFLUXDB_USERNAME
-      - VRKN_INFLUXDB_PASSWORD
-      - VRKN_TAUTULLI_1_URL="tautulli"
-      - VRKN_TAUTULLI_1_APIKEY
-      - VRKN_SONARR_1_URL="sonarr"
-      - VRKN_SONARR_1_APIKEY
-      - VRKN_RADARR_1_URL="radarr"
-      - VRKN_RADARR_1_APIKEY
+      - "VRKN_GLOBAL_SONARR_SERVER_IDS=1"
+      - "VRKN_GLOBAL_RADARR_SERVER_IDS=1"
+      - "VRKN_GLOBAL_OMBI_SERVER_IDS=false"
+      - "VRKN_GLOBAL_MAXMIND_LICENSE_KEY"
+      - "VRKN_INFLUXDB_URL=influx"
+      - "VRKN_INFLUXDB_USERNAME"
+      - "VRKN_INFLUXDB_PASSWORD"
+      - "VRKN_TAUTULLI_1_URL=tautulli"
+      - "VRKN_TAUTULLI_1_APIKEY"
+      - "VRKN_SONARR_1_URL=sonarr"
+      - "VRKN_SONARR_1_APIKEY"
+      - "VRKN_RADARR_1_URL=radarr"
+      - "VRKN_RADARR_1_APIKEY"
     volumes:
       - "${HOME}/Varken:/config"
