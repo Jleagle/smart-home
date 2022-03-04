@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
 mkdir -p ~/Bazarr
-mkdir -p ~/Ddclient
 mkdir -p ~/DDNS
 mkdir -p ~/DoubleTake
 mkdir -p ~/FlexTV
