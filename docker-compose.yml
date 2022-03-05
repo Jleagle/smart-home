@@ -67,6 +67,22 @@ services:
       - "traefik.http.routers.doubletake.middlewares=traefik-forward-auth"
       - "traefik.http.services.doubletake.loadbalancer.server.port=3000"
 
+  esphome:
+    image: "esphome/esphome:latest"
+    container_name: "esphome"
+    hostname: "esphome"
+    restart: "unless-stopped"
+    network_mode: "host"
+    volumes:
+      - "${HOME}/ESPHome:/config"
+      - "/etc/localtime:/etc/localtime:ro"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.port=6052"
+      - "traefik.http.routers.esphome.entrypoints=websecure"
+      - "traefik.http.routers.esphome.rule=Host(`esphome.jimeagle.com`)"
+      - "traefik.http.services.esphome.loadbalancer.server.port=6052"
+
   flextv:
     image: "digitalhigh/flextv:latest"
     container_name: "flextv"
