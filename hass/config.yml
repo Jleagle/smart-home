@@ -193,3 +193,4 @@ group:
       - sensor.living_room_heating
       - sensor.bedroom_heating
       - sensor.office_heating
+      - sensor.dining_room_heating
