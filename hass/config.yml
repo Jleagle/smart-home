@@ -175,7 +175,6 @@ group:
       - light.all_lights
       - media_player.all_media_players
       - group.plugs
-
   plugs:
     name: All Plugs
     entities:
@@ -183,9 +182,14 @@ group:
       - switch.plug_2_socket_1
       - switch.plug_3_socket_1
       - switch.plug_4_socket_1
-
   people:
     name: People
     entities:
       - person.james_eagle
       - person.gillian_mckinley
+  climate:
+    name: Climate
+    entities:
+      - sensor.living_room_heating
+      - sensor.bedroom_heating
+      - sensor.office_heating
