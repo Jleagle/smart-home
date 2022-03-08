@@ -419,7 +419,8 @@ module.exports = {
     functionGlobalContext: {
         // os:require('os'),
         work_alarms: 'ON',
-        guest_mode: 'OFF'
+        guest_mode: 'OFF',
+        WASHING_OUT: 'OFF'
     },
 
     /** The maximum number of messages nodes will buffer internally as part of their
