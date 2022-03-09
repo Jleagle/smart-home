@@ -63,25 +63,25 @@ tts:
   - platform: "google_translate"
 
 mqtt:
-  broker: "192.168.0.7"
-  port: "1883"
+#  broker: "192.168.0.7"
+#  port: "1883"
   client_id: "hass"
 
 spotify:
   client_id: !secret spotify_id
   client_secret: !secret spotify_secret
 
-webostv:
-  host: "192.168.0.9"
-  name: "TV"
-  turn_on_action:
-    service: "persistent_notification.create"
-    data:
-      message: "Turn on action"
-  customize:
-    sources:
-      - "livetv"
-      - "netflix"
+#webostv:
+#  host: "192.168.0.9"
+#  name: "TV"
+#  turn_on_action:
+#    service: "persistent_notification.create"
+#    data:
+#      message: "Turn on action"
+#  customize:
+#    sources:
+#      - "livetv"
+#      - "netflix"
 
 #camera:
 #  - platform: onvif
