@@ -200,7 +200,7 @@ services:
     volumes:
       - "${HOME}/Mealie:/app/data"
     ports:
-      - "9090:80"
+      - "9925:80"
     environment:
       DB_ENGINE: "sqlite"
     labels:
