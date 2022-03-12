@@ -192,6 +192,22 @@ services:
       - "traefik.http.routers.influx.rule=Host(`influx.jimeagle.com`)"
       - "traefik.http.services.influx.loadbalancer.server.port=8086"
 
+  mealie:
+    image: "hkotel/mealie:latest"
+    container_name: "mealie"
+    hostname: "mealie"
+    restart: "unless-stopped"
+    ports:
+      - "9090:80"
+    environment:
+      DB_ENGINE: "sqlite"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.port=80"
+      - "traefik.http.routers.mealie.entrypoints=websecure"
+      - "traefik.http.routers.mealie.rule=Host(`mealie.jimeagle.com`)"
+      - "traefik.http.services.mealie.loadbalancer.server.port=80"
+
   mosquitto:
     image: "eclipse-mosquitto:latest"
     container_name: "mosquitto"
