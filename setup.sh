@@ -8,6 +8,7 @@ mkdir -p ~/Frigate
 mkdir -p ~/Grafana/Data
 mkdir -p ~/Hass
 mkdir -p ~/Influx
+mkdir -p ~/Mealie
 mkdir -p ~/Media/Frigate
 mkdir -p ~/Media/Movies
 mkdir -p ~/Media/Television
