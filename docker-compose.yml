@@ -202,6 +202,7 @@ services:
     ports:
       - "9925:80"
     environment:
+      TZ: "Europe/London"
       DB_ENGINE: "sqlite"
     labels:
       - "traefik.enable=true"
