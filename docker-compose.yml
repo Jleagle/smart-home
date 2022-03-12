@@ -205,12 +205,9 @@ services:
     environment:
       TZ: "Europe/London"
       DB_ENGINE: "sqlite"
-      RECIPE_PUBLIC: 'true'
-      RECIPE_SHOW_NUTRITION: 'true'
-      RECIPE_SHOW_ASSETS: 'true'
-      RECIPE_LANDSCAPE_VIEW: 'true'
-      RECIPE_DISABLE_COMMENTS: 'false'
-      RECIPE_DISABLE_AMOUNT: 'false'
+      RECIPE_PUBLIC: "false"
+      BASE_URL: "https://mealie.jimeagle.com/"
+      TOKEN_TIME: "12"
     labels:
       - "traefik.enable=true"
       - "traefik.port=80"
