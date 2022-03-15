@@ -122,6 +122,21 @@ light:
       - "light.bedroom_light_group"
       - "light.living_room_light_group"
       - "light.spare_room_light_group"
+  - platform: "group"
+    name: "Upstairs"
+    entities:
+      - "light.shellydimmer2_48551900c175"
+      - "light.shellydimmer2_e89f6d8559a2"
+      - "light.shellydimmer2_4855190088ac"
+      - "light.shellydimmer2_48551900b4e6"
+      - "light.shellydimmer2_485519002b72"
+      - "light.shellydimmer2_48551900caca"
+  - platform: "group"
+    name: "Downstairs"
+    entities:
+      - "light.shellydimmer2_48551900c7e2"
+      - "light.shellydimmer2_C45BBE572627"
+      - "light.shellydimmer2_48551900035d"
 
 media_player:
   - platform: "group"
