@@ -118,6 +118,7 @@ light:
   - platform: "blink1_status"
   - platform: "group"
     name: "All Lights"
+    entities:
       - "light.shellydimmer2_48551900035d"
       - "light.shellydimmer2_485519002b72"
       - "light.shellydimmer2_4855190088ac"
