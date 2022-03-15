@@ -122,6 +122,8 @@ light:
       - "light.bedroom_light_group"
       - "light.living_room_light_group"
       - "light.spare_room_light_group"
+      - "light.upstairs"
+      - "light.downstairs"
   - platform: "group"
     name: "Upstairs"
     entities:
