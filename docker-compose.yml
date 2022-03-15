@@ -205,7 +205,6 @@ services:
     environment:
       TZ: "Europe/London"
       DB_ENGINE: "sqlite"
-      RECIPE_PUBLIC: "false"
       BASE_URL: "https://mealie.jimeagle.com/"
       TOKEN_TIME: "12"
     labels:
