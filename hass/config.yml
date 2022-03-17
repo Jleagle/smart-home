@@ -81,21 +81,6 @@ google_assistant:
   report_state: true
   expose_by_default: false
   entity_config:
-    switch.work_alarms:
-      name: "Work Alarms"
-    switch.guest_mode:
-      name: "Guest Mode"
-    switch.nzbget_download:
-      name: "Downloads"
-    switch.pi_hole:
-      name: "Pihole"
-    switch.wake_desktop:
-      name: "Wake Desktop"
-    switch.someone_home:
-      name: "Someone Home"
-    scene.everything_off:
-      name: "Bedtime"
-
     light.shellydimmer2_48551900035d:
       name: "Hallway Downstairs"
     light.shellydimmer2_485519002b72:
@@ -114,6 +99,20 @@ google_assistant:
       name: "Living Room"
     light.shellydimmer2_e89f6d8559a2:
       name: "Spare Room"
+    switch.work_alarms:
+      name: "Work Alarms"
+    switch.guest_mode:
+      name: "Guest Mode"
+    switch.nzbget_download:
+      name: "Downloads"
+    switch.pi_hole:
+      name: "Pihole"
+    switch.wake_desktop:
+      name: "Wake Desktop"
+    switch.someone_home:
+      name: "Someone Home"
+    scene.everything_off:
+      name: "Bedtime"
 
 button:
   - platform: "mqtt"
