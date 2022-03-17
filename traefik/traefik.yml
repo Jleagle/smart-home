@@ -24,9 +24,6 @@ entryPoints:
           permanent: true
   websecure:
     address: ":443"
-    http:
-      tls:
-        certResolver: "leresolver@file"
 
 providers:
   docker:
@@ -39,7 +36,7 @@ providers:
     watch: true
 
 certificatesResolvers:
-  leresolver:
+  myresolver:
     acme:
       storage: "/acme.json"
       email: "jimeagle@gmail.com"

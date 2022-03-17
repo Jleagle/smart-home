@@ -3,11 +3,15 @@ http:
     hass-route:
       rule: "Host(`hass.jimeagle.com`)"
       service: "hass-service"
+      tls:
+        certResolver: "leresolver@file"
       entryPoints:
         - "websecure"
     plex-route:
       rule: "Host(`plex.jimeagle.com`)"
       service: "plex-service"
+      tls:
+        certResolver: "leresolver@file"
       entryPoints:
         - "websecure"
 
