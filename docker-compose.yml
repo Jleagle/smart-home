@@ -151,7 +151,6 @@ services:
       - "traefik.port=3001"
       - "traefik.http.routers.grafana.entrypoints=websecure"
       - "traefik.http.routers.grafana.rule=Host(`grafana.jimeagle.com`)"
-      - "traefik.http.routers.grafana.middlewares=traefik-forward-auth"
       - "traefik.http.services.grafana.loadbalancer.server.port=3001"
 
   grafana-image-renderer:
