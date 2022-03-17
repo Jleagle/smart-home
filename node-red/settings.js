@@ -420,7 +420,8 @@ module.exports = {
         // os:require('os'),
         work_alarms: 'ON',
         guest_mode: 'OFF',
-        WASHING_OUT: 'OFF'
+        washing_out: 'OFF',
+        light_percent: 100
     },
 
     /** The maximum number of messages nodes will buffer internally as part of their
