@@ -99,6 +99,8 @@ google_assistant:
       name: "Living Room"
     light.shellydimmer2_e89f6d8559a2:
       name: "Spare Room"
+    light.shellydimmer2_c45bbe56f9ba:
+      name: "Kitchen"
     switch.work_alarms:
       name: "Work Alarms"
     switch.guest_mode:
@@ -146,6 +148,7 @@ light:
       - "light.shellydimmer2_48551900caca" # Hallway Upstairs
       - "light.shellydimmer2_C45BBE572627" # Living Room
       - "light.shellydimmer2_e89f6d8559a2" # Spare Room
+      - "light.shellydimmer2_c45bbe56f9ba" # Kitchen
       - "light.spare_room_floor_light"
       - "light.living_room_big_light"
       - "light.bedroom_floor_light"
