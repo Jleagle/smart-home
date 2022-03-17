@@ -96,6 +96,25 @@ google_assistant:
     scene.everything_off:
       name: "Bedtime"
 
+    light.shellydimmer2_48551900035d:
+      name: "Hallway Downstairs"
+    light.shellydimmer2_485519002b72:
+      name: "Office"
+    light.shellydimmer2_4855190088ac:
+      name: "Small Room"
+    light.shellydimmer2_48551900b4e6:
+      name: "Bathroom"
+    light.shellydimmer2_48551900c175:
+      name: "Bedroom"
+    light.shellydimmer2_48551900c7e2:
+      name: "Dining Room"
+    light.shellydimmer2_48551900caca:
+      name: "Hallway Upstairs"
+    light.shellydimmer2_C45BBE572627:
+      name: "Living Room"
+    light.shellydimmer2_e89f6d8559a2:
+      name: "Spare Room"
+
 button:
   - platform: "mqtt"
     name: "Heating - Off"
