@@ -29,13 +29,6 @@ services:
       - "${HOME}/Bazarr:/config"
       - "${HOME}/Media/Movies:/movies"
       - "${HOME}/Media/Television:/tv"
-    labels:
-      - "traefik.enable=true"
-      - "traefik.port=6767"
-      - "traefik.http.routers.bazarr.entrypoints=websecure"
-      - "traefik.http.routers.bazarr.rule=Host(`bazarr.jimeagle.com`)"
-      - "traefik.http.routers.bazarr.tls.certresolver=myresolver"
-      - "traefik.http.services.bazarr.loadbalancer.server.port=6767"
 
   ddns:
     image: "ghcr.io/jleagle/ddns:latest"
@@ -60,14 +53,6 @@ services:
     volumes:
       - "${HOME}/DoubleTake:/.storage"
       - "./doubletake/config.yml:/.storage/config.yml"
-    labels:
-      - "traefik.enable=true"
-      - "traefik.port=3000"
-      - "traefik.http.routers.doubletake.entrypoints=websecure"
-      - "traefik.http.routers.doubletake.rule=Host(`doubletake.jimeagle.com`)"
-      - "traefik.http.routers.doubletake.tls.certresolver=myresolver"
-      - "traefik.http.routers.doubletake.middlewares=traefik-forward-auth"
-      - "traefik.http.services.doubletake.loadbalancer.server.port=3000"
 
   esphome:
     image: "esphome/esphome:latest"
@@ -78,13 +63,6 @@ services:
     volumes:
       - "${HOME}/ESPHome:/config"
       - "/etc/localtime:/etc/localtime:ro"
-    labels:
-      - "traefik.enable=true"
-      - "traefik.port=6052"
-      - "traefik.http.routers.esphome.entrypoints=websecure"
-      - "traefik.http.routers.esphome.rule=Host(`esphome.jimeagle.com`)"
-      - "traefik.http.routers.esphome.tls.certresolver=myresolver"
-      - "traefik.http.services.esphome.loadbalancer.server.port=6052"
 
   flextv:
     image: "digitalhigh/flextv:latest"
@@ -104,6 +82,7 @@ services:
       - "traefik.port=80"
       - "traefik.http.routers.flextv.entrypoints=websecure"
       - "traefik.http.routers.flextv.rule=Host(`flextv.jimeagle.com`)"
+      - "traefik.http.routers.flextv.tls=true"
       - "traefik.http.routers.flextv.tls.certresolver=myresolver"
       - "traefik.http.routers.flextv.middlewares=traefik-forward-auth"
       - "traefik.http.services.flextv.loadbalancer.server.port=80"
@@ -136,6 +115,7 @@ services:
   #      - "traefik.port=5000"
   #      - "traefik.http.routers.frigate.entrypoints=websecure"
   #      - "traefik.http.routers.frigate.rule=Host(`frigate.jimeagle.com`)"
+  #      - "traefik.http.routers.frigate.tls=true"
   #      - "traefik.http.routers.frigate.tls.certresolver=myresolver"
   #     - "traefik.http.routers.frigate.middlewares=traefik-forward-auth"
   #      - "traefik.http.services.frigate.loadbalancer.server.port=5000"
@@ -156,6 +136,7 @@ services:
       - "traefik.port=3001"
       - "traefik.http.routers.grafana.entrypoints=websecure"
       - "traefik.http.routers.grafana.rule=Host(`grafana.jimeagle.com`)"
+      - "traefik.http.routers.grafana.tls=true"
       - "traefik.http.routers.grafana.tls.certresolver=myresolver"
       - "traefik.http.services.grafana.loadbalancer.server.port=3001"
 
@@ -195,6 +176,7 @@ services:
       - "traefik.port=8086"
       - "traefik.http.routers.influx.entrypoints=websecure"
       - "traefik.http.routers.influx.rule=Host(`influx.jimeagle.com`)"
+      - "traefik.http.routers.influx.tls=true"
       - "traefik.http.routers.influx.tls.certresolver=myresolver"
       - "traefik.http.services.influx.loadbalancer.server.port=8086"
 
@@ -218,6 +200,7 @@ services:
       - "traefik.port=80"
       - "traefik.http.routers.mealie.entrypoints=websecure"
       - "traefik.http.routers.mealie.rule=Host(`mealie.jimeagle.com`)"
+      - "traefik.http.routers.mealie.tls=true"
       - "traefik.http.routers.mealie.tls.certresolver=myresolver"
       - "traefik.http.services.mealie.loadbalancer.server.port=80"
 
@@ -253,6 +236,7 @@ services:
       - "traefik.port=1880"
       - "traefik.http.routers.nodered.entrypoints=websecure"
       - "traefik.http.routers.nodered.rule=Host(`nodered.jimeagle.com`)"
+      - "traefik.http.routers.nodered.tls=true"
       - "traefik.http.routers.nodered.tls.certresolver=myresolver"
       - "traefik.http.services.nodered.loadbalancer.server.port=1880"
 
@@ -275,6 +259,7 @@ services:
       - "traefik.port=6789"
       - "traefik.http.routers.nzbget.entrypoints=websecure"
       - "traefik.http.routers.nzbget.rule=Host(`nzbget.jimeagle.com`)"
+      - "traefik.http.routers.nzbget.tls=true"
       - "traefik.http.routers.nzbget.tls.certresolver=myresolver"
       - "traefik.http.services.nzbget.loadbalancer.server.port=6789"
 
@@ -296,6 +281,7 @@ services:
       - "traefik.port=5055"
       - "traefik.http.routers.overseerr.entrypoints=websecure"
       - "traefik.http.routers.overseerr.rule=Host(`overseerr.jimeagle.com`)"
+      - "traefik.http.routers.overseerr.tls=true"
       - "traefik.http.routers.overseerr.tls.certresolver=myresolver"
       - "traefik.http.services.overseerr.loadbalancer.server.port=5055"
 
@@ -323,6 +309,7 @@ services:
       - "traefik.port=80"
       - "traefik.http.routers.pihole.entrypoints=websecure"
       - "traefik.http.routers.pihole.rule=Host(`pihole.jimeagle.com`)"
+      - "traefik.http.routers.pihole.tls=true"
       - "traefik.http.routers.pihole.tls.certresolver=myresolver"
       - "traefik.http.services.pihole.loadbalancer.server.port=80"
 
@@ -371,6 +358,7 @@ services:
       - "traefik.port=9696"
       - "traefik.http.routers.prowlarr.entrypoints=websecure"
       - "traefik.http.routers.prowlarr.rule=Host(`prowlarr.jimeagle.com`)"
+      - "traefik.http.routers.prowlarr.tls=true"
       - "traefik.http.routers.prowlarr.tls.certresolver=myresolver"
       - "traefik.http.services.prowlarr.loadbalancer.server.port=9696"
 
@@ -395,6 +383,7 @@ services:
       - "traefik.port=7878"
       - "traefik.http.routers.radarr.entrypoints=websecure"
       - "traefik.http.routers.radarr.rule=Host(`radarr.jimeagle.com`)"
+      - "traefik.http.routers.radarr.tls=true"
       - "traefik.http.routers.radarr.tls.certresolver=myresolver"
       - "traefik.http.services.radarr.loadbalancer.server.port=7878"
 
@@ -419,6 +408,7 @@ services:
       - "traefik.port=8989"
       - "traefik.http.routers.sonarr.entrypoints=websecure"
       - "traefik.http.routers.sonarr.rule=Host(`sonarr.jimeagle.com`)"
+      - "traefik.http.routers.sonarr.tls=true"
       - "traefik.http.routers.sonarr.tls.certresolver=myresolver"
       - "traefik.http.services.sonarr.loadbalancer.server.port=8989"
 
@@ -440,6 +430,7 @@ services:
       - "traefik.port=8181"
       - "traefik.http.routers.tautulli.entrypoints=websecure"
       - "traefik.http.routers.tautulli.rule=Host(`tautulli.jimeagle.com`)"
+      - "traefik.http.routers.tautulli.tls=true"
       - "traefik.http.routers.tautulli.tls.certresolver=myresolver"
       - "traefik.http.services.tautulli.loadbalancer.server.port=8181"
 
@@ -467,9 +458,6 @@ services:
     hostname: "traefik"
     restart: "unless-stopped"
     network_mode: "host"
-    #    ports:
-    #      - "80:80"
-    #      - "443:443"
     environment:
       CLOUDFLARE_DNS_API_TOKEN: "${CLOUDFLARE_DNS_API_TOKEN}"
       CLOUDFLARE_ZONE_API_TOKEN: "${CLOUDFLARE_ZONE_API_TOKEN}"

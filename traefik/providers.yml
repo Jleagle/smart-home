@@ -1,5 +1,35 @@
 http:
   routers:
+    bazarr-route:
+      rule: "Host(`bazarr.jimeagle.com`)"
+      service: "bazarr-service"
+      tls:
+        certResolver: "myresolver"
+      entryPoints:
+        - "websecure"
+    doubletake-route:
+      rule: "Host(`doubletake.jimeagle.com`)"
+      service: "doubletake-service"
+      middlewares:
+        - "traefik-forward-auth"
+      tls:
+        certResolver: "myresolver"
+      entryPoints:
+        - "websecure"
+    esphome-route:
+      rule: "Host(`esphome.jimeagle.com`)"
+      service: "esphome-service"
+      tls:
+        certResolver: "myresolver"
+      entryPoints:
+        - "websecure"
+    flextv-route:
+      rule: "Host(`flextv.jimeagle.com`)"
+      service: "flextv-service"
+      tls:
+        certResolver: "myresolver"
+      entryPoints:
+        - "websecure"
     hass-route:
       rule: "Host(`hass.jimeagle.com`)"
       service: "hass-service"
@@ -16,6 +46,22 @@ http:
         - "websecure"
 
   services:
+    bazarr-service:
+      loadBalancer:
+        servers:
+          - url: "http://localhost:6767"
+    doubletake-service:
+      loadBalancer:
+        servers:
+          - url: "http://localhost:3000"
+    esphome-service:
+      loadBalancer:
+        servers:
+          - url: "http://localhost:6052"
+    flextv-service:
+      loadBalancer:
+        servers:
+          - url: "http://localhost:82"
     hass-service:
       loadBalancer:
         servers:
