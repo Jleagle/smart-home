@@ -19,6 +19,8 @@ http:
     esphome-route:
       rule: "Host(`esphome.jimeagle.com`)"
       service: "esphome-service"
+      middlewares:
+        - "traefik-forward-auth"
       tls:
         certResolver: "myresolver"
       entryPoints:
@@ -32,6 +34,22 @@ http:
         certResolver: "myresolver"
       entryPoints:
         - "websecure"
+    frigate-route:
+      rule: "Host(`frigate.jimeagle.com`)"
+      service: "frigate-service"
+      middlewares:
+        - "traefik-forward-auth"
+      tls:
+        certResolver: "myresolver"
+      entryPoints:
+        - "websecure"
+    grafana-route:
+      rule: "Host(`grafana.jimeagle.com`)"
+      service: "grafana-service"
+      tls:
+        certResolver: "myresolver"
+      entryPoints:
+        - "websecure"
     hass-route:
       rule: "Host(`hass.jimeagle.com`)"
       service: "hass-service"
@@ -39,9 +57,79 @@ http:
         certResolver: "myresolver"
       entryPoints:
         - "websecure"
+    influx-route:
+      rule: "Host(`influx.jimeagle.com`)"
+      service: "influx-service"
+      tls:
+        certResolver: "myresolver"
+      entryPoints:
+        - "websecure"
+    mealie-route:
+      rule: "Host(`mealie.jimeagle.com`)"
+      service: "mealie-service"
+      tls:
+        certResolver: "myresolver"
+      entryPoints:
+        - "websecure"
+    nodered-route:
+      rule: "Host(`nodered.jimeagle.com`)"
+      service: "nodered-service"
+      tls:
+        certResolver: "myresolver"
+      entryPoints:
+        - "websecure"
+    nzbget-route:
+      rule: "Host(`nzbget.jimeagle.com`)"
+      service: "nzbget-service"
+      tls:
+        certResolver: "myresolver"
+      entryPoints:
+        - "websecure"
+    overseerr-route:
+      rule: "Host(`overseerr.jimeagle.com`)"
+      service: "overseerr-service"
+      tls:
+        certResolver: "myresolver"
+      entryPoints:
+        - "websecure"
+    pihole-route:
+      rule: "Host(`pihole.jimeagle.com`)"
+      service: "pihole-service"
+      tls:
+        certResolver: "myresolver"
+      entryPoints:
+        - "websecure"
     plex-route:
       rule: "Host(`plex.jimeagle.com`)"
       service: "plex-service"
+      tls:
+        certResolver: "myresolver"
+      entryPoints:
+        - "websecure"
+    prowler-route:
+      rule: "Host(`prowler.jimeagle.com`)"
+      service: "prowler-service"
+      tls:
+        certResolver: "myresolver"
+      entryPoints:
+        - "websecure"
+    radarr-route:
+      rule: "Host(`radarr.jimeagle.com`)"
+      service: "radarr-service"
+      tls:
+        certResolver: "myresolver"
+      entryPoints:
+        - "websecure"
+    sonarr-route:
+      rule: "Host(`sonarr.jimeagle.com`)"
+      service: "sonarr-service"
+      tls:
+        certResolver: "myresolver"
+      entryPoints:
+        - "websecure"
+    tautulli-route:
+      rule: "Host(`tautulli.jimeagle.com`)"
+      service: "tautulli-service"
       tls:
         certResolver: "myresolver"
       entryPoints:
@@ -64,11 +152,59 @@ http:
       loadBalancer:
         servers:
           - url: "http://localhost:82"
+    frigate-service:
+      loadBalancer:
+        servers:
+          - url: "http://localhost:5000"
+    grafana-service:
+      loadBalancer:
+        servers:
+          - url: "http://localhost:3001"
     hass-service:
       loadBalancer:
         servers:
           - url: "http://localhost:8123"
+    influx-service:
+      loadBalancer:
+        servers:
+          - url: "http://localhost:8086"
+    mealie-service:
+      loadBalancer:
+        servers:
+          - url: "http://localhost:9925"
+    nodered-service:
+      loadBalancer:
+        servers:
+          - url: "http://localhost:1880"
+    nzbget-service:
+      loadBalancer:
+        servers:
+          - url: "http://localhost:6789"
+    overseerr-service:
+      loadBalancer:
+        servers:
+          - url: "http://localhost:5055"
+    pihole-service:
+      loadBalancer:
+        servers:
+          - url: "http://localhost:81"
     plex-service:
       loadBalancer:
         servers:
           - url: "http://localhost:32400"
+    prowlarr-service:
+      loadBalancer:
+        servers:
+          - url: "http://localhost:9696"
+    radarr-service:
+      loadBalancer:
+        servers:
+          - url: "http://localhost:7878"
+    sonarr-service:
+      loadBalancer:
+        servers:
+          - url: "http://localhost:8989"
+    tautulli-service:
+      loadBalancer:
+        servers:
+          - url: "http://localhost:8181"
