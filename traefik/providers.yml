@@ -26,6 +26,8 @@ http:
     flextv-route:
       rule: "Host(`flextv.jimeagle.com`)"
       service: "flextv-service"
+      middlewares:
+        - "traefik-forward-auth"
       tls:
         certResolver: "myresolver"
       entryPoints:
