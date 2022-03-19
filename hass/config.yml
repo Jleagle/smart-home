@@ -102,6 +102,11 @@ google_assistant:
     light.shellydimmer2_c45bbe56f9ba:
       name: "Kitchen"
 
+    light.spare_room_floor_light:
+      name: "Floor Light"
+    light.living_room_big_light:
+      name: "Big Light"
+
     switch.work_alarms:
       name: "Work Alarms"
     switch.guest_mode:
