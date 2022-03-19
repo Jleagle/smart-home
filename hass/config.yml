@@ -81,6 +81,8 @@ google_assistant:
   report_state: true
   expose_by_default: false
   entity_config:
+
+    # Shelly
     light.shellydimmer2_48551900035d:
       name: "Hallway Downstairs"
     light.shellydimmer2_485519002b72:
@@ -102,11 +104,13 @@ google_assistant:
     light.shellydimmer2_c45bbe56f9ba:
       name: "Kitchen"
 
+    # Hue
     light.spare_room_floor_light:
       name: "Floor Light"
     light.living_room_big_light:
       name: "Big Light"
 
+    # Switches
     switch.work_alarms:
       name: "Work Alarms"
     switch.guest_mode:
@@ -118,11 +122,13 @@ google_assistant:
     switch.someone_home:
       name: "Someone Home"
 
+    # Wake On Lan
     switch.wake_pc:
       name: "PC"
     switch.wake_xbox:
       name: "XBOX"
 
+    # Scenes
     scene.everything_off:
       name: "Bedtime"
 
