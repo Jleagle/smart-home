@@ -164,9 +164,13 @@ media_player:
 
 switch:
   - platform: "wake_on_lan"
-    name: "Desktop PC"
+    name: "PC"
     host: "192.168.0.8"
-    mac: !secret pc_mac_address
+    mac: "B4:2E:99:F0:FB:4A"
+  - platform: "wake_on_lan"
+    name: "XBOX"
+    host: "192.168.0.6"
+    mac: "94:9A:A9:19:EA:2C"
   - platform: "mqtt"
     name: "Work Alarms"
     device_class: "switch"
