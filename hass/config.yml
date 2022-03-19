@@ -224,26 +224,26 @@ switch:
 
 group:
   alldevices:
-    name: All Devices
+    name: "All Devices"
     entities:
-      - light.all_lights
-      - media_player.all_media_players
-      - group.plugs
+      - "light.all_lights"
+      - "media_player.all_media_players"
+      - "group.plugs"
   plugs:
     name: All Plugs
     entities:
-      - switch.plug_1_socket_1
-      - switch.plug_3_socket_1
-      - switch.plug_4_socket_1
-      - switch.electric_blanket
+      - "switch.plug_1_socket_1"
+      - "switch.plug_3_socket_1"
+      - "switch.plug_4_socket_1"
+      - "switch.electric_blanket"
   climate:
-    name: Climate
+    name: "Climate"
     entities:
-      - sensor.living_room_heating
-      - sensor.bedroom_heating
-      - sensor.office_heating
+      - "sensor.living_room_heating"
+      - "sensor.bedroom_heating"
+      - "sensor.office_heating"
   people:
-    name: People
+    name: "People"
     entities:
-      - person.james_eagle
-      - person.gillian_mckinley
+      - "person.james_eagle"
+      - "person.gillian_mckinley"
