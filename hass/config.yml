@@ -152,6 +152,25 @@ light:
       - "light.spare_room_floor_light"
       - "light.living_room_big_light"
       - "light.bedroom_floor_light"
+  - platform: "group"
+    name: "Upstairs Lights"
+    entities:
+      - "light.shellydimmer2_485519002b72" # Office
+      - "light.shellydimmer2_4855190088ac" # Small Room
+      - "light.shellydimmer2_48551900b4e6" # Bathroom
+      - "light.shellydimmer2_48551900c175" # Bedroom
+      - "light.shellydimmer2_48551900caca" # Hallway Upstairs
+      - "light.shellydimmer2_e89f6d8559a2" # Spare Room
+      - "light.spare_room_floor_light"
+      - "light.bedroom_floor_light"
+  - platform: "group"
+    name: "Downstairs Lights"
+    entities:
+      - "light.shellydimmer2_48551900035d" # Hallway Downstairs
+      - "light.shellydimmer2_48551900c7e2" # Dining Room
+      - "light.shellydimmer2_C45BBE572627" # Living Room
+      - "light.shellydimmer2_c45bbe56f9ba" # Kitchen
+      - "light.living_room_big_light"
 
 media_player:
   - platform: "group"
