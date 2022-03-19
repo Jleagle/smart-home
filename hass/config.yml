@@ -101,6 +101,7 @@ google_assistant:
       name: "Spare Room"
     light.shellydimmer2_c45bbe56f9ba:
       name: "Kitchen"
+
     switch.work_alarms:
       name: "Work Alarms"
     switch.guest_mode:
@@ -109,10 +110,14 @@ google_assistant:
       name: "Downloads"
     switch.pi_hole:
       name: "Pihole"
-    switch.wake_desktop:
-      name: "PC"
     switch.someone_home:
       name: "Someone Home"
+
+    switch.wake_pc:
+      name: "PC"
+    switch.wake_xbox:
+      name: "XBOX"
+
     scene.everything_off:
       name: "Bedtime"
 
