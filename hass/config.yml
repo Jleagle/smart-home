@@ -110,7 +110,7 @@ google_assistant:
     switch.pi_hole:
       name: "Pihole"
     switch.wake_desktop:
-      name: "Wake Desktop"
+      name: "PC"
     switch.someone_home:
       name: "Someone Home"
     scene.everything_off:
