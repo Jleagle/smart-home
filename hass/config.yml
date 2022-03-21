@@ -224,6 +224,12 @@ switch:
     state_topic: "home/someone-home/get"
     command_topic: "home/someone-home/set"
     retain: true
+  - platform: "mqtt"
+    name: "Washing Out"
+    device_class: "switch"
+    state_topic: "home/washing-out/get"
+    command_topic: "home/washing-out/set"
+    retain: true
 
 group:
   alldevices:
