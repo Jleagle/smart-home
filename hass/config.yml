@@ -121,6 +121,8 @@ google_assistant:
       name: "Pihole"
     switch.someone_home:
       name: "Someone Home"
+    switch.washing_out:
+      name: "Washing Out"
 
     # Wake On Lan
     switch.wake_pc:
