@@ -211,16 +211,19 @@ switch:
     device_class: "switch"
     state_topic: "home/work-alarms/get"
     command_topic: "home/work-alarms/set"
+    retain: true
   - platform: "mqtt"
     name: "Guest Mode"
     device_class: "switch"
     state_topic: "home/guest-mode/get"
     command_topic: "home/guest-mode/set"
+    retain: true
   - platform: "mqtt"
     name: "Someone Home"
     device_class: "switch"
     state_topic: "home/someone-home/get"
     command_topic: "home/someone-home/set"
+    retain: true
 
 group:
   alldevices:
