@@ -108,6 +108,8 @@ services:
     hostname: "grafana"
     restart: "unless-stopped"
     user: "0"
+    ports:
+      - "3001:3000"
     environment:
       - "GRAFANA_SMTP_PASS"
     volumes:
