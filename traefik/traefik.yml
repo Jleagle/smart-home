@@ -10,9 +10,6 @@ api:
 
 accessLog: { }
 
-#pilot:
-#  token: "ac9a8268-0454-410b-894b-98ba0c6d34b8"
-
 entryPoints:
   web:
     address: ":80"
