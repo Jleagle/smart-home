@@ -13,6 +13,7 @@ mkdir -p ~/Media/Frigate
 mkdir -p ~/Media/Movies
 mkdir -p ~/Media/Television
 mkdir -p ~/Media/YouTube
+mkdir -p ~/Minecraft
 mkdir -p ~/Mosquitto/Log
 mkdir -p ~/Mosquitto/Data
 mkdir -p ~/NodeRed
