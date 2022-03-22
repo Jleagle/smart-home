@@ -241,7 +241,7 @@ group:
       - "media_player.all_media_players"
       - "group.plugs"
   plugs:
-    name: All Plugs
+    name: "All Plugs"
     entities:
       - "switch.plug_1_socket_1"
       - "switch.plug_3_socket_1"
