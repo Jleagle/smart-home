@@ -50,7 +50,7 @@ homeassistant:
     - type: "trusted_networks"
       trusted_networks:
         - "192.168.0.8" # PC
-        - "192.168.0.9" # Phone
+        - "192.168.0.10" # Phone
     - type: "homeassistant"
 
 http:
@@ -207,7 +207,7 @@ switch:
     mac: "B4:2E:99:F0:FB:4A"
   - platform: "wake_on_lan"
     name: "XBOX"
-    host: "192.168.0.6"
+    host: "192.168.0.13"
     mac: "94:9A:A9:19:EA:2C"
   - platform: "mqtt"
     name: "Work Alarms"
