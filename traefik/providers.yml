@@ -124,7 +124,7 @@ http:
       rule: "Host(`router.jimeagle.com`)"
       service: "router-service"
       middlewares:
-        - "traefik-forward-auth"
+        - "traefik-forward-auth@docker"
       tls:
         certResolver: "myresolver"
       entryPoints:
