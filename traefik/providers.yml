@@ -106,9 +106,9 @@ http:
         certResolver: "myresolver"
       entryPoints:
         - "websecure"
-    prowler-route:
-      rule: "Host(`prowler.jimeagle.com`)"
-      service: "prowler-service"
+    prowlarr-route:
+      rule: "Host(`prowlarr.jimeagle.com`)"
+      service: "prowlarr-service"
       tls:
         certResolver: "myresolver"
       entryPoints:
