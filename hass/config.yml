@@ -1,10 +1,11 @@
+api:
 #automation:
 #cloud:
 counter:
 dhcp:
 diagnostics:
 #energy:
-frontend:
+ffmpeg:
 history:
 input_boolean:
 input_button:
@@ -18,6 +19,7 @@ media_source:
 mobile_app:
 my:
 network:
+notify:
 person:
 #script:
 ssdp:
@@ -26,14 +28,13 @@ system_health:
 #tag:
 timer:
 usb:
+wake_on_lan:
 webhook:
 zeroconf:
 zone:
 
-ffmpeg:
-wake_on_lan:
-notify:
-api:
+frontend:
+  themes: !include_dir_merge_named themes
 
 homeassistant:
   name: "Home"
