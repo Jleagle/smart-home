@@ -4,6 +4,7 @@ api:
 counter:
 dhcp:
 diagnostics:
+discovery:
 #energy:
 ffmpeg:
 history:
