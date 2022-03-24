@@ -28,6 +28,8 @@ mkdir -p ~/PlexMeta
 mkdir -p ~/Prowlarr
 mkdir -p ~/Radarr
 mkdir -p ~/Sonarr
+mkdir -p ~/Syncthing/Config
+mkdir -p ~/Syncthing/Data
 mkdir -p ~/Tautulli
 mkdir -p ~/Traefik
 mkdir -p ~/Varken

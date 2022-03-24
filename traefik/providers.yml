@@ -138,6 +138,13 @@ http:
         certResolver: "myresolver"
       entryPoints:
         - "websecure"
+    syncthing-route:
+      rule: "Host(`syncthing.jimeagle.com`)"
+      service: "syncthing-service"
+      tls:
+        certResolver: "myresolver"
+      entryPoints:
+        - "websecure"
     sonarr-route:
       rule: "Host(`sonarr.jimeagle.com`)"
       service: "sonarr-service"
@@ -226,6 +233,10 @@ http:
       loadBalancer:
         servers:
           - url: "http://192.168.0.1:80"
+    syncthing-service:
+      loadBalancer:
+        servers:
+          - url: "http://localhost:8384"
     sonarr-service:
       loadBalancer:
         servers:
