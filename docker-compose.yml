@@ -2,6 +2,20 @@ version: '3'
 
 services:
 
+  adguard:
+    image: "adguard/adguardhome:latest"
+    container_name: "adguard"
+    hostname: "adguard"
+    restart: "unless-stopped"
+    ports:
+      - "54:53"
+      - "3002:3000"
+    environment:
+      - "TZ=Europe/London"
+    volumes:
+      - "${HOME}/AdGuard/Work:/opt/adguardhome/work"
+      - "${HOME}/AdGuard/Conf:/opt/adguardhome/conf"
+
   autoheal:
     image: "willfarrell/autoheal:latest"
     container_name: "autoheal"

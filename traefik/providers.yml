@@ -1,5 +1,14 @@
 http:
   routers:
+    adguard-route:
+      rule: "Host(`adguard.jimeagle.com`)"
+      service: "adguard-service"
+      middlewares:
+        - "traefik-forward-auth"
+      tls:
+        certResolver: "myresolver"
+      entryPoints:
+        - "websecure"
     bazarr-route:
       rule: "Host(`bazarr.jimeagle.com`)"
       service: "bazarr-service"
@@ -145,6 +154,10 @@ http:
         - "websecure"
 
   services:
+    adguard-service:
+      loadBalancer:
+        servers:
+          - url: "http://localhost:3002"
     bazarr-service:
       loadBalancer:
         servers:

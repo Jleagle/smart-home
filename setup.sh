@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+mkdir -p ~/AdGuard/Work
+mkdir -p ~/AdGuard/Conf
 mkdir -p ~/Bazarr
 mkdir -p ~/DDNS
 mkdir -p ~/DoubleTake
