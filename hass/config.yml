@@ -253,9 +253,10 @@ group:
   climate:
     name: "Climate"
     entities:
-      - "sensor.living_room_heating"
-      - "sensor.bedroom_heating"
-      - "sensor.office_heating"
+      - "climate.bedroom"
+      - "climate.dining_room"
+      - "climate.living_room"
+      - "climate.office"
   people:
     name: "People"
     entities:
