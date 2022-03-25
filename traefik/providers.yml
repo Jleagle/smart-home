@@ -173,7 +173,7 @@ http:
     adguard-service:
       loadBalancer:
         servers:
-          - url: "http://localhost:3002"
+          - url: "http://localhost:8089"
     bazarr-service:
       loadBalancer:
         servers:
