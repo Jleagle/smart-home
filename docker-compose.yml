@@ -8,8 +8,8 @@ services:
     hostname: "adguard"
     restart: "unless-stopped"
     ports:
-      - "54:53"
-      - "3002:3000"
+      - "53:53"
+      - "8089:80"
     environment:
       - "TZ=Europe/London"
     volumes:
@@ -253,25 +253,25 @@ services:
     volumes:
       - "${HOME}/Overseerr:/config"
 
-  pihole:
-    image: "pihole/pihole:latest"
-    container_name: "pihole"
-    hostname: "pihole"
-    restart: "unless-stopped"
-    ports:
-      - "53:53/tcp"
-      - "53:53/udp"
-      - "67:67/udp"
-      - "81:80"
-    environment:
-      TZ: "Europe/London"
-      ServerIP: "192.168.0.7"
-      WEBPASSWORD: "${PIHOLE_PASSWORD}"
-      ADMIN_EMAIL: "jimeagle@gmail.com"
-      PIHOLE_DNS_: "1.1.1.1;8.8.8.8"
-      VIRTUAL_HOST: "pihole.jimeagle.com"
-    volumes:
-      - "${HOME}/PiHole/:/etc/pihole/"
+  #  pihole:
+  #    image: "pihole/pihole:latest"
+  #    container_name: "pihole"
+  #    hostname: "pihole"
+  #    restart: "unless-stopped"
+  #    ports:
+  #      - "53:53/tcp"
+  #      - "53:53/udp"
+  #      - "67:67/udp"
+  #      - "81:80"
+  #    environment:
+  #      TZ: "Europe/London"
+  #      ServerIP: "192.168.0.7"
+  #      WEBPASSWORD: "${PIHOLE_PASSWORD}"
+  #      ADMIN_EMAIL: "jimeagle@gmail.com"
+  #      PIHOLE_DNS_: "1.1.1.1;8.8.8.8"
+  #      VIRTUAL_HOST: "pihole.jimeagle.com"
+  #    volumes:
+  #      - "${HOME}/PiHole/:/etc/pihole/"
 
   plex:
     image: "linuxserver/plex:latest"
