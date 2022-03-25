@@ -364,7 +364,7 @@ services:
       - "TZ=Europe/London"
     volumes:
       - "${HOME}/Syncthing/Config:/config"
-      - "${HOME}/Syncthing/Data:/data"
+      - "${HOME}/Syncthing/Data:/config/Default"
 
   tautulli:
     image: "lscr.io/linuxserver/tautulli:latest"
