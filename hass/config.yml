@@ -132,6 +132,28 @@ google_assistant:
     switch.wake_xbox:
       name: "XBOX"
 
+    # Tado
+    climate.bedroom:
+      name: "Bedroom"
+    climate.dining_room:
+      name: "Dining Room"
+    climate.living_room:
+      name: "Living Room"
+    climate.office:
+      name: "Office"
+
+    # Tuya
+    light.bedroom_floor_light:
+      name: "Bedroom Floor Light"
+    switch.smart_socket_1_socket_1:
+      name: "XBOX"
+    switch.smart_socket_2_socket_1:
+      name: "XBOX"
+    switch.smart_socket_3_socket_1:
+      name: "XBOX"
+    switch.smart_socket_4_socket_1:
+      name: "XBOX"
+
     # Scenes
     scene.everything_off:
       name: "Bedtime"
