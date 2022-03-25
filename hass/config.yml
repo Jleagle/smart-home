@@ -86,25 +86,25 @@ google_assistant:
 
     # Shelly
     light.shellydimmer2_48551900035d:
-      name: "Hallway Downstairs"
+      name: "Downstairs Light"
     light.shellydimmer2_485519002b72:
-      name: "Office"
+      name: "Ceiling Light"
     light.shellydimmer2_4855190088ac:
-      name: "Small Room"
+      name: "Ceiling Light"
     light.shellydimmer2_48551900b4e6:
-      name: "Bathroom"
+      name: "Ceiling Light"
     light.shellydimmer2_48551900c175:
-      name: "Bedroom"
+      name: "Ceiling Light"
     light.shellydimmer2_48551900c7e2:
-      name: "Dining Room"
+      name: "Ceiling Light"
     light.shellydimmer2_48551900caca:
-      name: "Hallway Upstairs"
+      name: "Upstairs Light"
     light.shellydimmer2_C45BBE572627:
-      name: "Living Room"
+      name: "Ceiling Light"
     light.shellydimmer2_e89f6d8559a2:
-      name: "Spare Room"
+      name: "Ceiling Light"
     light.shellydimmer2_c45bbe56f9ba:
-      name: "Kitchen"
+      name: "Ceiling Light"
 
     # Hue
     light.spare_room_floor_light:
