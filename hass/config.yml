@@ -146,13 +146,13 @@ google_assistant:
     light.bedroom_floor_light:
       name: "Bedroom Floor Light"
     switch.smart_socket_1_socket_1:
-      name: "XBOX"
+      name: "Electric Blanket"
     switch.smart_socket_2_socket_1:
-      name: "XBOX"
+      name: "Laptop"
     switch.smart_socket_3_socket_1:
-      name: "XBOX"
+      name: "Salt Lamp"
     switch.smart_socket_4_socket_1:
-      name: "XBOX"
+      name: "Firework Lamp"
 
     # Scenes
     scene.everything_off:
