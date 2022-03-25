@@ -427,11 +427,6 @@ services:
       - "CONFIG=/config.json"
       - "WHITELIST=jimeagle@gmail.com"
       - "INSECURE_COOKIE=true"
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.middlewares.traefik-forward-auth.forwardauth.address=http://localhost:4181"
-      - "traefik.http.middlewares.traefik-forward-auth.forwardauth.authResponseHeaders=X-Forwarded-User"
-      - "traefik.http.services.traefik-forward-auth.loadbalancer.server.port=4181"
 
   #  varken:
   #    image: "boerderij/varken:latest"

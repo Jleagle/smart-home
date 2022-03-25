@@ -1,4 +1,11 @@
 http:
+
+  middlewares:
+    traefik-forward-auth:
+      forwardAuth:
+        address: "http://localhost:4181"
+        authResponseHeaders: "X-Forwarded-User"
+
   routers:
     adguard-route:
       rule: "Host(`adguard.jimeagle.com`)"
@@ -133,7 +140,7 @@ http:
       rule: "Host(`router.jimeagle.com`)"
       service: "router-service"
       middlewares:
-        - "traefik-forward-auth@docker"
+        - "traefik-forward-auth"
       tls:
         certResolver: "myresolver"
       entryPoints:
@@ -141,6 +148,8 @@ http:
     syncthing-route:
       rule: "Host(`syncthing.jimeagle.com`)"
       service: "syncthing-service"
+      middlewares:
+        - "traefik-forward-auth"
       tls:
         certResolver: "myresolver"
       entryPoints:
