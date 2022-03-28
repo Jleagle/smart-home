@@ -291,6 +291,7 @@ services:
       - "${HOME}/Media/Television:/data/tvshows"
       - "${HOME}/Media/Movies:/data/movies"
       - "${HOME}/Media/YouTube:/data/youtube"
+    devices:
       - "/dev/dri:/dev/dri" # Quicksync
 
   #  plexmeta:
