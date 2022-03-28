@@ -60,6 +60,10 @@ http:
     - "192.168.0.7"
     - "::1"
 
+xbox:
+  client_id: !secret xbox_client_id
+  client_secret: !secret xbox_client_secret
+
 tts:
   - platform: "google_translate"
 
