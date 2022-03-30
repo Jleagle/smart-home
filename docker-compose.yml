@@ -145,7 +145,7 @@ services:
     network_mode: "host"
     privileged: true
     devices:
-      - "/dev/bus/usb:/dev/bus/usb"
+      - "/dev/gpiomem:/dev/gpiomem"
     volumes:
       - "${HOME}/Hass/Config:/config"
       - "${HOME}/Hass/google_assistant_key.json:/config/google_assistant_key.json:ro"
