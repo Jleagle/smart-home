@@ -51,7 +51,8 @@ homeassistant:
     - type: "trusted_networks"
       trusted_networks:
         - "192.168.0.8" # PC
-        - "192.168.0.10" # Phone
+        - "192.168.0.10" # James
+        - "192.168.0.11" # Gillian
     - type: "homeassistant"
 
 http:
