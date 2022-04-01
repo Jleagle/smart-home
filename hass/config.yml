@@ -138,14 +138,14 @@ google_assistant:
       name: "PC"
 
     # Tado
-    climate.bedroom:
-      name: "Bedroom"
-    climate.dining_room:
-      name: "Dining Room"
-    climate.living_room:
-      name: "Living Room"
-    climate.office:
-      name: "Office"
+    #    climate.bedroom:
+    #      name: "Bedroom"
+    #    climate.dining_room:
+    #      name: "Dining Room"
+    #    climate.living_room:
+    #      name: "Living Room"
+    #    climate.office:
+    #      name: "Office"
 
     # Tuya
     light.bedroom_floor_light:
