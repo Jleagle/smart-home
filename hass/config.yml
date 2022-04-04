@@ -34,9 +34,6 @@ webhook:
 zeroconf:
 zone:
 
-frontend:
-  themes: !include_dir_merge_named themes
-
 homeassistant:
   name: "Home"
   latitude: !secret home_lat
@@ -55,6 +52,12 @@ homeassistant:
         - "192.168.0.11" # Gillian
     - type: "homeassistant"
 
+frontend:
+  themes: !include_dir_merge_named themes
+
+tts:
+  - platform: "google_translate"
+
 http:
   use_x_forwarded_for: true
   trusted_proxies:
@@ -65,15 +68,12 @@ xbox:
   client_id: !secret xbox_client_id
   client_secret: !secret xbox_client_secret
 
-tts:
-  - platform: "google_translate"
-
-mqtt:
-  client_id: "hass"
-
 spotify:
   client_id: !secret spotify_id
   client_secret: !secret spotify_secret
+
+mqtt:
+  client_id: "hass"
 
 #camera:
 #  - platform: onvif
