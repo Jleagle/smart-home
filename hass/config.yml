@@ -5,7 +5,7 @@ counter:
 dhcp:
 diagnostics:
 discovery:
-#energy:
+energy:
 ffmpeg:
 history:
 input_boolean:
