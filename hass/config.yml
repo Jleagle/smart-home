@@ -47,9 +47,11 @@ homeassistant:
   auth_providers:
     - type: "trusted_networks"
       trusted_networks:
-        - "192.168.0.8" # PC
-        - "192.168.0.10" # James
-        - "192.168.0.11" # Gillian
+        - "192.168.0.0/24"
+      trusted_users:
+        192.168.0.10: james
+        192.168.0.11: gillian
+      allow_bypass_login: true
     - type: "homeassistant"
 
 frontend:
