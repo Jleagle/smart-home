@@ -49,8 +49,8 @@ homeassistant:
       trusted_networks:
         - "192.168.0.0/24"
       trusted_users:
-        192.168.0.10: james
-        192.168.0.11: gillian
+        192.168.0.10: !secret hass_id_james
+        192.168.0.11: !secret hass_id_gillian
       allow_bypass_login: true
     - type: "homeassistant"
 
