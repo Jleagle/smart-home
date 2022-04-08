@@ -90,6 +90,8 @@ http:
     nodered-route:
       rule: "Host(`nodered.jimeagle.com`)"
       service: "nodered-service"
+      middlewares:
+        - "traefik-forward-auth"
       tls:
         certResolver: "myresolver"
       entryPoints:
