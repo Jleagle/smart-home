@@ -235,7 +235,7 @@ group:
       - "switch.smart_socket_3_socket_1"
       - "switch.smart_socket_4_socket_1"
   climate:
-    name: "Climate"
+    name: "All Thermostats"
     entities:
       - "climate.bedroom"
       - "climate.dining_room"
