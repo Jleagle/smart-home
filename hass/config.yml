@@ -126,8 +126,6 @@ google_assistant:
       name: "Guest Mode"
     switch.nzbget_download:
       name: "Downloads"
-    #    switch.pi_hole:
-    #      name: "Pihole"
     switch.adguard_protection:
       name: "Adguard Protection"
     input_boolean.someone_home:
