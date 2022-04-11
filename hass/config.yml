@@ -120,9 +120,9 @@ google_assistant:
       name: "Big Light"
 
     # Switches
-    switch.work_alarms:
+    input_boolean.work_alarm:
       name: "Work Alarms"
-    switch.guest_mode:
+    input_boolean.guest_mode:
       name: "Guest Mode"
     switch.nzbget_download:
       name: "Downloads"
@@ -130,9 +130,9 @@ google_assistant:
     #      name: "Pihole"
     switch.adguard_protection:
       name: "Adguard Protection"
-    switch.someone_home:
+    input_boolean.someone_home:
       name: "Someone Home"
-    switch.washing_out:
+    input_boolean.washing_out:
       name: "Washing Out"
 
     # Wake On Lan
@@ -195,30 +195,6 @@ switch:
     name: "TV"
     host: "192.168.0.9"
     mac: "E8-F2-E2-C1-A4-48"
-  - platform: "mqtt"
-    name: "Work Alarms"
-    device_class: "switch"
-    state_topic: "home/work-alarms/get"
-    command_topic: "home/work-alarms/set"
-    retain: true
-  - platform: "mqtt"
-    name: "Guest Mode"
-    device_class: "switch"
-    state_topic: "home/guest-mode/get"
-    command_topic: "home/guest-mode/set"
-    retain: true
-  - platform: "mqtt"
-    name: "Someone Home"
-    device_class: "switch"
-    state_topic: "home/someone-home/get"
-    command_topic: "home/someone-home/set"
-    retain: true
-  - platform: "mqtt"
-    name: "Washing Out"
-    device_class: "switch"
-    state_topic: "home/washing-out/get"
-    command_topic: "home/washing-out/set"
-    retain: true
 
 group:
   alldevices:
