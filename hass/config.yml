@@ -124,14 +124,14 @@ google_assistant:
       name: "Work Alarms"
     input_boolean.guest_mode:
       name: "Guest Mode"
-    switch.nzbget_download:
-      name: "Downloads"
-    switch.adguard_protection:
-      name: "Adguard Protection"
     input_boolean.someone_home:
       name: "Someone Home"
     input_boolean.washing_out:
       name: "Washing Out"
+    switch.nzbget_download:
+      name: "Downloads"
+    switch.adguard_protection:
+      name: "Adguard Protection"
 
     # Wake On Lan
     switch.wake_pc:
