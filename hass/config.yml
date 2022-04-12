@@ -163,16 +163,6 @@ google_assistant:
     scene.everything_off:
       name: "Bedtime"
 
-button:
-  - platform: "mqtt"
-    name: "Heating - Off"
-    unique_id: "all-heating-off-button"
-    command_topic: "home/heating/all-off"
-  - platform: "mqtt"
-    name: "Heating - Schedule"
-    unique_id: "all-heating-schedule-button"
-    command_topic: "home/heating/all-schedule"
-
 scene:
   - platform: "mqtt"
     name: "Everything Off"
