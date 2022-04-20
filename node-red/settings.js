@@ -418,7 +418,19 @@ module.exports = {
      */
     functionGlobalContext: {
         // os:require('os'),
-        light_percent: 100
+        light_percent: 255,
+        lights_overridden: {
+            "light.shellydimmer2_48551900035d": false,
+            "light.shellydimmer2_485519002b72": false,
+            "light.shellydimmer2_4855190088ac": false,
+            "light.shellydimmer2_48551900b4e6": false,
+            "light.shellydimmer2_48551900c175": false,
+            "light.shellydimmer2_48551900c7e2": false,
+            "light.shellydimmer2_48551900caca": false,
+            "light.shellydimmer2_C45BBE572627": false,
+            "light.shellydimmer2_e89f6d8559a2": false,
+            "light.shellydimmer2_c45bbe56f9ba": false,
+        },
     },
 
     /** The maximum number of messages nodes will buffer internally as part of their
