@@ -418,8 +418,8 @@ module.exports = {
      */
     functionGlobalContext: {
         // os:require('os'),
-        light_percent: 100,
-        lights_overridden: {
+        light_level: 255,
+        light_override: {
             light: {
                 "shellydimmer2_48551900035d": false,
                 "shellydimmer2_485519002b72": false,
