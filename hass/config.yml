@@ -149,7 +149,7 @@ google_assistant:
 
     # Tuya
     light.bedroom_floor_light:
-      name: "Bedroom Floor Light"
+      name: "Floor Light"
     switch.smart_socket_1_socket_1:
       name: "Electric Blanket"
     switch.smart_socket_2_socket_1:
