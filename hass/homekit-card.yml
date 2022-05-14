@@ -1,0 +1,56 @@
+type: custom:homekit-card
+entities:
+  - title: Living Room
+    haptic: success
+    state: true
+    panel: true
+    entities:
+      - entity: light.shellydimmer2_c45bbe572627
+      - entity: light.living_room_big_light
+      - entity: switch.smart_socket_3_socket_1
+      - entity: switch.smart_socket_4_socket_1
+      - entity: switch.smart_socket_2_socket_1
+
+  - title: Bedroom
+    haptic: success
+    state: true
+    entities:
+      - entity: light.shellydimmer2_48551900c175
+
+  - title: Office
+    haptic: success
+    state: true
+    entities:
+      - entity: light.shellydimmer2_485519002b72
+
+  - title: Hallway
+    haptic: success
+    state: true
+    entities:
+      - entity: light.shellydimmer2_48551900035d
+      - entity: light.shellydimmer2_48551900caca
+
+  - title: Spare Rooms
+    haptic: success
+    state: true
+    entities:
+      - entity: light.shellydimmer2_4855190088ac
+      - entity: light.shellydimmer2_e89f6d8559a2
+
+  - title: Bedroom
+    haptic: success
+    state: true
+    entities:
+      - entity: light.shellydimmer2_48551900b4e6
+
+  - title: Dining Room
+    haptic: success
+    state: true
+    entities:
+      - entity: light.shellydimmer2_48551900c7e2
+
+  - title: Kitchen
+    haptic: success
+    state: true
+    entities:
+      - entity: light.shellydimmer2_c45bbe56f9ba
