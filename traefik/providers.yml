@@ -23,6 +23,15 @@ http:
         certResolver: "myresolver"
       entryPoints:
         - "websecure"
+    cockpit-route:
+      rule: "Host(`cockpit.jimeagle.com`)"
+      service: "cockpit-service"
+      middlewares:
+        - "traefik-forward-auth"
+      tls:
+        certResolver: "myresolver"
+      entryPoints:
+        - "websecure"
     doubletake-route:
       rule: "Host(`doubletake.jimeagle.com`)"
       service: "doubletake-service"
@@ -184,6 +193,10 @@ http:
       loadBalancer:
         servers:
           - url: "http://localhost:3000"
+    cockpit-service:
+      loadBalancer:
+        servers:
+          - url: "http://localhost:9090"
     esphome-service:
       loadBalancer:
         servers:
