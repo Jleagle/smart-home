@@ -431,6 +431,7 @@ module.exports = {
                 "shellydimmer2_C45BBE572627": false,
                 "shellydimmer2_e89f6d8559a2": false,
                 "shellydimmer2_c45bbe56f9ba": false,
+                "shelly_duo": false,
             }
         },
     },
