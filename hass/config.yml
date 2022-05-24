@@ -112,11 +112,7 @@ google_assistant:
       name: "Ceiling Light"
     light.shellydimmer2_c45bbe56f9ba:
       name: "Ceiling Light"
-
-    # Hue
-    light.spare_room_floor_light:
-      name: "Floor Light"
-    light.living_room_big_light:
+    light.shelly_duo:
       name: "Big Light"
 
     # Switches
