@@ -434,6 +434,7 @@ module.exports = {
                 "shelly_duo": false,
             }
         },
+        light_ips: '29,33,34,35,36,37,38,39,40,41,42',
     },
 
     /** The maximum number of messages nodes will buffer internally as part of their
