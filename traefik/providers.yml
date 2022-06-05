@@ -89,6 +89,13 @@ http:
         certResolver: "myresolver"
       entryPoints:
         - "websecure"
+    matrix-route:
+      rule: "Host(`matrix.jimeagle.com`)"
+      service: "matrix-service"
+      tls:
+        certResolver: "myresolver"
+      entryPoints:
+        - "websecure"
     mealie-route:
       rule: "Host(`mealie.jimeagle.com`)"
       service: "mealie-service"
@@ -221,6 +228,10 @@ http:
       loadBalancer:
         servers:
           - url: "http://localhost:8086"
+    matrix-service:
+      loadBalancer:
+        servers:
+          - url: "http://localhost:8008"
     mealie-service:
       loadBalancer:
         servers:

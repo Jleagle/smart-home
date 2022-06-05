@@ -165,6 +165,16 @@ services:
       - "${HOME}/Influx:/home/influxdb/.influxdbv2/"
       - "./influx/config.yml:/etc/influxdb2/config.yml:ro"
 
+  matrix:
+    image: "matrixdotorg/synapse:latest"
+    container_name: "matrix"
+    hostname: "matrix"
+    restart: "unless-stopped"
+    volumes:
+      - "${HOME}/Matrix:/data"
+    ports:
+      - "8008:8008"
+
   mealie:
     image: "hkotel/mealie:latest"
     container_name: "mealie"
