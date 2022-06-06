@@ -68,6 +68,12 @@ http:
 
 mqtt:
   client_id: "hass"
+  scene:
+    - name: "Everything Off"
+      unique_id: "everything-off-scene"
+      command_topic: "home/everything-off"
+      payload_on: "ON"
+      retain: false
 
 #camera:
 #  - platform: onvif
@@ -150,14 +156,6 @@ google_assistant:
     # Scenes
     scene.everything_off:
       name: "Bedtime"
-
-scene:
-  - platform: "mqtt"
-    name: "Everything Off"
-    unique_id: "everything-off-scene"
-    command_topic: "home/everything-off"
-    payload_on: "ON"
-    retain: false
 
 light:
   - platform: "blink1_status"
