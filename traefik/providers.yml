@@ -150,6 +150,8 @@ http:
     radarr-route:
       rule: "Host(`radarr.jimeagle.com`)"
       service: "radarr-service"
+      middlewares:
+        - "traefik-forward-auth"
       tls:
         certResolver: "myresolver"
       entryPoints:
@@ -175,6 +177,8 @@ http:
     sonarr-route:
       rule: "Host(`sonarr.jimeagle.com`)"
       service: "sonarr-service"
+      middlewares:
+        - "traefik-forward-auth"
       tls:
         certResolver: "myresolver"
       entryPoints:
