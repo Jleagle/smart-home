@@ -82,6 +82,15 @@ http:
         certResolver: "myresolver"
       entryPoints:
         - "websecure"
+    homarr-route:
+      rule: "Host(`homarr.jimeagle.com`)"
+      service: "hass-service"
+      middlewares:
+        - "traefik-forward-auth"
+      tls:
+        certResolver: "myresolver"
+      entryPoints:
+        - "websecure"
     influx-route:
       rule: "Host(`influx.jimeagle.com`)"
       service: "influx-service"
@@ -228,6 +237,10 @@ http:
       loadBalancer:
         servers:
           - url: "http://localhost:8123"
+    homarr-service:
+      loadBalancer:
+        servers:
+          - url: "http://localhost:7575"
     influx-service:
       loadBalancer:
         servers:
