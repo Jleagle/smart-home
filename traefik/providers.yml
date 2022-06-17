@@ -84,7 +84,7 @@ http:
         - "websecure"
     homarr-route:
       rule: "Host(`homarr.jimeagle.com`)"
-      service: "hass-service"
+      service: "homarr-service"
       middlewares:
         - "traefik-forward-auth"
       tls:
