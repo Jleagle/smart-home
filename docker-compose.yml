@@ -154,6 +154,17 @@ services:
     environment:
       - "TZ=Europe/London"
 
+  homarr:
+    image: "ghcr.io/ajnart/homarr:latest"
+    container_name: "homarr"
+    hostname: "homarr"
+    restart: "unless-stopped"
+    volumes:
+      - "${HOME}/Homarr/configs:/app/data/configs"
+      - "${HOME}/Homarr/icons:/app/public/icons"
+    ports:
+      - '7575:7575'
+
   influx:
     image: "influxdb:2.1"
     container_name: "influx"
