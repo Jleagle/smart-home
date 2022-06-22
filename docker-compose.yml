@@ -451,6 +451,21 @@ services:
       - "WHITELIST=jimeagle@gmail.com"
       - "INSECURE_COOKIE=true"
 
+  traefik-hub-agent:
+    image: "ghcr.io/traefik/hub-agent-traefik:latest"
+    container_name: "traefik-hub-agent"
+    restart: "unless-stopped"
+    command:
+      - "run"
+      - "--hub.token=${TRAEFIK_HUB_TOKEN}"
+      - "--auth-server.advertise-url=http://hub-agent"
+      - "--traefik.host=traefik"
+      - "--traefik.tls.insecure=true"
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+    depends_on:
+      - "traefik"
+
   #  varken:
   #    image: "boerderij/varken:latest"
   #    hostname: "varken"
