@@ -459,6 +459,7 @@ services:
     image: "ghcr.io/traefik/hub-agent-traefik:latest"
     container_name: "traefik-hub-agent"
     restart: "unless-stopped"
+    network_mode: "host"
     command:
       - "run"
       - "--hub.token=${TRAEFIK_HUB_TOKEN}"
