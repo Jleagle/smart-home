@@ -1,1 +1,1 @@
-# media-center
+# smart-home
