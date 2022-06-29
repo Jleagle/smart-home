@@ -75,12 +75,12 @@ mqtt:
       payload_on: "ON"
       retain: false
 
-#camera:
-#  - platform: onvif
-#    host: !secret camera_host
-#    name: 'driveway'
-#    username: admin
-#    password: !secret camera_pass
+camera:
+  - platform: "onvif"
+    host: !secret camera_host
+    name: 'dog'
+    username: "admin"
+    password: !secret camera_pass
 
 google_assistant:
   project_id: !secret assistant_project_id
