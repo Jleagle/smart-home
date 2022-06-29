@@ -74,6 +74,11 @@ mqtt:
       command_topic: "home/everything-off"
       payload_on: "ON"
       retain: false
+    - name: "I'm Up"
+      unique_id: "im-up-scene"
+      command_topic: "home/im-up"
+      payload_on: "ON"
+      retain: false
 
 camera:
   - platform: "onvif"
@@ -156,6 +161,8 @@ google_assistant:
     # Scenes
     scene.everything_off:
       name: "Bedtime"
+    scene.im_up:
+      name: "I'm Up"
 
 light:
   - platform: "blink1_status"
