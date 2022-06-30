@@ -161,7 +161,7 @@ google_assistant:
     # Scenes
     scene.everything_off:
       name: "Bedtime"
-    scene.im_up:
+    scene.i_m_up:
       name: "I'm Up"
 
 light:
