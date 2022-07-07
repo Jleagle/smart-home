@@ -5,6 +5,10 @@ http:
       forwardAuth:
         address: "http://localhost:4181"
         authResponseHeaders: "X-Forwarded-User"
+        rule:
+          xx:
+            action: "allow"
+            rule: "Host(`sonarr.jimeagle.com`) && Path(`/feed/calendar/Sonarr.ics`)"
 
   routers:
     adguard-route:
