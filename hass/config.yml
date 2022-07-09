@@ -87,6 +87,11 @@ camera:
     username: "admin"
     password: !secret camera_pass
 
+spotcast:
+  sp_dc: !secret spotcast_sp_dc
+  sp_key: !secret spotcast_sp_key
+  country: "UK"
+
 google_assistant:
   project_id: !secret assistant_project_id
   service_account: !include google_assistant_key.json
