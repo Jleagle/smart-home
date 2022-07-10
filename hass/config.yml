@@ -90,7 +90,7 @@ camera:
 spotcast:
   sp_dc: !secret spotcast_sp_dc
   sp_key: !secret spotcast_sp_key
-  country: "UK"
+  country: "GB"
 
 google_assistant:
   project_id: !secret assistant_project_id
