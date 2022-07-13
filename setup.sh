@@ -32,6 +32,7 @@ mkdir -p ~/Sonarr
 mkdir -p ~/Syncthing/Config
 mkdir -p ~/Syncthing/Data
 mkdir -p ~/Tautulli
+mkdir -p ~/UptimeKuma
 mkdir -p ~/Traefik
 mkdir -p ~/Varken
 
