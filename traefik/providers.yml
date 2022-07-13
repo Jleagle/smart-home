@@ -102,6 +102,15 @@ http:
         certResolver: "myresolver"
       entryPoints:
         - "websecure"
+    kuma-route:
+      rule: "Host(`kuma.jimeagle.com`)"
+      service: "kuma-service"
+      middlewares:
+        - "traefik-forward-auth"
+      tls:
+        certResolver: "myresolver"
+      entryPoints:
+        - "websecure"
     matrix-route:
       rule: "Host(`matrix.jimeagle.com`)"
       service: "matrix-service"
@@ -249,6 +258,10 @@ http:
       loadBalancer:
         servers:
           - url: "http://localhost:8086"
+    kuma-service:
+      loadBalancer:
+        servers:
+          - url: "http://localhost:3002"
     matrix-service:
       loadBalancer:
         servers:

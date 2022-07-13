@@ -176,6 +176,16 @@ services:
       - "${HOME}/Influx:/home/influxdb/.influxdbv2/"
       - "./influx/config.yml:/etc/influxdb2/config.yml:ro"
 
+  kuma:
+    image: "louislam/uptime-kuma:latest"
+    hostname: "kuma"
+    container_name: "kuma"
+    restart: "unless-stopped"
+    ports:
+      - "3002:3001"
+    volumes:
+      - "${HOME}/UptimeKuma:/app/data"
+
   matrix:
     image: "matrixdotorg/synapse:latest"
     container_name: "matrix"
