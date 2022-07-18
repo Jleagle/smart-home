@@ -1,0 +1,206 @@
+
+ddclient:
+  image: "lscr.io/linuxserver/ddclient:latest"
+  container_name: "ddclient"
+  hostname: "ddclient"
+  restart: "unless-stopped"
+  environment:
+    - "PUID=1000"
+    - "PGID=1000"
+    - "TZ=Europe/London"
+    - "CF_API_EMAIL_FILE=/run/secrets/cloudflare_login_email"
+    - "CF_API_KEY_FILE=/run/secrets/cloudflare_api_token"
+  volumes:
+    - "${HOME}/Ddclient:/config"
+
+emby:
+  image: emby/embyserver:latest
+  hostname: emby
+  container_name: emby
+  restart: "unless-stopped"
+  environment:
+    - UID=1000
+    - GID=1000
+  ports:
+    - "8096:8096"
+  volumes:
+    - ${MEDIA_DATA}/Docker/Emby/Config:/config
+    - ${MEDIA_DATA}/Television:/mnt/share1
+    - ${MEDIA_DATA}/Video:/mnt/share2
+
+flextv:
+  image: "digitalhigh/flextv:latest"
+  container_name: "flextv"
+  hostname: "flextv"
+  restart: "unless-stopped"
+  ports:
+    - "82:80"
+  volumes:
+    - "${HOME}/FlexTV:/config"
+  environment:
+    - "PUID=1000"
+    - "PGID=1000"
+    - "TZ=Europe/London"
+
+hydra:
+  image: "linuxserver/nzbhydra2:latest"
+  container_name: "hydra"
+  hostname: "hydra"
+  restart: "unless-stopped"
+  ports:
+    - "5076:5076"
+  volumes:
+    - "${HOME}/Hydra/Config:/config"
+    - "${HOME}/Hydra/Downloads:/downloads"
+  environment:
+    - "PGID=1000"
+    - "PUID=1000"
+    - "TZ=Europe/London"
+  labels:
+    - "traefik.enable=true"
+    - "traefik.port=5076"
+    - "traefik.http.routers.hydra.entrypoints=websecure"
+    - "traefik.http.routers.hydra.rule=Host(`hydra.jimeagle.com`)"
+    - "traefik.http.services.hydra.loadbalancer.server.port=5076"
+
+matrix:
+  image: "matrixdotorg/synapse:latest"
+  container_name: "matrix"
+  hostname: "matrix"
+  restart: "unless-stopped"
+  volumes:
+    - "${HOME}/Matrix:/data"
+  ports:
+    - "8008:8008"
+
+netdata:
+  image: netdata/netdata:latest
+  hostname: netdata
+  container_name: netdata
+  restart: "unless-stopped"
+  ports:
+    - 19999:19999
+  cap_add:
+    - SYS_PTRACE
+  security_opt:
+    - apparmor:unconfined
+  volumes:
+    - /proc:/host/proc:ro
+    - /sys:/host/sys:ro
+    - /var/run/docker.sock:/var/run/docker.sock:ro
+
+noip:
+  image: coppit/no-ip:latest
+  hostname: noip
+  container_name: noip
+  restart: "unless-stopped"
+  environment:
+    - USERNAME=${NOIP_USERNAME}
+    - PASSWORD=${NOIP_PASSWORD}
+    - DOMAINS=${NOIP_DOMAINS}
+    - INTERVAL=30m
+  volumes:
+    - ${DOCKER_DATA}/no-ip/config:/config
+    - /etc/localtime:/etc/localtime:ro
+
+pihole:
+  image: "pihole/pihole:latest"
+  container_name: "pihole"
+  hostname: "pihole"
+  restart: "unless-stopped"
+  ports:
+    - "53:53/tcp"
+    - "53:53/udp"
+    - "67:67/udp"
+    - "81:80"
+  environment:
+    TZ: "Europe/London"
+    ServerIP: "192.168.0.7"
+    WEBPASSWORD: "${PIHOLE_PASSWORD}"
+    ADMIN_EMAIL: "jimeagle@gmail.com"
+    PIHOLE_DNS_: "1.1.1.1;8.8.8.8"
+    VIRTUAL_HOST: "pihole.jimeagle.com"
+  volumes:
+    - "${HOME}/PiHole/:/etc/pihole/"
+
+plexmeta:
+  image: meisnate12/plex-meta-manager:latest
+  container_name: plexmeta
+  hostname: plexmeta
+  restart: "unless-stopped"
+  volumes:
+    - ${HOME}/PlexMeta:/config
+
+portainer:
+  image: portainer/portainer:latest
+  hostname: portainer
+  container_name: portainer
+  restart: "unless-stopped"
+  ports:
+    - "9000:9000"
+  volumes:
+    - ${HOME}/Portainer:/data
+    - /var/run/docker.sock:/var/run/docker.sock
+
+traefik-hub-agent:
+  image: "ghcr.io/traefik/hub-agent-traefik:latest"
+  container_name: "traefik-hub-agent"
+  restart: "unless-stopped"
+  network_mode: "host"
+  command:
+    - "run"
+    - "--hub.token=${TRAEFIK_HUB_TOKEN}"
+    - "--auth-server.advertise-url=http://hub-agent"
+    - "--traefik.host=traefik"
+    - "--traefik.tls.insecure=true"
+  volumes:
+    - "/var/run/docker.sock:/var/run/docker.sock"
+  depends_on:
+    - "traefik"
+
+tubesync:
+  image: ghcr.io/meeb/tubesync:latest
+  hostname: tubesync
+  container_name: tubesync
+  ports:
+    - "4848:4848"
+  environment:
+    - PUID=1000
+    - PGID=1000
+    - TZ=Europe/London
+    - HTTP_USER=$TUBE_SYNC_USER
+    - HTTP_PASS=$TUBE_SYNC_PASS
+  volumes:
+    - ${HOME}/TubeSync:/config
+    - ${HOME}/Media/YouTube:/downloads
+    - /dev/dri:/dev/dri # Quicksync
+  restart: unless-stopped
+  labels:
+    - "traefik.enable=true"
+    - "traefik.port=4848"
+    - "traefik.http.routers.tubesync.entrypoints=websecure"
+    - "traefik.http.routers.tubesync.rule=Host(`tubesync.jimeagle.com`)"
+    - "com.centurylinklabs.watchtower.enable=true"
+
+varken:
+  image: "boerderij/varken:latest"
+  hostname: "varken"
+  container_name: "varken"
+  restart: "unless-stopped"
+  environment:
+    - "TZ=Europe/London"
+    - "VRKN_GLOBAL_SONARR_SERVER_IDS=1"
+    - "VRKN_GLOBAL_RADARR_SERVER_IDS=1"
+    - "VRKN_GLOBAL_OMBI_SERVER_IDS=false"
+    - "VRKN_GLOBAL_MAXMIND_LICENSE_KEY"
+    - "VRKN_INFLUXDB_URL=influx"
+    - "VRKN_INFLUXDB_USERNAME"
+    - "VRKN_INFLUXDB_PASSWORD"
+    - "VRKN_TAUTULLI_1_URL=tautulli"
+    - "VRKN_TAUTULLI_1_APIKEY"
+    - "VRKN_SONARR_1_URL=sonarr"
+    - "VRKN_SONARR_1_APIKEY"
+    - "VRKN_RADARR_1_URL=radarr"
+    - "VRKN_RADARR_1_APIKEY"
+  volumes:
+    - "${HOME}/Varken:/config"
