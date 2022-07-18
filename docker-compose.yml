@@ -186,16 +186,6 @@ services:
     volumes:
       - "${HOME}/UptimeKuma:/app/data"
 
-  matrix:
-    image: "matrixdotorg/synapse:latest"
-    container_name: "matrix"
-    hostname: "matrix"
-    restart: "unless-stopped"
-    volumes:
-      - "${HOME}/Matrix:/data"
-    ports:
-      - "8008:8008"
-
   mealie:
     image: "hkotel/mealie:latest"
     container_name: "mealie"
