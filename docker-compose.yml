@@ -295,14 +295,6 @@ services:
     devices:
       - "/dev/dri:/dev/dri" # Quicksync
 
-  #  plexmeta:
-  #    image: meisnate12/plex-meta-manager:latest
-  #    container_name: plexmeta
-  #    hostname: plexmeta
-  #    restart: "unless-stopped"
-  #    volumes:
-  #      - ${HOME}/PlexMeta:/config
-
   prowlarr:
     image: "linuxserver/prowlarr:develop"
     container_name: "prowlarr"
