@@ -422,7 +422,7 @@ module.exports = {
             "29": "shelly_duo",
             "33": "shellydimmer2_c45bbe56f9ba",
             "34": "shellydimmer2_48551900c7e2",
-            "35": "shellydimmer2_C45BBE572627",
+            "35": "shellydimmer2_c45bbe572627",
             "36": "shellydimmer2_48551900035d",
             "37": "shellydimmer2_48551900c175",
             "38": "shellydimmer2_e89f6d8559a2",
