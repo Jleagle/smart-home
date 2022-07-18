@@ -79,20 +79,6 @@ services:
       - "${HOME}/ESPHome:/config"
       - "/etc/localtime:/etc/localtime:ro"
 
-  #  flextv:
-  #    image: "digitalhigh/flextv:latest"
-  #    container_name: "flextv"
-  #    hostname: "flextv"
-  #    restart: "unless-stopped"
-  #    ports:
-  #      - "82:80"
-  #    volumes:
-  #      - "${HOME}/FlexTV:/config"
-  #    environment:
-  #      - "PUID=1000"
-  #      - "PGID=1000"
-  #      - "TZ=Europe/London"
-
   frigate:
     image: "blakeblackshear/frigate:0.9.4-amd64"
     container_name: "frigate"
