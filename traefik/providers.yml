@@ -20,6 +20,15 @@ http:
         certResolver: "myresolver"
       entryPoints:
         - "websecure"
+    assistant-relay-route:
+      rule: "Host(`assistantrelay.jimeagle.com`)"
+      service: "adguard-service"
+      middlewares:
+        - "traefik-forward-auth"
+      tls:
+        certResolver: "myresolver"
+      entryPoints:
+        - "websecure"
     bazarr-route:
       rule: "Host(`bazarr.jimeagle.com`)"
       service: "bazarr-service"
@@ -218,6 +227,10 @@ http:
       loadBalancer:
         servers:
           - url: "http://localhost:8089"
+    assistant-relay-service:
+      loadBalancer:
+        servers:
+          - url: "http://localhost:3003"
     bazarr-service:
       loadBalancer:
         servers:

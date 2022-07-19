@@ -17,6 +17,17 @@ services:
       - "${HOME}/AdGuard/Work:/opt/adguardhome/work"
       - "${HOME}/AdGuard/Conf:/opt/adguardhome/conf"
 
+  assistant-relay:
+    image: "apipa169/assistant-relay:latest"
+    container_name: "assistant-relay"
+    hostname: "assistant-relay"
+    restart: "unless-stopped"
+    ports:
+      - "3003:3000"
+    volumes:
+      - "${HOME}/AssistantRelay/config.json:/assistant_relay/bin/config.json:rw"
+      - "${HOME}/AssistantRelay/Responses:/assistant_relay/bin/audio-responses:rw"
+
   autoheal:
     image: "willfarrell/autoheal:latest"
     container_name: "autoheal"

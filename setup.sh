@@ -2,6 +2,7 @@
 
 mkdir -p ~/AdGuard/Work
 mkdir -p ~/AdGuard/Conf
+mkdir -p ~/AssistantRelay/Responses
 mkdir -p ~/Bazarr
 mkdir -p ~/DDNS
 mkdir -p ~/DoubleTake
@@ -37,6 +38,7 @@ mkdir -p ~/Traefik
 mkdir -p ~/Varken
 
 touch ~/Auth/config.json
+touch ~/AssistantRelay/config.json
 touch ~/DDNS/records.yaml
 touch ~/Frigate/config.yml
 touch ~/Hass/assistant_service_account.json
