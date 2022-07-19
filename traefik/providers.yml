@@ -22,7 +22,7 @@ http:
         - "websecure"
     assistant-relay-route:
       rule: "Host(`assistantrelay.jimeagle.com`)"
-      service: "adguard-service"
+      service: "assistant-relay-service"
       middlewares:
         - "traefik-forward-auth"
       tls:
