@@ -91,28 +91,26 @@ services:
       - "/etc/localtime:/etc/localtime:ro"
 
   frigate:
-    image: "blakeblackshear/frigate:0.9.4-amd64"
+    image: "blakeblackshear/frigate:stable-amd64"
     container_name: "frigate"
     hostname: "frigate"
     restart: "unless-stopped"
-    #privileged: true # this may not be necessary for all setups
+    #privileged: true
     shm_size: "64mb" # update for your cameras based on calculation above
-    #    devices:
-    #      - /dev/bus/usb:/dev/bus/usb # passes the USB Coral, needs to be modified for other versions
-    #      - /dev/apex_0:/dev/apex_0 # passes a PCIe Coral, follow driver instructions here https://coral.ai/docs/m2/get-started/#2a-on-linux
-    #      - /dev/dri/renderD128 # for intel hwaccel, needs to be updated for your hardware
+    devices:
+      - "/dev/dri/renderD128"       # for intel hwaccel, needs to be updated for your hardware
+      #- "/dev/apex_0:/dev/apex_0"   # passes a PCIe Coral, follow driver instructions here https://coral.ai/docs/m2/get-started/#2a-on-linux
     volumes:
-      - "${HOME}/Frigate/config.yml:/config/config.yml:ro"
       - "${HOME}/Media/Frigate:/media/frigate"
+      - "./frigate/config.yml:/config/config.yml:ro"
       - "/etc/localtime:/etc/localtime:ro"
-      - type: "tmpfs" # Optional: 1GB of memory, reduces SSD/SD Card wear
-        target: "/tmp/cache"
-        tmpfs:
-          size: 1000000000
+    tmpfs:
+      - "/tmp/cache"
     ports:
       - "1935:1935" # RTMP feeds
+      - "5000:5000" # API
     environment:
-      FRIGATE_RTSP_PASSWORD: "password"
+      FRIGATE_RTSP_PASSWORD: "xxx"
 
   grafana:
     image: "grafana/grafana:main"
