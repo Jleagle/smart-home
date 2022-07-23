@@ -110,7 +110,7 @@ services:
       - "1935:1935" # RTMP feeds
       - "5000:5000" # API
     environment:
-      FRIGATE_RTSP_PASSWORD: "xxx"
+      - "FRIGATE_KITCHEN_PASSWORD"
 
   grafana:
     image: "grafana/grafana:main"
