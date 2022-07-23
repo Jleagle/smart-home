@@ -1,22 +1,57 @@
+# https://docs.frigate.video/configuration/index
+
 mqtt:
   host: 192.168.0.7
-  port: 1883
+
+birdseye:
+  mode: motion
+
+ffmpeg:
+  # https://docs.frigate.video/configuration/hardware_acceleration
+  hwaccel_args:
+    - -hwaccel
+    - qsv
+    - -qsv_device
+    - /dev/dri/renderD128
+
+objects:
+  track:
+    - person
+    - dog
+
+record:
+  enabled: true
+  retain:
+    days: 1
+    mode: motion
+  events:
+    objects:
+      - person
+      - dog
+    retain:
+      default: 1
 
 cameras:
-  back:
+  kitchen:
     ffmpeg:
       inputs:
-        - path: rtsp://viewer:{FRIGATE_RTSP_PASSWORD}@192.168.0.12:10080/cam/realmonitor?channel=1&subtype=2
+        - path: rtsp://admin:{FRIGATE_KITCHEN_PASS}@192.168.0.12:10080/tcp/av0_1
           roles:
             - detect
             - rtmp
+        - path: rtsp://admin:{FRIGATE_KITCHEN_PASS}@192.168.0.12:10080/tcp/av0_0
+          roles:
+            - record
     detect:
-      width: 1280
-      height: 720
+      width: 640
+      height: 360
+      fps: 7
 
-#detectors:
+detectors:
+  cpu:
+    type: cpu
+    num_threads: 1
 #  coral:
 #    type: edgetpu
 #    device: pci
 #    num_threads: 3
-
