@@ -35,11 +35,11 @@ cameras:
   kitchen:
     ffmpeg:
       inputs:
-        - path: rtsp://admin:{FRIGATE_KITCHEN_PASSWORD}@192.168.0.12:10080/tcp/av0_1
+        - path: rtsp://admin:{FRIGATE_KITCHEN_PASSWORD}@192.168.0.12:554/tcp/av0_1
           roles:
             - detect
             - rtmp
-        - path: rtsp://admin:{FRIGATE_KITCHEN_PASSWORD}@192.168.0.12:10080/tcp/av0_0
+        - path: rtsp://admin:{FRIGATE_KITCHEN_PASSWORD}@192.168.0.12:554/tcp/av0_0
           roles:
             - record
     detect:
