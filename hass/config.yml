@@ -22,7 +22,6 @@ my:
 network:
 notify:
 person:
-scene:
 #script:
 ssdp:
 sun:
@@ -34,6 +33,8 @@ wake_on_lan:
 webhook:
 zeroconf:
 zone:
+
+scene: !include scenes.yaml
 
 homeassistant:
   name: "Home"
