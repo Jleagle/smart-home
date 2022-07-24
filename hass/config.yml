@@ -22,6 +22,7 @@ my:
 network:
 notify:
 person:
+scene:
 #script:
 ssdp:
 sun:
