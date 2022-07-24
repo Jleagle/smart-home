@@ -1,5 +1,5 @@
 api:
-#automation:
+automation:
 #cloud:
 counter:
 dhcp:
@@ -22,6 +22,7 @@ my:
 network:
 notify:
 person:
+scene:
 #script:
 ssdp:
 sun:
@@ -33,10 +34,6 @@ wake_on_lan:
 webhook:
 zeroconf:
 zone:
-
-scene: !include scenes.yaml
-automation: !include automations.yaml
-script: !include scripts.yaml
 
 homeassistant:
   name: "Home"
