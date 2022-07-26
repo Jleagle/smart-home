@@ -1,68 +1,17 @@
-# Double Take
 # Learn more at https://github.com/jakowenko/double-take/#configuration
-
-# enable authentication for ui and api (default: shown below)
 auth: true
-
-# if authentication is enabled
-# age of access token in api response and mqtt topics (default: shown below)
-# expressed in seconds or a string describing a time span zeit/ms
-# https://github.com/vercel/ms
-token:
-  image: 24h
 
 # enable mqtt subscribing and publishing (default: shown below)
 mqtt:
-  host:
-  username:
-  password:
-  client_id:
-
-  topics:
-    # mqtt topic for frigate message subscription
-    frigate: frigate/events
-    #  mqtt topic for home assistant discovery subscription
-    homeassistant: homeassistant
-    # mqtt topic where matches are published by name
-    matches: double-take/matches
-    # mqtt topic where matches are published by camera name
-    cameras: double-take/cameras
-
-# global detect settings (default: shown below)
-detect:
-  match:
-    # save match images
-    save: true
-    # include base64 encoded string in api results and mqtt messages
-    # options: true, false, box
-    base64: false
-    # minimum confidence needed to consider a result a match
-    confidence: 60
-    # hours to keep match images until they are deleted
-    purge: 168
-    # minimum area in pixels to consider a result a match
-    min_area: 10000
-
-  unknown:
-    # save unknown images
-    save: true
-    # include base64 encoded string in api results and mqtt messages
-    # options: true, false, box
-    base64: false
-    # minimum confidence needed before classifying a name as unknown
-    confidence: 40
-    # hours to keep unknown images until they are deleted
-    purge: 8
-    # minimum area in pixels to keep an unknown result
-    min_area: 0
+  host: 192.168.0.7
+  client_id: doubletake
 
 # frigate settings (default: shown below)
 frigate:
-  url:
-
-  # object labels that are allowed for facial recognition
+  url: http://frigate:5000
   labels:
     - person
+    - dog
 
   attempts:
     # number of times double take will request a frigate latest.jpg for facial recognition
@@ -215,34 +164,3 @@ notify:
     #   - camera: garage
     #     zone: driveway
 
-# time settings (default: shown below)
-time:
-  # defaults to iso 8601 format with support for token-based formatting
-  # https://github.com/moment/luxon/blob/master/docs/formatting.md#table-of-tokens
-  format:
-  # time zone used in logs
-  timezone: UTC
-
-# log settings (default: shown below)
-# options: silent, error, warn, info, http, verbose, debug, silly
-logs:
-  level: info
-
-# ui settings (default: shown below)
-ui:
-  # base path of ui
-  path:
-
-  pagination:
-    # number of results per page
-    limit: 50
-
-  thumbnails:
-    # value between 0-100
-    quality: 95
-    # value in pixels
-    width: 500
-
-  logs:
-    # number of lines displayed
-    lines: 500
