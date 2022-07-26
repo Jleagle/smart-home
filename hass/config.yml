@@ -1,5 +1,5 @@
 api:
-automation:
+automation: !include automations.yaml
 #cloud:
 counter:
 dhcp:
