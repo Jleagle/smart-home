@@ -408,5 +408,5 @@ services:
       - "PROVIDERS_GOOGLE_CLIENT_SECRET=${GOOGLE_CLIENT_SECRET}"
       - "SECRET=${AUTH_SECRET}"
       - "CONFIG=/config.json"
-      - "WHITELIST=jimeagle@gmail.com"
+      - "WHITELIST=jimeagle@gmail.com, gillianmckinley30@gmail.com"
       - "INSECURE_COOKIE=true"
