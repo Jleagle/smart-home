@@ -95,7 +95,6 @@ services:
     container_name: "frigate"
     hostname: "frigate"
     restart: "unless-stopped"
-    #privileged: true
     shm_size: "64mb" # update for your cameras based on calculation above
     devices:
       - "/dev/dri/renderD128"       # for intel hwaccel, needs to be updated for your hardware
