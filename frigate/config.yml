@@ -17,7 +17,6 @@ ffmpeg:
 
 objects:
   track:
-    - person
     - dog
 
 record:
