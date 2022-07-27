@@ -26,9 +26,6 @@ record:
     days: 1
     mode: motion
   events:
-    objects:
-      - person
-      - dog
     retain:
       default: 1
 
