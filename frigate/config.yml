@@ -22,11 +22,12 @@ objects:
 record:
   enabled: true
   retain:
-    days: 1
-    mode: motion
+    days: 2
+    mode: active_objects
   events:
     retain:
-      default: 1
+      default: 2
+      mode: active_objects
 
 cameras:
   kitchen:
