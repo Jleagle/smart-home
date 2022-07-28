@@ -171,6 +171,15 @@ http:
         certResolver: "myresolver"
       entryPoints:
         - "websecure"
+    portainer-route:
+      rule: "Host(`portainer.jimeagle.com`)"
+      service: "portainer-service"
+      middlewares:
+        - "traefik-forward-auth"
+      tls:
+        certResolver: "myresolver"
+      entryPoints:
+        - "websecure"
     prowlarr-route:
       rule: "Host(`prowlarr.jimeagle.com`)"
       service: "prowlarr-service"
@@ -303,6 +312,10 @@ http:
       loadBalancer:
         servers:
           - url: "http://localhost:32400"
+    portainer-service:
+      loadBalancer:
+        servers:
+          - url: "http://localhost:9001"
     prowlarr-service:
       loadBalancer:
         servers:
