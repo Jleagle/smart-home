@@ -185,22 +185,6 @@ services:
       BASE_URL: "https://mealie.jimeagle.com/"
       TOKEN_TIME: "12"
 
-  #  minecraft:
-  #    image: "itzg/minecraft-bedrock-server"
-  #    container_name: "minecraft"
-  #    hostname: "minecraft"
-  #    restart: "unless-stopped"
-  #    ports:
-  #      - "25565:25565/udp"
-  #    volumes:
-  #      - "${HOME}/Minecraft:/data"
-  #    environment:
-  #      EULA: "TRUE"
-  #      GAMEMODE: "survival"
-  #      DIFFICULTY: "hard"
-  #      VERSION: "LATEST"
-  #      MAX_PLAYERS: 4
-
   mosquitto:
     image: "eclipse-mosquitto:latest"
     container_name: "mosquitto"
