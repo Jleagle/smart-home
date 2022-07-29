@@ -69,16 +69,16 @@ services:
     volumes:
       - "${HOME}/DDNS/records.yaml:/root/records.yaml:ro"
 
-  doubletake:
-    image: "jakowenko/double-take:latest"
-    container_name: "doubletake"
-    hostname: "doubletake"
-    restart: "unless-stopped"
-    ports:
-      - "3000:3000"
-    volumes:
-      - "${HOME}/DoubleTake:/.storage"
-      - "./doubletake/config.yml:/.storage/config.yml"
+  #  doubletake:
+  #    image: "jakowenko/double-take:latest"
+  #    container_name: "doubletake"
+  #    hostname: "doubletake"
+  #    restart: "unless-stopped"
+  #    ports:
+  #      - "3000:3000"
+  #    volumes:
+  #      - "${HOME}/DoubleTake:/.storage"
+  #      - "./doubletake/config.yml:/.storage/config.yml"
 
   esphome:
     image: "esphome/esphome:latest"
