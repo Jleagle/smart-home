@@ -420,16 +420,16 @@ module.exports = {
         // os:require('os'),
         light_map: {
             "29": "shelly_duo",
-            "33": "shellydimmer2_c45bbe56f9ba",
-            "34": "shellydimmer2_48551900c7e2",
-            "35": "shellydimmer2_c45bbe572627",
-            "36": "shellydimmer2_48551900035d",
-            "37": "shellydimmer2_48551900c175",
-            "38": "shellydimmer2_e89f6d8559a2",
-            "39": "shellydimmer2_4855190088ac",
-            "40": "shellydimmer2_48551900b4e6",
-            "41": "shellydimmer2_485519002b72",
-            "42": "shellydimmer2_48551900caca",
+            "33": "shellydimmer2_c45bbe56f9ba", // Kitchen
+            "34": "shellydimmer2_48551900c7e2", // Dining Room
+            "35": "shellydimmer2_c45bbe572627", // Living room
+            "36": "shellydimmer2_48551900035d", // Hallway downstairs
+            "37": "shellydimmer2_48551900c175", // Bedroom
+            "38": "shellydimmer2_e89f6d8559a2", // Spare room
+            "39": "shellydimmer2_4855190088ac", // Small room
+            "40": "shellydimmer2_48551900b4e6", // Bathroom
+            "41": "shellydimmer2_485519002b72", // Office
+            "42": "shellydimmer2_48551900caca", // Hallway upstairs
         }
     },
 
