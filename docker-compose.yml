@@ -418,3 +418,11 @@ services:
       - "CONFIG=/config.json"
       - "WHITELIST=jimeagle@gmail.com, gillianmckinley30@gmail.com"
       - "INSECURE_COOKIE=true"
+
+  zinc:
+    image: hiprabhat/zinc:latest
+    hostname: zinc
+    container_name: zinc
+    restart: unless-stopped
+    ports:
+      - "4080:4080"

@@ -239,6 +239,13 @@ http:
         certResolver: "myresolver"
       entryPoints:
         - "websecure"
+    zinc-route:
+      rule: "Host(`zinc.jimeagle.com`)"
+      service: "zinc-service"
+      tls:
+        certResolver: "myresolver"
+      entryPoints:
+        - "websecure"
 
   services:
     2fauth-service:
@@ -353,3 +360,7 @@ http:
       loadBalancer:
         servers:
           - url: "http://localhost:8181"
+    zinc-service:
+      loadBalancer:
+        servers:
+          - url: "http://localhost:4080"
