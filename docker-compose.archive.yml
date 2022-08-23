@@ -1,3 +1,20 @@
+bazarr:
+  image: "linuxserver/bazarr:latest"
+  container_name: "bazarr"
+  hostname: "bazarr"
+  restart: "unless-stopped"
+  ports:
+    - "6767:6767"
+  environment:
+    - "PUID=1000"
+    - "PGID=1000"
+    - "TZ=Europe/London"
+    - "UMASK_SET=022" #optional
+  volumes:
+    - "${HOME}/Bazarr:/config"
+    - "${HOME}/Media/Movies:/movies"
+    - "${HOME}/Media/Television:/tv"
+
 ddclient:
   image: "lscr.io/linuxserver/ddclient:latest"
   container_name: "ddclient"
@@ -13,19 +30,19 @@ ddclient:
     - "${HOME}/Ddclient:/config"
 
 emby:
-  image: emby/embyserver:latest
-  hostname: emby
-  container_name: emby
+  image: "emby/embyserver:latest"
+  hostname: "emby"
+  container_name: "emby"
   restart: "unless-stopped"
   environment:
-    - UID=1000
-    - GID=1000
+    - "UID=1000"
+    - "GID=1000"
   ports:
     - "8096:8096"
   volumes:
-    - ${MEDIA_DATA}/Docker/Emby/Config:/config
-    - ${MEDIA_DATA}/Television:/mnt/share1
-    - ${MEDIA_DATA}/Video:/mnt/share2
+    - "${MEDIA_DATA}/Docker/Emby/Config:/config"
+    - "${MEDIA_DATA}/Television:/mnt/share1"
+    - "${MEDIA_DATA}/Video:/mnt/share2"
 
 flextv:
   image: "digitalhigh/flextv:latest"
@@ -100,34 +117,48 @@ minecraft:
     MAX_PLAYERS: 4
 
 netdata:
-  image: netdata/netdata:latest
-  hostname: netdata
-  container_name: netdata
+  image: "netdata/netdata:latest"
+  hostname: "netdata"
+  container_name: "netdata"
   restart: "unless-stopped"
   ports:
-    - 19999:19999
+    - "19999:19999"
   cap_add:
-    - SYS_PTRACE
+    - "SYS_PTRACE"
   security_opt:
-    - apparmor:unconfined
+    - "apparmor:unconfined"
   volumes:
-    - /proc:/host/proc:ro
-    - /sys:/host/sys:ro
-    - /var/run/docker.sock:/var/run/docker.sock:ro
+    - "/proc:/host/proc:ro"
+    - "/sys:/host/sys:ro"
+    - "/var/run/docker.sock:/var/run/docker.sock:ro"
 
 noip:
-  image: coppit/no-ip:latest
-  hostname: noip
-  container_name: noip
+  image: "coppit/no-ip:latest"
+  hostname: "noip"
+  container_name: "noip"
   restart: "unless-stopped"
   environment:
-    - USERNAME=${NOIP_USERNAME}
-    - PASSWORD=${NOIP_PASSWORD}
-    - DOMAINS=${NOIP_DOMAINS}
-    - INTERVAL=30m
+    - "USERNAME=${NOIP_USERNAME}"
+    - "PASSWORD=${NOIP_PASSWORD}"
+    - "DOMAINS=${NOIP_DOMAINS}"
+    - "INTERVAL=30m"
   volumes:
-    - ${DOCKER_DATA}/no-ip/config:/config
-    - /etc/localtime:/etc/localtime:ro
+    - "${DOCKER_DATA}/no-ip/config:/config"
+    - "/etc/localtime:/etc/localtime:ro"
+
+overseerr:
+  image: "linuxserver/overseerr:latest"
+  container_name: "overseerr"
+  hostname: "overseerr"
+  restart: "unless-stopped"
+  ports:
+    - "5055:5055"
+  environment:
+    - "PUID=1000"
+    - "PGID=1000"
+    - "TZ=Europe/London"
+  volumes:
+    - "${HOME}/Overseerr:/config"
 
 pihole:
   image: "pihole/pihole:latest"
@@ -150,12 +181,12 @@ pihole:
     - "${HOME}/PiHole/:/etc/pihole/"
 
 plexmeta:
-  image: meisnate12/plex-meta-manager:latest
-  container_name: plexmeta
-  hostname: plexmeta
+  image: "meisnate12/plex-meta-manager:latest"
+  container_name: "plexmeta"
+  hostname: "plexmeta"
   restart: "unless-stopped"
   volumes:
-    - ${HOME}/PlexMeta:/config
+    - "${HOME}/PlexMeta:/config"
 
 traefik-hub-agent:
   image: "ghcr.io/traefik/hub-agent-traefik:latest"
@@ -174,22 +205,22 @@ traefik-hub-agent:
     - "traefik"
 
 tubesync:
-  image: ghcr.io/meeb/tubesync:latest
-  hostname: tubesync
-  container_name: tubesync
+  image: "ghcr.io/meeb/tubesync:latest"
+  hostname: "tubesync"
+  container_name: "tubesync"
   ports:
     - "4848:4848"
   environment:
-    - PUID=1000
-    - PGID=1000
-    - TZ=Europe/London
-    - HTTP_USER=$TUBE_SYNC_USER
-    - HTTP_PASS=$TUBE_SYNC_PASS
+    - "PUID=1000"
+    - "PGID=1000"
+    - "TZ=Europe/London"
+    - "HTTP_USER=$TUBE_SYNC_USER"
+    - "HTTP_PASS=$TUBE_SYNC_PASS"
   volumes:
-    - ${HOME}/TubeSync:/config
-    - ${HOME}/Media/YouTube:/downloads
-    - /dev/dri:/dev/dri # Quicksync
-  restart: unless-stopped
+    - "${HOME}/TubeSync:/config"
+    - "${HOME}/Media/YouTube:/downloads"
+    - "/dev/dri:/dev/dri" # Quicksync
+  restart: "unless-stopped"
   labels:
     - "traefik.enable=true"
     - "traefik.port=4848"
