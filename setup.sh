@@ -36,6 +36,7 @@ mkdir -p ~/Tautulli
 mkdir -p ~/UptimeKuma
 mkdir -p ~/Traefik
 mkdir -p ~/Varken
+mkdir -p ~/Zinc
 
 touch ~/Auth/config.json
 touch ~/AssistantRelay/config.json
