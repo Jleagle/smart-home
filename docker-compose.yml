@@ -246,15 +246,15 @@ services:
       - "/dev/dri:/dev/dri" # Quicksync
 
   portainer:
-    image: portainer/portainer:latest
-    hostname: portainer
-    container_name: portainer
+    image: "portainer/portainer:latest"
+    hostname: "portainer"
+    container_name: "portainer"
     restart: "unless-stopped"
     ports:
       - "9001:9000"
     volumes:
-      - ${HOME}/Portainer:/data
-      - /var/run/docker.sock:/var/run/docker.sock
+      - "${HOME}/Portainer:/data"
+      - "/var/run/docker.sock:/var/run/docker.sock"
 
   prowlarr:
     image: "linuxserver/prowlarr:develop"
