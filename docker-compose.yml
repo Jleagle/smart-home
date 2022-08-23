@@ -389,9 +389,15 @@ services:
       - "INSECURE_COOKIE=true"
 
   zinc:
-    image: hiprabhat/zinc:latest
-    hostname: zinc
-    container_name: zinc
-    restart: unless-stopped
+    image: "public.ecr.aws/zinclabs/zinc:latest"
+    hostname: "zinc"
+    container_name: "zinc"
+    restart: "unless-stopped"
     ports:
       - "4080:4080"
+    volumes:
+      - "${HOME}/Zinc:/data"
+    environment:
+      - "ZINC_DATA_PATH=/data"
+      - "ZINC_FIRST_ADMIN_USER=admin"
+      - "ZINC_FIRST_ADMIN_PASSWORD=${ZINC_ADMIN_PASSWORD}"
