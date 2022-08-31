@@ -235,6 +235,15 @@ http:
         certResolver: "myresolver"
       entryPoints:
         - "websecure"
+    tdarr-route:
+      rule: "Host(`tdarr.jimeagle.com`)"
+      service: "tdarr-service"
+      middlewares:
+        - "traefik-forward-auth"
+      tls:
+        certResolver: "myresolver"
+      entryPoints:
+        - "websecure"
     zinc-route:
       rule: "Host(`zinc.jimeagle.com`)"
       service: "zinc-service"
@@ -356,6 +365,10 @@ http:
       loadBalancer:
         servers:
           - url: "http://localhost:8181"
+    tdarr-service:
+      loadBalancer:
+        servers:
+          - url: "http://localhost:8265"
     zinc-service:
       loadBalancer:
         servers:
