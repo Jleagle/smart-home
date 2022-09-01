@@ -447,4 +447,4 @@ services:
       - "ZINC_DATA_PATH=/data"
       - "ZINC_FIRST_ADMIN_USER=admin"
       - "ZINC_FIRST_ADMIN_PASSWORD=${ZINC_ADMIN_PASSWORD}"
-      - "ZINC_TELEMETRY=disabled"
+      - "ZINC_TELEMETRY=false"
