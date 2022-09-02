@@ -337,10 +337,11 @@ services:
       - "8181:8181"
 
   tdarr:
-    container_name: "tdarr"
     image: "ghcr.io/haveagitgat/tdarr:latest"
+    container_name: "tdarr"
+    hostname: "tautulli"
     restart: "unless-stopped"
-    network_mode: "bridge"
+    #network_mode: "bridge"
     ports:
       - "8265:8265" # webUI port
       - "8266:8266" # server port
@@ -367,7 +368,7 @@ services:
     container_name: "tdarr-node"
     image: "ghcr.io/haveagitgat/tdarr_node:latest"
     restart: "unless-stopped"
-    network_mode: "service:tdarr"
+    #network_mode: "service:tdarr"
     environment:
       - "TZ=Europe/London"
       - "PUID=1000"
