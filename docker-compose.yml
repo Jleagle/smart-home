@@ -29,17 +29,6 @@ services:
       - "${HOME}/AdGuard/Work:/opt/adguardhome/work"
       - "${HOME}/AdGuard/Conf:/opt/adguardhome/conf"
 
-  assistant-relay:
-    image: "apipa169/assistant-relay:latest"
-    container_name: "assistant-relay"
-    hostname: "assistant-relay"
-    restart: "unless-stopped"
-    ports:
-      - "3003:3000"
-    volumes:
-      - "${HOME}/AssistantRelay/config.json:/assistant_relay/bin/config.json:rw"
-      - "${HOME}/AssistantRelay/Responses:/assistant_relay/bin/audio-responses:rw"
-
   autoheal:
     image: "willfarrell/autoheal:latest"
     container_name: "autoheal"
@@ -165,22 +154,6 @@ services:
     volumes:
       - "${HOME}/UptimeKuma:/app/data"
 
-  mealie:
-    image: "hkotel/mealie:latest"
-    container_name: "mealie"
-    hostname: "mealie"
-    restart: "unless-stopped"
-    volumes:
-      - "${HOME}/Mealie:/app/data"
-    ports:
-      - "9925:80"
-      - "9000:9000"
-    environment:
-      TZ: "Europe/London"
-      DB_ENGINE: "sqlite"
-      BASE_URL: "https://mealie.jimeagle.com/"
-      TOKEN_TIME: "12"
-
   mosquitto:
     image: "eclipse-mosquitto:latest"
     container_name: "mosquitto"
@@ -303,24 +276,6 @@ services:
       - "${HOME}/NZBGet/Downloads:/downloads"
       - "${HOME}/Media/Television:/tv"
       - "/etc/localtime:/etc/localtime:ro"
-
-  syncthing:
-    image: "lscr.io/linuxserver/syncthing"
-    container_name: "syncthing"
-    hostname: "syncthing"
-    restart: "unless-stopped"
-    ports:
-      - "8384:8384"
-      - "22000:22000/tcp"
-      - "22000:22000/udp"
-      - "21027:21027/udp"
-    environment:
-      - "PUID=1000"
-      - "PGID=1000"
-      - "TZ=Europe/London"
-    volumes:
-      - "${HOME}/Syncthing/Config:/config"
-      - "${HOME}/Syncthing/Data:/config/Default"
 
   tautulli:
     image: "lscr.io/linuxserver/tautulli:latest"
