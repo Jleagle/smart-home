@@ -64,15 +64,15 @@ services:
   #      - "${HOME}/DoubleTake:/.storage"
   #      - "./doubletake/config.yml:/.storage/config.yml"
 
-  esphome:
-    image: "esphome/esphome:latest"
-    container_name: "esphome"
-    hostname: "esphome"
-    restart: "unless-stopped"
-    network_mode: "host"
-    volumes:
-      - "${HOME}/ESPHome:/config"
-      - "/etc/localtime:/etc/localtime:ro"
+  #  esphome:
+  #    image: "esphome/esphome:latest"
+  #    container_name: "esphome"
+  #    hostname: "esphome"
+  #    restart: "unless-stopped"
+  #    network_mode: "host"
+  #    volumes:
+  #      - "${HOME}/ESPHome:/config"
+  #      - "/etc/localtime:/etc/localtime:ro"
 
   frigate:
     image: "blakeblackshear/frigate:stable-amd64"
