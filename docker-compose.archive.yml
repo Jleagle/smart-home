@@ -69,16 +69,16 @@ flextv:
     - "PGID=1000"
     - "TZ=Europe/London"
 
-  homarr:
-    image: "ghcr.io/ajnart/homarr:latest"
-    container_name: "homarr"
-    hostname: "homarr"
-    restart: "unless-stopped"
-    volumes:
-      - "${HOME}/Homarr/configs:/app/data/configs"
-      - "${HOME}/Homarr/icons:/app/public/icons"
-    ports:
-      - "7575:7575"
+homarr:
+  image: "ghcr.io/ajnart/homarr:latest"
+  container_name: "homarr"
+  hostname: "homarr"
+  restart: "unless-stopped"
+  volumes:
+    - "${HOME}/Homarr/configs:/app/data/configs"
+    - "${HOME}/Homarr/icons:/app/public/icons"
+  ports:
+    - "7575:7575"
 
 hydra:
   image: "linuxserver/nzbhydra2:latest"
