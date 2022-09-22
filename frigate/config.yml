@@ -46,10 +46,10 @@ cameras:
       fps: 7
 
 detectors:
-  #  cpu:
-  #    type: cpu
-  #    num_threads: 1
-  coral:
-    type: edgetpu
-    device: pci
-    num_threads: 3
+  cpu:
+    type: cpu
+    num_threads: 1
+  #  coral:
+  #    type: edgetpu
+  #    device: pci
+  #    num_threads: 3
