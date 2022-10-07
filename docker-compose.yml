@@ -82,7 +82,7 @@ services:
     shm_size: "64mb" # update for your cameras based on calculation above
     devices:
       - "/dev/dri/renderD128"       # for intel hwaccel, needs to be updated for your hardware
-      - "/dev/apex_0:/dev/apex_0"   # passes a PCIe Coral, follow driver instructions here https://coral.ai/docs/m2/get-started/#2a-on-linux
+      #      - "/dev/apex_0:/dev/apex_0"   # passes a PCIe Coral, follow driver instructions here https://coral.ai/docs/m2/get-started/#2a-on-linux
     volumes:
       - "${HOME}/Media/Frigate:/media/frigate"
       - "./frigate/config.yml:/config/config.yml:ro"
