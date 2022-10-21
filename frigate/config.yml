@@ -41,8 +41,8 @@ cameras:
           roles:
             - record
     detect:
-      width: 640
-      height: 360
+      width: 1280
+      height: 720
       fps: 7
 
 detectors:
