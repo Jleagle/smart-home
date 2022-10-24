@@ -176,6 +176,30 @@ switch:
     host: "192.168.0.9"
     mac: "E8-F2-E2-C1-A4-48"
 
+weather:
+  - platform: pirateweather
+    api_key: !secret pirate_weather
+    latitude: !secret home_lat
+    longitude: !secret home_lon
+    mode: "hourly" (default) or "daily"
+    #name: Custom name
+
+
+# you can also get a sensor data
+sensor:
+  - platform: pirateweather
+    api_key: !secret pirate_weather
+    scan_interval: '00:15:00'
+    monitored_conditions:
+      - temperature
+      - precip_probability
+      - precip_type
+      - humidity
+      - cloud_cover
+      - nearest_storm_distance
+      - precip_intensity
+      - wind_speed
+
 group:
   alldevices:
     name: "All Devices"
