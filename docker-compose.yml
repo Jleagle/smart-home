@@ -145,7 +145,7 @@ services:
       - "/var/run/docker.sock:/var/run/docker.sock"
 
   influx:
-    image: "influxdb:2.1"
+    image: "influxdb:2.5"
     container_name: "influx"
     hostname: "influx"
     restart: "unless-stopped"
