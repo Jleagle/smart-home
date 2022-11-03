@@ -95,6 +95,8 @@ services:
     environment:
       - "FRIGATE_KITCHEN_USERNAME"
       - "FRIGATE_KITCHEN_PASSWORD"
+      - "FRIGATE_DINING_USERNAME"
+      - "FRIGATE_DINING_PASSWORD"
 
   grafana:
     image: "grafana/grafana:latest"
