@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-mkdir -p ~/AdGuard/Work
 mkdir -p ~/AdGuard/Conf
+mkdir -p ~/AdGuard/Work
 mkdir -p ~/AssistantRelay/Responses
 mkdir -p ~/Bazarr
 mkdir -p ~/DDNS
@@ -19,8 +19,8 @@ mkdir -p ~/Media/Movies
 mkdir -p ~/Media/Television
 mkdir -p ~/Media/YouTube
 mkdir -p ~/Minecraft
-mkdir -p ~/Mosquitto/Log
 mkdir -p ~/Mosquitto/Data
+mkdir -p ~/Mosquitto/Log
 mkdir -p ~/NodeRed
 mkdir -p ~/NZBGet/Config
 mkdir -p ~/NZBGet/Downloads
@@ -34,8 +34,8 @@ mkdir -p ~/Sonarr
 mkdir -p ~/Syncthing/Config
 mkdir -p ~/Syncthing/Data
 mkdir -p ~/Tautulli
-mkdir -p ~/UptimeKuma
 mkdir -p ~/Traefik
+mkdir -p ~/UptimeKuma
 mkdir -p ~/Varken
 mkdir -p ~/Zinc
 
