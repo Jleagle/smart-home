@@ -3,7 +3,7 @@ version: '3'
 services:
 
   2fauth:
-    image: "2fauth/2fauth"
+    image: "2fauth/2fauth:latest"
     container_name: "2fauth"
     volumes:
       - "${HOME}/2FAuth:/2fauth"
@@ -97,7 +97,7 @@ services:
       - "FRIGATE_KITCHEN_PASSWORD"
 
   grafana:
-    image: "grafana/grafana:main"
+    image: "grafana/grafana:latest"
     container_name: "grafana"
     hostname: "grafana"
     restart: "unless-stopped"
