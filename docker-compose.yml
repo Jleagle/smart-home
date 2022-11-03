@@ -133,6 +133,17 @@ services:
     environment:
       - "TZ=Europe/London"
 
+  homepage:
+    image: "ghcr.io/benphelps/homepage:latest"
+    container_name: "homepage"
+    hostname: "homepage"
+    restart: "unless-stopped"
+    ports:
+      - "3003:3000"
+    volumes:
+      - "${HOME}/Homepage:/app/config"
+      - "/var/run/docker.sock:/var/run/docker.sock"
+
   influx:
     image: "influxdb:2.1"
     container_name: "influx"

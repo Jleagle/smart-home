@@ -104,6 +104,13 @@ http:
         certResolver: "myresolver"
       entryPoints:
         - "websecure"
+    homepage-route:
+      rule: "Host(`homepage.jimeagle.com`)"
+      service: "homepage-service"
+      tls:
+        certResolver: "myresolver"
+      entryPoints:
+        - "websecure"
     homarr-route:
       rule: "Host(`homarr.jimeagle.com`)"
       service: "homarr-service"
@@ -297,6 +304,10 @@ http:
       loadBalancer:
         servers:
           - url: "http://localhost:8123"
+    homepage-service:
+      loadBalancer:
+        servers:
+          - url: "http://localhost:3003"
     homarr-service:
       loadBalancer:
         servers:
