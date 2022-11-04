@@ -4,7 +4,7 @@ mqtt:
   host: 192.168.0.7
 
 birdseye:
-  enabled: false
+  enabled: true
   mode: motion
 
 ffmpeg:
