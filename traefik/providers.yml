@@ -107,6 +107,8 @@ http:
     homepage-route:
       rule: "Host(`homepage.jimeagle.com`)"
       service: "homepage-service"
+      middlewares:
+        - "traefik-forward-auth"
       tls:
         certResolver: "myresolver"
       entryPoints:
