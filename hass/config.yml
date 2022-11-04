@@ -180,7 +180,7 @@ weather:
     api_key: !secret pirate_weather
     latitude: !secret home_lat
     longitude: !secret home_lon
-    mode: "hourly" (default) or "daily"
+    mode: "hourly" # (default) or "daily"
     #name: Custom name
 
 
