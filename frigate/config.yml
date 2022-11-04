@@ -43,14 +43,6 @@ cameras:
     detect:
       width: 1024
       height: 576
-      fps: 5
-    rtmp:
-      width: 1024
-      height: 576
-      fps: 5
-    record:
-      width: 1280
-      height: 720
       fps: 10
   dining:
     ffmpeg:
@@ -65,14 +57,6 @@ cameras:
     detect:
       width: 1024
       height: 576
-      fps: 5
-    rtmp:
-      width: 1024
-      height: 576
-      fps: 5
-    record:
-      width: 1920
-      height: 1080
       fps: 10
 
 detectors:
