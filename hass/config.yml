@@ -68,7 +68,6 @@ http:
     - "::1"
 
 mqtt:
-  client_id: "hass"
   scene:
     - name: "Everything Off"
       unique_id: "everything-off-scene"
