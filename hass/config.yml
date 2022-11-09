@@ -85,6 +85,7 @@ spotcast:
   sp_key: !secret spotcast_sp_key
   country: "GB"
 
+# https://github.com/basnijholt/adaptive-lighting#readme
 adaptive_lighting:
   - name: "biglight"
     lights:
