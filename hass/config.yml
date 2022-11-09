@@ -85,6 +85,13 @@ spotcast:
   sp_key: !secret spotcast_sp_key
   country: "GB"
 
+adaptive_lighting:
+  - name: "biglight"
+    lights:
+      - light.shelly_duo
+    prefer_rgb_color: false
+    detect_non_ha_changes: true
+
 google_assistant:
   project_id: !secret assistant_project_id
   service_account: !include google_assistant_key.json
