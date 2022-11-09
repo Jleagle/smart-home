@@ -2,20 +2,13 @@
 # For configuration options and examples, please see:
 # https://github.com/benphelps/homepage/wiki/Services
 
-- My First Group:
-    - My First Service:
-        href: http://localhost/
-        description: Homepage is awesome
-
-- My Second Group:
-    - My Second Service:
-        href: http://localhost/
-        description: Homepage is the best
-
-- My Third Group:
-    - My Third Service:
-        href: http://localhost/
-        description: Homepage is 😎
+- Smart Home:
+    - Home Assistant:
+        href: https://hass.jimeagle.com/
+        container: hass
+    - Node-RED:
+        href: https://nodered.jimeagle.com/
+        container: nodered
 
 - Group A:
     - Adguard:
@@ -27,9 +20,14 @@
     - Grafana:
         href: https://grafana.jimeagle.com/
         container: grafana
-    - Home Assistant:
-        href: https://hass.jimeagle.com/
-        container: hass
-    - Node-RED:
-        href: https://nodered.jimeagle.com/
-        container: nodered
+
+- Media:
+    - Sonarr:
+        href: https://sonarr.jimeagle.com/
+        container: sonarr
+    - Radarr:
+        href: https://radarr.jimeagle.com/
+        container: radarr
+    - NZBGet:
+        href: https://nzbget.jimeagle.com/
+        container: nzbget
