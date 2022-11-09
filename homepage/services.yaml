@@ -3,16 +3,22 @@
 # https://github.com/benphelps/homepage/wiki/Services
 
 - My First Group:
-      - My First Service:
-            href: http://localhost/
-            description: Homepage is awesome
+    - My First Service:
+        href: http://localhost/
+        description: Homepage is awesome
 
 - My Second Group:
-      - My Second Service:
-            href: http://localhost/
-            description: Homepage is the best
+    - My Second Service:
+        href: http://localhost/
+        description: Homepage is the best
 
 - My Third Group:
-      - My Third Service:
-            href: http://localhost/
-            description: Homepage is 😎
+    - My Third Service:
+        href: http://localhost/
+        description: Homepage is 😎
+
+- Group A:
+    - Adguard:
+        href: https://adguard.jimeagle.com/
+        description: This is my service
+        container: adguard
