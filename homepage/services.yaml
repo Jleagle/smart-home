@@ -20,5 +20,16 @@
 - Group A:
     - Adguard:
         href: https://adguard.jimeagle.com/
-        description: This is my service
         container: adguard
+    - Frigate:
+        href: https://frigate.jimeagle.com/
+        container: frigate
+    - Grafana:
+        href: https://grafana.jimeagle.com/
+        container: grafana
+    - Home Assistant:
+        href: https://hass.jimeagle.com/
+        container: hass
+    - Node-RED:
+        href: https://nodered.jimeagle.com/
+        container: nodered
