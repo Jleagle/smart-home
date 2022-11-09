@@ -20,14 +20,34 @@
     - Grafana:
         href: https://grafana.jimeagle.com/
         container: grafana
+    - Tautulli:
+        href: https://tautulli.jimeagle.com/
+        container: tautulli
+        widget:
+          type: tautulli
+          url: http://localhost:8181
+          key: todo
 
 - Media:
     - Sonarr:
         href: https://sonarr.jimeagle.com/
         container: sonarr
+        widget:
+          type: sonarr
+          url: http://localhost:8989
+          key: todo
     - Radarr:
         href: https://radarr.jimeagle.com/
         container: radarr
+        widget:
+          type: radarr
+          url: http://localhost:7878
+          key: todo
     - NZBGet:
         href: https://nzbget.jimeagle.com/
         container: nzbget
+        widget:
+          type: nzbget
+          url: http://localhost:6789
+          username: todo
+          password: todo
