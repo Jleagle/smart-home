@@ -1,0 +1,24 @@
+---
+# For configuration options and examples, please see:
+# https://github.com/benphelps/homepage/wiki/Settings
+
+#https://gethomepage.dev/en/configs/settings/
+#title: My Awesome Homepage
+#background: https://images.unsplash.com/photo-1502790671504-542ad42d5189?auto=format&fit=crop&w=2560&q=80
+#volumes:
+#  - /my/homepage/images:/app/public/images
+#backgroundOpacity: 0.5
+#favicon: https://www.google.com/favicon.ico
+theme: dark # or light
+color: slate
+layout:
+  Media:
+    style: row
+    columns: 4
+headerStyle: clean
+base: https://homepage.jimeagle.com
+language: en
+#target: _blank # Possible options include _blank, _self, and _top
+#providers:
+#  openweathermap: openweathermapapikey
+#  weatherapi: weatherapiapikey

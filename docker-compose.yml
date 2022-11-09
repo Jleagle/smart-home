@@ -144,6 +144,11 @@ services:
       - "3003:3000"
     volumes:
       - "${HOME}/Homepage:/app/config"
+      - "./homepage/bookmarks.yml:/app/config/bookmarks.yaml"
+      - "./homepage/docker.yml:/app/config/docker.yaml"
+      - "./homepage/services.yml:/app/config/services.yaml"
+      - "./homepage/settings.yml:/app/config/settings.yaml"
+      - "./homepage/widgets.yml:/app/config/widgets.yaml"
       - "/var/run/docker.sock:/var/run/docker.sock"
 
   influx:
