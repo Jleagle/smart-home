@@ -90,8 +90,18 @@ adaptive_lighting:
   - name: "biglight"
     lights:
       - light.shelly_duo
-    prefer_rgb_color: false
     detect_non_ha_changes: true
+    min_brightness: 20
+  - name: "kitchen"
+    lights:
+      - light.shellydimmer2_c45bbe56f9ba
+    detect_non_ha_changes: true
+    min_brightness: 20
+  - name: "bathroom"
+    lights:
+      - light.shellydimmer2_48551900b4e6
+    detect_non_ha_changes: true
+    min_brightness: 1
 
 google_assistant:
   project_id: !secret assistant_project_id
