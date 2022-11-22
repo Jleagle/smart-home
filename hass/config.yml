@@ -107,7 +107,7 @@ google_assistant:
       name: "Ceiling Light"
     light.shellydimmer2_4855190088ac:
       name: "Ceiling Light"
-    light.shellydimmer2_48551900b4e6:
+    light.shellydimmer2_48551900b4e6: # Bathroom
       name: "Ceiling Light"
     light.shellydimmer2_48551900c175:
       name: "Ceiling Light"
@@ -119,7 +119,7 @@ google_assistant:
       name: "Ceiling Light"
     light.shellydimmer2_e89f6d8559a2:
       name: "Ceiling Light"
-    light.shellydimmer2_c45bbe56f9ba:
+    light.shellydimmer2_c45bbe56f9ba: # Kitchen
       name: "Ceiling Light"
     light.shelly_duo:
       name: "Big Light"
