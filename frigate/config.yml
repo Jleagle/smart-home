@@ -27,7 +27,6 @@ record:
   #    mode: active_objects
   events:
     retain:
-      default: 2
       mode: active_objects
       objects:
         dog: 2
