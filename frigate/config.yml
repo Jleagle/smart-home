@@ -18,16 +18,20 @@ ffmpeg:
 objects:
   track:
     - dog
+    - person
 
 record:
   enabled: true
-  retain:
-    days: 2
-    mode: active_objects
+  #  retain:
+  #    days: 2
+  #    mode: active_objects
   events:
     retain:
       default: 2
       mode: active_objects
+      objects:
+        dog: 2
+        person: 0
 
 cameras:
   kitchen:
