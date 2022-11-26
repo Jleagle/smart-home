@@ -273,6 +273,34 @@ tubesync:
     - "traefik.http.routers.tubesync.rule=Host(`tubesync.jimeagle.com`)"
     - "com.centurylinklabs.watchtower.enable=true"
 
+  unbound:
+    container_name: unbound
+    image: "mvance/unbound:latest"
+    expose:
+      - "53"
+    networks:
+      - dns
+    network_mode: bridge
+    ports:
+      - target: 53
+        published: 53
+        protocol: tcp
+        mode: host
+      - target: 53
+        published: 53
+        protocol: udp
+        mode: host
+    volumes:
+      - type: bind
+        read_only: true
+        source: ./my_conf/forward-records.conf
+        target: /opt/unbound/etc/unbound/forward-records.conf
+      - type: bind
+        read_only: true
+        source: ./my_conf/a-records.conf
+        target: /opt/unbound/etc/unbound/a-records.conf
+    restart: unless-stopped
+
 varken:
   image: "boerderij/varken:latest"
   hostname: "varken"
