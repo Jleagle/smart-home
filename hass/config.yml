@@ -165,14 +165,24 @@ google_assistant:
     # Tuya
     light.bedroom_floor_light:
       name: "Floor Light"
-    switch.smart_socket_1_socket_1:
+
+    switch.teckin_plug_1:
       name: "Electric Blanket"
-    switch.smart_socket_2_socket_1:
+    switch.teckin_plug_2:
       name: "Laptop"
-    switch.smart_socket_3_socket_1:
-      name: "Salt Lamp"
-    switch.smart_socket_4_socket_1:
+    switch.teckin_plug_3:
+      name: "Dresser"
+    switch.teckin_plug_4:
       name: "Firework Lamp"
+
+    switch.tapo_plug_1:
+      name: "Christmas Tree"
+    switch.tapo_plug_2:
+      name: "Heated Blanket"
+    switch.tapo_plug_3:
+      name: "Small Light"
+    switch.tapo_plug_4:
+      name: "Salt Lamp"
 
     # Scenes
     scene.everything_off:
