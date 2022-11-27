@@ -166,14 +166,14 @@ google_assistant:
     light.bedroom_floor_light:
       name: "Floor Light"
 
-    switch.teckin_plug_1:
-      name: "Electric Blanket"
+    #    switch.teckin_plug_1:
+    #      name: "Electric Blanket"
     switch.teckin_plug_2:
       name: "Laptop"
     switch.teckin_plug_3:
       name: "Dresser"
-    switch.teckin_plug_4:
-      name: "Firework Lamp"
+    #    switch.teckin_plug_4:
+    #      name: "Firework Lamp"
 
     switch.tapo_plug_1:
       name: "Christmas Tree"
