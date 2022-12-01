@@ -2,11 +2,11 @@
 # For configuration options and examples, please see:
 # https://github.com/benphelps/homepage/wiki/Bookmarks
 
-- Developer:
-    - Cloudflare:
+- Links:
+    - Cloudflare DNS:
         - abbr: CF
           href: https://dash.cloudflare.com/58def5a8714219e5d78fa27871548132/jimeagle.com/dns
-    - IPs:
+    - Network IPs:
         - abbr: IP
           href: https://docs.google.com/spreadsheets/d/1pZHq0oW5WCBnGJdt80x9CUx6ZbyXLHSOweU9WcegClY/edit#gid=0
     - Tado:

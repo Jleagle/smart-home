@@ -9,24 +9,17 @@
     - Node-RED:
         href: https://nodered.jimeagle.com/
         container: nodered
-
-- Group A:
-    - Adguard:
-        href: https://adguard.jimeagle.com/
-        container: adguard
     - Frigate:
         href: https://frigate.jimeagle.com/
         container: frigate
-    - Grafana:
-        href: https://grafana.jimeagle.com/
-        container: grafana
-    - Tautulli:
-        href: https://tautulli.jimeagle.com/
-        container: tautulli
-        widget:
-          type: tautulli
-          url: http://localhost:8181
-          key: todo
+
+- Network:
+    - AdGuard:
+        href: https://adguard.jimeagle.com/
+        container: adguard
+    - Router:
+        href: https://router.jimeagle.com/
+        container: router
 
 - Media:
     - Sonarr:
@@ -51,3 +44,26 @@
           url: http://localhost:6789
           username: todo
           password: todo
+    - Tautulli:
+        href: https://tautulli.jimeagle.com/
+        container: tautulli
+        widget:
+          type: tautulli
+          url: http://localhost:8181
+          key: todo
+
+- Dev:
+    - SerpBear:
+        href: https://serpbear.jimeagle.com/
+        container: serpbear
+    - Zinc:
+        href: https://zinc.jimeagle.com/
+        container: zinc
+    - Influx:
+        href: https://influx.jimeagle.com/
+        container: influx
+
+- Misc:
+    - Grafana:
+        href: https://grafana.jimeagle.com/
+        container: grafana
