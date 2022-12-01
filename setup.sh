@@ -30,6 +30,7 @@ mkdir -p ~/Plex/Transcoding
 mkdir -p ~/PlexMeta
 mkdir -p ~/Prowlarr
 mkdir -p ~/Radarr
+mkdir -p ~/SerpBear
 mkdir -p ~/Sonarr
 mkdir -p ~/Syncthing/Config
 mkdir -p ~/Syncthing/Data

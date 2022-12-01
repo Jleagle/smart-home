@@ -221,6 +221,15 @@ http:
         certResolver: "myresolver"
       entryPoints:
         - "websecure"
+    serpbear-route:
+      rule: "Host(`serpbear.jimeagle.com`)"
+      service: "serpbear-service"
+      middlewares:
+        - "traefik-forward-auth"
+      tls:
+        certResolver: "myresolver"
+      entryPoints:
+        - "websecure"
     syncthing-route:
       rule: "Host(`syncthing.jimeagle.com`)"
       service: "syncthing-service"
@@ -366,6 +375,10 @@ http:
       loadBalancer:
         servers:
           - url: "http://192.168.0.1:80"
+    serpbear-service:
+      loadBalancer:
+        servers:
+          - url: "http://localhost:3004"
     syncthing-service:
       loadBalancer:
         servers:
