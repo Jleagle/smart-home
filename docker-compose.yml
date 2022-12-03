@@ -75,7 +75,7 @@ services:
   #      - "/etc/localtime:/etc/localtime:ro"
 
   frigate:
-    image: "blakeblackshear/frigate:stable-amd64"
+    image: "blakeblackshear/frigate:stable"
     container_name: "frigate"
     hostname: "frigate"
     restart: "unless-stopped"
