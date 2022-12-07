@@ -180,6 +180,8 @@ google_assistant:
       name: "Christmas Tree"
     switch.tapo_plug_2:
       name: "Electric Blanket"
+      aliases:
+        - "Heated Blanket"
     switch.tapo_plug_3:
       name: "Small Light"
     switch.tapo_plug_4:
