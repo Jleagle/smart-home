@@ -135,7 +135,7 @@ google_assistant:
     light.shelly_duo:
       name: "Big Light"
 
-    # Switches
+    # Toggles
     input_boolean.work_alarm:
       name: "Work Alarms"
     input_boolean.guest_mode:
@@ -167,6 +167,7 @@ google_assistant:
     light.bedroom_floor_light:
       name: "Floor Light"
 
+    # Switches
     #    switch.teckin_plug_1:
     #      name: "Electric Blanket"
     switch.teckin_plug_2:
@@ -175,7 +176,6 @@ google_assistant:
       name: "Dresser"
     #    switch.teckin_plug_4:
     #      name: "Firework Lamp"
-
     switch.tapo_plug_1:
       name: "Christmas Tree"
     switch.tapo_plug_2:
