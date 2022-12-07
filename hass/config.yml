@@ -116,8 +116,6 @@ google_assistant:
     #      name: "Hallway Downstairs"
     #    light.shellydimmer2_48551900caca:
     #      name: "Hallway Upstairs"
-    light.hallway_lights: # Up & Down
-      name: "Hallway Lights"
     light.shellydimmer2_485519002b72:
       name: "Ceiling Light"
     light.shellydimmer2_4855190088ac:
@@ -134,12 +132,18 @@ google_assistant:
       name: "Ceiling Light"
     light.shellydimmer2_c45bbe56f9ba: # Kitchen
       name: "Ceiling Light"
+    light.shelly_duo:
+      name: "Big Light"
+
+    # Groups
     light.upstairs_lights:
       name: "Upstairs"
     light.downstairs_lights:
       name: "Downstairs"
-    light.shelly_duo:
-      name: "Big Light"
+    light.hallway_lights: # Up & Down
+      name: "Hallway Lights"
+    light.dog_pee_lights:
+      name: "Dog Lights"
 
     # Toggles
     input_boolean.work_alarm:
