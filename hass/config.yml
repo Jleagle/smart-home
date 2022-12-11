@@ -103,6 +103,11 @@ adaptive_lighting:
       - light.shellydimmer2_48551900b4e6
     detect_non_ha_changes: true
     min_brightness: 1
+  - name: "office"
+    lights:
+      - light.shellydimmer2_485519002b72
+    detect_non_ha_changes: true
+    min_brightness: 15
 
 google_assistant:
   project_id: !secret assistant_project_id
