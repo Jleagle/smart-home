@@ -37,13 +37,6 @@ zeroconf:
 zone:
 
 homeassistant:
-  name: "Home"
-  latitude: !secret home_lat
-  longitude: !secret home_lon
-  elevation: 14
-  unit_system: "metric"
-  currency: "GBP"
-  time_zone: "Europe/London"
   external_url: "https://hass.jimeagle.com"
   internal_url: "http://192.168.0.7:8123"
   auth_providers:
