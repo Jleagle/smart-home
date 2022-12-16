@@ -174,8 +174,8 @@ google_assistant:
       name: "Floor Light"
 
     # Switches
-    #    switch.teckin_plug_1:
-    #      name: "Electric Blanket"
+    switch.teckin_plug_1:
+      name: "Christmas Tree"
     switch.teckin_plug_2:
       name: "Laptop"
     switch.teckin_plug_3:
@@ -183,11 +183,13 @@ google_assistant:
     #    switch.teckin_plug_4:
     #      name: "Firework Lamp"
     switch.tapo_plug_1:
-      name: "Christmas Tree"
-    switch.tapo_plug_2:
-      name: "Electric Blanket"
+      name: "Electric Blanket Gillian"
       aliases:
-        - "Heated Blanket"
+        - "Heated Blanket Gillian"
+    switch.tapo_plug_2:
+      name: "Electric Blanket James"
+      aliases:
+        - "Heated Blanket James"
     switch.tapo_plug_3:
       name: "Small Light"
     switch.tapo_plug_4:
