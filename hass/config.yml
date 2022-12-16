@@ -195,12 +195,6 @@ google_assistant:
     switch.tapo_plug_4:
       name: "Salt Lamp"
 
-    # Scenes
-    scene.everything_off:
-      name: "Bedtime"
-    scene.i_m_up:
-      name: "I'm Up"
-
 light:
   - platform: "blink1_status"
 
