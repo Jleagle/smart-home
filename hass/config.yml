@@ -98,7 +98,7 @@ adaptive_lighting:
     lights:
       - light.shellydimmer2_485519002b72
     detect_non_ha_changes: true
-    min_brightness: 15
+    min_brightness: 10
 
 google_assistant:
   project_id: !secret assistant_project_id
