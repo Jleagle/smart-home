@@ -12,3 +12,6 @@
     - Tado:
         - abbr: TD
           href: https://app.tado.com/en/main/home
+    - Grafana:
+        - abbr: Gr
+          href: https://grafana.jimeagle.com/d/xZM80Fx7z/telegraf
