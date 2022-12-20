@@ -148,8 +148,6 @@ google_assistant:
       name: "Guest Mode"
     input_boolean.someone_home:
       name: "Someone Home"
-    input_boolean.washing_out:
-      name: "Washing Out"
     switch.nzbget_download:
       name: "Downloads"
     switch.adguard_protection:
