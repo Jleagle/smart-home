@@ -151,7 +151,7 @@ google_assistant:
     switch.nzbget_download:
       name: "Downloads"
     switch.adguard_protection:
-      name: "Adguard Protection"
+      name: "Hide Ads"
 
     # Wake On Lan
     switch.wake_pc:
