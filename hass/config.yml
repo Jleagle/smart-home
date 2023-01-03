@@ -83,7 +83,7 @@ adaptive_lighting:
     lights:
       - light.shelly_duo
     detect_non_ha_changes: true
-    min_brightness: 20
+    min_brightness: 40
   - name: "kitchen"
     lights:
       - light.shellydimmer2_c45bbe56f9ba
