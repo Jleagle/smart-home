@@ -141,7 +141,7 @@ google_assistant:
       name: "Upstairs"
     light.downstairs_lights:
       name: "Downstairs"
-    light.hallway_lights: # Up & Down
+    light.hallway_lights:
       name: "Hallway Lights"
     light.dog_pee_lights:
       name: "Dog Lights"
