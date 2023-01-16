@@ -147,8 +147,8 @@ google_assistant:
       name: "Dog Lights"
 
     # Toggles
-    input_boolean.work_alarm:
-      name: "Work Alarms"
+    switch.morning_alarm_enabled:
+      name: "Alarm Clock"
     input_boolean.guest_mode:
       name: "Guest Mode"
     input_boolean.someone_home:
