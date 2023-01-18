@@ -45,6 +45,15 @@ http:
         certResolver: "myresolver"
       entryPoints:
         - "websecure"
+    changedetection-route:
+      rule: "Host(`changedetection.jimeagle.com`)"
+      service: "changedetection-service"
+      middlewares:
+        - "traefik-forward-auth"
+      tls:
+        certResolver: "myresolver"
+      entryPoints:
+        - "websecure"
     cockpit-route:
       rule: "Host(`cockpit.jimeagle.com`)"
       service: "cockpit-service"
@@ -296,6 +305,10 @@ http:
       loadBalancer:
         servers:
           - url: "http://localhost:6767"
+    changedetection-service:
+      loadBalancer:
+        servers:
+          - url: "http://localhost:5001"
     doubletake-service:
       loadBalancer:
         servers:

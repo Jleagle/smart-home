@@ -40,6 +40,16 @@ services:
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock"
 
+  changedetection:
+    image: "ghcr.io/dgtlmoon/changedetection.io:latest"
+    container_name: "changedetection"
+    hostname: "changedetection"
+    restart: "unless-stopped"
+    ports:
+      - "5001:5000"
+    volumes:
+      - "changedetection-data:/datastore"
+
   ddns:
     image: "ghcr.io/jleagle/ddns:latest"
     container_name: "ddns"
