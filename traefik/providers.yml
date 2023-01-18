@@ -221,6 +221,15 @@ http:
         certResolver: "myresolver"
       entryPoints:
         - "websecure"
+    scrutiny-route:
+      rule: "Host(`scrutiny.jimeagle.com`)"
+      service: "scrutiny-service"
+      middlewares:
+        - "traefik-forward-auth"
+      tls:
+        certResolver: "myresolver"
+      entryPoints:
+        - "websecure"
     serpbear-route:
       rule: "Host(`serpbear.jimeagle.com`)"
       service: "serpbear-service"
@@ -375,6 +384,10 @@ http:
       loadBalancer:
         servers:
           - url: "http://192.168.0.1:80"
+    scrutiny-service:
+      loadBalancer:
+        servers:
+          - url: "http://localhost:8080"
     serpbear-service:
       loadBalancer:
         servers:

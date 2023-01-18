@@ -278,6 +278,24 @@ services:
       - "PUID=1000"
       - "TZ=Europe/London"
 
+  scrutiny:
+    image: "ghcr.io/analogj/scrutiny:latest"
+    container_name: "scrutiny"
+    hostname: "scrutiny"
+    restart: "unless-stopped"
+    cap_add:
+      - "SYS_RAWIO"
+    ports:
+      - "8080:8080" # webapp
+      #- "8086:8086" # influxDB admin
+    volumes:
+      - "/run/udev:/run/udev:ro"
+      - "${HOME}/Scrutiny/Config:/opt/scrutiny/config"
+      - "${HOME}/Scrutiny/Influx:/opt/scrutiny/influxdb"
+    devices:
+      - "/dev/sda"
+      - "/dev/sdb"
+
   serpbear:
     image: "towfiqi/serpbear:latest"
     container_name: "serpbear"
