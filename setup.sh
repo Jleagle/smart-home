@@ -4,6 +4,7 @@ mkdir -p ~/AdGuard/Conf
 mkdir -p ~/AdGuard/Work
 mkdir -p ~/AssistantRelay/Responses
 mkdir -p ~/Bazarr
+mkdir -p ~/ChangeDetection
 mkdir -p ~/DDNS
 mkdir -p ~/DoubleTake
 mkdir -p ~/FlexTV
