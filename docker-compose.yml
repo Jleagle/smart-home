@@ -137,6 +137,7 @@ services:
     privileged: true
     devices:
       - "/dev/gpiomem:/dev/gpiomem"
+      - "/dev/ttyUSB0:/dev/ttyUSB0"
     volumes:
       - "${HOME}/Hass/Config:/config"
       - "${HOME}/Hass/google_assistant_key.json:/config/google_assistant_key.json:ro"
