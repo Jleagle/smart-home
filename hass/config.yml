@@ -216,7 +216,7 @@ switch:
   - platform: "wake_on_lan"
     name: "TV"
     host: "192.168.0.9"
-    mac: "E8:F2:E2:C1:A4:48"
+    mac: "BC:7E:8B:AB:01:D2"
 
 group:
   alldevices:
