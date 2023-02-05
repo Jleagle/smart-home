@@ -304,6 +304,10 @@ services:
       - "SCRUTINY_API_ENDPOINT=http://localhost:8080"
       - "SCRUTINY_WEB=true"
       - "SCRUTINY_COLLECTOR=true"
+      - "INFLUXDB_ADMIN_TOKEN"
+      - "INFLUXDB_ORG_ID"
+      - "INFLUXDB_HOSTNAME"
+      - "INFLUXDB_SCRUTINY_BUCKET_BASENAME"
     ports:
       - "8080:8080" # webapp
       #- "8086:8086" # influxDB admin
