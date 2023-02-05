@@ -312,9 +312,7 @@ services:
       - "${HOME}/Scrutiny/Config:/opt/scrutiny/config"
       - "${HOME}/Scrutiny/Influx:/opt/scrutiny/influxdb"
     devices:
-      - "/dev/sda:/dev/sda"
-      - "/dev/sdb:/dev/sdb"
-      - "/dev/nvme1n1:/dev/nvme1n1"
+      - "/dev/sda2:/dev/sda"
 
   serpbear:
     image: "towfiqi/serpbear:latest"
