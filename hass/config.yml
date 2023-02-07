@@ -177,9 +177,10 @@ google_assistant:
       name: "Floor Light"
 
     # Switches
-    switch.teckin_plug_1:
-      name: "Christmas Tree"
-      room: "Living Room"
+
+    #    switch.teckin_plug_1:
+    #      name: "Christmas Tree"
+    #      room: "Living Room"
     switch.teckin_plug_2:
       name: "Laptop"
       room: "Living Room"
