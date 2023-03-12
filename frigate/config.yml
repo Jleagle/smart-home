@@ -9,11 +9,7 @@ birdseye:
 
 ffmpeg:
   # https://docs.frigate.video/configuration/hardware_acceleration
-  hwaccel_args:
-    - -hwaccel
-    - qsv
-    - -qsv_device
-    - /dev/dri/renderD128
+  hwaccel_args: -c:v h264_qsv
 
 objects:
   track:
