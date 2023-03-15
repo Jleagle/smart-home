@@ -31,6 +31,9 @@ services:
 
   authentik:
     image: "ghcr.io/goauthentik/proxy:latest"
+    container_name: "authentik"
+    hostname: "authentik"
+    restart: "unless-stopped"
     ports:
       - "9002:9000"
       - "9443:9443"
@@ -39,7 +42,6 @@ services:
       AUTHENTIK_HOST_BROWSER: "https://authentik.jimeagle.com"
       AUTHENTIK_INSECURE: "false"
       AUTHENTIK_TOKEN: "token-generated-by-authentik"
-    restart: "unless-stopped"
 
   autoheal:
     image: "willfarrell/autoheal:latest"
