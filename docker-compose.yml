@@ -29,6 +29,18 @@ services:
       - "${HOME}/AdGuard/Work:/opt/adguardhome/work"
       - "${HOME}/AdGuard/Conf:/opt/adguardhome/conf"
 
+  authentik:
+    image: "ghcr.io/goauthentik/proxy:latest"
+    ports:
+      - "9002:9000"
+      - "9443:9443"
+    environment:
+      AUTHENTIK_HOST: "http://authentik:9002"
+      AUTHENTIK_HOST_BROWSER: "https://authentik.jimeagle.com"
+      AUTHENTIK_INSECURE: false
+      AUTHENTIK_TOKEN: "token-generated-by-authentik"
+    restart: unless-stopped
+
   autoheal:
     image: "willfarrell/autoheal:latest"
     container_name: "autoheal"
