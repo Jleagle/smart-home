@@ -26,6 +26,7 @@ http:
       service: "adguard-service"
       middlewares:
         - "traefik-forward-auth"
+        - "authentik"
       tls:
         certResolver: "myresolver"
       entryPoints:
