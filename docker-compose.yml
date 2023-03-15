@@ -37,9 +37,9 @@ services:
     environment:
       AUTHENTIK_HOST: "http://authentik:9002"
       AUTHENTIK_HOST_BROWSER: "https://authentik.jimeagle.com"
-      AUTHENTIK_INSECURE: false
+      AUTHENTIK_INSECURE: "false"
       AUTHENTIK_TOKEN: "token-generated-by-authentik"
-    restart: unless-stopped
+    restart: "unless-stopped"
 
   autoheal:
     image: "willfarrell/autoheal:latest"
