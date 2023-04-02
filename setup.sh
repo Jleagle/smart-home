@@ -3,6 +3,9 @@
 mkdir -p ~/AdGuard/Conf
 mkdir -p ~/AdGuard/Work
 mkdir -p ~/AssistantRelay/Responses
+mkdir -p ~/Authentik/Certs
+mkdir -p ~/Authentik/Media
+mkdir -p ~/Authentik/Templates
 mkdir -p ~/Bazarr
 mkdir -p ~/ChangeDetection
 mkdir -p ~/DDNS

@@ -29,19 +29,39 @@ services:
       - "${HOME}/AdGuard/Work:/opt/adguardhome/work"
       - "${HOME}/AdGuard/Conf:/opt/adguardhome/conf"
 
-  authentik:
-    image: "ghcr.io/goauthentik/proxy:latest"
-    container_name: "authentik"
-    hostname: "authentik"
+  authentik-server:
+    image: "ghcr.io/goauthentik/server:latest"
+    container_name: "authentik-server"
+    hostname: "authentik-server"
     restart: "unless-stopped"
     ports:
       - "9002:9000"
       - "9443:9443"
+    command: "server"
     environment:
-      AUTHENTIK_HOST: "http://authentik:9002"
-      AUTHENTIK_HOST_BROWSER: "https://authentik.jimeagle.com"
-      AUTHENTIK_INSECURE: "false"
-      AUTHENTIK_TOKEN: "token-generated-by-authentik"
+      PG_PASS: "${AUTHENTIK_PG_PASS}"
+      AUTHENTIK_SECRET_KEY: "${AUTHENTIK_SECRET_KEY}"
+      AUTHENTIK_ERROR_REPORTING__ENABLED: true
+    volumes:
+      - "${HOME}/Authentik/Media:/media"
+      - "${HOME}/Authentik/Templates:/templates"
+
+  authentik-worker:
+    image: "ghcr.io/goauthentik/server:latest"
+    container_name: "authentik-worker"
+    hostname: "authentik-worker"
+    restart: "unless-stopped"
+    command: "worker"
+    environment:
+      PG_PASS: "${AUTHENTIK_PG_PASS}"
+      AUTHENTIK_SECRET_KEY: "${AUTHENTIK_SECRET_KEY}"
+      AUTHENTIK_ERROR_REPORTING__ENABLED: true
+    #    user: root
+    volumes:
+      #      - /var/run/docker.sock:/var/run/docker.sock
+      - "${HOME}/Authentik/Certs:/certs"
+      - "${HOME}/Authentik/Media:/media"
+      - "${HOME}/Authentik/Templates:/templates"
 
   autoheal:
     image: "willfarrell/autoheal:latest"
