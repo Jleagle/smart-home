@@ -78,6 +78,11 @@ spotcast:
 
 # https://github.com/basnijholt/adaptive-lighting#readme
 adaptive_lighting:
+  - name: "bedroom"
+    lights:
+      - light.shellydimmer2_48551900c175
+    detect_non_ha_changes: true
+    min_brightness: 20
   - name: "biglight"
     lights:
       - light.shelly_duo
