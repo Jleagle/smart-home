@@ -124,21 +124,21 @@ google_assistant:
     #      name: "Hallway Upstairs"
     light.shellydimmer2_485519002b72: # Office
       name: "Ceiling Light"
-    light.shellydimmer2_4855190088ac:
+    light.shellydimmer2_4855190088ac: # Small Room
       name: "Ceiling Light"
     light.shellydimmer2_48551900b4e6: # Bathroom
       name: "Ceiling Light"
-    light.shellydimmer2_48551900c175:
+    light.shellydimmer2_48551900c175: # Bedroom
       name: "Ceiling Light"
-    light.shellydimmer2_48551900c7e2:
+    light.shellydimmer2_48551900c7e2: # Dining Room
       name: "Ceiling Light"
-    light.shellydimmer2_C45BBE572627:
+    light.shellydimmer2_C45BBE572627: # Living Room
       name: "Ceiling Light"
-    light.shellydimmer2_e89f6d8559a2:
+    light.shellydimmer2_e89f6d8559a2: # Spare Room
       name: "Ceiling Light"
     light.shellydimmer2_c45bbe56f9ba: # Kitchen
       name: "Ceiling Light"
-    light.shelly_duo:
+    light.shelly_duo: # Big Light
       name: "Big Light"
 
     # Groups
