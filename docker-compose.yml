@@ -292,7 +292,7 @@ services:
       - "${HOME}/Portainer:/data"
       - "/var/run/docker.sock:/var/run/docker.sock"
 
-  postgresql:
+  postgres:
     image: "postgres:15"
     hostname: "postgresql"
     container_name: "postgresql"
