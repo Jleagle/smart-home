@@ -32,6 +32,7 @@ mkdir -p ~/PiHole
 mkdir -p ~/Plex/Config
 mkdir -p ~/Plex/Transcoding
 mkdir -p ~/PlexMeta
+mkdir -p ~/Postgres/Data
 mkdir -p ~/Prowlarr
 mkdir -p ~/Radarr
 mkdir -p ~/SerpBear
