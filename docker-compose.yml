@@ -294,8 +294,8 @@ services:
 
   postgres:
     image: "postgres:15"
-    hostname: "postgresql"
-    container_name: "postgresql"
+    hostname: "postgres"
+    container_name: "postgres"
     restart: "unless-stopped"
     ports:
       - "5432:5432"
