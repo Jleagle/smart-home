@@ -35,6 +35,7 @@ mkdir -p ~/PlexMeta
 mkdir -p ~/Postgres/Data
 mkdir -p ~/Prowlarr
 mkdir -p ~/Radarr
+mkdir -p ~/Redis/Data
 mkdir -p ~/SerpBear
 mkdir -p ~/Sonarr
 mkdir -p ~/Syncthing/Config

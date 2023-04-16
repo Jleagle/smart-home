@@ -346,6 +346,20 @@ services:
       - "PUID=1000"
       - "TZ=Europe/London"
 
+  redis:
+    image: "redis:7"
+    container_name: "redis"
+    hostname: "redis"
+    restart: "unless-stopped"
+    volumes:
+      - "${HOME}/Redis/Data:/data"
+    healthcheck:
+      test: ["CMD-SHELL", "redis-cli ping | grep PONG"]
+      start_period: 20s
+      interval: 30s
+      retries: 5
+      timeout: 3s
+
   scrutiny:
     image: "ghcr.io/analogj/scrutiny:master-omnibus"
     container_name: "scrutiny"
