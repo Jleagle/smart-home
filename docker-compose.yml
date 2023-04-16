@@ -43,7 +43,7 @@ services:
       AUTHENTIK_SECRET_KEY: "${AUTHENTIK_SECRET_KEY}"
       AUTHENTIK_POSTGRESQL__PASSWORD: "${AUTHENTIK_POSTGRESQL__PASSWORD}"
     env_file:
-      - authentik/authentik.env
+      - "./authentik/authentik.env"
     volumes:
       - "${HOME}/Authentik/Media:/media"
       - "${HOME}/Authentik/Templates:/templates"
@@ -59,7 +59,7 @@ services:
       AUTHENTIK_SECRET_KEY: "${AUTHENTIK_SECRET_KEY}"
       AUTHENTIK_POSTGRESQL__PASSWORD: "${AUTHENTIK_POSTGRESQL__PASSWORD}"
     env_file:
-      - authentik/authentik.env
+      - "./authentik/authentik.env"
     #    user: root
     volumes:
       #      - /var/run/docker.sock:/var/run/docker.sock
