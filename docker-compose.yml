@@ -41,7 +41,9 @@ services:
     environment:
       PG_PASS: "${AUTHENTIK_PG_PASS}"
       AUTHENTIK_SECRET_KEY: "${AUTHENTIK_SECRET_KEY}"
-      AUTHENTIK_ERROR_REPORTING__ENABLED: "true"
+      AUTHENTIK_POSTGRESQL__PASSWORD: "${AUTHENTIK_POSTGRESQL__PASSWORD}"
+    env_file:
+      - authentik/authentik.env
     volumes:
       - "${HOME}/Authentik/Media:/media"
       - "${HOME}/Authentik/Templates:/templates"
@@ -55,7 +57,9 @@ services:
     environment:
       PG_PASS: "${AUTHENTIK_PG_PASS}"
       AUTHENTIK_SECRET_KEY: "${AUTHENTIK_SECRET_KEY}"
-      AUTHENTIK_ERROR_REPORTING__ENABLED: "true"
+      AUTHENTIK_POSTGRESQL__PASSWORD: "${AUTHENTIK_POSTGRESQL__PASSWORD}"
+    env_file:
+      - authentik/authentik.env
     #    user: root
     volumes:
       #      - /var/run/docker.sock:/var/run/docker.sock
