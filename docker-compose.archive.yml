@@ -9,6 +9,44 @@ assistant-relay:
     - "${HOME}/AssistantRelay/config.json:/assistant_relay/bin/config.json:rw"
     - "${HOME}/AssistantRelay/Responses:/assistant_relay/bin/audio-responses:rw"
 
+  authentik-server:
+    image: "ghcr.io/goauthentik/server:latest"
+    container_name: "authentik-server"
+    hostname: "authentik-server"
+    restart: "unless-stopped"
+    ports:
+      - "9002:9000"
+      - "9443:9443"
+    command: "server"
+    environment:
+      PG_PASS: "${AUTHENTIK_PG_PASS}"
+      AUTHENTIK_SECRET_KEY: "${AUTHENTIK_SECRET_KEY}"
+      AUTHENTIK_POSTGRESQL__PASSWORD: "${AUTHENTIK_POSTGRESQL__PASSWORD}"
+    env_file:
+      - "./authentik/authentik.env"
+    volumes:
+      - "${HOME}/Authentik/Media:/media"
+      - "${HOME}/Authentik/Templates:/templates"
+
+  authentik-worker:
+    image: "ghcr.io/goauthentik/server:latest"
+    container_name: "authentik-worker"
+    hostname: "authentik-worker"
+    restart: "unless-stopped"
+    command: "worker"
+    environment:
+      PG_PASS: "${AUTHENTIK_PG_PASS}"
+      AUTHENTIK_SECRET_KEY: "${AUTHENTIK_SECRET_KEY}"
+      AUTHENTIK_POSTGRESQL__PASSWORD: "${AUTHENTIK_POSTGRESQL__PASSWORD}"
+    env_file:
+      - "./authentik/authentik.env"
+    #    user: root
+    volumes:
+      #      - /var/run/docker.sock:/var/run/docker.sock
+      - "${HOME}/Authentik/Certs:/certs"
+      - "${HOME}/Authentik/Media:/media"
+      - "${HOME}/Authentik/Templates:/templates"
+
 bazarr:
   image: "linuxserver/bazarr:latest"
   container_name: "bazarr"
