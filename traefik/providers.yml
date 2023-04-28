@@ -108,6 +108,15 @@ http:
         certResolver: "myresolver"
       entryPoints:
         - "websecure"
+    go2rtc-route:
+      rule: "Host(`go2rtc.jimeagle.com`)"
+      service: "go2rtc-service"
+      middlewares:
+        - "traefik-forward-auth"
+      tls:
+        certResolver: "myresolver"
+      entryPoints:
+        - "websecure"
     grafana-route:
       rule: "Host(`grafana.jimeagle.com`)"
       service: "grafana-service"
@@ -342,6 +351,10 @@ http:
       loadBalancer:
         servers:
           - url: "http://localhost:5000"
+    go2rtc-service:
+      loadBalancer:
+        servers:
+          - url: "http://localhost:1984"
     grafana-service:
       loadBalancer:
         servers:
