@@ -30,8 +30,10 @@ record:
 
 go2rtc:
   streams:
-    kitchen: ffmpeg:rtsp://{FRIGATE_KITCHEN_USERNAME}:{FRIGATE_KITCHEN_PASSWORD}@192.168.0.12:10554/tcp/av0_0
-    dining: ffmpeg:rtsp://{FRIGATE_DINING_USERNAME}:{FRIGATE_DINING_PASSWORD}@192.168.0.14/stream2
+    kitchen:
+      - rtsp://{FRIGATE_KITCHEN_USERNAME}:{FRIGATE_KITCHEN_PASSWORD}@192.168.0.12:10554/tcp/av0_0
+    dining:
+      - rtsp://{FRIGATE_DINING_USERNAME}:{FRIGATE_DINING_PASSWORD}@192.168.0.14/stream2
 
 cameras:
   kitchen:
