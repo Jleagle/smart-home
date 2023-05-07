@@ -32,7 +32,7 @@ cameras:
   kitchen:
     ffmpeg:
       inputs:
-        - path: ffmpeg:rrtsp://frigate:1984/stream.html?src=kitchen1
+        - path: rtsp://go2rtc:1984/stream.html?src=kitchen1
           roles:
             - detect
             - record
@@ -43,7 +43,7 @@ cameras:
   dining:
     ffmpeg:
       inputs:
-        - path: ffmpeg:rrtsp://frigate:1984/stream.html?src=dining1
+        - path: ffmpeg:rtsp://go2rtc:1984/stream.html?src=dining1
           roles:
             - detect
             - record
