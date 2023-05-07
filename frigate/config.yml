@@ -32,7 +32,7 @@ cameras:
   kitchen:
     ffmpeg:
       inputs:
-        - path: rtsp://go2rtc:1984/03959a0a-e103-4782-b4d1-6cb1dd5ef50f
+        - path: file:rtsp://go2rtc:1984/03959a0a-e103-4782-b4d1-6cb1dd5ef50f
           roles:
             - detect
             - record
@@ -43,7 +43,7 @@ cameras:
   dining:
     ffmpeg:
       inputs:
-        - path: ffmpeg:rtsp://go2rtc:1984/788d515d-a03b-49ab-870e-5ec847430b63
+        - path: file:ffmpeg:rtsp://go2rtc:1984/788d515d-a03b-49ab-870e-5ec847430b63
           roles:
             - detect
             - record
