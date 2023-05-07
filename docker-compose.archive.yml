@@ -107,6 +107,20 @@ flextv:
     - "PGID=1000"
     - "TZ=Europe/London"
 
+  go2rtc:
+    image: "alexxit/go2rtc:latest"
+    container_name: "go2rtc"
+    hostname: "go2rtc"
+    restart: "unless-stopped"
+    devices:
+      - "/dev/dri/renderD128"
+    ports:
+      - "1984:1984" # API
+    environment:
+      - "TZ=Europe/London"
+    volumes:
+      - "${HOME}/Go2rtc/Config:/config"
+
 homarr:
   image: "ghcr.io/ajnart/homarr:latest"
   container_name: "homarr"
