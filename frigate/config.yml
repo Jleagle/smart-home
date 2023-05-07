@@ -36,10 +36,10 @@ cameras:
           roles:
             - detect
             - record
-      detect:
-        #        width: 1280
-        #        height: 720
-        fps: 10
+    detect:
+      #        width: 1280
+      #        height: 720
+      fps: 10
   dining:
     ffmpeg:
       inputs:
@@ -47,10 +47,10 @@ cameras:
           roles:
             - detect
             - record
-      detect:
-        #        width: 1280
-        #        height: 720
-        fps: 10
+    detect:
+      #        width: 1280
+      #        height: 720
+      fps: 10
 
 detectors:
   coral:
