@@ -32,7 +32,7 @@ cameras:
   kitchen:
     ffmpeg:
       inputs:
-        - path: rtsp://{FRIGATE_KITCHEN_USERNAME}:{FRIGATE_KITCHEN_PASSWORD}@192.168.0.12:10554/tcp/av0_1
+        - path: rtsp://{FRIGATE_KITCHEN_USERNAME}:{FRIGATE_KITCHEN_PASSWORD}@192.168.0.12:10554/tcp/av0_0
           roles:
             - detect
             - record
@@ -43,7 +43,7 @@ cameras:
   dining:
     ffmpeg:
       inputs:
-        - path: rtsp://{FRIGATE_DINING_USERNAME}:{FRIGATE_DINING_PASSWORD}@192.168.0.14/stream2
+        - path: rtsp://{FRIGATE_DINING_USERNAME}:{FRIGATE_DINING_PASSWORD}@192.168.0.14/stream1
           roles:
             - detect
             - record
