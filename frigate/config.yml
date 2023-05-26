@@ -56,7 +56,7 @@ detectors:
   coral:
     type: edgetpu
     device: pci
-    num_threads: 3
+    num_threads: 2
   #  cpu:
   #    type: cpu
   #    num_threads: 1
