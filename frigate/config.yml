@@ -25,8 +25,8 @@ record:
     retain:
       mode: active_objects
       objects:
-        dog: 3
-        person: 1
+        dog: 7
+        person: 0
 
 cameras:
   kitchen:
