@@ -238,7 +238,8 @@ services:
       - "TZ=Europe/London"
       - "VERSION=latest"
     volumes:
-      - "${HOME}/Plex/Transcoding:/transcode"
+      #- "${HOME}/Plex/Transcoding:/transcode"
+      - "/dev/shm:/transcode"
       - "${HOME}/Plex/Config:/config"
       - "${HOME}/Media/Television:/data/tvshows"
       - "${HOME}/Media/Movies:/data/movies"
