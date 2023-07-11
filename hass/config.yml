@@ -241,6 +241,15 @@ switch:
     host: "192.168.0.9"
     mac: "BC:7E:8B:AB:01:D2"
 
+#  - platform: "flux"
+#    name: "Living Room"
+#    lights:
+#      - "light.shelly_duo"
+#    start_time: "20:00"
+#    stop_time: "21:00"
+#    brightness: 200
+#    transition: 5
+
 group:
   alldevices:
     name: "All Devices"
