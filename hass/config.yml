@@ -244,7 +244,7 @@ switch:
     name: "TV"
     host: "192.168.0.9"
     mac: "BC:7E:8B:AB:01:D2"
-  - platform: template
+  - platform: "template"
     switches:
       air_con:
         friendly_name: "Air Con"
