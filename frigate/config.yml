@@ -9,7 +9,10 @@ birdseye:
 
 ffmpeg:
   # https://docs.frigate.video/configuration/hardware_acceleration
-  hwaccel_args: -c:v h264_qsv
+  # https://docs.frigate.video/configuration/ffmpeg_presets/
+  hwaccel_args: preset-intel-qsv-h264
+  output_args:
+    record: preset-record-generic-audio-aac
 
 objects:
   track:
