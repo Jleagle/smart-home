@@ -55,6 +55,7 @@ services:
     container_name: "cloudflare"
     hostname: "cloudflare"
     restart: "unless-stopped"
+    network_mode: "host"
     command: "tunnel --no-autoupdate run"
     environment:
       - "TUNNEL_TOKEN=${CLOUDFLARE_TUNNEL_TOKEN}"
