@@ -50,6 +50,15 @@ services:
     volumes:
       - "${HOME}/ChangeDetection:/datastore"
 
+  cloudflare:
+    image: "cloudflare/cloudflared:latest"
+    container_name: "cloudflare"
+    hostname: "cloudflare"
+    restart: "unless-stopped"
+    command: "tunnel --no-autoupdate run"
+    environment:
+      - "TUNNEL_TOKEN=${CLOUDFLARE_TUNNEL_TOKEN}"
+
   ddns:
     image: "ghcr.io/jleagle/ddns:latest"
     container_name: "ddns"
