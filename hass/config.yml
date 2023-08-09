@@ -77,49 +77,68 @@ spotcast:
   country: "GB"
 
 # https://github.com/basnijholt/adaptive-lighting#readme
+# https://basnijholt.github.io/adaptive-lighting/
 adaptive_lighting:
   - name: "bedroom"
-    lights:
-      - light.shellydimmer2_48551900c175
+    brightness_mode: "linear"
+    brightness_mode_time_light: "3600"
+    brightness_mode_time_dark: "0"
     detect_non_ha_changes: true
     min_brightness: 20
-    sunrise_time: "08:00:00"
+    sunrise_time: "06:00:00"
     sunset_time: "20:00:00"
-  - name: "biglight"
     lights:
-      - light.shelly_duo
+      - "light.shellydimmer2_48551900c175"
+  - name: "biglight"
+    brightness_mode: "linear"
+    brightness_mode_time_light: "3600"
+    brightness_mode_time_dark: "0"
     detect_non_ha_changes: true
     min_brightness: 30
-    sunrise_time: "08:00:00"
+    sunrise_time: "06:00:00"
     sunset_time: "20:00:00"
+    lights:
+      - "light.shelly_duo"
   - name: "kitchen"
-    lights:
-      - light.shellydimmer2_c45bbe56f9ba
+    brightness_mode: "linear"
+    brightness_mode_time_light: "3600"
+    brightness_mode_time_dark: "0"
     detect_non_ha_changes: true
     min_brightness: 1
-    sunrise_time: "08:00:00"
+    sunrise_time: "06:00:00"
     sunset_time: "20:00:00"
+    lights:
+      - "light.shellydimmer2_c45bbe56f9ba"
   - name: "bathroom"
-    lights:
-      - light.shellydimmer2_48551900b4e6
+    brightness_mode: "linear"
+    brightness_mode_time_light: "3600"
+    brightness_mode_time_dark: "0"
     detect_non_ha_changes: true
     min_brightness: 1
-    sunrise_time: "08:00:00"
+    sunrise_time: "06:00:00"
     sunset_time: "20:00:00"
-  - name: "office"
     lights:
-      - light.shellydimmer2_485519002b72
+      - "light.shellydimmer2_48551900b4e6"
+  - name: "office"
+    brightness_mode: "linear"
+    brightness_mode_time_light: "3600"
+    brightness_mode_time_dark: "0"
     detect_non_ha_changes: true
     min_brightness: 10
-    sunrise_time: "08:00:00"
+    sunrise_time: "06:00:00"
     sunset_time: "20:00:00"
-  - name: "spare"
     lights:
-      - light.shellydimmer2_e89f6d8559a2
+      - "light.shellydimmer2_485519002b72"
+  - name: "spare"
+    brightness_mode: "linear"
+    brightness_mode_time_light: "3600"
+    brightness_mode_time_dark: "0"
     detect_non_ha_changes: true
     min_brightness: 20
-    sunrise_time: "08:00:00"
+    sunrise_time: "06:00:00"
     sunset_time: "20:00:00"
+    lights:
+      - "light.shellydimmer2_e89f6d8559a2"
 
 notify:
   - platform: html5
