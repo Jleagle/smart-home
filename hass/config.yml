@@ -311,14 +311,14 @@ binary_sensor:
     sensors:
       bathroom_humidity_high:
         entity_id: sensor.shellyht_799ebf_humidity
-        device_class: humidity
+        device_class: moisture
         friendly_name: Bathroom Humidity
         max_samples: 20
         min_gradient: 0.1
         sample_duration: 600
       bathroom_humidity_low:
         entity_id: sensor.shellyht_799ebf_humidity
-        device_class: humidity
+        device_class: moisture
         friendly_name: Bathroom Humidity
         max_samples: 20
         min_gradient: -0.1
