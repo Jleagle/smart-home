@@ -84,12 +84,22 @@ adaptive_lighting:
     brightness_mode_time_light: "3600"
     brightness_mode_time_dark: "0"
     detect_non_ha_changes: true
-    min_brightness: 20
+    min_brightness: 1
     sunrise_time: "06:00:00"
     sunset_time: "20:00:00"
     lights:
       - "light.shellydimmer2_48551900c175"
   - name: "biglight"
+    brightness_mode: "linear"
+    brightness_mode_time_light: "3600"
+    brightness_mode_time_dark: "0"
+    detect_non_ha_changes: true
+    min_brightness: 30
+    sunrise_time: "06:00:00"
+    sunset_time: "20:00:00"
+    lights:
+      - "light.shelly_duo"
+  - name: "dining"
     brightness_mode: "linear"
     brightness_mode_time_light: "3600"
     brightness_mode_time_dark: "0"
@@ -119,12 +129,22 @@ adaptive_lighting:
     sunset_time: "20:00:00"
     lights:
       - "light.shellydimmer2_48551900b4e6"
-  - name: "office"
+  - name: "living"
     brightness_mode: "linear"
     brightness_mode_time_light: "3600"
     brightness_mode_time_dark: "0"
     detect_non_ha_changes: true
     min_brightness: 10
+    sunrise_time: "06:00:00"
+    sunset_time: "20:00:00"
+    lights:
+      - "light.shellydimmer2_c45bbe56f9ba"
+  - name: "office"
+    brightness_mode: "linear"
+    brightness_mode_time_light: "3600"
+    brightness_mode_time_dark: "0"
+    detect_non_ha_changes: true
+    min_brightness: 1
     sunrise_time: "06:00:00"
     sunset_time: "20:00:00"
     lights:
@@ -134,7 +154,17 @@ adaptive_lighting:
     brightness_mode_time_light: "3600"
     brightness_mode_time_dark: "0"
     detect_non_ha_changes: true
-    min_brightness: 20
+    min_brightness: 1
+    sunrise_time: "06:00:00"
+    sunset_time: "20:00:00"
+    lights:
+      - "light.shellydimmer2_e89f6d8559a2"
+  - name: "small"
+    brightness_mode: "linear"
+    brightness_mode_time_light: "3600"
+    brightness_mode_time_dark: "0"
+    detect_non_ha_changes: true
+    min_brightness: 1
     sunrise_time: "06:00:00"
     sunset_time: "20:00:00"
     lights:
