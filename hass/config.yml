@@ -4,7 +4,7 @@ automation: !include automations.yaml
 counter:
 dhcp:
 diagnostics:
-discovery:
+#discovery: # Legacy
 energy:
 ffmpeg:
 history:
