@@ -343,12 +343,13 @@ binary_sensor:
         device_class: moisture
         friendly_name: Bathroom Humidity
         max_samples: 20
-        min_gradient: 0.05
+        min_gradient: 0.01
         sample_duration: 600
       bathroom_humidity_low:
         entity_id: sensor.shellyht_799ebf_humidity
         device_class: moisture
         friendly_name: Bathroom Humidity
         max_samples: 20
-        min_gradient: -0.05
+        min_gradient: 0.01
         sample_duration: 600
+        invert: true
