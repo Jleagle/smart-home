@@ -64,6 +64,16 @@ bazarr:
     - "${HOME}/Media/Movies:/movies"
     - "${HOME}/Media/Television:/tv"
 
+cloudflare:
+  image: "cloudflare/cloudflared:latest"
+  container_name: "cloudflare"
+  hostname: "cloudflare"
+  restart: "unless-stopped"
+  network_mode: "host"
+  command: "tunnel --no-autoupdate run"
+  environment:
+    - "TUNNEL_TOKEN=${CLOUDFLARE_TUNNEL_TOKEN}"
+
 ddclient:
   image: "lscr.io/linuxserver/ddclient:latest"
   container_name: "ddclient"
