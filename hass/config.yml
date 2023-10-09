@@ -276,6 +276,14 @@ google_assistant:
       name: "Salt Lamp"
       room: "Living Room"
 
+    # Cameras
+    button.kitchen_cam_inside:
+      name: "Show Inside"
+      room: "Kitchen"
+    button.kitchen_cam_outside:
+      name: "Show Outside"
+      room: "Kitchen"
+
 light:
   - platform: "blink1_status"
 
