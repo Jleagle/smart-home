@@ -10,7 +10,7 @@ mkdir -p ~/Bazarr
 mkdir -p ~/ChangeDetection
 mkdir -p ~/DDNS
 mkdir -p ~/DoubleTake
-mkdir -p ~/Go2rtc/Config
+#mkdir -p ~/Go2rtc/Config
 mkdir -p ~/FlexTV
 mkdir -p ~/Frigate
 mkdir -p ~/Grafana/Data
