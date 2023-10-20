@@ -21,9 +21,6 @@ objects:
 
 record:
   enabled: true
-  #  retain:
-  #    days: 2
-  #    mode: active_objects
   events:
     retain:
       mode: active_objects
@@ -39,10 +36,6 @@ cameras:
           roles:
             - detect
             - record
-    detect:
-      #        width: 1280
-      #        height: 720
-      fps: 10
   spare:
     ffmpeg:
       inputs:
@@ -50,10 +43,6 @@ cameras:
           roles:
             - detect
             - record
-    detect:
-      #        width: 1280
-      #        height: 720
-      fps: 10
 
 detectors:
   coral:
