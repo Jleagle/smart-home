@@ -336,7 +336,7 @@ services:
       - "8080:8080" # webapp
     volumes:
       - "/run/udev:/run/udev:ro"
-      - "./scrutiny:/opt/scrutiny/config:ro"
+      - "./scrutiny:/opt/scrutiny/config"
     devices:
       - "/dev/sda2:/dev/sda"
 
