@@ -27,21 +27,21 @@
         container: sonarr
         widget:
           type: sonarr
-          url: http://localhost:8989
+          url: http://sonarr:8989
           key: {{HOMEPAGE_VAR_SONARR}}
     - Radarr:
         href: https://radarr.jimeagle.com/
         container: radarr
         widget:
           type: radarr
-          url: http://localhost:7878
+          url: http://radarr:7878
           key: {{HOMEPAGE_VAR_RADARR}}
     - NZBGet:
         href: https://nzbget.jimeagle.com/
         container: nzbget
         widget:
           type: nzbget
-          url: http://localhost:6789
+          url: http://nzbget:6789
           username: {{HOMEPAGE_VAR_NZBGET_UN}}
           password: {{HOMEPAGE_VAR_NZBGET_PW}}
     - Tautulli:
@@ -49,7 +49,7 @@
         container: tautulli
         widget:
           type: tautulli
-          url: http://localhost:8181
+          url: http://tautulli:8181
           key: {{HOMEPAGE_VAR_TAUTULLI}}
 
 - Dev:
