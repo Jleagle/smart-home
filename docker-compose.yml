@@ -161,6 +161,12 @@ services:
       - "./homepage/settings.yaml:/app/config/settings.yaml"
       - "./homepage/widgets.yaml:/app/config/widgets.yaml"
       - "/var/run/docker.sock:/var/run/docker.sock"
+    environment:
+      - "HOMEPAGE_VAR_SONARR=${HOMEPAGE_SONARR}"
+      - "HOMEPAGE_VAR_RADARR=${HOMEPAGE_RADARR}"
+      - "HOMEPAGE_VAR_NZBGET_UN=${HOMEPAGE_NZBGET_UN}"
+      - "HOMEPAGE_VAR_NZBGET_PW=${HOMEPAGE_NZBGET_PW}"
+      - "HOMEPAGE_VAR_TAUTULLI=${HOMEPAGE_TAUTULLI}"
 
   influx:
     image: "influxdb:2.5"
