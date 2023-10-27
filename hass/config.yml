@@ -348,19 +348,19 @@ binary_sensor:
     name: "Cloudflare Connectivity"
     host: "1.1.1.1"
     scan_interval: 30
-  - platform: trend
+  - platform: "trend"
     sensors:
       bathroom_humidity_high:
-        entity_id: sensor.shellyht_799ebf_humidity
-        device_class: moisture
-        friendly_name: Bathroom Humidity
+        entity_id: "sensor.shellyht_799ebf_humidity"
+        device_class: "moisture"
+        friendly_name: "Bathroom Humidity"
         max_samples: 20
         min_gradient: 0.01
         sample_duration: 600
       bathroom_humidity_low:
-        entity_id: sensor.shellyht_799ebf_humidity
-        device_class: moisture
-        friendly_name: Bathroom Humidity
+        entity_id: "sensor.shellyht_799ebf_humidity"
+        device_class: "moisture"
+        friendly_name: "Bathroom Humidity"
         max_samples: 20
         min_gradient: 0.01
         sample_duration: 600
