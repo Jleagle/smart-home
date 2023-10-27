@@ -344,6 +344,10 @@ group:
       - "person.gillian_mckinley"
 
 binary_sensor:
+  - platform: "ping"
+    name: "Cloudflare Connectivity"
+    host: "1.1.1.1"
+    scan_interval: 30
   - platform: trend
     sensors:
       bathroom_humidity_high:
