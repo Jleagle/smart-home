@@ -117,7 +117,7 @@ adaptive_lighting:
     sunrise_time: "06:00:00"
     sunset_time: "20:00:00"
     lights:
-      - "light.shelly_duo"
+      - "light.shellydimmer2_48551900c7e2"
   - name: "kitchen"
     brightness_mode: "linear"
     brightness_mode_time_light: "3600"
