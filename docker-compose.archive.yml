@@ -143,6 +143,28 @@ services:
     ports:
       - "7575:7575"
 
+  homepage:
+    image: "ghcr.io/gethomepage/homepage:latest"
+    container_name: "homepage"
+    hostname: "homepage"
+    restart: "unless-stopped"
+    ports:
+      - "3003:3000"
+    volumes:
+      - "${HOME}/Homepage:/app/config"
+      - "./homepage/bookmarks.yaml:/app/config/bookmarks.yaml"
+      - "./homepage/docker.yaml:/app/config/docker.yaml"
+      - "./homepage/services.yaml:/app/config/services.yaml"
+      - "./homepage/settings.yaml:/app/config/settings.yaml"
+      - "./homepage/widgets.yaml:/app/config/widgets.yaml"
+      - "/var/run/docker.sock:/var/run/docker.sock"
+    environment:
+      - "HOMEPAGE_VAR_SONARR=${HOMEPAGE_SONARR}"
+      - "HOMEPAGE_VAR_RADARR=${HOMEPAGE_RADARR}"
+      - "HOMEPAGE_VAR_NZBGET_UN=${HOMEPAGE_NZBGET_UN}"
+      - "HOMEPAGE_VAR_NZBGET_PW=${HOMEPAGE_NZBGET_PW}"
+      - "HOMEPAGE_VAR_TAUTULLI=${HOMEPAGE_TAUTULLI}"
+
   hydra:
     image: "linuxserver/nzbhydra2:latest"
     container_name: "hydra"

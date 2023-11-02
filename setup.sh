@@ -15,7 +15,7 @@ mkdir -p ~/FlexTV
 mkdir -p ~/Frigate
 mkdir -p ~/Grafana/Data
 mkdir -p ~/Hass
-mkdir -p ~/Homepage
+#mkdir -p ~/Homepage
 mkdir -p ~/Influx
 mkdir -p ~/Matrix
 mkdir -p ~/Mealie
