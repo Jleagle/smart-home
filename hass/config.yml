@@ -236,7 +236,7 @@ google_assistant:
     switch.wake_pc:
       name: "PC"
 
-    # Tado
+    # Tado (added to Google Home)
     #    climate.bedroom:
     #      name: "Bedroom"
     #    climate.dining_room:
