@@ -304,19 +304,6 @@ switch:
     name: "TV"
     host: "192.168.0.9"
     mac: "BC-7E-8B-AB-01-D2"
-  - platform: "template"
-    switches:
-      air_con:
-        friendly_name: "Air Con"
-        value_template: "{{ is_state('climate.air_condition_a010', 'cool') }}"
-        turn_on:
-          service: "climate.turn_on"
-          target:
-            entity_id: "climate.air_condition_a010"
-        turn_off:
-          service: "climate.turn_off"
-          target:
-            entity_id: "climate.air_condition_a010"
 
 #  - platform: "flux"
 #    name: "Living Room"
