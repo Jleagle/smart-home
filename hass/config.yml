@@ -235,6 +235,8 @@ google_assistant:
     # Wake On Lan
     switch.wake_pc:
       name: "PC"
+    switch.wake_tv:
+      name: "TV"
 
     # Tado (added to Google Home)
     #    climate.bedroom:
