@@ -295,7 +295,7 @@ switch:
   - platform: "wake_on_lan"
     name: "PC"
     host: "192.168.0.8"
-    mac: "B4:2E:99:F0:FB:4A"
+    mac: "B4-2E-99-F0-FB-4A"
   #  - platform: "wake_on_lan"
   #    name: "TV"
   #    host: "192.168.0.x"
@@ -303,7 +303,7 @@ switch:
   - platform: "wake_on_lan"
     name: "TV"
     host: "192.168.0.9"
-    mac: "BC:7E:8B:AB:01:D2"
+    mac: "BC-7E-8B-AB-01-D2"
   - platform: "template"
     switches:
       air_con:
