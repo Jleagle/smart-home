@@ -256,13 +256,14 @@ google_assistant:
     #      name: "Christmas Tree"
     #      room: "Living Room"
     switch.teckin_plug_2:
-      name: "Laptop"
+      name: "Christmas Tree"
       room: "Living Room"
     switch.teckin_plug_3:
       name: "Dresser"
       room: "Dining Room"
     #    switch.teckin_plug_4:
     #      name: "Firework Lamp"
+
     switch.tapo_plug_1:
       name: "Electric Blanket Gillian"
       room: "Bedroom"
