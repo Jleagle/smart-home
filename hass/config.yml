@@ -235,8 +235,10 @@ google_assistant:
     # Wake On Lan
     switch.wake_pc:
       name: "PC"
+    switch.wake_tv:
+      name: "TV"
 
-    # Tado
+    # Tado (added to Google Home)
     #    climate.bedroom:
     #      name: "Bedroom"
     #    climate.dining_room:
@@ -296,15 +298,15 @@ switch:
   - platform: "wake_on_lan"
     name: "PC"
     host: "192.168.0.8"
-    mac: "B4:2E:99:F0:FB:4A"
-  #  - platform: "wake_on_lan"
-  #    name: "TV"
-  #    host: "192.168.0.x"
-  #    mac: "E8:F2:E2:C1:A4:48"
+    mac: "B4-2E-99-F0-FB-4A"
+  - platform: "wake_on_lan"
+    name: "Spare TV"
+    host: "192.168.0.16"
+    mac: "E8-F2-E2-C1-A4-48"
   - platform: "wake_on_lan"
     name: "TV"
     host: "192.168.0.9"
-    mac: "BC:7E:8B:AB:01:D2"
+    mac: "BC-7E-8B-AB-01-D2"
   - platform: "template"
     switches:
       air_con:
@@ -318,15 +320,6 @@ switch:
           service: "climate.turn_off"
           target:
             entity_id: "climate.air_condition_a010"
-
-#  - platform: "flux"
-#    name: "Living Room"
-#    lights:
-#      - "light.shelly_duo"
-#    start_time: "20:00"
-#    stop_time: "21:00"
-#    brightness: 200
-#    transition: 5
 
 group:
   alldevices:
@@ -353,20 +346,3 @@ binary_sensor:
     name: "Cloudflare Connectivity"
     host: "1.1.1.1"
     scan_interval: 30
-  - platform: "trend"
-    sensors:
-      bathroom_humidity_high:
-        entity_id: "sensor.shellyht_799ebf_humidity"
-        device_class: "moisture"
-        friendly_name: "Bathroom Humidity"
-        max_samples: 20
-        min_gradient: 0.01
-        sample_duration: 600
-      bathroom_humidity_low:
-        entity_id: "sensor.shellyht_799ebf_humidity"
-        device_class: "moisture"
-        friendly_name: "Bathroom Humidity"
-        max_samples: 20
-        min_gradient: 0.01
-        sample_duration: 600
-        invert: true
