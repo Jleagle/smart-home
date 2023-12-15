@@ -265,6 +265,7 @@ google_assistant:
       room: "Dining Room"
     switch.teckin_plug_4:
       name: "Christmas Lights"
+      room: "Living Room"
 
     switch.tapo_plug_1:
       name: "Electric Blanket Gillian"
