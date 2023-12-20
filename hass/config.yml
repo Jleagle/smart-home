@@ -341,9 +341,3 @@ group:
     entities:
       - "person.james_eagle"
       - "person.gillian_mckinley"
-
-binary_sensor:
-  - platform: "ping"
-    name: "Cloudflare Connectivity"
-    host: "1.1.1.1"
-    scan_interval: 30
