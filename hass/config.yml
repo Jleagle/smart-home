@@ -257,15 +257,15 @@ google_assistant:
     #    switch.teckin_plug_1:
     #      name: "Christmas Tree"
     #      room: "Living Room"
-    switch.teckin_plug_2:
-      name: "Christmas Tree"
-      room: "Living Room"
+    #    switch.teckin_plug_2:
+    #      name: "Christmas Tree"
+    #      room: "Living Room"
     switch.teckin_plug_3:
       name: "Dresser"
       room: "Dining Room"
-    switch.teckin_plug_4:
-      name: "Christmas Lights"
-      room: "Living Room"
+    #    switch.teckin_plug_4:
+    #      name: "Christmas Lights"
+    #      room: "Living Room"
 
     switch.tapo_plug_1:
       name: "Electric Blanket Gillian"
