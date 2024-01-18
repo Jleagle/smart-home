@@ -298,6 +298,13 @@ http:
         certResolver: "myresolver"
       entryPoints:
         - "websecure"
+    technitium-route:
+      rule: "Host(`technitium.jimeagle.com`)"
+      service: "technitium-service"
+      tls:
+        certResolver: "myresolver"
+      entryPoints:
+        - "websecure"
     zinc-route:
       rule: "Host(`zinc.jimeagle.com`)"
       service: "zinc-service"
@@ -447,6 +454,10 @@ http:
       loadBalancer:
         servers:
           - url: "http://localhost:8265"
+    technitium-service:
+      loadBalancer:
+        servers:
+          - url: "http://localhost:5380"
     zinc-service:
       loadBalancer:
         servers:
