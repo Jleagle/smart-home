@@ -31,15 +31,15 @@ http:
         certResolver: "myresolver"
       entryPoints:
         - "websecure"
-    assistant-relay-route:
-      rule: "Host(`assistantrelay.jimeagle.com`)"
-      service: "assistant-relay-service"
-      middlewares:
-        - "traefik-forward-auth"
-      tls:
-        certResolver: "myresolver"
-      entryPoints:
-        - "websecure"
+    #    assistant-relay-route:
+    #      rule: "Host(`assistantrelay.jimeagle.com`)"
+    #      service: "assistant-relay-service"
+    #      middlewares:
+    #        - "traefik-forward-auth"
+    #      tls:
+    #        certResolver: "myresolver"
+    #      entryPoints:
+    #        - "websecure"
     #    authentik-route:
     #      rule: "Host(`authentik.jimeagle.com`) && PathPrefix(`/outpost.goauthentik.io/`)"
     #      service: "authentik-service"
@@ -47,13 +47,13 @@ http:
     #        certResolver: "myresolver"
     #      entryPoints:
     #        - "websecure"
-    bazarr-route:
-      rule: "Host(`bazarr.jimeagle.com`)"
-      service: "bazarr-service"
-      tls:
-        certResolver: "myresolver"
-      entryPoints:
-        - "websecure"
+    #    bazarr-route:
+    #      rule: "Host(`bazarr.jimeagle.com`)"
+    #      service: "bazarr-service"
+    #      tls:
+    #        certResolver: "myresolver"
+    #      entryPoints:
+    #        - "websecure"
     changedetection-route:
       rule: "Host(`changedetection.jimeagle.com`)"
       service: "changedetection-service"
@@ -63,15 +63,15 @@ http:
         certResolver: "myresolver"
       entryPoints:
         - "websecure"
-    cockpit-route:
-      rule: "Host(`cockpit.jimeagle.com`)"
-      service: "cockpit-service"
-      middlewares:
-        - "traefik-forward-auth"
-      tls:
-        certResolver: "myresolver"
-      entryPoints:
-        - "websecure"
+    #    cockpit-route:
+    #      rule: "Host(`cockpit.jimeagle.com`)"
+    #      service: "cockpit-service"
+    #      middlewares:
+    #        - "traefik-forward-auth"
+    #      tls:
+    #        certResolver: "myresolver"
+    #      entryPoints:
+    #        - "websecure"
     doubletake-route:
       rule: "Host(`doubletake.jimeagle.com`)"
       service: "doubletake-service"
@@ -90,15 +90,15 @@ http:
         certResolver: "myresolver"
       entryPoints:
         - "websecure"
-    flextv-route:
-      rule: "Host(`flextv.jimeagle.com`)"
-      service: "flextv-service"
-      middlewares:
-        - "traefik-forward-auth"
-      tls:
-        certResolver: "myresolver"
-      entryPoints:
-        - "websecure"
+    #    flextv-route:
+    #      rule: "Host(`flextv.jimeagle.com`)"
+    #      service: "flextv-service"
+    #      middlewares:
+    #        - "traefik-forward-auth"
+    #      tls:
+    #        certResolver: "myresolver"
+    #      entryPoints:
+    #        - "websecure"
     frigate-route:
       rule: "Host(`frigate.jimeagle.com`)"
       service: "frigate-service"
@@ -140,15 +140,15 @@ http:
     #        certResolver: "myresolver"
     #      entryPoints:
     #        - "websecure"
-    homarr-route:
-      rule: "Host(`homarr.jimeagle.com`)"
-      service: "homarr-service"
-      middlewares:
-        - "traefik-forward-auth"
-      tls:
-        certResolver: "myresolver"
-      entryPoints:
-        - "websecure"
+    #    homarr-route:
+    #      rule: "Host(`homarr.jimeagle.com`)"
+    #      service: "homarr-service"
+    #      middlewares:
+    #        - "traefik-forward-auth"
+    #      tls:
+    #        certResolver: "myresolver"
+    #      entryPoints:
+    #        - "websecure"
     influx-route:
       rule: "Host(`influx.jimeagle.com`)"
       service: "influx-service"
@@ -165,20 +165,20 @@ http:
         certResolver: "myresolver"
       entryPoints:
         - "websecure"
-    matrix-route:
-      rule: "Host(`matrix.jimeagle.com`)"
-      service: "matrix-service"
-      tls:
-        certResolver: "myresolver"
-      entryPoints:
-        - "websecure"
-    mealie-route:
-      rule: "Host(`mealie.jimeagle.com`)"
-      service: "mealie-service"
-      tls:
-        certResolver: "myresolver"
-      entryPoints:
-        - "websecure"
+    #    matrix-route:
+    #      rule: "Host(`matrix.jimeagle.com`)"
+    #      service: "matrix-service"
+    #      tls:
+    #        certResolver: "myresolver"
+    #      entryPoints:
+    #        - "websecure"
+    #    mealie-route:
+    #      rule: "Host(`mealie.jimeagle.com`)"
+    #      service: "mealie-service"
+    #      tls:
+    #        certResolver: "myresolver"
+    #      entryPoints:
+    #        - "websecure"
     nodered-route:
       rule: "Host(`nodered.jimeagle.com`)"
       service: "nodered-service"
@@ -202,13 +202,13 @@ http:
         certResolver: "myresolver"
       entryPoints:
         - "websecure"
-    pihole-route:
-      rule: "Host(`pihole.jimeagle.com`)"
-      service: "pihole-service"
-      tls:
-        certResolver: "myresolver"
-      entryPoints:
-        - "websecure"
+    #    pihole-route:
+    #      rule: "Host(`pihole.jimeagle.com`)"
+    #      service: "pihole-service"
+    #      tls:
+    #        certResolver: "myresolver"
+    #      entryPoints:
+    #        - "websecure"
     plex-route:
       rule: "Host(`plex.jimeagle.com`)"
       service: "plex-service"
@@ -216,15 +216,15 @@ http:
         certResolver: "myresolver"
       entryPoints:
         - "websecure"
-    portainer-route:
-      rule: "Host(`portainer.jimeagle.com`)"
-      service: "portainer-service"
-      middlewares:
-        - "traefik-forward-auth"
-      tls:
-        certResolver: "myresolver"
-      entryPoints:
-        - "websecure"
+    #    portainer-route:
+    #      rule: "Host(`portainer.jimeagle.com`)"
+    #      service: "portainer-service"
+    #      middlewares:
+    #        - "traefik-forward-auth"
+    #      tls:
+    #        certResolver: "myresolver"
+    #      entryPoints:
+    #        - "websecure"
     prowlarr-route:
       rule: "Host(`prowlarr.jimeagle.com`)"
       service: "prowlarr-service"
@@ -266,15 +266,15 @@ http:
         certResolver: "myresolver"
       entryPoints:
         - "websecure"
-    syncthing-route:
-      rule: "Host(`syncthing.jimeagle.com`)"
-      service: "syncthing-service"
-      middlewares:
-        - "traefik-forward-auth"
-      tls:
-        certResolver: "myresolver"
-      entryPoints:
-        - "websecure"
+    #    syncthing-route:
+    #      rule: "Host(`syncthing.jimeagle.com`)"
+    #      service: "syncthing-service"
+    #      middlewares:
+    #        - "traefik-forward-auth"
+    #      tls:
+    #        certResolver: "myresolver"
+    #      entryPoints:
+    #        - "websecure"
     sonarr-route:
       rule: "Host(`sonarr.jimeagle.com`)"
       service: "sonarr-service"
@@ -289,29 +289,29 @@ http:
         certResolver: "myresolver"
       entryPoints:
         - "websecure"
-    tdarr-route:
-      rule: "Host(`tdarr.jimeagle.com`)"
-      service: "tdarr-service"
-      middlewares:
-        - "traefik-forward-auth"
-      tls:
-        certResolver: "myresolver"
-      entryPoints:
-        - "websecure"
-    technitium-route:
-      rule: "Host(`technitium.jimeagle.com`)"
-      service: "technitium-service"
-      tls:
-        certResolver: "myresolver"
-      entryPoints:
-        - "websecure"
-    zinc-route:
-      rule: "Host(`zinc.jimeagle.com`)"
-      service: "zinc-service"
-      tls:
-        certResolver: "myresolver"
-      entryPoints:
-        - "websecure"
+  #    tdarr-route:
+  #      rule: "Host(`tdarr.jimeagle.com`)"
+  #      service: "tdarr-service"
+  #      middlewares:
+  #        - "traefik-forward-auth"
+  #      tls:
+  #        certResolver: "myresolver"
+  #      entryPoints:
+  #        - "websecure"
+  #    technitium-route:
+  #      rule: "Host(`technitium.jimeagle.com`)"
+  #      service: "technitium-service"
+  #      tls:
+  #        certResolver: "myresolver"
+  #      entryPoints:
+  #        - "websecure"
+  #    zinc-route:
+  #      rule: "Host(`zinc.jimeagle.com`)"
+  #      service: "zinc-service"
+  #      tls:
+  #        certResolver: "myresolver"
+  #      entryPoints:
+  #        - "websecure"
 
   services:
     2fauth-service:
@@ -322,18 +322,18 @@ http:
       loadBalancer:
         servers:
           - url: "http://localhost:8089"
-    assistant-relay-service:
-      loadBalancer:
-        servers:
-          - url: "http://localhost:3003"
+    #    assistant-relay-service:
+    #      loadBalancer:
+    #        servers:
+    #          - url: "http://localhost:3003"
     #    authentik-service:
     #      loadBalancer:
     #        servers:
     #          - url: "http://localhost:9002"
-    bazarr-service:
-      loadBalancer:
-        servers:
-          - url: "http://localhost:6767"
+    #    bazarr-service:
+    #      loadBalancer:
+    #        servers:
+    #          - url: "http://localhost:6767"
     changedetection-service:
       loadBalancer:
         servers:
@@ -342,18 +342,18 @@ http:
       loadBalancer:
         servers:
           - url: "http://localhost:3000"
-    cockpit-service:
-      loadBalancer:
-        servers:
-          - url: "http://localhost:9090"
+    #    cockpit-service:
+    #      loadBalancer:
+    #        servers:
+    #          - url: "http://localhost:9090"
     esphome-service:
       loadBalancer:
         servers:
           - url: "http://localhost:6052"
-    flextv-service:
-      loadBalancer:
-        servers:
-          - url: "http://localhost:82"
+    #    flextv-service:
+    #      loadBalancer:
+    #        servers:
+    #          - url: "http://localhost:82"
     frigate-service:
       loadBalancer:
         servers:
@@ -374,10 +374,10 @@ http:
     #      loadBalancer:
     #        servers:
     #          - url: "http://localhost:3003"
-    homarr-service:
-      loadBalancer:
-        servers:
-          - url: "http://localhost:7575"
+    #    homarr-service:
+    #      loadBalancer:
+    #        servers:
+    #          - url: "http://localhost:7575"
     influx-service:
       loadBalancer:
         servers:
@@ -386,14 +386,14 @@ http:
       loadBalancer:
         servers:
           - url: "http://localhost:3002"
-    matrix-service:
-      loadBalancer:
-        servers:
-          - url: "http://localhost:8008"
-    mealie-service:
-      loadBalancer:
-        servers:
-          - url: "http://localhost:9925"
+    #    matrix-service:
+    #      loadBalancer:
+    #        servers:
+    #          - url: "http://localhost:8008"
+    #    mealie-service:
+    #      loadBalancer:
+    #        servers:
+    #          - url: "http://localhost:9925"
     nodered-service:
       loadBalancer:
         servers:
@@ -406,18 +406,18 @@ http:
       loadBalancer:
         servers:
           - url: "http://localhost:5055"
-    pihole-service:
-      loadBalancer:
-        servers:
-          - url: "http://localhost:81"
+    #    pihole-service:
+    #      loadBalancer:
+    #        servers:
+    #          - url: "http://localhost:81"
     plex-service:
       loadBalancer:
         servers:
           - url: "http://localhost:32400"
-    portainer-service:
-      loadBalancer:
-        servers:
-          - url: "http://localhost:9001"
+    #    portainer-service:
+    #      loadBalancer:
+    #        servers:
+    #          - url: "http://localhost:9001"
     prowlarr-service:
       loadBalancer:
         servers:
@@ -438,10 +438,10 @@ http:
       loadBalancer:
         servers:
           - url: "http://localhost:3004"
-    syncthing-service:
-      loadBalancer:
-        servers:
-          - url: "http://localhost:8384"
+    #    syncthing-service:
+    #      loadBalancer:
+    #        servers:
+    #          - url: "http://localhost:8384"
     sonarr-service:
       loadBalancer:
         servers:
@@ -450,15 +450,15 @@ http:
       loadBalancer:
         servers:
           - url: "http://localhost:8181"
-    tdarr-service:
-      loadBalancer:
-        servers:
-          - url: "http://localhost:8265"
-    technitium-service:
-      loadBalancer:
-        servers:
-          - url: "http://localhost:5380"
-    zinc-service:
-      loadBalancer:
-        servers:
-          - url: "http://localhost:4080"
+#    tdarr-service:
+#      loadBalancer:
+#        servers:
+#          - url: "http://localhost:8265"
+#    technitium-service:
+#      loadBalancer:
+#        servers:
+#          - url: "http://localhost:5380"
+#    zinc-service:
+#      loadBalancer:
+#        servers:
+#          - url: "http://localhost:4080"
