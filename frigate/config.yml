@@ -36,13 +36,13 @@ cameras:
           roles:
             - detect
             - record
-  spare:
-    ffmpeg:
-      inputs:
-        - path: rtsp://{FRIGATE_DINING_USERNAME}:{FRIGATE_DINING_PASSWORD}@192.168.0.14/stream1
-          roles:
-            - detect
-            - record
+#  spare:
+#    ffmpeg:
+#      inputs:
+#        - path: rtsp://{FRIGATE_DINING_USERNAME}:{FRIGATE_DINING_PASSWORD}@192.168.0.14/stream1
+#          roles:
+#            - detect
+#            - record
 
 detectors:
   coral:
