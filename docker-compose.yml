@@ -95,7 +95,7 @@ services:
       - "/dev/apex_0:/dev/apex_0"   # passes a PCIe Coral, follow driver instructions here https://coral.ai/docs/m2/get-started/#2a-on-linux
     volumes:
       - "${HOME}/Media/Frigate:/media/frigate"
-      - "./frigate/config.yml:/config/config.yml:ro"
+      - "./frigate:/config"
       - "/etc/localtime:/etc/localtime:ro"
     tmpfs:
       - "/tmp/cache"
