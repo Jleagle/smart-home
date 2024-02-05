@@ -251,6 +251,10 @@ google_assistant:
     # Tuya
     light.floor_lights_none:
       name: "Floor Light"
+    climate.air_condition_a010_none:
+      name: "Air Conditioner"
+      aliases:
+        - "Air Con"
 
     # Switches
 
