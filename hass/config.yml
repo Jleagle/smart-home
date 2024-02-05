@@ -249,7 +249,7 @@ google_assistant:
     #      name: "Office"
 
     # Tuya
-    light.bedroom_floor_light:
+    light.floor_lights_none:
       name: "Floor Light"
 
     # Switches
