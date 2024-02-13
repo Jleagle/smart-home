@@ -180,10 +180,17 @@ http:
     #      entryPoints:
     #        - "websecure"
     nodered-route:
-      rule: "Host(`nodered.jimeagle.com`)"
+      rule: "Host(`nodered.jimeagle.com`) && !Path(`/latest-event.jpeg`)"
       service: "nodered-service"
       middlewares:
         - "traefik-forward-auth"
+      tls:
+        certResolver: "myresolver"
+      entryPoints:
+        - "websecure"
+    nodered-route-public:
+      rule: "Host(`nodered.jimeagle.com`) && Path(`/latest-event.jpeg`)"
+      service: "nodered-service"
       tls:
         certResolver: "myresolver"
       entryPoints:
