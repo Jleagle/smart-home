@@ -228,6 +228,18 @@ services:
       VERSION: "LATEST"
       MAX_PLAYERS: 4
 
+  mosquitto:
+    image: "eclipse-mosquitto:latest"
+    container_name: "mosquitto"
+    hostname: "mosquitto"
+    restart: "unless-stopped"
+    ports:
+      - "1883:1883"
+    volumes:
+      - "${HOME}/Mosquitto/Log/mosquitto.log:/mosquitto/log/mosquitto.log"
+      - "${HOME}/Mosquitto/Data:/mosquitto/data"
+      - "./mosquitto/mosquitto.conf:/mosquitto/config/mosquitto.conf"
+
   netdata:
     image: "netdata/netdata:latest"
     hostname: "netdata"

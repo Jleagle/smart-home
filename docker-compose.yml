@@ -167,18 +167,6 @@ services:
     volumes:
       - "${HOME}/UptimeKuma:/app/data"
 
-  mosquitto:
-    image: "eclipse-mosquitto:latest"
-    container_name: "mosquitto"
-    hostname: "mosquitto"
-    restart: "unless-stopped"
-    ports:
-      - "1883:1883"
-    volumes:
-      - "${HOME}/Mosquitto/Log/mosquitto.log:/mosquitto/log/mosquitto.log"
-      - "${HOME}/Mosquitto/Data:/mosquitto/data"
-      - "./mosquitto/mosquitto.conf:/mosquitto/config/mosquitto.conf"
-
   nodered:
     image: "nodered/node-red:latest"
     container_name: "nodered"

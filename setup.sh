@@ -24,8 +24,8 @@ mkdir -p ~/Media/Movies
 mkdir -p ~/Media/Television
 mkdir -p ~/Media/YouTube
 mkdir -p ~/Minecraft
-mkdir -p ~/Mosquitto/Data
-mkdir -p ~/Mosquitto/Log
+#mkdir -p ~/Mosquitto/Data
+#mkdir -p ~/Mosquitto/Log
 mkdir -p ~/NodeRed
 mkdir -p ~/NZBGet/Config
 mkdir -p ~/NZBGet/Downloads
@@ -53,7 +53,7 @@ touch ~/AssistantRelay/config.json
 touch ~/DDNS/records.yaml
 touch ~/Frigate/config.yml
 touch ~/Hass/assistant_service_account.json
-touch ~/Mosquitto/Log/mosquitto.log
+#touch ~/Mosquitto/Log/mosquitto.log
 touch ~/Traefik/acme.json
 
 chmod 600 ~/Traefik/acme.json
