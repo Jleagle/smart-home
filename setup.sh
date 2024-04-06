@@ -20,6 +20,7 @@ mkdir -p ~/Influx
 mkdir -p ~/Matrix
 mkdir -p ~/Mealie
 mkdir -p ~/Media/Frigate
+mkdir -p ~/Media/Slskd
 mkdir -p ~/Media/Movies
 mkdir -p ~/Media/Television
 mkdir -p ~/Media/YouTube
@@ -38,6 +39,7 @@ mkdir -p ~/Prowlarr
 mkdir -p ~/Radarr
 mkdir -p ~/Redis/Data
 mkdir -p ~/SerpBear
+mkdir -p ~/Slskd
 mkdir -p ~/Sonarr
 mkdir -p ~/Syncthing/Config
 mkdir -p ~/Syncthing/Data

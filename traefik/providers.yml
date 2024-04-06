@@ -273,6 +273,15 @@ http:
         certResolver: "myresolver"
       entryPoints:
         - "websecure"
+    slskd-route:
+      rule: "Host(`slskd.jimeagle.com`)"
+      service: "slskd-service"
+      middlewares:
+        - "traefik-forward-auth"
+      tls:
+        certResolver: "myresolver"
+      entryPoints:
+        - "websecure"
     #    syncthing-route:
     #      rule: "Host(`syncthing.jimeagle.com`)"
     #      service: "syncthing-service"
@@ -445,6 +454,10 @@ http:
       loadBalancer:
         servers:
           - url: "http://localhost:3004"
+    slskd-service:
+      loadBalancer:
+        servers:
+          - url: "http://localhost:5030"
     #    syncthing-service:
     #      loadBalancer:
     #        servers:

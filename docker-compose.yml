@@ -331,6 +331,21 @@ services:
       - "APIKEY=${SERPBEAR_APIKEY}"
       - "NEXT_PUBLIC_APP_URL=https://serpbear.jimeagle.com/"
 
+  slskd:
+    image: "slskd/slskd"
+    container_name: "slskd"
+    hostname: "slskd"
+    restart: "unless-stopped"
+    ports:
+      - "5030:5030"
+      - "50300:50300"
+    volumes:
+      - "${HOME}/Slskd:/app"
+      - "${HOME}/Media/Slskd:/downloads"
+    environment:
+      - "SLSKD_REMOTE_CONFIGURATION=true"
+      - "SLSKD_SHARED_DIR=/downloads"
+
   sonarr:
     image: "linuxserver/sonarr:latest"
     container_name: "sonarr"
