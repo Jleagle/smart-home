@@ -53,9 +53,9 @@
           key: {{HOMEPAGE_VAR_TAUTULLI}}
 
 - Dev:
-    - SerpBear:
-        href: https://serpbear.jimeagle.com/
-        container: serpbear
+    #    - SerpBear:
+    #        href: https://serpbear.jimeagle.com/
+    #        container: serpbear
     - Zinc:
         href: https://zinc.jimeagle.com/
         container: zinc

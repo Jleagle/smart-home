@@ -309,6 +309,22 @@ services:
       - "${HOME}/Portainer:/data"
       - "/var/run/docker.sock:/var/run/docker.sock"
 
+  serpbear:
+    image: "towfiqi/serpbear:latest"
+    container_name: "serpbear"
+    hostname: "serpbear"
+    restart: "unless-stopped"
+    ports:
+      - "3004:3000"
+    volumes:
+      - "${HOME}/SerpBear:/app/data"
+    environment:
+      - "USER=${SERPBEAR_USERNAME}"
+      - "PASSWORD=${SERPBEAR_PASSWORD}"
+      - "SECRET=${SERPBEAR_SECRET}"
+      - "APIKEY=${SERPBEAR_APIKEY}"
+      - "NEXT_PUBLIC_APP_URL=https://serpbear.jimeagle.com/"
+
   traefik-hub-agent:
     image: "ghcr.io/traefik/hub-agent-traefik:latest"
     container_name: "traefik-hub-agent"

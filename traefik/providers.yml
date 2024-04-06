@@ -264,15 +264,15 @@ http:
         certResolver: "myresolver"
       entryPoints:
         - "websecure"
-    serpbear-route:
-      rule: "Host(`serpbear.jimeagle.com`)"
-      service: "serpbear-service"
-      middlewares:
-        - "traefik-forward-auth"
-      tls:
-        certResolver: "myresolver"
-      entryPoints:
-        - "websecure"
+    #    serpbear-route:
+    #      rule: "Host(`serpbear.jimeagle.com`)"
+    #      service: "serpbear-service"
+    #      middlewares:
+    #        - "traefik-forward-auth"
+    #      tls:
+    #        certResolver: "myresolver"
+    #      entryPoints:
+    #        - "websecure"
     slskd-route:
       rule: "Host(`slskd.jimeagle.com`)"
       service: "slskd-service"
@@ -450,10 +450,10 @@ http:
       loadBalancer:
         servers:
           - url: "http://localhost:8080"
-    serpbear-service:
-      loadBalancer:
-        servers:
-          - url: "http://localhost:3004"
+    #    serpbear-service:
+    #      loadBalancer:
+    #        servers:
+    #          - url: "http://localhost:3004"
     slskd-service:
       loadBalancer:
         servers:
