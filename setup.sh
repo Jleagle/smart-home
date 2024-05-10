@@ -2,10 +2,10 @@
 
 mkdir -p ~/AdGuard/Conf
 mkdir -p ~/AdGuard/Work
-mkdir -p ~/AssistantRelay/Responses
-mkdir -p ~/Authentik/Certs
-mkdir -p ~/Authentik/Media
-mkdir -p ~/Authentik/Templates
+#mkdir -p ~/AssistantRelay/Responses
+#mkdir -p ~/Authentik/Certs
+#mkdir -p ~/Authentik/Media
+#mkdir -p ~/Authentik/Templates
 mkdir -p ~/Bazarr
 mkdir -p ~/ChangeDetection
 mkdir -p ~/DDNS
@@ -17,9 +17,9 @@ mkdir -p ~/Grafana/Data
 mkdir -p ~/Hass
 #mkdir -p ~/Homepage
 mkdir -p ~/Influx
-mkdir -p ~/Matrix
-mkdir -p ~/Mealie
 mkdir -p ~/Mass
+#mkdir -p ~/Matrix
+#mkdir -p ~/Mealie
 mkdir -p ~/Media/Frigate
 mkdir -p ~/Media/Slskd
 mkdir -p ~/Media/Movies
@@ -45,10 +45,10 @@ mkdir -p ~/Sonarr
 mkdir -p ~/Syncthing/Config
 mkdir -p ~/Syncthing/Data
 mkdir -p ~/Tautulli
-mkdir -p ~/Technitium
+#mkdir -p ~/Technitium
 mkdir -p ~/Traefik
 mkdir -p ~/UptimeKuma
-mkdir -p ~/Varken
+#mkdir -p ~/Varken
 mkdir -p ~/Zinc
 
 touch ~/Auth/config.json
