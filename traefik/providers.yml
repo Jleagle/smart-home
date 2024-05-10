@@ -134,6 +134,8 @@ http:
     mass-route:
       rule: "Host(`mass.jimeagle.com`)"
       service: "mass-service"
+      middlewares:
+        - "traefik-forward-auth"
       tls:
         certResolver: "myresolver"
       entryPoints:
