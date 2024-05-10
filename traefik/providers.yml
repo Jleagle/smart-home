@@ -131,6 +131,13 @@ http:
         certResolver: "myresolver"
       entryPoints:
         - "websecure"
+    mass-route:
+      rule: "Host(`mass.jimeagle.com`)"
+      service: "mass-service"
+      tls:
+        certResolver: "myresolver"
+      entryPoints:
+        - "websecure"
     #    homepage-route:
     #      rule: "Host(`homepage.jimeagle.com`)"
     #      service: "homepage-service"
@@ -386,6 +393,10 @@ http:
       loadBalancer:
         servers:
           - url: "http://localhost:8123"
+    mass-service:
+      loadBalancer:
+        servers:
+          - url: "http://localhost:8095"
     #    homepage-service:
     #      loadBalancer:
     #        servers:

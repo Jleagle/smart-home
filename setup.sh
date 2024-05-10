@@ -19,6 +19,7 @@ mkdir -p ~/Hass
 mkdir -p ~/Influx
 mkdir -p ~/Matrix
 mkdir -p ~/Mealie
+mkdir -p ~/Mass
 mkdir -p ~/Media/Frigate
 mkdir -p ~/Media/Slskd
 mkdir -p ~/Media/Movies
