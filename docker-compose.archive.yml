@@ -270,6 +270,20 @@ services:
       - "${DOCKER_DATA}/no-ip/config:/config"
       - "/etc/localtime:/etc/localtime:ro"
 
+  overseerr:
+    image: "linuxserver/overseerr:latest"
+    container_name: "overseerr"
+    hostname: "overseerr"
+    restart: "unless-stopped"
+    ports:
+      - "5055:5055"
+    environment:
+      - "PUID=1000"
+      - "PGID=1000"
+      - "TZ=Europe/London"
+    volumes:
+      - "${HOME}/Overseerr:/config"
+
   pihole:
     image: "pihole/pihole:latest"
     container_name: "pihole"

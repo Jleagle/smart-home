@@ -211,13 +211,13 @@ http:
         certResolver: "myresolver"
       entryPoints:
         - "websecure"
-    overseerr-route:
-      rule: "Host(`overseerr.jimeagle.com`)"
-      service: "overseerr-service"
-      tls:
-        certResolver: "myresolver"
-      entryPoints:
-        - "websecure"
+    #    overseerr-route:
+    #      rule: "Host(`overseerr.jimeagle.com`)"
+    #      service: "overseerr-service"
+    #      tls:
+    #        certResolver: "myresolver"
+    #      entryPoints:
+    #        - "websecure"
     #    pihole-route:
     #      rule: "Host(`pihole.jimeagle.com`)"
     #      service: "pihole-service"
@@ -431,10 +431,10 @@ http:
       loadBalancer:
         servers:
           - url: "http://localhost:6789"
-    overseerr-service:
-      loadBalancer:
-        servers:
-          - url: "http://localhost:5055"
+    #    overseerr-service:
+    #      loadBalancer:
+    #        servers:
+    #          - url: "http://localhost:5055"
     #    pihole-service:
     #      loadBalancer:
     #        servers:

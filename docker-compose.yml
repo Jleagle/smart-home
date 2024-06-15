@@ -208,20 +208,6 @@ services:
       - "${HOME}/NZBGet/Config:/config"
       - "${HOME}/NZBGet/Downloads:/downloads"
 
-  overseerr:
-    image: "linuxserver/overseerr:latest"
-    container_name: "overseerr"
-    hostname: "overseerr"
-    restart: "unless-stopped"
-    ports:
-      - "5055:5055"
-    environment:
-      - "PUID=1000"
-      - "PGID=1000"
-      - "TZ=Europe/London"
-    volumes:
-      - "${HOME}/Overseerr:/config"
-
   plex:
     image: "linuxserver/plex:latest"
     container_name: "plex"
