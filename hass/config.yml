@@ -249,9 +249,9 @@ google_assistant:
     #      name: "Office"
 
     # Tuya
-    light.floor_lights_none:
+    light.floor_lights:
       name: "Floor Light"
-    climate.air_condition_a010_none:
+    climate.air_condition_a010:
       name: "Air Conditioner"
       aliases:
         - "Air Con"
