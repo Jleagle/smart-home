@@ -165,6 +165,13 @@ http:
         certResolver: "myresolver"
       entryPoints:
         - "websecure"
+    library-route:
+      rule: "Host(`library.jimeagle.com`)"
+      service: "library-service"
+      tls:
+        certResolver: "myresolver"
+      entryPoints:
+        - "websecure"
     kuma-route:
       rule: "Host(`kuma.jimeagle.com`)"
       service: "kuma-service"
@@ -411,6 +418,10 @@ http:
       loadBalancer:
         servers:
           - url: "http://localhost:8086"
+    library-service:
+      loadBalancer:
+        servers:
+          - url: "http://localhost:7879"
     kuma-service:
       loadBalancer:
         servers:
