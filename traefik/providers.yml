@@ -31,6 +31,15 @@ http:
         certResolver: "myresolver"
       entryPoints:
         - "websecure"
+    cameras-route:
+      rule: "Host(`cameras.jimeagle.com`)"
+      service: "cameras-service"
+      middlewares:
+        - "traefik-forward-auth"
+      tls:
+        certResolver: "myresolver"
+      entryPoints:
+        - "websecure"
     #    assistant-relay-route:
     #      rule: "Host(`assistantrelay.jimeagle.com`)"
     #      service: "assistant-relay-service"
@@ -366,6 +375,10 @@ http:
     #      loadBalancer:
     #        servers:
     #          - url: "http://localhost:6767"
+    cameras-service:
+      loadBalancer:
+        servers:
+          - url: "http://localhost:5002"
     changedetection-service:
       loadBalancer:
         servers:

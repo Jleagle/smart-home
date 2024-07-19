@@ -40,6 +40,14 @@ services:
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock"
 
+  cameras:
+    build: "cameras"
+    container_name: "cameras"
+    hostname: "cameras"
+    restart: "unless-stopped"
+    ports:
+      - "5002:5002"
+
   changedetection:
     image: "ghcr.io/dgtlmoon/changedetection.io:latest"
     container_name: "changedetection"
