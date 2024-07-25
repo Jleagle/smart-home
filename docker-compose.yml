@@ -190,10 +190,7 @@ services:
     container_name: "library"
     hostname: "library"
     restart: "unless-stopped"
-    ports:
-      - "7879:7879"
-    environment:
-      - "RADARR_API_KEY=${LIBRARY_RADARR}"
+    command: "--radarr-key=${LIBRARY_RADARR}"
 
   nodered:
     image: "nodered/node-red:latest"
