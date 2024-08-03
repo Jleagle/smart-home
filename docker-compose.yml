@@ -188,7 +188,7 @@ services:
     container_name: "library"
     hostname: "library"
     restart: "unless-stopped"
-    command: "frontend --radarr-key=${LIBRARY_RADARR}"
+    entrypoint: "/root/library -radarr-key ${LIBRARY_RADARR}"
 
   nodered:
     image: "nodered/node-red:latest"
