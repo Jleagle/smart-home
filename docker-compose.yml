@@ -189,6 +189,8 @@ services:
     hostname: "library"
     restart: "unless-stopped"
     entrypoint: "/root/library -radarr-key ${LIBRARY_RADARR}"
+    ports:
+      - "7879:7879"
 
   nodered:
     image: "nodered/node-red:latest"
