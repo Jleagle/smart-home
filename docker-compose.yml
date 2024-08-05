@@ -183,12 +183,12 @@ services:
     volumes:
       - "${HOME}/UptimeKuma:/app/data"
 
-  library:
-    build: "library"
-    container_name: "library"
-    hostname: "library"
+  radarr-share:
+    image: "ghcr.io/jleagle/radarr-share:main"
+    container_name: "radarr-share"
+    hostname: "radarr-share"
     restart: "unless-stopped"
-    entrypoint: "/root/library -radarr-key ${LIBRARY_RADARR}"
+    entrypoint: "/root/radarr-share -radarr-key ${LIBRARY_RADARR}"
     ports:
       - "7879:7879"
 
