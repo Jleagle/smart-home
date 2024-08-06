@@ -183,15 +183,6 @@ services:
     volumes:
       - "${HOME}/UptimeKuma:/app/data"
 
-  radarr-share:
-    image: "ghcr.io/jleagle/radarr-share:main"
-    container_name: "radarr-share"
-    hostname: "radarr-share"
-    restart: "unless-stopped"
-    entrypoint: "/root/radarr-share -radarr-key ${LIBRARY_RADARR}"
-    ports:
-      - "7879:7879"
-
   mosquitto:
     image: "eclipse-mosquitto:latest"
     container_name: "mosquitto"
@@ -306,6 +297,15 @@ services:
       - "PGID=1000"
       - "PUID=1000"
       - "TZ=Europe/London"
+
+  radarr-share:
+    image: "ghcr.io/jleagle/radarr-share:main"
+    container_name: "radarr-share"
+    hostname: "radarr-share"
+    restart: "unless-stopped"
+    entrypoint: "/root/radarr-share -radarr-key ${RADARR_KEY}"
+    ports:
+      - "7879:7879"
 
   redis:
     image: "redis:7"
