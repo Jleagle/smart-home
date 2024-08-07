@@ -174,13 +174,6 @@ http:
         certResolver: "myresolver"
       entryPoints:
         - "websecure"
-    library-route:
-      rule: "Host(`library.jimeagle.com`)"
-      service: "library-service"
-      tls:
-        certResolver: "myresolver"
-      entryPoints:
-        - "websecure"
     kuma-route:
       rule: "Host(`kuma.jimeagle.com`)"
       service: "kuma-service"
@@ -204,6 +197,13 @@ http:
     #        certResolver: "myresolver"
     #      entryPoints:
     #        - "websecure"
+    movies-route:
+      rule: "Host(`movies.jimeagle.com`)"
+      service: "movies-service"
+      tls:
+        certResolver: "myresolver"
+      entryPoints:
+        - "websecure"
     nodered-route:
       rule: "Host(`nodered.jimeagle.com`) && !Path(`/latest-event.jpeg`)"
       service: "nodered-service"
@@ -431,10 +431,6 @@ http:
       loadBalancer:
         servers:
           - url: "http://localhost:8086"
-    library-service:
-      loadBalancer:
-        servers:
-          - url: "http://localhost:7879"
     kuma-service:
       loadBalancer:
         servers:
@@ -447,6 +443,10 @@ http:
     #      loadBalancer:
     #        servers:
     #          - url: "http://localhost:9925"
+    movies-service:
+      loadBalancer:
+        servers:
+          - url: "http://localhost:7879"
     nodered-service:
       loadBalancer:
         servers:
