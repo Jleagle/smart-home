@@ -298,6 +298,13 @@ http:
     #        certResolver: "myresolver"
     #      entryPoints:
     #        - "websecure"
+    shows-route:
+      rule: "Host(`shows.jimeagle.com`)"
+      service: "shows-service"
+      tls:
+        certResolver: "myresolver"
+      entryPoints:
+        - "websecure"
     slskd-route:
       rule: "Host(`slskd.jimeagle.com`)"
       service: "slskd-service"
@@ -491,6 +498,10 @@ http:
     #      loadBalancer:
     #        servers:
     #          - url: "http://localhost:3004"
+    shows-service:
+      loadBalancer:
+        servers:
+          - url: "http://localhost:8990"
     slskd-service:
       loadBalancer:
         servers:
