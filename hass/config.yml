@@ -169,12 +169,6 @@ adaptive_lighting:
     lights:
       - "light.shellydimmer2_e89f6d8559a2"
 
-notify:
-  - platform: html5
-    vapid_pub_key: !secret vapid_pub_key
-    vapid_prv_key: !secret vapid_prv_key
-    vapid_email: !secret vapid_email
-
 google_assistant:
   project_id: !secret assistant_project_id
   service_account: !include google_assistant_key.json
