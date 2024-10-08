@@ -90,29 +90,29 @@ services:
   #      - "${HOME}/ESPHome:/config"
   #      - "/etc/localtime:/etc/localtime:ro"
 
-  frigate:
-    image: "ghcr.io/blakeblackshear/frigate:stable"
-    container_name: "frigate"
-    hostname: "frigate"
-    restart: "unless-stopped"
-    shm_size: "64mb" # update for your cameras based on calculation above
-    devices:
-      - "/dev/dri/renderD128"       # for intel hwaccel, needs to be updated for your hardware
-      - "/dev/apex_0:/dev/apex_0"   # passes a PCIe Coral, follow driver instructions here https://coral.ai/docs/m2/get-started/#2a-on-linux
-    volumes:
-      - "${HOME}/Media/Frigate:/media/frigate"
-      - "./frigate:/config"
-      - "/etc/localtime:/etc/localtime:ro"
-    tmpfs:
-      - "/tmp/cache"
-    ports:
-      - "1935:1935" # RTMP feeds
-      - "5000:5000" # API
-    environment:
-      - "FRIGATE_KITCHEN_USERNAME"
-      - "FRIGATE_KITCHEN_PASSWORD"
-      - "FRIGATE_DINING_USERNAME"
-      - "FRIGATE_DINING_PASSWORD"
+  #  frigate:
+  #    image: "ghcr.io/blakeblackshear/frigate:stable"
+  #    container_name: "frigate"
+  #    hostname: "frigate"
+  #    restart: "unless-stopped"
+  #    shm_size: "64mb" # update for your cameras based on calculation above
+  #    devices:
+  #      - "/dev/dri/renderD128"       # for intel hwaccel, needs to be updated for your hardware
+  #      - "/dev/apex_0:/dev/apex_0"   # passes a PCIe Coral, follow driver instructions here https://coral.ai/docs/m2/get-started/#2a-on-linux
+  #    volumes:
+  #      - "${HOME}/Media/Frigate:/media/frigate"
+  #      - "./frigate:/config"
+  #      - "/etc/localtime:/etc/localtime:ro"
+  #    tmpfs:
+  #      - "/tmp/cache"
+  #    ports:
+  #      - "1935:1935" # RTMP feeds
+  #      - "5000:5000" # API
+  #    environment:
+  #      - "FRIGATE_KITCHEN_USERNAME"
+  #      - "FRIGATE_KITCHEN_PASSWORD"
+  #      - "FRIGATE_DINING_USERNAME"
+  #      - "FRIGATE_DINING_PASSWORD"
 
   grafana:
     image: "grafana/grafana:latest"
