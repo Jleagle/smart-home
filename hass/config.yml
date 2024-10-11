@@ -209,8 +209,6 @@ google_assistant:
       name: "Downstairs"
     light.hallway_lights:
       name: "Hallway Lights"
-    light.dog_pee_lights:
-      name: "Dog Lights"
 
     # Toggles
     switch.morning_alarm_enabled:
@@ -284,14 +282,6 @@ google_assistant:
       name: "Salt Lamp"
       room: "Living Room"
 
-    # Cameras
-    button.kitchen_cam_inside:
-      name: "Show Inside"
-      room: "Kitchen"
-    button.kitchen_cam_outside:
-      name: "Show Outside"
-      room: "Kitchen"
-
 light:
   - platform: "blink1_status"
 
@@ -308,19 +298,6 @@ switch:
     name: "TV"
     host: "192.168.0.9"
     mac: "BC-7E-8B-AB-01-D2"
-  - platform: "template"
-    switches:
-      air_con:
-        friendly_name: "Air Con"
-        value_template: "{{ is_state('climate.air_condition_a010', 'cool') }}"
-        turn_on:
-          service: "climate.turn_on"
-          target:
-            entity_id: "climate.air_condition_a010"
-        turn_off:
-          service: "climate.turn_off"
-          target:
-            entity_id: "climate.air_condition_a010"
 
 group:
   alldevices:
