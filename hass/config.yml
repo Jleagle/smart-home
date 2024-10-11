@@ -117,7 +117,7 @@ adaptive_lighting:
     sunrise_time: "06:00:00"
     sunset_time: "20:00:00"
     lights:
-      - "light.shellydimmer2_48551900c7e2"
+      - "light.shelly_dining_room"
   - name: "kitchen"
     brightness_mode: "linear"
     brightness_mode_time_light: "3600"
@@ -127,7 +127,7 @@ adaptive_lighting:
     sunrise_time: "06:00:00"
     sunset_time: "20:00:00"
     lights:
-      - "light.shellydimmer2_c45bbe56f9ba"
+      - "light.shelly_kitchen"
   - name: "living"
     brightness_mode: "linear"
     brightness_mode_time_light: "3600"
@@ -187,15 +187,17 @@ google_assistant:
       name: "Ceiling Light"
     light.shellydimmer2_48551900b4e6: # Bathroom
       name: "Ceiling Light"
+    switch.shelly_bathroom_fan_switch_0: # Bathroom Fan
+      name: "Fan"
     light.shellydimmer2_48551900c175: # Bedroom
       name: "Ceiling Light"
-    light.shellydimmer2_48551900c7e2: # Dining Room
+    light.shelly_dining_room: # Dining Room
       name: "Ceiling Light"
     light.shellydimmer2_C45BBE572627: # Living Room
       name: "Ceiling Light"
     light.shellydimmer2_e89f6d8559a2: # Spare Room
       name: "Ceiling Light"
-    light.shellydimmer2_c45bbe56f9ba: # Kitchen
+    light.shelly_kitchen: # Kitchen
       name: "Ceiling Light"
     light.shelly_duo: # Big Light
       name: "Big Light"
