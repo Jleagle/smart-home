@@ -271,23 +271,3 @@ switch:
     name: "TV"
     host: "192.168.0.9"
     mac: "BC-7E-8B-AB-01-D2"
-
-group:
-  alldevices:
-    name: "All Devices"
-    entities:
-      - "light.all_lights"
-      - "media_player.all_media_players"
-      - "switch.all_switches"
-  climate:
-    name: "All Thermostats"
-    entities:
-      - "climate.bedroom"
-      - "climate.dining_room"
-      - "climate.living_room"
-      - "climate.office"
-  people:
-    name: "People"
-    entities:
-      - "person.james_eagle"
-      - "person.gillian_mckinley"
