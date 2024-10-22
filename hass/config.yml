@@ -174,113 +174,86 @@ google_assistant:
   service_account: !include google_assistant_key.json
   report_state: true
   expose_by_default: false
-#  entity_config:
-#
-#    # Shelly
-#    light.shellydimmer2_48551900035d:
-#      name: "Hallway Downstairs"
-#    light.shellydimmer2_48551900caca:
-#      name: "Hallway Upstairs"
-#    light.shellydimmer2_485519002b72: # Office
-#      name: "Ceiling Light"
-#    light.shellydimmer2_4855190088ac: # Small Room
-#      name: "Ceiling Light"
-#    light.shellydimmer2_48551900b4e6: # Bathroom
-#      name: "Ceiling Light"
-#    switch.shelly_bathroom_fan_switch_0: # Bathroom Fan
-#      name: "Fan"
-#    light.shellydimmer2_48551900c175: # Bedroom
-#      name: "Ceiling Light"
-#    light.shelly_dining_room: # Dining Room
-#      name: "Ceiling Light"
-#    light.shellydimmer2_C45BBE572627: # Living Room
-#      name: "Ceiling Light"
-#    light.shellydimmer2_e89f6d8559a2: # Spare Room
-#      name: "Ceiling Light"
-#    light.shelly_kitchen: # Kitchen
-#      name: "Ceiling Light"
-#    light.shelly_duo: # Big Light
-#      name: "Big Light"
-#
-#    # Groups
-#    light.upstairs_lights:
-#      name: "Upstairs"
-#    light.downstairs_lights:
-#      name: "Downstairs"
-#    light.hallway_lights:
-#      name: "Hallway Lights"
-#
-#    # Toggles
-#    switch.morning_alarm_enabled:
-#      name: "Alarm Clock"
-#    input_boolean.guest_mode:
-#      name: "Guest Mode"
-#    input_boolean.someone_home:
-#      name: "Someone Home"
-#    switch.nzbget_download:
-#      name: "Downloads"
-#    switch.adguard_protection:
-#      name: "Hide Ads"
-#
-#    # Buttons
-#    button.dry_towels_heating:
-#      name: "Dry Towels"
-#
-#    # Wake On Lan
-#    switch.wake_pc:
-#      name: "PC"
-#    switch.wake_tv:
-#      name: "TV"
-#
-#    # Tado (added to Google Home)
-#    #    climate.bedroom:
-#    #      name: "Bedroom"
-#    #    climate.dining_room:
-#    #      name: "Dining Room"
-#    #    climate.living_room:
-#    #      name: "Living Room"
-#    #    climate.office:
-#    #      name: "Office"
-#
-#    # Tuya
-#    light.floor_lights:
-#      name: "Floor Light"
-#    climate.air_condition_a010:
-#      name: "Air Conditioner"
-#      aliases:
-#        - "Air Con"
-#
-#    # Switches
-#
-#    #    switch.teckin_plug_1:
-#    #      name: "Christmas Tree"
-#    #      room: "Living Room"
-#    #    switch.teckin_plug_2:
-#    #      name: "Christmas Tree"
-#    #      room: "Living Room"
-#    switch.teckin_plug_3:
-#      name: "Dresser"
-#      room: "Dining Room"
-#    #    switch.teckin_plug_4:
-#    #      name: "Christmas Lights"
-#    #      room: "Living Room"
-#
-#    switch.tapo_plug_1:
-#      name: "Electric Blanket Gillian"
-#      room: "Bedroom"
-#      aliases:
-#        - "Heated Blanket Gillian"
-#    switch.tapo_plug_2:
-#      name: "Electric Blanket James"
-#      room: "Bedroom"
-#      aliases:
-#        - "Heated Blanket James"
-#    switch.tapo_plug_3:
-#      name: "Small Light"
-#      room: "Living Room"
-#    switch.tapo_plug_4:
-#      name: "Salt Lamp"
-#      room: "Living Room"
+  entity_config:
+
+    # Shelly
+    light.shellydimmer2_48551900035d:
+      name: "Hallway Downstairs"
+    light.shellydimmer2_48551900caca:
+      name: "Hallway Upstairs"
+    light.shellydimmer2_485519002b72: # Office
+      name: "Ceiling Light"
+    light.shellydimmer2_4855190088ac: # Small Room
+      name: "Ceiling Light"
+    light.shellydimmer2_48551900b4e6: # Bathroom
+      name: "Ceiling Light"
+    switch.shelly_bathroom_fan_switch_0: # Bathroom Fan
+      name: "Fan"
+    light.shellydimmer2_48551900c175: # Bedroom
+      name: "Ceiling Light"
+    light.shelly_dining_room: # Dining Room
+      name: "Ceiling Light"
+    light.shellydimmer2_C45BBE572627: # Living Room
+      name: "Ceiling Light"
+    light.shellydimmer2_e89f6d8559a2: # Spare Room
+      name: "Ceiling Light"
+    light.shelly_kitchen: # Kitchen
+      name: "Ceiling Light"
+    light.shelly_duo: # Big Light
+      name: "Big Light"
+
+    # Groups
+    light.upstairs_lights:
+      name: "Upstairs"
+    light.downstairs_lights:
+      name: "Downstairs"
+    light.hallway_lights:
+      name: "Hallway Lights"
+
+    # Wake On Lan
+    switch.wake_pc:
+      name: "PC"
+    switch.wake_tv:
+      name: "TV"
+
+    # Tuya
+    light.floor_lights:
+      name: "Floor Light"
+    #    climate.air_condition_a010:
+    #      name: "Air Conditioner"
+    #      aliases:
+    #        - "Air Con"
+
+    # Switches
+    #    switch.teckin_plug_1:
+    #      name: "Christmas Tree"
+    #      room: "Living Room"
+    #    switch.teckin_plug_2:
+    #      name: "Christmas Tree"
+    #      room: "Living Room"
+    switch.teckin_plug_3:
+      name: "Dresser"
+      room: "Dining Room"
+    #    switch.teckin_plug_4:
+    #      name: "Christmas Lights"
+    #      room: "Living Room"
+
+    switch.tapo_plug_1:
+      name: "Electric Blanket Gillian"
+      room: "Bedroom"
+      aliases:
+        - "Heated Blanket Gillian"
+    switch.tapo_plug_2:
+      name: "Electric Blanket James"
+      room: "Bedroom"
+      aliases:
+        - "Heated Blanket James"
+    switch.tapo_plug_3:
+      name: "Small Light"
+      room: "Living Room"
+    switch.tapo_plug_4:
+      name: "Salt Lamp"
+      room: "Living Room"
 
 light:
   - platform: "blink1_status"
