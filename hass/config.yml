@@ -271,3 +271,11 @@ switch:
     name: "TV"
     host: "192.168.0.9"
     mac: "BC-7E-8B-AB-01-D2"
+
+group:
+  #  Can't group people in the UI
+  people:
+    name: "People"
+    entities:
+      - "person.james_eagle"
+      - "person.gillian_mckinley"
