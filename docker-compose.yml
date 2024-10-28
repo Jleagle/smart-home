@@ -152,16 +152,6 @@ services:
     environment:
       - "TZ=Europe/London"
 
-  mass:
-    image: "ghcr.io/music-assistant/server:latest"
-    container_name: "mass"
-    hostname: "mass"
-    restart: "unless-stopped"
-    network_mode: "host"
-    privileged: true
-    volumes:
-      - "${HOME}/Mass/Data:/data"
-
   influx:
     image: "influxdb:2.5"
     container_name: "influx"

@@ -186,6 +186,16 @@ services:
       - "traefik.http.routers.hydra.rule=Host(`hydra.jimeagle.com`)"
       - "traefik.http.services.hydra.loadbalancer.server.port=5076"
 
+  mass:
+    image: "ghcr.io/music-assistant/server:latest"
+    container_name: "mass"
+    hostname: "mass"
+    restart: "unless-stopped"
+    network_mode: "host"
+    privileged: true
+    volumes:
+      - "${HOME}/Mass/Data:/data"
+
   matrix:
     image: "matrixdotorg/synapse:latest"
     container_name: "matrix"
