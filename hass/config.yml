@@ -4,7 +4,7 @@ automation: !include automations.yaml
 counter:
 dhcp:
 diagnostics:
-energy:
+#energy:
 ffmpeg:
 history:
 input_boolean:
