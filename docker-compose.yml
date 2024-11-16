@@ -369,19 +369,19 @@ services:
     ports:
       - "8990:8990"
 
-  tautulli:
-    image: "lscr.io/linuxserver/tautulli:latest"
-    container_name: "tautulli"
-    hostname: "tautulli"
-    restart: "unless-stopped"
-    environment:
-      - "PUID=1000"
-      - "PGID=1000"
-      - "TZ=Europe/London"
-    volumes:
-      - "${HOME}/Tautulli:/config"
-    ports:
-      - "8181:8181"
+  #  tautulli:
+  #    image: "lscr.io/linuxserver/tautulli:latest"
+  #    container_name: "tautulli"
+  #    hostname: "tautulli"
+  #    restart: "unless-stopped"
+  #    environment:
+  #      - "PUID=1000"
+  #      - "PGID=1000"
+  #      - "TZ=Europe/London"
+  #    volumes:
+  #      - "${HOME}/Tautulli:/config"
+  #    ports:
+  #      - "8181:8181"
 
   telegraf:
     image: "telegraf:latest"
