@@ -17,6 +17,7 @@ rsync \
 	--progress \
 	--partial \
 	--human-readable \
+	--rsync-path="sudo rsync" \
 	--rsh 'ssh -oPort=2222' \
 	--exclude="Media" \
 	--exclude="nas-backup/" \
