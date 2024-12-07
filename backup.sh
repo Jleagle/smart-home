@@ -20,8 +20,6 @@ rsync \
 	--rsync-path="sudo rsync" \
 	--rsh 'ssh -oPort=2222' \
 	--exclude="Media" \
-	--exclude="nas-backup/" \
-	--exclude="nas-backup2/" \
 	--exclude="Tautulli/cache/" \
 	--exclude="Repo/" \
 	--exclude="Plex/Config/Library/Application\ Support/Plex\ Media\ Server/Media/" \
