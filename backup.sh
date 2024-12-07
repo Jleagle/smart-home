@@ -9,6 +9,7 @@
 #  -e AWS_SECRET_ACCESS_KEY=my-aws-secret-key \
 #  instrumentisto/restic backup /data
 
+# dc down
 rsync \
 	--dry-run \
 	--archive \
@@ -25,3 +26,4 @@ rsync \
 	--exclude="Plex/Config/Library/Application\ Support/Plex\ Media\ Server/Media/" \
 	--exclude="Plex/Config/Library/Application\ Support/Plex\ Media\ Server/Cache/" \
 	seven:/home/james ~/Downloads/Seven/
+# ./update.sh
