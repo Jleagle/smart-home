@@ -29,20 +29,13 @@ record:
         person: 1
 
 cameras:
-  kitchen:
+  driveway:
     ffmpeg:
       inputs:
-        - path: rtsp://{FRIGATE_KITCHEN_USERNAME}:{FRIGATE_KITCHEN_PASSWORD}@192.168.0.18/stream1
+        - path: rtsp://{FRIGATE_DRIVEWAY_USERNAME}:{FRIGATE_DRIVEWAY_PASSWORD}@192.168.0.12:554/Preview_01_main
           roles:
             - detect
             - record
-#  spare:
-#    ffmpeg:
-#      inputs:
-#        - path: rtsp://{FRIGATE_DINING_USERNAME}:{FRIGATE_DINING_PASSWORD}@192.168.0.14/stream1
-#          roles:
-#            - detect
-#            - record
 
 detectors:
   coral:
