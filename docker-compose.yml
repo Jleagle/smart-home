@@ -95,7 +95,7 @@ services:
     container_name: "frigate"
     hostname: "frigate"
     restart: "unless-stopped"
-    shm_size: "64mb" # update for your cameras based on calculation above
+    shm_size: "128mb" # update for your cameras based on calculation above
     devices:
       - "/dev/dri/renderD128"       # for intel hwaccel, needs to be updated for your hardware
       - "/dev/apex_0:/dev/apex_0"   # passes a PCIe Coral, follow driver instructions here https://coral.ai/docs/m2/get-started/#2a-on-linux
@@ -113,6 +113,8 @@ services:
       - "FRIGATE_KITCHEN_PASSWORD"
       - "FRIGATE_DINING_USERNAME"
       - "FRIGATE_DINING_PASSWORD"
+      - "FRIGATE_DRIVEWAY_USERNAME"
+      - "FRIGATE_DRIVEWAY_PASSWORD"
 
   grafana:
     image: "grafana/grafana:latest"
