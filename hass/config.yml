@@ -35,6 +35,9 @@ zeroconf:
 zone:
 
 homeassistant:
+  customize:
+    climate.living_room:
+      target_temp_step: 0.5
   auth_providers:
     - type: "trusted_networks"
       trusted_networks:
