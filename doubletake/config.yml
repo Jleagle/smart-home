@@ -1,5 +1,5 @@
 # Learn more at https://github.com/jakowenko/double-take/#configuration
-auth: true
+auth: false
 
 # enable mqtt subscribing and publishing (default: shown below)
 mqtt:
