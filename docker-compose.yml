@@ -70,7 +70,7 @@ services:
       - "${HOME}/DDNS/records.yaml:/root/records.yaml:ro"
 
   doubletake:
-    image: "jakowenko/double-take:latest"
+    image: "skrashevich/double-take:latest"
     container_name: "doubletake"
     hostname: "doubletake"
     restart: "unless-stopped"
