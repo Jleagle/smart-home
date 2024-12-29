@@ -11,6 +11,7 @@ ffmpeg:
   # https://docs.frigate.video/configuration/hardware_acceleration
   # https://docs.frigate.video/configuration/ffmpeg_presets/
   hwaccel_args: preset-intel-qsv-h264
+  input_args: preset-rtsp-restream
   output_args:
     record: preset-record-generic-audio-aac
 
@@ -33,11 +34,9 @@ cameras:
     ffmpeg:
       inputs:
         - path: rtsp://{FRIGATE_DRIVEWAY_USERNAME}:{FRIGATE_DRIVEWAY_PASSWORD}@192.168.0.12:554/Preview_01_main
-          input_args: preset-rtsp-restream
           roles:
             - record
         - path: rtsp://{FRIGATE_DRIVEWAY_USERNAME}:{FRIGATE_DRIVEWAY_PASSWORD}@192.168.0.12:554/Preview_01_sub
-          input_args: preset-rtsp-restream
           roles:
             - detect
 
