@@ -33,9 +33,13 @@ cameras:
     ffmpeg:
       inputs:
         - path: rtsp://{FRIGATE_DRIVEWAY_USERNAME}:{FRIGATE_DRIVEWAY_PASSWORD}@192.168.0.12:554/Preview_01_main
+          input_args: preset-rtsp-restream
+          roles:
+            - record
+        - path: rtsp://{FRIGATE_DRIVEWAY_USERNAME}:{FRIGATE_DRIVEWAY_PASSWORD}@192.168.0.12:554/Preview_01_sub
+          input_args: preset-rtsp-restream
           roles:
             - detect
-            - record
 
 detectors:
   coral:
