@@ -1,14 +1,86 @@
-# Learn more at https://github.com/jakowenko/double-take/#configuration
+# enable authentication for ui and api (default: shown below)
 auth: false
+
+# if authentication is enabled
+# age of access token in api response and mqtt topics (default: shown below)
+# expressed in seconds or a string describing a time span zeit/ms
+# https://github.com/vercel/ms
+token:
+  image: 24h
 
 # enable mqtt subscribing and publishing (default: shown below)
 mqtt:
   host: 192.168.0.7
+  username:
+  password:
   client_id: doubletake
+
+  tls:
+    # cert chains in PEM format: /path/to/client.crt
+    cert:
+    # private keys in PEM format: /path/to/client.key
+    key:
+    # optionally override the trusted CA certificates: /path/to/ca.crt
+    ca:
+    # if true the server will reject any connection which is not authorized with the list of supplied CAs
+    reject_unauthorized: false
+
+  topics:
+    # mqtt topic for frigate message subscription
+    frigate: frigate/events
+    #  mqtt topic for home assistant discovery subscription
+    homeassistant: homeassistant
+    # mqtt topic where matches are published by name
+    matches: double-take/matches
+    # mqtt topic where matches are published by camera name
+    cameras: double-take/cameras
+
+# global detect settings (default: shown below)
+detect:
+  match:
+    # save match images
+    save: true
+    # include base64 encoded string in api results and mqtt messages
+    # options: true, false, box
+    base64: false
+    # minimum confidence needed to consider a result a match
+    confidence: 60
+    # hours to keep match images until they are deleted
+    purge: 168
+    # minimum area in pixels to consider a result a match
+    min_area: 10000
+
+  unknown:
+    # save unknown images
+    save: true
+    # include base64 encoded string in api results and mqtt messages
+    # options: true, false, box
+    base64: false
+    # minimum confidence needed before classifying a name as unknown
+    confidence: 40
+    # hours to keep unknown images until they are deleted
+    purge: 8
+    # minimum area in pixels to keep an unknown result
+    min_area: 0
 
 # frigate settings (default: shown below)
 frigate:
   url: http://frigate:5000
+
+  # if double take should send matches back to frigate as a sub label
+  # NOTE: requires frigate 0.11.0+
+  update_sub_labels: false
+
+  # stop the processing loop if a match is found
+  # if set to false all image attempts will be processed before determining the best match
+  stop_on_match: true
+
+  # ignore detected areas so small that face recognition would be difficult
+  # quadrupling the min_area of the detector is a good start
+  # does not apply to MQTT events
+  min_area: 0
+
+  # object labels that are allowed for facial recognition
   labels:
     - person
     - dog
@@ -39,24 +111,33 @@ frigate:
 
   # override frigate attempts and image per camera
   events:
-  # front-door:
-  #   attempts:
-  #     # number of times double take will request a frigate latest.jpg for facial recognition
-  #     latest: 5
-  #     # number of times double take will request a frigate snapshot.jpg for facial recognition
-  #     snapshot: 5
-  #     # process frigate images from frigate/<camera-name>/person/snapshot topic
-  #     mqtt: false
-  #     # add a delay expressed in seconds between each detection loop
-  #     delay: 1
+    # front-door:
+    #   attempts:
+    #     # number of times double take will request a frigate latest.jpg for facial recognition
+    #     latest: 5
+    #     # number of times double take will request a frigate snapshot.jpg for facial recognition
+    #     snapshot: 5
+    #     # process frigate images from frigate/<camera-name>/person/snapshot topic
+    #     mqtt: false
+    #     # add a delay expressed in seconds between each detection loop
+    #     delay: 1
 
-  #   image:
-  #     # height of frigate image passed for facial recognition (only if using default latest.jpg and snapshot.jpg)
-  #     height: 1000
-  #     # custom image that will be used in place of latest.jpg
-  #     latest: http://camera-url.com/image.jpg
-  #     # custom image that will be used in place of snapshot.jpg
-  #     snapshot: http://camera-url.com/image.jpg
+    #   image:
+    #     # height of frigate image passed for facial recognition (only if using default latest.jpg and snapshot.jpg)
+    #     height: 1000
+    #     # custom image that will be used in place of latest.jpg
+    #     latest: http://camera-url.com/image.jpg
+    #     # custom image that will be used in place of snapshot.jpg
+    #     snapshot: http://camera-url.com/image.jpg
+
+    # This option allows setting a custom time delay for the MQTT home
+    # assistant device tracker.
+
+    # By adjusting  device_tracker_timeout , users can determine how long they
+    # want to wait before receiving a 'not_home' message when no person is
+    # recognized. The time delay is implemented in minutes and the default value
+    # is set to 30 minutes
+    device_tracker_timeout: 30
 
 # camera settings (default: shown below)
 cameras:
@@ -112,20 +193,69 @@ detectors:
     # minimum required confidence that a recognized face is actually a face
     # value is between 0.0 and 1.0
     det_prob_threshold: 0.8
+    # require opencv to find a face before processing with detector
+    opencv_face_required: false
     # comma-separated slugs of face plugins
     # https://github.com/exadel-inc/CompreFace/blob/master/docs/Face-services-and-plugins.md)
     # face_plugins: mask,gender,age
+    # only process images from specific cameras, if omitted then all cameras will be processed
+    # cameras:
+    #   - front-door
+    #   - garage
+
+  rekognition:
+    aws_access_key_id: !secret aws_access_key_id
+    aws_secret_access_key: !secret aws_secret_access_key
+    aws_region:
+    collection_id: double-take
+    # require opencv to find a face before processing with detector
+    opencv_face_required: true
+    # only process images from specific cameras, if omitted then all cameras will be processed
+    # cameras:
+    #   - front-door
+    #   - garage
 
   deepstack:
     url:
     key:
     # number of seconds before the request times out and is aborted
     timeout: 15
+    # require opencv to find a face before processing with detector
+    opencv_face_required: false
+    # only process images from specific cameras, if omitted then all cameras will be processed
+    # cameras:
+    #   - front-door
+    #   - garage
+
+  aiserver:
+    url:
+    # number of seconds before the request times out and is aborted
+    timeout: 15
+    # require opencv to find a face before processing with detector
+    opencv_face_required: false
+    # only process images from specific cameras, if omitted then all cameras will be processed
+    # cameras:
+    #   - front-door
+    #   - garage
 
   facebox:
     url:
     # number of seconds before the request times out and is aborted
     timeout: 15
+    # require opencv to find a face before processing with detector
+    opencv_face_required: false
+    # only process images from specific cameras, if omitted then all cameras will be processed
+    # cameras:
+    #   - front-door
+    #   - garage
+
+# opencv settings (default: shown below)
+# docs: https://docs.opencv.org/4.6.0/d1/de5/classcv_1_1CascadeClassifier.html
+opencv:
+  scale_factor: 1.05
+  min_neighbors: 4.5
+  min_size_width: 30
+  min_size_height: 30
 
 # schedule settings (default: shown below)
 schedule:
@@ -163,4 +293,43 @@ notify:
     # zones:
     #   - camera: garage
     #     zone: driveway
+
+# time settings (default: shown below)
+time:
+  # defaults to iso 8601 format with support for token-based formatting
+  # https://github.com/moment/luxon/blob/master/docs/formatting.md#table-of-tokens
+  format:
+  # time zone used in logs
+  timezone: UTC
+
+# log settings (default: shown below)
+# options: silent, error, warn, info, http, verbose, debug, silly
+logs:
+  level: info
+  sql: false # trace sql queries
+
+# ui settings (default: shown below)
+ui:
+  # base path of ui
+  path:
+
+  pagination:
+    # number of results per page
+    limit: 50
+
+  thumbnails:
+    # value between 0-100
+    quality: 95
+    # value in pixels
+    width: 500
+
+  logs:
+    # number of lines displayed
+    lines: 500
+
+# telemetry settings (default: shown below)
+# self hosted version of plausible.io
+# 100% anonymous, used to help improve project
+# no cookies and fully compliant with GDPR, CCPA and PECR
+telemetry: true
 
