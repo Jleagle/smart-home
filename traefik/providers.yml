@@ -59,6 +59,8 @@ http:
     #    bazarr-route:
     #      rule: "Host(`bazarr.jimeagle.com`)"
     #      service: "bazarr-service"
+    #      middlewares:
+    #        - "traefik-forward-auth"
     #      tls:
     #        certResolver: "myresolver"
     #      entryPoints:
@@ -129,6 +131,8 @@ http:
     grafana-route:
       rule: "Host(`grafana.jimeagle.com`)"
       service: "grafana-service"
+      middlewares:
+        - "traefik-forward-auth"
       tls:
         certResolver: "myresolver"
       entryPoints:
@@ -136,6 +140,8 @@ http:
     hass-route:
       rule: "Host(`hass.jimeagle.com`)"
       service: "hass-service"
+      middlewares:
+        - "traefik-forward-auth"
       tls:
         certResolver: "myresolver"
       entryPoints:
@@ -170,6 +176,8 @@ http:
     influx-route:
       rule: "Host(`influx.jimeagle.com`)"
       service: "influx-service"
+      middlewares:
+        - "traefik-forward-auth"
       tls:
         certResolver: "myresolver"
       entryPoints:
@@ -186,6 +194,8 @@ http:
     #    matrix-route:
     #      rule: "Host(`matrix.jimeagle.com`)"
     #      service: "matrix-service"
+    #      middlewares:
+    #        - "traefik-forward-auth"
     #      tls:
     #        certResolver: "myresolver"
     #      entryPoints:
@@ -193,6 +203,8 @@ http:
     #    mealie-route:
     #      rule: "Host(`mealie.jimeagle.com`)"
     #      service: "mealie-service"
+    #      middlewares:
+    #        - "traefik-forward-auth"
     #      tls:
     #        certResolver: "myresolver"
     #      entryPoints:
@@ -223,6 +235,8 @@ http:
     nzbget-route:
       rule: "Host(`nzbget.jimeagle.com`)"
       service: "nzbget-service"
+      middlewares:
+        - "traefik-forward-auth"
       tls:
         certResolver: "myresolver"
       entryPoints:
@@ -230,6 +244,8 @@ http:
     #    overseerr-route:
     #      rule: "Host(`overseerr.jimeagle.com`)"
     #      service: "overseerr-service"
+    #      middlewares:
+    #        - "traefik-forward-auth"
     #      tls:
     #        certResolver: "myresolver"
     #      entryPoints:
@@ -237,6 +253,8 @@ http:
     #    pihole-route:
     #      rule: "Host(`pihole.jimeagle.com`)"
     #      service: "pihole-service"
+    #      middlewares:
+    #        - "traefik-forward-auth"
     #      tls:
     #        certResolver: "myresolver"
     #      entryPoints:
@@ -244,6 +262,8 @@ http:
     plex-route:
       rule: "Host(`plex.jimeagle.com`)"
       service: "plex-service"
+      middlewares:
+        - "traefik-forward-auth"
       tls:
         certResolver: "myresolver"
       entryPoints:
@@ -260,6 +280,8 @@ http:
     prowlarr-route:
       rule: "Host(`prowlarr.jimeagle.com`)"
       service: "prowlarr-service"
+      middlewares:
+        - "traefik-forward-auth"
       tls:
         certResolver: "myresolver"
       entryPoints:
@@ -267,6 +289,8 @@ http:
     radarr-route:
       rule: "Host(`radarr.jimeagle.com`)"
       service: "radarr-service"
+      middlewares:
+        - "traefik-forward-auth"
       tls:
         certResolver: "myresolver"
       entryPoints:
@@ -326,6 +350,8 @@ http:
     sonarr-route:
       rule: "Host(`sonarr.jimeagle.com`)"
       service: "sonarr-service"
+      middlewares:
+        - "traefik-forward-auth"
       tls:
         certResolver: "myresolver"
       entryPoints:
@@ -333,6 +359,8 @@ http:
     tautulli-route:
       rule: "Host(`tautulli.jimeagle.com`)"
       service: "tautulli-service"
+      middlewares:
+        - "traefik-forward-auth"
       tls:
         certResolver: "myresolver"
       entryPoints:
@@ -349,6 +377,8 @@ http:
   #    technitium-route:
   #      rule: "Host(`technitium.jimeagle.com`)"
   #      service: "technitium-service"
+  #      middlewares:
+  #        - "traefik-forward-auth"
   #      tls:
   #        certResolver: "myresolver"
   #      entryPoints:
@@ -356,6 +386,8 @@ http:
   #    zinc-route:
   #      rule: "Host(`zinc.jimeagle.com`)"
   #      service: "zinc-service"
+  #      middlewares:
+  #        - "traefik-forward-auth"
   #      tls:
   #        certResolver: "myresolver"
   #      entryPoints:
