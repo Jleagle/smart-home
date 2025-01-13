@@ -259,15 +259,15 @@ http:
     #        certResolver: "myresolver"
     #      entryPoints:
     #        - "websecure"
-    plex-route:
-      rule: "Host(`plex.jimeagle.com`)"
-      service: "plex-service"
-      middlewares:
-        - "traefik-forward-auth"
-      tls:
-        certResolver: "myresolver"
-      entryPoints:
-        - "websecure"
+    #    plex-route:
+    #      rule: "Host(`plex.jimeagle.com`)"
+    #      service: "plex-service"
+    #      middlewares:
+    #        - "traefik-forward-auth"
+    #      tls:
+    #        certResolver: "myresolver"
+    #      entryPoints:
+    #        - "websecure"
     #    portainer-route:
     #      rule: "Host(`portainer.jimeagle.com`)"
     #      service: "portainer-service"
@@ -502,10 +502,10 @@ http:
     #      loadBalancer:
     #        servers:
     #          - url: "http://localhost:81"
-    plex-service:
-      loadBalancer:
-        servers:
-          - url: "http://localhost:32400"
+    #    plex-service:
+    #      loadBalancer:
+    #        servers:
+    #          - url: "http://localhost:32400"
     #    portainer-service:
     #      loadBalancer:
     #        servers:
