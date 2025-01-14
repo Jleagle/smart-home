@@ -89,6 +89,19 @@ services:
     volumes:
       - "${HOME}/Ddclient:/config"
 
+  ddns:
+    image: "ghcr.io/jleagle/ddns:latest"
+    container_name: "ddns"
+    hostname: "ddns"
+    restart: "unless-stopped"
+    environment:
+      - "DO_KEY=${DDNS_DO_KEY}"
+      - "CF_KEY=${DDNS_CF_KEY}"
+      - "ONE_TIME=false"
+      - "ON_LOAD=true"
+    volumes:
+      - "${HOME}/DDNS/records.yaml:/root/records.yaml:ro"
+
   emby:
     image: "emby/embyserver:latest"
     hostname: "emby"

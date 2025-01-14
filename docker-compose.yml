@@ -56,19 +56,6 @@ services:
     volumes:
       - "${HOME}/ChangeDetection:/datastore"
 
-  ddns:
-    image: "ghcr.io/jleagle/ddns:latest"
-    container_name: "ddns"
-    hostname: "ddns"
-    restart: "unless-stopped"
-    environment:
-      - "DO_KEY=${DDNS_DO_KEY}"
-      - "CF_KEY=${DDNS_CF_KEY}"
-      - "ONE_TIME=false"
-      - "ON_LOAD=true"
-    volumes:
-      - "${HOME}/DDNS/records.yaml:/root/records.yaml:ro"
-
   doubletake:
     image: "skrashevich/double-take:latest"
     container_name: "doubletake"
