@@ -10,6 +10,7 @@ mkdir -p ~/Bazarr
 mkdir -p ~/ChangeDetection
 mkdir -p ~/DDNS
 mkdir -p ~/DoubleTake
+mkdir -p ~/Elastic
 #mkdir -p ~/Go2rtc/Config
 mkdir -p ~/FlexTV
 mkdir -p ~/Frigate
@@ -17,6 +18,7 @@ mkdir -p ~/Grafana/Data
 mkdir -p ~/Hass
 #mkdir -p ~/Homepage
 mkdir -p ~/Influx
+mkdir -p ~/Kibana
 mkdir -p ~/Mass
 #mkdir -p ~/Matrix
 #mkdir -p ~/Mealie
