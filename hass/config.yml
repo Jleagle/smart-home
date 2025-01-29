@@ -218,6 +218,8 @@ google_assistant:
       name: "PC"
     switch.wake_tv:
       name: "TV"
+    switch.shelly_garden_switch_0:
+      name: "Garden Light"
 
     # Tuya
     light.floor_lights:
