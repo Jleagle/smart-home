@@ -146,6 +146,15 @@ http:
         certResolver: "myresolver"
       entryPoints:
         - "websecure"
+    kibana-route:
+      rule: "Host(`kibana.jimeagle.com`)"
+      service: "kibana-service"
+      middlewares:
+        - "traefik-forward-auth"
+      tls:
+        certResolver: "myresolver"
+      entryPoints:
+        - "websecure"
     mass-route:
       rule: "Host(`mass.jimeagle.com`)"
       service: "mass-service"
@@ -454,6 +463,10 @@ http:
       loadBalancer:
         servers:
           - url: "http://localhost:8123"
+    kibana-service:
+      loadBalancer:
+        servers:
+          - url: "http://localhost:5601"
     mass-service:
       loadBalancer:
         servers:
