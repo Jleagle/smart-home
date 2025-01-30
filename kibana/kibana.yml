@@ -1,0 +1,9 @@
+elasticsearch:
+  hosts: [ "http://elastic:9200" ]
+  username: "kibana_system"
+  password: '${ELASTIC_KIBANA_PW}'
+
+server:
+  host: "0.0.0.0"
+  port: "5601"
+  publicBaseUrl: "https://elastic.jimeagle.com"
