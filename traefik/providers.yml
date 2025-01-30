@@ -92,6 +92,13 @@ http:
         certResolver: "myresolver"
       entryPoints:
         - "websecure"
+    elastic-route:
+      rule: "Host(`elastic.jimeagle.com`)"
+      service: "elastic-service"
+      tls:
+        certResolver: "myresolver"
+      entryPoints:
+        - "websecure"
     esphome-route:
       rule: "Host(`esphome.jimeagle.com`)"
       service: "esphome-service"
@@ -435,6 +442,10 @@ http:
       loadBalancer:
         servers:
           - url: "http://localhost:3000"
+    elastic-service:
+      loadBalancer:
+        servers:
+          - url: "http://localhost:9200"
     #    cockpit-service:
     #      loadBalancer:
     #        servers:
