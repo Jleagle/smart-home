@@ -73,6 +73,8 @@ services:
     hostname: "elastic"
     restart: "unless-stopped"
     user: "1000:1000"
+    ports:
+      - "9200:9200"
     environment:
       - "ES_JAVA_OPTS=-Xms1g -Xmx1g"
       - "cluster.name=gsc-cluster"
@@ -91,6 +93,8 @@ services:
     hostname: "kibana"
     restart: "unless-stopped"
     user: "1000:1000"
+    ports:
+      - "5601:5601"
     depends_on:
       - "elastic"
     volumes:
