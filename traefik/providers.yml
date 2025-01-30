@@ -257,13 +257,13 @@ http:
         certResolver: "myresolver"
       entryPoints:
         - "websecure"
-      overseerr-route:
-        rule: "Host(`overseerr.jimeagle.com`)"
-        service: "overseerr-service"
-        tls:
-          certResolver: "myresolver"
-        entryPoints:
-          - "websecure"
+    overseerr-route:
+      rule: "Host(`overseerr.jimeagle.com`)"
+      service: "overseerr-service"
+      tls:
+        certResolver: "myresolver"
+      entryPoints:
+        - "websecure"
     #    pihole-route:
     #      rule: "Host(`pihole.jimeagle.com`)"
     #      service: "pihole-service"
