@@ -251,8 +251,8 @@ http:
     nzbget-route:
       rule: "Host(`nzbget.jimeagle.com`)"
       service: "nzbget-service"
-      #      middlewares: // App needs access
-      #        - "traefik-forward-auth"
+      middlewares:
+        - "traefik-forward-auth"
       tls:
         certResolver: "myresolver"
       entryPoints:
@@ -303,8 +303,8 @@ http:
     radarr-route:
       rule: "Host(`radarr.jimeagle.com`)"
       service: "radarr-service"
-      #      middlewares: // App needs access
-      #        - "traefik-forward-auth"
+      middlewares:
+        - "traefik-forward-auth"
       tls:
         certResolver: "myresolver"
       entryPoints:
@@ -364,8 +364,8 @@ http:
     sonarr-route:
       rule: "Host(`sonarr.jimeagle.com`)"
       service: "sonarr-service"
-      #      middlewares: // App needs access
-      #        - "traefik-forward-auth"
+      middlewares:
+        - "traefik-forward-auth"
       tls:
         certResolver: "myresolver"
       entryPoints:
