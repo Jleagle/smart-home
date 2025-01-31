@@ -249,6 +249,9 @@ services:
       - "TZ=Europe/London"
     volumes:
       - "${HOME}/Overseerr:/config"
+    dns:
+      - "1.1.1.1" # Speeds things up for some reason
+      - "8.8.8.8"
 
   plex:
     image: "linuxserver/plex:latest"
