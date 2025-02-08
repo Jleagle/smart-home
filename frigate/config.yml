@@ -26,8 +26,8 @@ record:
     retain:
       mode: active_objects
       objects:
-        dog: 5
-        person: 1
+        person: 7
+        car: 1
 
 cameras:
   driveway:
