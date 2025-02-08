@@ -65,7 +65,7 @@ services:
       - "3000:3000"
     volumes:
       - "${HOME}/DoubleTake:/.storage"
-      - "./doubletake/config.yml:/.storage/config.yml"
+      - "./doubletake/config.yml:/.storage/config/config.yml"
 
   elastic:
     image: "elasticsearch:8.17.1"
