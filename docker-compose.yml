@@ -66,9 +66,7 @@ services:
     volumes:
       - "${HOME}/DoubleTake:/.storage"
       - "./doubletake/config.yml:/.storage/config/config.yml"
-    environment:
-      - "DOUBLE_TAKE_DETECTORS_REKOGNITION_AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}"
-      - "DOUBLE_TAKE_DETECTORS_REKOGNITION_AWS_ACCESS_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}"
+      - "/home/james/.doubletake-secrets.yml:/config/secrets.yaml"
 
   elastic:
     image: "elasticsearch:8.17.1"
