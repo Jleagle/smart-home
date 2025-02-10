@@ -9,6 +9,11 @@ genai:
   api_key: "{FRIGATE_GEMINI_API_KEY}"
   model: "gemini-1.5-flash"
 
+semantic_search: # Needed for genai to work
+  enabled: True
+  reindex: False
+  model_size: small
+
 birdseye:
   enabled: false
   mode: "motion"
