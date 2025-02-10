@@ -119,8 +119,8 @@ detectors:
     opencv_face_required: true
 
   deepstack:
-    url:
-    key:
+    url: "http://deepstack:5000"
+    key: ""
     # number of seconds before the request times out and is aborted
     timeout: 15
     # require opencv to find a face before processing with detector
