@@ -7,7 +7,7 @@ genai:
   enabled: "True"
   provider: "gemini"
   api_key: "{FRIGATE_GENAI_KEY}"
-  model: "gemini-2.0-flash"
+  model: "gemini-1.5-flash"
 
 birdseye:
   enabled: false
