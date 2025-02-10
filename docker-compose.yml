@@ -63,7 +63,7 @@ services:
     #    ports:
     #      - '5003:5000'
     environment:
-      - "VISION-DETECTION=True"
+      - "VISION-FACE=True"
       - "MODE=Medium"
     volumes:
       - "${HOME}/Deepstack:/datastore"
