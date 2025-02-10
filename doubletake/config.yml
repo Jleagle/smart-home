@@ -171,5 +171,4 @@ ui:
 # self hosted version of plausible.io
 # 100% anonymous, used to help improve project
 # no cookies and fully compliant with GDPR, CCPA and PECR
-telemetry: true
-
+telemetry: false
