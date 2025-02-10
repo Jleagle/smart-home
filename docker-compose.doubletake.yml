@@ -1,0 +1,38 @@
+services:
+
+  doubletake:
+    image: "skrashevich/double-take:latest"
+    container_name: "doubletake"
+    hostname: "doubletake"
+    restart: "unless-stopped"
+    ports:
+      - "3000:3000"
+    volumes:
+      - "${HOME}/DoubleTake:/.storage"
+      - "./doubletake/config.yml:/.storage/config/config.yml"
+      - "/home/james/.doubletake-secrets.yml:/config/secrets.yaml"
+
+  codeprojectai:
+    image: "codeproject/ai-server"
+    container_name: "codeprojectai"
+    hostname: "codeprojectai"
+    restart: "unless-stopped"
+    #    ports:
+    #      - "32168:32168"
+    environment:
+      - "TZ=Europe/London"
+    volumes:
+      - "${HOME}/CodeProjectAI/Data:/etc/codeproject/ai"
+      - "${HOME}/CodeProjectAI/Modules:/app/modules"
+
+  deepstack:
+    container_name: "deepstack"
+    restart: "unless-stopped"
+    image: "deepquestai/deepstack"
+    #    ports:
+    #      - '5003:5000'
+    environment:
+      - "VISION-FACE=True"
+      - "MODE=Medium"
+    volumes:
+      - "${HOME}/Deepstack:/datastore"

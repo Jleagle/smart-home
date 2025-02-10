@@ -1,3 +1,7 @@
+include:
+  - "docker-compose.doubletake.yml"
+  - "docker-compose.share.yml"
+
 services:
 
   2fauth:
@@ -38,14 +42,6 @@ services:
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock"
 
-  frigate-share:
-    image: "ghcr.io/jleagle/frigate-share:main"
-    container_name: "frigate-share"
-    hostname: "frigate-share"
-    restart: "unless-stopped"
-    ports:
-      - "5002:5002"
-
   changedetection:
     image: "ghcr.io/dgtlmoon/changedetection.io:latest"
     container_name: "changedetection"
@@ -55,43 +51,6 @@ services:
       - "5001:5000"
     volumes:
       - "${HOME}/ChangeDetection:/datastore"
-
-  codeprojectai:
-    image: "codeproject/ai-server"
-    container_name: "codeprojectai"
-    hostname: "codeprojectai"
-    restart: "unless-stopped"
-    #    ports:
-    #      - "32168:32168"
-    environment:
-      - "TZ=Europe/London"
-    volumes:
-      - "${HOME}/CodeProjectAI/Data:/etc/codeproject/ai"
-      - "${HOME}/CodeProjectAI/Modules:/app/modules"
-
-  deepstack:
-    container_name: "deepstack"
-    restart: "unless-stopped"
-    image: "deepquestai/deepstack"
-    #    ports:
-    #      - '5003:5000'
-    environment:
-      - "VISION-FACE=True"
-      - "MODE=Medium"
-    volumes:
-      - "${HOME}/Deepstack:/datastore"
-
-  doubletake:
-    image: "skrashevich/double-take:latest"
-    container_name: "doubletake"
-    hostname: "doubletake"
-    restart: "unless-stopped"
-    ports:
-      - "3000:3000"
-    volumes:
-      - "${HOME}/DoubleTake:/.storage"
-      - "./doubletake/config.yml:/.storage/config/config.yml"
-      - "/home/james/.doubletake-secrets.yml:/config/secrets.yaml"
 
   elastic:
     image: "elasticsearch:8.17.1"
@@ -351,15 +310,6 @@ services:
       - "PUID=1000"
       - "TZ=Europe/London"
 
-  radarr-share:
-    image: "ghcr.io/jleagle/radarr-share:main"
-    container_name: "radarr-share"
-    hostname: "radarr-share"
-    restart: "unless-stopped"
-    entrypoint: "/root/radarr-share -radarr-key ${RADARR_KEY}"
-    ports:
-      - "7879:7879"
-
   redis:
     image: "redis:7"
     container_name: "redis"
@@ -422,15 +372,6 @@ services:
       - "${HOME}/NZBGet/Downloads:/downloads"
       - "${HOME}/Media/Television:/tv"
       - "/etc/localtime:/etc/localtime:ro"
-
-  sonarr-share:
-    image: "ghcr.io/jleagle/sonarr-share:main"
-    container_name: "sonarr-share"
-    hostname: "sonarr-share"
-    restart: "unless-stopped"
-    entrypoint: "/root/sonarr-share -sonarr-key ${SONARR_KEY}"
-    ports:
-      - "8990:8990"
 
   telegraf:
     image: "telegraf:latest"
