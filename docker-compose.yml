@@ -56,6 +56,19 @@ services:
     volumes:
       - "${HOME}/ChangeDetection:/datastore"
 
+  codeprojectai:
+    image: "codeproject/ai-server"
+    container_name: "codeprojectai"
+    hostname: "codeprojectai"
+    restart: "unless-stopped"
+    #    ports:
+    #      - "32168:32168"
+    environment:
+      - "TZ=Europe/London"
+    volumes:
+      - "${HOME}/CodeProjectAI/Data:/etc/codeproject/ai"
+      - "${HOME}/CodeProjectAI/Modules:/app/modules"
+
   deepstack:
     container_name: "deepstack"
     restart: "unless-stopped"

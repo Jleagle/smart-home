@@ -8,6 +8,7 @@ mkdir -p ~/AdGuard/Work
 #mkdir -p ~/Authentik/Templates
 mkdir -p ~/Bazarr
 mkdir -p ~/ChangeDetection
+mkdir -p ~/CodeProjectAI
 mkdir -p ~/Deepstack
 mkdir -p ~/DDNS
 mkdir -p ~/DoubleTake
