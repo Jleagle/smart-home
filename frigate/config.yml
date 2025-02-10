@@ -1,7 +1,7 @@
 # https://docs.frigate.video/configuration/index
 
 mqtt:
-  host: 192.168.0.7
+  host: "192.168.0.7"
 
 genai:
   enabled: "True"
@@ -11,26 +11,26 @@ genai:
 
 birdseye:
   enabled: false
-  mode: motion
+  mode: "motion"
 
 ffmpeg:
   # https://docs.frigate.video/configuration/hardware_acceleration
   # https://docs.frigate.video/configuration/ffmpeg_presets/
-  hwaccel_args: preset-intel-qsv-h264
-  input_args: preset-rtsp-restream
+  hwaccel_args: "preset-intel-qsv-h264"
+  input_args: "preset-rtsp-restream"
   output_args:
-    record: preset-record-generic-audio-aac
+    record: "preset-record-generic-audio-aac"
 
 objects:
   track:
-    - person
-    - car
+    - "person"
+    - "car"
 
 record:
   enabled: true
   events:
     retain:
-      mode: active_objects
+      mode: "active_objects"
       objects:
         person: 7
         car: 1
@@ -39,18 +39,18 @@ cameras:
   driveway:
     ffmpeg:
       inputs:
-        - path: rtsp://{FRIGATE_DRIVEWAY_USERNAME}:{FRIGATE_DRIVEWAY_PASSWORD}@192.168.0.12:554/Preview_01_main
+        - path: "rtsp://{FRIGATE_DRIVEWAY_USERNAME}:{FRIGATE_DRIVEWAY_PASSWORD}@192.168.0.12:554/Preview_01_main"
           roles:
-            - record
-        - path: rtsp://{FRIGATE_DRIVEWAY_USERNAME}:{FRIGATE_DRIVEWAY_PASSWORD}@192.168.0.12:554/Preview_01_sub
+            - "record"
+        - path: "rtsp://{FRIGATE_DRIVEWAY_USERNAME}:{FRIGATE_DRIVEWAY_PASSWORD}@192.168.0.12:554/Preview_01_sub"
           roles:
-            - detect
+            - "detect"
 
 detectors:
   coral:
-    type: edgetpu
-    device: pci
+    type: "edgetpu"
+    device: "pci"
     num_threads: 2
   #  cpu:
-  #    type: cpu
+  #    type: "cpu"
   #    num_threads: 1
