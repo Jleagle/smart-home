@@ -56,6 +56,18 @@ services:
     volumes:
       - "${HOME}/ChangeDetection:/datastore"
 
+  deepstack:
+    container_name: "deepstack"
+    restart: "unless-stopped"
+    image: "deepquestai/deepstack"
+    #    ports:
+    #      - '5003:5000'
+    environment:
+      - "VISION-DETECTION=True"
+      - "MODE=Medium"
+    volumes:
+      - "${HOME}/Deepstack:/datastore"
+
   doubletake:
     image: "skrashevich/double-take:latest"
     container_name: "doubletake"
