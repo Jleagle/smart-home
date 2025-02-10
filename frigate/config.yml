@@ -6,7 +6,7 @@ mqtt:
 genai:
   enabled: "True"
   provider: "gemini"
-  api_key: "{FRIGATE_GENAI_KEY}"
+  api_key: "{FRIGATE_GEMINI_API_KEY}"
   model: "gemini-1.5-flash"
 
 birdseye:
