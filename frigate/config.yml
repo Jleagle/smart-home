@@ -3,6 +3,12 @@
 mqtt:
   host: 192.168.0.7
 
+genai:
+  enabled: "True"
+  provider: "gemini"
+  api_key: "{FRIGATE_GENAI_KEY}"
+  model: "gemini-2.0-flash"
+
 birdseye:
   enabled: false
   mode: motion
