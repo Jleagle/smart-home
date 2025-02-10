@@ -7,7 +7,7 @@ genai:
   enabled: "True"
   provider: "gemini"
   api_key: "{FRIGATE_GEMINI_API_KEY}"
-  model: "gemini-1.5-flash"
+  model: "gemini-2.0-flash"
 
 semantic_search: # Needed for genai to work
   enabled: True
