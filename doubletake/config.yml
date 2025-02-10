@@ -8,11 +8,8 @@ auth: false
 token:
   image: 24h
 
-# enable mqtt subscribing and publishing (default: shown below)
 mqtt:
   host: 192.168.0.7
-  username:
-  password:
   client_id: doubletake
 
   topics:
@@ -25,7 +22,6 @@ mqtt:
     # mqtt topic where matches are published by camera name
     cameras: double-take/cameras
 
-# global detect settings (default: shown below)
 detect:
   match:
     # save match images
@@ -53,7 +49,6 @@ detect:
     # minimum area in pixels to keep an unknown result
     min_area: 0
 
-# frigate settings (default: shown below)
 frigate:
   url: http://frigate:5000
 
@@ -89,26 +84,6 @@ frigate:
     # height of frigate image passed for facial recognition
     height: 500
 
-# camera settings (default: shown below)
-cameras:
-  front-door:
-  # apply masks before processing image
-  # masks:
-  #   # list of x,y coordinates to define the polygon of the zone
-  #   coordinates:
-  #     - 1920,0,1920,328,1638,305,1646,0
-  #   # show the mask on the final saved image (helpful for debugging)
-  #   visible: false
-  #   # size of camera stream used in resizing masks
-  #   size: 1920x1080
-
-  # snapshot:
-  #   # process any jpeg encoded mqtt topic for facial recognition
-  #   topic:
-  #   # process any http image for facial recognition
-  #   url:
-
-# detector settings (default: shown below)
 detectors:
   deepstack:
     url: "http://deepstack:5000"
@@ -133,41 +108,22 @@ opencv:
   min_size_width: 30
   min_size_height: 30
 
-# time settings (default: shown below)
 time:
-  # defaults to iso 8601 format with support for token-based formatting
-  # https://github.com/moment/luxon/blob/master/docs/formatting.md#table-of-tokens
-  format:
-  # time zone used in logs
-  timezone: UTC
+  timezone: Europe/London
 
-# log settings (default: shown below)
-# options: silent, error, warn, info, http, verbose, debug, silly
 logs:
   level: info
-  sql: false # trace sql queries
+  sql: false
 
-# ui settings (default: shown below)
 ui:
-  # base path of ui
-  path:
-
   pagination:
-    # number of results per page
-    limit: 50
+    limit: 100
 
   thumbnails:
-    # value between 0-100
     quality: 95
-    # value in pixels
     width: 500
 
   logs:
-    # number of lines displayed
     lines: 500
 
-# telemetry settings (default: shown below)
-# self hosted version of plausible.io
-# 100% anonymous, used to help improve project
-# no cookies and fully compliant with GDPR, CCPA and PECR
 telemetry: false
