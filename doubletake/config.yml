@@ -110,14 +110,6 @@ cameras:
 
 # detector settings (default: shown below)
 detectors:
-  rekognition:
-    aws_access_key_id: !secret aws_rekognition_access_key_id
-    aws_secret_access_key: !secret aws_rekognitzion_secret_access_key
-    aws_region: eu-west-2
-    collection_id: double-take
-    # require opencv to find a face before processing with detector
-    opencv_face_required: true
-
   deepstack:
     url: "http://deepstack:5000"
     key: ""
