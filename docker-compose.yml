@@ -112,10 +112,6 @@ services:
       - "1935:1935" # RTMP feeds
       - "5000:5000" # API
     environment:
-      - "FRIGATE_KITCHEN_USERNAME"
-      - "FRIGATE_KITCHEN_PASSWORD"
-      - "FRIGATE_DINING_USERNAME"
-      - "FRIGATE_DINING_PASSWORD"
       - "FRIGATE_DRIVEWAY_USERNAME"
       - "FRIGATE_DRIVEWAY_PASSWORD"
 
