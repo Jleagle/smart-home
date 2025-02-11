@@ -21,7 +21,7 @@ birdseye:
 ffmpeg:
   # https://docs.frigate.video/configuration/hardware_acceleration
   # https://docs.frigate.video/configuration/ffmpeg_presets/
-  hwaccel_args: "preset-intel-qsv-h264"
+  hwaccel_args: "preset-vaapi"
   input_args: "preset-rtsp-restream"
   output_args:
     record: "preset-record-generic-audio-aac"
