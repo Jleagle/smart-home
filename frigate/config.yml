@@ -3,16 +3,16 @@
 mqtt:
   host: "192.168.0.7"
 
-#genai:
-#  enabled: "True"
-#  provider: "gemini"
-#  api_key: "{FRIGATE_GENAI_KEY}"
-#  model: "gemini-2.0-flash"
-#
-#semantic_search: # Needed for genai to work
-#  enabled: True
-#  reindex: False
-#  model_size: small
+genai:
+  enabled: "True"
+  provider: "gemini"
+  api_key: "{FRIGATE_GENAI_KEY}"
+  model: "gemini-2.0-flash"
+
+semantic_search: # Needed for genai to work
+  enabled: True
+  reindex: False
+  model_size: small
 
 birdseye:
   enabled: false
