@@ -25,7 +25,6 @@ ffmpeg:
   input_args: "preset-rtsp-restream"
   output_args:
     record: "preset-record-generic-audio-aac"
-  path: "5.0"
 
 objects:
   track:
