@@ -64,3 +64,9 @@ detectors:
   #  cpu:
   #    type: "cpu"
   #    num_threads: 1
+
+# Optional
+ui:
+  timezone: Europe/London
+  time_format: "24hour"
+  strftime_fmt: "%Y/%m/%d %H:%M"
