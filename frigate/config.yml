@@ -59,6 +59,14 @@ cameras:
       zone1:
         coordinates: "1,0.637,1,1,0,1,0,0.514"
 
+review:
+  alerts:
+    required_zones:
+      - "zone1"
+  detections:
+    required_zones:
+      - "zone1"
+
 detectors:
   coral:
     type: "edgetpu"
