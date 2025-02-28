@@ -57,7 +57,7 @@ cameras:
             - "detect"
     zones:
       zone1:
-        coordinates: "1,0.637,1,1,0,1,0,0.514"
+        coordinates: "1,0.683,1,1,0,1,0,0.561"
 
 review:
   alerts:
