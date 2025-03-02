@@ -239,6 +239,13 @@ google_assistant:
       name: "Salt Lamp"
       room: "Living Room"
 
+    # Buttons
+    input_button.pause_tv:
+      name: "Pause TV"
+    input_button.play_tv:
+      name: "Play TV"
+
+
 light:
   - platform: "blink1_status"
 
