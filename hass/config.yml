@@ -200,11 +200,11 @@ google_assistant:
     light.hallway_lights:
       name: "Hallway Lights"
 
-    # Wake On Lan
-    switch.wake_pc:
-      name: "PC"
-    switch.wake_tv:
-      name: "TV"
+    # Switches
+    #    switch.wake_pc:
+    #      name: "PC"
+    #    switch.wake_tv:
+    #      name: "TV"
     switch.shelly_garden_switch_0:
       name: "Garden Light"
 
