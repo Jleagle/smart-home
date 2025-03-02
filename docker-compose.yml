@@ -370,6 +370,32 @@ services:
       - "${HOME}/Media/Television:/tv"
       - "/etc/localtime:/etc/localtime:ro"
 
+  strava:
+    image: "robiningelbrecht/strava-statistics:latest"
+    container_name: "strava"
+    hostname: "strava"
+    restart: "unless-stopped"
+    volumes:
+      - "${HOME}/Strava/build:/var/www/build"
+      - "${HOME}/Strava/database:/var/www/storage/database"
+      - "${HOME}/Strava/files:/var/www/storage/files"
+    ports:
+      - "8082:8080"
+    environment:
+      - "MANIFEST_APP_URL=https://strava.jimeagle.com/"
+      - "STRAVA_CLIENT_ID=150624"
+      - "STRAVA_CLIENT_SECRET=${STRAVA_CLIENT_SECRET}"
+      - "STRAVA_REFRESH_TOKEN=${STRAVA_REFRESH_TOKEN}"
+      - "NUMBER_OF_NEW_ACTIVITIES_TO_PROCESS_PER_IMPORT=250"
+      - "IMPORT_AND_BUILD_SCHEDULE='0 4 * * *'"
+      - "TZ=Europe/London"
+      - "LOCALE=en_US"
+      - "UNIT_SYSTEM=metric"
+      - "TIME_FORMAT=24"
+      - "DATE_FORMAT=DAY-MONTH-YEAR"
+      - "SPORT_TYPES_TO_IMPORT='[]'"
+      - "ATHLETE_BIRTHDAY=1987-10-02"
+
   telegraf:
     image: "telegraf:latest"
     container_name: "telegraf"

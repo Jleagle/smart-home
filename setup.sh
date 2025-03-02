@@ -46,6 +46,7 @@ mkdir -p ~/Redis/Data
 #mkdir -p ~/SerpBear
 mkdir -p ~/Slskd
 mkdir -p ~/Sonarr
+mkdir -p ~/Strava
 mkdir -p ~/Syncthing/Config
 mkdir -p ~/Syncthing/Data
 mkdir -p ~/Tautulli
