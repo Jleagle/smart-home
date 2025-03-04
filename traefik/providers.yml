@@ -370,6 +370,15 @@ http:
         certResolver: "myresolver"
       entryPoints:
         - "websecure"
+    strava-route:
+      rule: "Host(`strava.jimeagle.com`)"
+      service: "strava-service"
+      middlewares:
+        - "traefik-forward-auth"
+      tls:
+        certResolver: "myresolver"
+      entryPoints:
+        - "websecure"
     tautulli-route:
       rule: "Host(`tautulli.jimeagle.com`)"
       service: "tautulli-service"
@@ -568,6 +577,10 @@ http:
       loadBalancer:
         servers:
           - url: "http://localhost:8989"
+    strava-service:
+      loadBalancer:
+        servers:
+          - url: "http://localhost:8082"
     tautulli-service:
       loadBalancer:
         servers:
