@@ -396,6 +396,12 @@ services:
       - "SPORT_TYPES_TO_IMPORT=[]"
       - "ATHLETE_BIRTHDAY=1987-10-02"
       - "ATHLETE_WEIGHTS=[]"
+      - "FTP_VALUES=[]"
+      - "PROFILE_PICTURE_URL="
+      - "ZWIFT_LEVEL="
+      - "ZWIFT_RACING_SCORE="
+      - "NTFY_URL="
+      - "ACTIVITIES_TO_SKIP_DURING_IMPORT=[]"
 
   telegraf:
     image: "telegraf:latest"
