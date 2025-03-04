@@ -393,7 +393,7 @@ services:
       - "UNIT_SYSTEM=metric"
       - "TIME_FORMAT=24"
       - "DATE_FORMAT=DAY-MONTH-YEAR"
-      - "SPORT_TYPES_TO_IMPORT='[]'"
+      - "SPORT_TYPES_TO_IMPORT=[]"
       - "ATHLETE_BIRTHDAY=1987-10-02"
 
   telegraf:
