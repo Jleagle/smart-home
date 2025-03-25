@@ -1,6 +1,6 @@
 api:
 automation: !include automations.yaml
-#cloud:
+cloud: # Needed for Smart Things
 counter:
 dhcp:
 diagnostics:
