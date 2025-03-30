@@ -201,6 +201,7 @@ services:
       - "TZ=Europe/London"
     volumes:
       - "${HOME}/NodeRed:/data"
+      - "${HOME}/Media/Frigate:/media/frigate:ro"
       - "./node-red/settings.js:/data/settings.js:ro"
 
   nzbget:
