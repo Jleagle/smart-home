@@ -8,6 +8,7 @@ genai:
   provider: "gemini"
   api_key: "{FRIGATE_GENAI_KEY}"
   model: "gemini-2.0-flash"
+  prompt: "Describe the {label} in the sequence of images with as much detail as possible. Do not describe the background."
 
 semantic_search: # Needed for genai to work
   enabled: false
