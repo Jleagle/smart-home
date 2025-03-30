@@ -233,7 +233,7 @@ http:
       entryPoints:
         - "websecure"
     nodered-route:
-      rule: "Host(`nodered.jimeagle.com`) && !PathPrefix(`/latest-events/`)"
+      rule: "Host(`nodered.jimeagle.com`) && !PathPrefix(`/reviews/`)"
       service: "nodered-service"
       middlewares:
         - "traefik-forward-auth"
@@ -242,7 +242,7 @@ http:
       entryPoints:
         - "websecure"
     nodered-route-public:
-      rule: "Host(`nodered.jimeagle.com`) && PathPrefix(`/latest-events/`)"
+      rule: "Host(`nodered.jimeagle.com`) && PathPrefix(`/reviews/`)"
       service: "nodered-service"
       tls:
         certResolver: "myresolver"
