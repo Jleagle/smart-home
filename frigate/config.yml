@@ -9,6 +9,8 @@ genai:
   api_key: "{FRIGATE_GENAI_KEY}"
   model: "gemini-2.0-flash"
   prompt: "Describe the {label} in the sequence of images with as much detail as possible. Do not describe the background."
+  object_prompts:
+    person: "Describe the person in the sequence of images in one sentence. Try to include the company they work for and if they are holding anything."
 
 semantic_search: # Needed for genai to work
   enabled: true
