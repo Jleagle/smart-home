@@ -84,8 +84,8 @@ ui:
   strftime_fmt: "%Y/%m/%d %H:%M"
 
 telemetry:
-  version_check: False
+  version_check: false
   stats:
-    amd_gpu_stats: False
-    intel_gpu_stats: False
-    network_bandwidth: False
+    amd_gpu_stats: false
+    intel_gpu_stats: false
+    network_bandwidth: false
