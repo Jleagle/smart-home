@@ -4,7 +4,7 @@ mqtt:
   host: "192.168.0.7"
 
 genai:
-  enabled: true
+  enabled: false
   provider: "gemini"
   api_key: "{FRIGATE_GENAI_KEY}"
   model: "gemini-2.0-flash"
@@ -13,7 +13,7 @@ genai:
     person: "Describe the person in the sequence of images in one sentence. Try to include the company they work for and if they are holding anything."
 
 semantic_search: # Needed for genai to work
-  enabled: true
+  enabled: false
   reindex: false
   model_size: small
 
