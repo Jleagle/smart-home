@@ -81,11 +81,7 @@ detectors:
     type: "edgetpu"
     device: "pci"
     num_threads: 2
-  #  cpu:
-  #    type: "cpu"
-  #    num_threads: 1
 
-# Optional
 ui:
   timezone: "Europe/London"
   time_format: "24hour"
