@@ -15,7 +15,7 @@ genai:
 semantic_search: # Needed for genai to work
   enabled: false
   reindex: false
-  model_size: small
+  model_size: "small"
 
 birdseye:
   enabled: false
@@ -81,7 +81,7 @@ detectors:
 
 # Optional
 ui:
-  timezone: Europe/London
+  timezone: "Europe/London"
   time_format: "24hour"
   strftime_fmt: "%Y/%m/%d %H:%M"
 
