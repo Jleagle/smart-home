@@ -29,7 +29,7 @@ ffmpeg:
 objects:
   track:
     - "person"
-    - "car"
+    #- "car"
 
 record:
   enabled: true
