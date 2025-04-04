@@ -85,7 +85,7 @@ detectors:
 ui:
   timezone: "Europe/London"
   time_format: "24hour"
-  strftime_fmt: "%Y/%m/%d %H:%M"
+  strftime_fmt: "%Y-%m-%d %H:%M"
 
 telemetry:
   version_check: false
