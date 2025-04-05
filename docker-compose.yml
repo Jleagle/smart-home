@@ -292,7 +292,8 @@ services:
       - "${HOME}/Prowlarr:/config"
 
   radarr:
-    image: "linuxserver/radarr:latest"
+    #image: "linuxserver/radarr:latest"
+    build: "./radarr/"
     container_name: "radarr"
     hostname: "radarr"
     restart: "unless-stopped"
@@ -355,7 +356,8 @@ services:
       - "SLSKD_SHARED_DIR=/downloads"
 
   sonarr:
-    image: "linuxserver/sonarr:latest"
+    #image: "linuxserver/sonarr:latest"
+    build: "./sonarr/"
     container_name: "sonarr"
     hostname: "sonarr"
     restart: "unless-stopped"
