@@ -1,3 +1,17 @@
 <Config>
+    <LogLevel>info</LogLevel>
+    <EnableSsl>False</EnableSsl>
+    <Port>8989</Port>
+    <SslPort>9898</SslPort>
+    <UrlBase></UrlBase>
+    <BindAddress>*</BindAddress>
+    <AuthenticationMethod>Forms</AuthenticationMethod>
+    <UpdateMechanism>Docker</UpdateMechanism>
+    <LaunchBrowser>False</LaunchBrowser>
+    <Branch>main</Branch>
+    <AnalyticsEnabled>False</AnalyticsEnabled>
+    <InstanceName>Sonarr</InstanceName>
     <AuthenticationRequired>Remote</AuthenticationRequired>
+    <SslCertPath></SslCertPath>
+    <SslCertPassword></SslCertPassword>
 </Config>
