@@ -8,12 +8,11 @@ genai:
   provider: "gemini"
   api_key: "{FRIGATE_GENAI_KEY}"
   model: "gemini-2.0-flash"
-  prompt: "Describe the {label} in the sequence of images with as much detail as possible. Do not describe the background."
 
 semantic_search: # Needed for genai to work
   enabled: false
   reindex: false
-  model_size: small
+  model_size: "small"
 
 birdseye:
   enabled: false
@@ -30,7 +29,7 @@ ffmpeg:
 objects:
   track:
     - "person"
-    - "car"
+    #- "car"
 
 record:
   enabled: true
@@ -43,9 +42,8 @@ record:
 
 motion:
   mask:
-    - "0.186,0.938,0.252,0.935,0.251,0.971,0.186,0.973" # Time
-    - "0.419,0.043,0.549,0.035,0.551,0.246,0.424,0.249" # Palm tree
-    - "0.496,0.319,0,0.124,0,0.386,0.495,0.488" # Bush
+    - "0.149,0.934,0.254,0.935,0.254,0.975,0.151,0.977" # Time
+    #- "0,0.517,0,0,1,0,1,0.206,0.476,0.236,0.477,0.512" # Bush
 
 cameras:
   driveway:
@@ -59,7 +57,16 @@ cameras:
             - "detect"
     zones:
       zone1:
-        coordinates: "1,0.683,1,1,0,1,0,0.561"
+        coordinates: "1,0.789,1,1,0,1,0,0.647"
+    genai:
+      enabled: true
+      use_snapshot: true
+      prompt: "Describe the person in the sequence of images in one sentence. Try to include the company they work for and if they are holding anything."
+      objects:
+        - "person"
+      required_zones:
+        - "zone1"
+      debug_save_thumbnails: false
 
 review:
   alerts:
@@ -74,19 +81,15 @@ detectors:
     type: "edgetpu"
     device: "pci"
     num_threads: 2
-  #  cpu:
-  #    type: "cpu"
-  #    num_threads: 1
 
-# Optional
 ui:
-  timezone: Europe/London
+  timezone: "Europe/London"
   time_format: "24hour"
-  strftime_fmt: "%Y/%m/%d %H:%M"
+  strftime_fmt: "%Y-%m-%d %H:%M"
 
 telemetry:
-  version_check: False
+  version_check: false
   stats:
-    amd_gpu_stats: False
-    intel_gpu_stats: False
-    network_bandwidth: False
+    amd_gpu_stats: false
+    intel_gpu_stats: false
+    network_bandwidth: false
