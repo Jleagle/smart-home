@@ -292,8 +292,7 @@ services:
       - "${HOME}/Prowlarr:/config"
 
   radarr:
-    #image: "linuxserver/radarr:latest"
-    build: "./radarr/"
+    image: "linuxserver/radarr:latest"
     container_name: "radarr"
     hostname: "radarr"
     restart: "unless-stopped"
@@ -308,6 +307,8 @@ services:
       - "PGID=1000"
       - "PUID=1000"
       - "TZ=Europe/London"
+      # https://wiki.servarr.com/en/useful-tools#using-environment-variables-for-config
+      - "RADARR__AUTH__REQUIRED=Remote"
 
   redis:
     image: "redis:7"
@@ -356,8 +357,7 @@ services:
       - "SLSKD_SHARED_DIR=/downloads"
 
   sonarr:
-    #image: "linuxserver/sonarr:latest"
-    build: "./sonarr/"
+    image: "linuxserver/sonarr:latest"
     container_name: "sonarr"
     hostname: "sonarr"
     restart: "unless-stopped"
@@ -367,6 +367,8 @@ services:
       - "PGID=1000"
       - "PUID=1000"
       - "TZ=Europe/London"
+      # https://wiki.servarr.com/en/useful-tools#using-environment-variables-for-config
+      - "SONARR__AUTH__REQUIRED=Remote"
     volumes:
       - "${HOME}/Sonarr:/config"
       - "${HOME}/NZBGet/Downloads:/downloads"
