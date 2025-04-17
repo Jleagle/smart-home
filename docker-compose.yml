@@ -356,7 +356,7 @@ services:
       - "ZWIFT_LEVEL="
       - "ZWIFT_RACING_SCORE="
       - "NTFY_URL="
-      - "ACTIVITIES_TO_SKIP_DURING_IMPORT=[]"
+      - "ACTIVITIES_TO_SKIP_DURING_IMPORT=[11126767554]"
 
   telegraf:
     image: "telegraf:latest"
