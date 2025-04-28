@@ -29,7 +29,7 @@ ffmpeg:
 objects:
   track:
     - "person"
-    #- "car"
+    - "dog"
 
 record:
   enabled: true
@@ -37,8 +37,8 @@ record:
     retain:
       mode: "active_objects"
       objects:
-        person: 7
-        car: 1
+        person: 3
+        dog: 3
 
 motion:
   mask:
