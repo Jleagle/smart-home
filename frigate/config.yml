@@ -59,7 +59,7 @@ cameras:
       zone1:
         coordinates: "1,0.789,1,1,0,1,0,0.647"
     genai:
-      enabled: true
+      enabled: false
       use_snapshot: true
       prompt: "Describe the person in the sequence of images in one sentence. Try to include the company they work for and if they are holding anything."
       objects:
