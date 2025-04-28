@@ -413,6 +413,7 @@ services:
       - "APP_URL=https://login.jimeagle.com/"
       - "OAUTH_WHITELIST=${TINYAUTH_EMAILS}"
       - "PORT=3005"
+      - "SESSION_EXPIRY=432000"
 
   traefik-forward-auth:
     image: "thomseddon/traefik-forward-auth:latest"
