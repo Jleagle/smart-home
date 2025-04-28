@@ -123,6 +123,18 @@ services:
     environment:
       - "TZ=Europe/London"
 
+  huntarr:
+    image: "huntarr/huntarr:latest"
+    container_name: "huntarr"
+    hostname: "huntarr"
+    restart: "unless-stopped"
+    ports:
+      - "9705:9705"
+    volumes:
+      - "${HOME}/Huntarr:/config"
+    environment:
+      - "TZ=Europe/London"
+
   influx:
     image: "influxdb:2.5"
     container_name: "influx"

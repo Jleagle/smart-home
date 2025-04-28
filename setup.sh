@@ -19,6 +19,7 @@ mkdir -p ~/Frigate
 mkdir -p ~/Grafana/Data
 mkdir -p ~/Hass
 #mkdir -p ~/Homepage
+mkdir -p ~/Huntarr
 mkdir -p ~/Influx
 mkdir -p ~/Kibana
 mkdir -p ~/Mass
