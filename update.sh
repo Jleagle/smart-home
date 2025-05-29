@@ -8,4 +8,4 @@ docker compose pull
 docker compose up --detach --remove-orphans
 docker compose restart traefik
 
-docker system prune --all --force
+docker system prune --all --force &
