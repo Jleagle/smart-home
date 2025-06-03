@@ -20,7 +20,9 @@ general:
     #    "2025-01-10": 193
     # History of weight (in kg or pounds, depending on UNIT_SYSTEM). Needed to calculate relative w/kg.
     # Check https://github.com/robiningelbrecht/statistics-for-strava/wiki for more info.
-    weight_history:
+    # weightHistory:
+    #   "YYYY-MM-DD": 100
+    #   "YYYY-MM-DD": 200
     # Optional, history of FTP. Needed to calculate activity stress level.
     # Check https://github.com/robiningelbrecht/statistics-for-strava/wiki for more info. Example:
     # ftp_history
@@ -58,7 +60,7 @@ import:
   # Optional, the date (YYYY-MM-DD) from which you want to start importing activities.
   # Any activity recorded before this date, will not be imported.
   # This can be used if you want to skip the import of older activities. Leave empty to disable.
-  skip_activities_recorded_before: [ ]
+  # skip_activities_recorded_before: null
   # An array of activity ids to skip during import.
   # This allows you to skip specific activities during import.
   # ["123456789", "987654321"]

@@ -343,7 +343,7 @@ services:
     hostname: "strava"
     restart: "unless-stopped"
     volumes:
-      - "./strava/config.ini:/var/www/config/app"
+      - "./strava/:/var/www/config/app/"
       - "${HOME}/Strava/build:/var/www/build"
       - "${HOME}/Strava/database:/var/www/storage/database"
       - "${HOME}/Strava/files:/var/www/storage/files"
