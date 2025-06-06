@@ -28,6 +28,15 @@ http:
         certResolver: "myresolver"
       entryPoints:
         - "websecure"
+    beszel-route:
+      rule: "Host(`beszel.jimeagle.com`)"
+      service: "beszel-service"
+      middlewares:
+        - "traefik-forward-auth"
+      tls:
+        certResolver: "myresolver"
+      entryPoints:
+        - "websecure"
     cameras-route:
       rule: "Host(`cameras.jimeagle.com`)"
       service: "cameras-service"
@@ -264,6 +273,10 @@ http:
       loadBalancer:
         servers:
           - url: "http://localhost:8089"
+    beszel-service:
+      loadBalancer:
+        servers:
+          - url: "http://localhost:8090"
     cameras-service:
       loadBalancer:
         servers:
