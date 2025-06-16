@@ -109,25 +109,25 @@ services:
       - "FRIGATE_DRIVEWAY_USERNAME"
       - "FRIGATE_DRIVEWAY_PASSWORD"
 
-  grafana:
-    image: "grafana/grafana:latest"
-    container_name: "grafana"
-    hostname: "grafana"
-    restart: "unless-stopped"
-    user: "0"
-    ports:
-      - "3001:3000"
-    environment:
-      - "GRAFANA_SMTP_PASS"
-    volumes:
-      - "${HOME}/Grafana/Data:/var/lib/grafana"
-      - "./grafana/grafana.ini:/etc/grafana/grafana.ini:ro"
+  #  grafana:
+  #    image: "grafana/grafana:latest"
+  #    container_name: "grafana"
+  #    hostname: "grafana"
+  #    restart: "unless-stopped"
+  #    user: "0"
+  #    ports:
+  #      - "3001:3000"
+  #    environment:
+  #      - "GRAFANA_SMTP_PASS"
+  #    volumes:
+  #      - "${HOME}/Grafana/Data:/var/lib/grafana"
+  #      - "./grafana/grafana.ini:/etc/grafana/grafana.ini:ro"
 
-  grafana-image-renderer:
-    image: "grafana/grafana-image-renderer:latest"
-    container_name: "grafana-image-renderer"
-    hostname: "grafana-image-renderer"
-    restart: "unless-stopped"
+  #  grafana-image-renderer:
+  #    image: "grafana/grafana-image-renderer:latest"
+  #    container_name: "grafana-image-renderer"
+  #    hostname: "grafana-image-renderer"
+  #    restart: "unless-stopped"
 
   hass:
     image: "homeassistant/home-assistant:latest"
@@ -380,23 +380,23 @@ services:
       - "IMPORT_AND_BUILD_SCHEDULE='0 4 * * *'"
       - "TZ=Europe/London"
 
-  telegraf:
-    image: "telegraf:latest"
-    container_name: "telegraf"
-    hostname: "telegraf"
-    restart: "unless-stopped"
-    privileged: true
-    user: "telegraf:${DOCKER_USER_ID}"
-    environment:
-      - "INFLUX_TOKEN=${TELEGRAF_INFLUX_TOKEN}"
-      - "MINECRAFT_SERVER=${MINECRAFT_SERVER}"
-      - "MINECRAFT_PORT=${MINECRAFT_PORT}"
-      - "HOST_MOUNT_PREFIX=/hostfs"
-      - "HOST_PROC=/hostfs/proc"
-    volumes:
-      - "./telegraf/telegraf.conf:/etc/telegraf/telegraf.conf:ro"
-      - "/:/hostfs:ro"
-      - "/var/run/docker.sock:/var/run/docker.sock"
+  #  telegraf:
+  #    image: "telegraf:latest"
+  #    container_name: "telegraf"
+  #    hostname: "telegraf"
+  #    restart: "unless-stopped"
+  #    privileged: true
+  #    user: "telegraf:${DOCKER_USER_ID}"
+  #    environment:
+  #      - "INFLUX_TOKEN=${TELEGRAF_INFLUX_TOKEN}"
+  #      - "MINECRAFT_SERVER=${MINECRAFT_SERVER}"
+  #      - "MINECRAFT_PORT=${MINECRAFT_PORT}"
+  #      - "HOST_MOUNT_PREFIX=/hostfs"
+  #      - "HOST_PROC=/hostfs/proc"
+  #    volumes:
+  #      - "./telegraf/telegraf.conf:/etc/telegraf/telegraf.conf:ro"
+  #      - "/:/hostfs:ro"
+  #      - "/var/run/docker.sock:/var/run/docker.sock"
 
   traefik:
     image: "traefik:v2.9"
