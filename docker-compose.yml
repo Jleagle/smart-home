@@ -52,7 +52,7 @@ services:
     volumes:
       - "${HOME}/Beszel:/beszel_data"
     extra_hosts:
-      - "host.docker.internal:host-gateway"
+      - 'host.docker.internal:host-gateway'
 
   changedetection:
     image: "ghcr.io/dgtlmoon/changedetection.io:latest"
