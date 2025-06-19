@@ -58,8 +58,9 @@ services:
   beszel-agent:
     image: "henrygd/beszel-agent"
     container_name: "beszel-agent"
-    restart: "unless-stopped"
+    hostname: "beszel-agent"
     network_mode: "host"
+    restart: "unless-stopped"
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock:ro"
     environment:
