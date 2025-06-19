@@ -46,6 +46,7 @@ services:
     image: "henrygd/beszel"
     container_name: "beszel"
     hostname: "beszel"
+    network_mode: "host"
     restart: "unless-stopped"
     ports:
       - "8090:8090"
