@@ -1,4 +1,17 @@
 services:
+
+  2fauth:
+    image: "2fauth/2fauth:latest"
+    container_name: "2fauth"
+    volumes:
+      - "${HOME}/2FAuth:/2fauth"
+    ports:
+      - "8000:8000/tcp"
+    environment:
+      - "SITE_OWNER=jimeagle@gmail.com"
+      - "APP_KEY=${TWOFAUTH_KEY}"
+      - "APP_URL=2fauth.jimeagle.com"
+
   assistant-relay:
     image: "apipa169/assistant-relay:latest"
     container_name: "assistant-relay"
@@ -119,6 +132,27 @@ services:
     volumes:
       - "${HOME}/Elastic:/usr/share/elasticsearch/data"
 
+  esphome:
+    image: "esphome/esphome:latest"
+    container_name: "esphome"
+    hostname: "esphome"
+    restart: "unless-stopped"
+    network_mode: "host"
+    volumes:
+      - "${HOME}/ESPHome:/config"
+      - "/etc/localtime:/etc/localtime:ro"
+
+  influx:
+    image: "influxdb:2.5"
+    container_name: "influx"
+    hostname: "influx"
+    restart: "unless-stopped"
+    ports:
+      - "8086:8086"
+    volumes:
+      - "${HOME}/Influx:/home/influxdb/.influxdbv2/"
+      - "./influx/config.yml:/etc/influxdb2/config.yml:ro"
+
   kibana:
     image: "kibana:8.17.1"
     container_name: "kibana"
@@ -175,6 +209,26 @@ services:
       - "TZ=Europe/London"
     volumes:
       - "${HOME}/Go2rtc/Config:/config"
+
+  grafana:
+    image: "grafana/grafana:latest"
+    container_name: "grafana"
+    hostname: "grafana"
+    restart: "unless-stopped"
+    user: "0"
+    ports:
+      - "3001:3000"
+    environment:
+      - "GRAFANA_SMTP_PASS"
+    volumes:
+      - "${HOME}/Grafana/Data:/var/lib/grafana"
+      - "./grafana/grafana.ini:/etc/grafana/grafana.ini:ro"
+
+  grafana-image-renderer:
+    image: "grafana/grafana-image-renderer:latest"
+    container_name: "grafana-image-renderer"
+    hostname: "grafana-image-renderer"
+    restart: "unless-stopped"
 
   homarr:
     image: "ghcr.io/ajnart/homarr:latest"
@@ -523,6 +577,24 @@ services:
       - "${HOME}/Technitium:/etc/dns"
     sysctls:
       - "net.ipv4.ip_local_port_range=1024 65000"
+
+  telegraf:
+    image: "telegraf:latest"
+    container_name: "telegraf"
+    hostname: "telegraf"
+    restart: "unless-stopped"
+    privileged: true
+    user: "telegraf:${DOCKER_USER_ID}"
+    environment:
+      - "INFLUX_TOKEN=${TELEGRAF_INFLUX_TOKEN}"
+      - "MINECRAFT_SERVER=${MINECRAFT_SERVER}"
+      - "MINECRAFT_PORT=${MINECRAFT_PORT}"
+      - "HOST_MOUNT_PREFIX=/hostfs"
+      - "HOST_PROC=/hostfs/proc"
+    volumes:
+      - "./telegraf/telegraf.conf:/etc/telegraf/telegraf.conf:ro"
+      - "/:/hostfs:ro"
+      - "/var/run/docker.sock:/var/run/docker.sock"
 
   tubesync:
     image: "ghcr.io/meeb/tubesync:latest"

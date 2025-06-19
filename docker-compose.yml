@@ -4,18 +4,6 @@ include:
 
 services:
 
-  2fauth:
-    image: "2fauth/2fauth:latest"
-    container_name: "2fauth"
-    volumes:
-      - "${HOME}/2FAuth:/2fauth"
-    ports:
-      - "8000:8000/tcp"
-    environment:
-      - "SITE_OWNER=jimeagle@gmail.com"
-      - "APP_KEY=${TWOFAUTH_KEY}"
-      - "APP_URL=2fauth.jimeagle.com"
-
   adguard:
     image: "adguard/adguardhome:latest"
     container_name: "adguard"
@@ -77,16 +65,6 @@ services:
     volumes:
       - "${HOME}/ChangeDetection:/datastore"
 
-  #  esphome:
-  #    image: "esphome/esphome:latest"
-  #    container_name: "esphome"
-  #    hostname: "esphome"
-  #    restart: "unless-stopped"
-  #    network_mode: "host"
-  #    volumes:
-  #      - "${HOME}/ESPHome:/config"
-  #      - "/etc/localtime:/etc/localtime:ro"
-
   frigate:
     image: "ghcr.io/blakeblackshear/frigate:stable"
     container_name: "frigate"
@@ -110,26 +88,6 @@ services:
       - "FRIGATE_GENAI_KEY"
       - "FRIGATE_DRIVEWAY_USERNAME"
       - "FRIGATE_DRIVEWAY_PASSWORD"
-
-  #  grafana:
-  #    image: "grafana/grafana:latest"
-  #    container_name: "grafana"
-  #    hostname: "grafana"
-  #    restart: "unless-stopped"
-  #    user: "0"
-  #    ports:
-  #      - "3001:3000"
-  #    environment:
-  #      - "GRAFANA_SMTP_PASS"
-  #    volumes:
-  #      - "${HOME}/Grafana/Data:/var/lib/grafana"
-  #      - "./grafana/grafana.ini:/etc/grafana/grafana.ini:ro"
-
-  #  grafana-image-renderer:
-  #    image: "grafana/grafana-image-renderer:latest"
-  #    container_name: "grafana-image-renderer"
-  #    hostname: "grafana-image-renderer"
-  #    restart: "unless-stopped"
 
   hass:
     image: "homeassistant/home-assistant:latest"
@@ -160,17 +118,6 @@ services:
       - "${HOME}/Huntarr:/config"
     environment:
       - "TZ=Europe/London"
-
-  influx:
-    image: "influxdb:2.5"
-    container_name: "influx"
-    hostname: "influx"
-    restart: "unless-stopped"
-    ports:
-      - "8086:8086"
-    volumes:
-      - "${HOME}/Influx:/home/influxdb/.influxdbv2/"
-      - "./influx/config.yml:/etc/influxdb2/config.yml:ro"
 
   kuma:
     image: "louislam/uptime-kuma:latest"
@@ -381,24 +328,6 @@ services:
       - "STRAVA_REFRESH_TOKEN=${STRAVA_REFRESH_TOKEN}"
       - "IMPORT_AND_BUILD_SCHEDULE='0 4 * * *'"
       - "TZ=Europe/London"
-
-  #  telegraf:
-  #    image: "telegraf:latest"
-  #    container_name: "telegraf"
-  #    hostname: "telegraf"
-  #    restart: "unless-stopped"
-  #    privileged: true
-  #    user: "telegraf:${DOCKER_USER_ID}"
-  #    environment:
-  #      - "INFLUX_TOKEN=${TELEGRAF_INFLUX_TOKEN}"
-  #      - "MINECRAFT_SERVER=${MINECRAFT_SERVER}"
-  #      - "MINECRAFT_PORT=${MINECRAFT_PORT}"
-  #      - "HOST_MOUNT_PREFIX=/hostfs"
-  #      - "HOST_PROC=/hostfs/proc"
-  #    volumes:
-  #      - "./telegraf/telegraf.conf:/etc/telegraf/telegraf.conf:ro"
-  #      - "/:/hostfs:ro"
-  #      - "/var/run/docker.sock:/var/run/docker.sock"
 
   traefik:
     image: "traefik:v2.9"
