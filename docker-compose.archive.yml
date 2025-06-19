@@ -474,19 +474,19 @@ services:
       - "${HOME}/Syncthing/Config:/config"
       - "${HOME}/Syncthing/Data:/config/Default"
 
-  #  tautulli:
-  #    image: "lscr.io/linuxserver/tautulli:latest"
-  #    container_name: "tautulli"
-  #    hostname: "tautulli"
-  #    restart: "unless-stopped"
-  #    environment:
-  #      - "PUID=1000"
-  #      - "PGID=1000"
-  #      - "TZ=Europe/London"
-  #    volumes:
-  #      - "${HOME}/Tautulli:/config"
-  #    ports:
-  #      - "8181:8181"
+  tautulli:
+    image: "lscr.io/linuxserver/tautulli:latest"
+    container_name: "tautulli"
+    hostname: "tautulli"
+    restart: "unless-stopped"
+    environment:
+      - "PUID=1000"
+      - "PGID=1000"
+      - "TZ=Europe/London"
+    volumes:
+      - "${HOME}/Tautulli:/config"
+    ports:
+      - "8181:8181"
 
   tdarr:
     image: "ghcr.io/haveagitgat/tdarr:latest"
