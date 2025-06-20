@@ -34,7 +34,6 @@ services:
     image: "henrygd/beszel"
     container_name: "beszel"
     hostname: "beszel"
-    network_mode: "host"
     restart: "unless-stopped"
     ports:
       - "8090:8090"
@@ -47,7 +46,6 @@ services:
     image: "henrygd/beszel-agent"
     container_name: "beszel-agent"
     hostname: "beszel-agent"
-    network_mode: "host"
     restart: "unless-stopped"
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock:ro"
