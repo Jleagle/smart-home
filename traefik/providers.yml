@@ -6,7 +6,7 @@ http:
         address: "http://localhost:4181"
         authResponseHeaders: "X-Forwarded-User"
     tinyauth:
-      forwardauth:
+      forwardAuth:
         address: "http://localhost:3005/api/auth/traefik"
 
   routers:
