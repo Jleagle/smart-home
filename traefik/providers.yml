@@ -257,8 +257,6 @@ http:
     tinyauth-route:
       rule: "Host(`login.jimeagle.com`)"
       service: "tinyauth-service"
-      middlewares:
-        - "traefik-forward-auth"
       tls:
         certResolver: "myresolver"
       entryPoints:
