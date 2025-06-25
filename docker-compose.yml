@@ -353,6 +353,8 @@ services:
       - "OAUTH_WHITELIST=${TINYAUTH_EMAILS}"
       - "PORT=3005"
       - "SESSION_EXPIRY=432000"
+      - "GOOGLE_CLIENT_ID=${GOOGLE_CLIENT_ID}"
+      - "GOOGLE_CLIENT_SECRET=${GOOGLE_CLIENT_SECRET}"
 
   traefik-forward-auth:
     image: "thomseddon/traefik-forward-auth:latest"
