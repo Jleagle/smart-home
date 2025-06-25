@@ -351,7 +351,7 @@ services:
     network_mode: "host"
     environment:
       - "SECRET=${TINYAUTH_SECRET}"
-      - "APP_URL=https://login.jimeagle.com/"
+      - "APP_URL=https://login.jimeagle.com"
       - "OAUTH_WHITELIST=${TINYAUTH_EMAILS}"
       - "PORT=3005"
       - "SESSION_EXPIRY=432000"
