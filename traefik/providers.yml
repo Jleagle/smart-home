@@ -7,7 +7,7 @@ http:
         authResponseHeaders: "X-Forwarded-User"
     tinyauth:
       forwardauth:
-        address: "http://tinyauth:3005/api/auth/traefik"
+        address: "http://localhost:3005/api/auth/traefik"
 
   routers:
     2fauth-route:
