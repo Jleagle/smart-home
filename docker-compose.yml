@@ -348,6 +348,7 @@ services:
     container_name: "tinyauth"
     hostname: "tinyauth"
     restart: "unless-stopped"
+    network_mode: "host"
     environment:
       - "SECRET=${TINYAUTH_SECRET}"
       - "APP_URL=https://login.jimeagle.com/"
