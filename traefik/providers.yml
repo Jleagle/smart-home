@@ -1,10 +1,6 @@
 http:
 
   middlewares:
-    traefik-forward-auth:
-      forwardAuth:
-        address: "http://localhost:4181"
-        authResponseHeaders: "X-Forwarded-User"
     tinyauth:
       forwardAuth:
         address: "http://localhost:3005/api/auth/traefik"

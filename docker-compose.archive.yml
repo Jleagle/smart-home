@@ -620,6 +620,21 @@ services:
       - "traefik.http.routers.tubesync.rule=Host(`tubesync.jimeagle.com`)"
       - "com.centurylinklabs.watchtower.enable=true"
 
+  traefik-forward-auth:
+    image: "thomseddon/traefik-forward-auth:latest"
+    hostname: "traefik-forward-auth"
+    container_name: "traefik-forward-auth"
+    restart: "unless-stopped"
+    ports:
+      - "4181:4181"
+    environment:
+      - "PROVIDERS_GOOGLE_CLIENT_ID=${GOOGLE_CLIENT_ID}"
+      - "PROVIDERS_GOOGLE_CLIENT_SECRET=${GOOGLE_CLIENT_SECRET}"
+      - "SECRET=${AUTH_SECRET}"
+      - "CONFIG=/config.json"
+      - "WHITELIST=${TINYAUTH_EMAILS}"
+      - "INSECURE_COOKIE=true"
+
   unbound:
     container_name: unbound
     image: "mvance/unbound:latest"
