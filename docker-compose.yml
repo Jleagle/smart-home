@@ -161,6 +161,8 @@ services:
       - "${HOME}/NodeRed:/data"
       - "${HOME}/Media/Frigate:/media/frigate:ro"
       - "./node-red/settings.js:/data/settings.js:ro"
+    extra_hosts:
+      - 'host.docker.internal:host-gateway'
 
   nzbget:
     image: "linuxserver/nzbget:latest"
