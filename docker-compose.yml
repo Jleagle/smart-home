@@ -123,6 +123,15 @@ services:
       start_period: 40s
       retries: 3
 
+  isponsorblocktv:
+    image: "ghcr.io/dmunozv04/isponsorblocktv"
+    container_name: "isponsorblocktv"
+    hostname: "isponsorblocktv"
+    restart: "unless-stopped"
+    network_mode: "host"
+    volumes:
+      - "${HOME}/ISponsorBlockTV:/app/data"
+
   kuma:
     image: "louislam/uptime-kuma:latest"
     hostname: "kuma"
