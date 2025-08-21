@@ -105,6 +105,15 @@ http:
         certResolver: "myresolver"
       entryPoints:
         - "websecure"
+    jellyfin-route:
+      rule: "Host(`jelly.jimeagle.com`)"
+      service: "jellyfin-service"
+      middlewares:
+        - "tinyauth"
+      tls:
+        certResolver: "myresolver"
+      entryPoints:
+        - "websecure"
     mass-route:
       rule: "Host(`mass.jimeagle.com`)"
       service: "mass-service"
@@ -303,6 +312,10 @@ http:
       loadBalancer:
         servers:
           - url: "http://localhost:9705"
+    jellyfin-service:
+      loadBalancer:
+        servers:
+          - url: "http://localhost:8096"
     mass-service:
       loadBalancer:
         servers:
