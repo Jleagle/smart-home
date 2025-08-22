@@ -144,8 +144,8 @@ services:
       - "JELLYFIN_PublishedServerUrl=https://jelly.jimeagle.com"
     volumes:
       - "${HOME}/Jellyfin:/config"
-      - "${HOME}/Media/Television:/data/tvshows"
-      - "${HOME}/Media/Movies:/data/movies"
+      - "${HOME}/Media/Television:/data/tvshows:ro"
+      - "${HOME}/Media/Movies:/data/movies:ro"
     ports:
       - "8096:8096" # Http webUI.
       #- "8920:8920" # Https webUI (you need to set up your own certificate).
