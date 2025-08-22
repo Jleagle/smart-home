@@ -137,6 +137,8 @@ services:
     container_name: "jellyfin"
     hostname: "jellyfin"
     restart: "unless-stopped"
+    group_add:
+      - "107" # render group
     environment:
       - "PUID=1000"
       - "PGID=1000"
