@@ -245,10 +245,6 @@ google_assistant:
     input_button.play_tv:
       name: "Play TV"
 
-
-light:
-  - platform: "blink1_status"
-
 switch:
   - platform: "wake_on_lan"
     name: "PC"
