@@ -214,6 +214,15 @@ http:
         certResolver: "myresolver"
       entryPoints:
         - "websecure"
+    slink-route:
+      rule: "Host(`slink.jimeagle.com`)"
+      service: "slink-service"
+      middlewares:
+        - "tinyauth"
+      tls:
+        certResolver: "myresolver"
+      entryPoints:
+        - "websecure"
     shows-route:
       rule: "Host(`shows.jimeagle.com`)"
       service: "shows-service"
@@ -358,6 +367,10 @@ http:
       loadBalancer:
         servers:
           - url: "http://localhost:8080"
+    slink-service:
+      loadBalancer:
+        servers:
+          - url: "http://localhost:3006"
     shows-service:
       loadBalancer:
         servers:

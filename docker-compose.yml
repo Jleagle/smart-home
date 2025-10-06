@@ -312,6 +312,26 @@ services:
     devices:
       - "/dev/sda2:/dev/sda"
 
+  slink:
+    image: "anirdev/slink:latest"
+    container_name: "slink"
+    user: "slink"
+    environment:
+      - "TZ=Europe/London"
+      - "ORIGIN=https://slink.jimeagle.com"
+      - "USER_APPROVAL_REQUIRED=true"
+      - "USER_PASSWORD_MIN_LENGTH=8"
+      - "USER_PASSWORD_REQUIREMENTS=15"
+      - "IMAGE_MAX_SIZE=15M"
+      - "IMAGE_STRIP_EXIF_METADATA=true"
+      - "IMAGE_COMPRESSION_QUALITY=80"
+      - "STORAGE_PROVIDER=local"
+    volumes:
+      - "${HOME}/Slink/Database:/app/var/data"
+      - "${HOME}/Slink/Images:/app/slink/images"
+    ports:
+      - '3006:3000'
+
   slskd:
     image: "slskd/slskd"
     container_name: "slskd"

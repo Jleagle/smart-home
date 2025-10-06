@@ -26,6 +26,8 @@ mkdir -p ~/Plex/Transcoding
 mkdir -p ~/Prowlarr
 mkdir -p ~/Radarr
 mkdir -p ~/Redis/Data
+mkdir -p ~/Slink/Database
+mkdir -p ~/Slink/Images
 mkdir -p ~/Slskd
 mkdir -p ~/Sonarr
 mkdir -p ~/Strava
