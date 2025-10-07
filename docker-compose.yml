@@ -236,7 +236,7 @@ services:
       - "PGID=1000"
       - "PUID=1000"
       - "TZ=Europe/London"
-      - "VERSION=latest"
+      - "VERSION=public"
     volumes:
       #- "${HOME}/Plex/Transcoding:/transcode"
       - "/dev/shm:/transcode"
