@@ -239,7 +239,7 @@ services:
       - "VERSION=public"
     volumes:
       #- "${HOME}/Plex/Transcoding:/transcode"
-      - "/dev/shm:/transcode"
+      #- "/dev/shm:/transcode"
       - "${HOME}/Plex/Config:/config"
       - "${HOME}/Media/Television:/data/tvshows"
       - "${HOME}/Media/Movies:/data/movies"
