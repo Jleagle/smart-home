@@ -31,8 +31,6 @@ mkdir -p ~/Slink/Images
 mkdir -p ~/Slskd
 mkdir -p ~/Sonarr
 mkdir -p ~/Strava
-mkdir -p ~/Syncthing/Config
-mkdir -p ~/Syncthing/Data
 mkdir -p ~/Traefik
 mkdir -p ~/UptimeKuma
 #mkdir -p ~/AssistantRelay/Responses
@@ -57,6 +55,8 @@ mkdir -p ~/UptimeKuma
 #mkdir -p ~/PlexMeta
 #mkdir -p ~/Postgres/Data
 #mkdir -p ~/SerpBear
+#mkdir -p ~/Syncthing/Config
+#mkdir -p ~/Syncthing/Data
 #mkdir -p ~/Tautulli
 #mkdir -p ~/Technitium
 #mkdir -p ~/Varken
