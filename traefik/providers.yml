@@ -146,6 +146,15 @@ http:
         certResolver: "myresolver"
       entryPoints:
         - "websecure"
+    n8n-route:
+      rule: "Host(`n8n.jimeagle.com`)"
+      service: "n8n-service"
+      middlewares:
+        - "tinyauth"
+      tls:
+        certResolver: "myresolver"
+      entryPoints:
+        - "websecure"
     nodered-route:
       rule: "Host(`nodered.jimeagle.com`) && !PathPrefix(`/reviews/`)"
       service: "nodered-service"
@@ -339,6 +348,10 @@ http:
       loadBalancer:
         servers:
           - url: "http://localhost:7879"
+    n8n-service:
+      loadBalancer:
+        servers:
+          - url: "http://localhost:5678"
     nodered-service:
       loadBalancer:
         servers:

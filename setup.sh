@@ -18,6 +18,8 @@ mkdir -p ~/Media/Movies
 mkdir -p ~/Media/Slskd
 mkdir -p ~/Media/Television
 mkdir -p ~/Media/YouTube
+mkdir -p ~/N8n/Data
+mkdir -p ~/N8n/Files
 mkdir -p ~/NodeRed
 mkdir -p ~/NZBGet/Config
 mkdir -p ~/NZBGet/Downloads
