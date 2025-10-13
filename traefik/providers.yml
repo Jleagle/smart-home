@@ -112,15 +112,15 @@ http:
         certResolver: "myresolver"
       entryPoints:
         - "websecure"
-    mass-route:
-      rule: "Host(`mass.jimeagle.com`)"
-      service: "mass-service"
-      middlewares:
-        - "tinyauth"
-      tls:
-        certResolver: "myresolver"
-      entryPoints:
-        - "websecure"
+    #    mass-route:
+    #      rule: "Host(`mass.jimeagle.com`)"
+    #      service: "mass-service"
+    #      middlewares:
+    #        - "tinyauth"
+    #      tls:
+    #        certResolver: "myresolver"
+    #      entryPoints:
+    #        - "websecure"
     influx-route:
       rule: "Host(`influx.jimeagle.com`)"
       service: "influx-service"
@@ -332,10 +332,10 @@ http:
       loadBalancer:
         servers:
           - url: "http://localhost:8096"
-    mass-service:
-      loadBalancer:
-        servers:
-          - url: "http://localhost:8095"
+    #    mass-service:
+    #      loadBalancer:
+    #        servers:
+    #          - url: "http://localhost:8095"
     influx-service:
       loadBalancer:
         servers:
