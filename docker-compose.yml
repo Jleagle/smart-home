@@ -194,6 +194,7 @@ services:
       - "SUBDOMAIN=n8n"
       - "TZ=Europe/London"
       - "WEBHOOK_URL=https://n8n.jimeagle.com/"
+      - "DB_SQLITE_POOL_SIZE=1"
     volumes:
       - "${HOME}/N8n/Data:/home/node/.n8n"
       - "${HOME}/N8n/Files:/files"
