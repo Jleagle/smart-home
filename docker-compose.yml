@@ -339,7 +339,7 @@ services:
   slink:
     image: "anirdev/slink:latest"
     container_name: "slink"
-    user: "slink"
+    #user: "slink"
     environment:
       - "TZ=Europe/London"
       - "ORIGIN=https://slink.jimeagle.com"
