@@ -205,6 +205,15 @@ http:
         certResolver: "myresolver"
       entryPoints:
         - "websecure"
+    receiver-route:
+      rule: "Host(`receiver.jimeagle.com`)"
+      service: "receiver-service"
+      middlewares:
+        - "tinyauth"
+      tls:
+        certResolver: "myresolver"
+      entryPoints:
+        - "websecure"
     router-route:
       rule: "Host(`router.jimeagle.com`)"
       service: "router-service"
@@ -372,6 +381,10 @@ http:
       loadBalancer:
         servers:
           - url: "http://localhost:7878"
+    receiver-service:
+      loadBalancer:
+        servers:
+          - url: "http://192.168.0.17:10443"
     router-service:
       loadBalancer:
         servers:
