@@ -233,10 +233,17 @@ http:
       entryPoints:
         - "websecure"
     slink-route:
-      rule: "Host(`slink.jimeagle.com`)"
+      rule: "Host(`slink.jimeagle.com`) && !PathPrefix(`/images/`)"
       service: "slink-service"
       middlewares:
         - "tinyauth"
+      tls:
+        certResolver: "myresolver"
+      entryPoints:
+        - "websecure"
+    slink-route-public:
+      rule: "Host(`slink.jimeagle.com`) && PathPrefix(`/images/`)"
+      service: "slink-service"
       tls:
         certResolver: "myresolver"
       entryPoints:
