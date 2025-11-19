@@ -748,6 +748,16 @@ services:
     volumes:
       - "${HOME}/Varken:/config"
 
+  watchtower:
+    image: "nickfedor/watchtower:latest"
+    container_name: "watchtower"
+    hostname: "watchtower"
+    restart: "unless-stopped"
+    environment:
+      - "TZ=Europe/London"
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+
   zinc:
     image: "public.ecr.aws/zinclabs/zinc:latest"
     hostname: "zinc"
