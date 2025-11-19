@@ -154,30 +154,6 @@ services:
       - "${HOME}/Mosquitto/Data:/mosquitto/data"
       - "./mosquitto/mosquitto.conf:/mosquitto/config/mosquitto.conf"
 
-  n8n:
-    image: "docker.n8n.io/n8nio/n8n"
-    container_name: "n8n"
-    hostname: "n8n"
-    restart: "unless-stopped"
-    ports:
-      - "5678:5678"
-    environment:
-      - "DOMAIN_NAME=jimeagle.com"
-      - "GENERIC_TIMEZONE=Europe/London"
-      - "N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=true"
-      - "N8N_HOST=n8n.jimeagle.com"
-      - "N8N_PORT=5678"
-      - "N8N_PROTOCOL=https"
-      - "N8N_RUNNERS_ENABLED=true"
-      - "NODE_ENV=production"
-      - "SUBDOMAIN=n8n"
-      - "TZ=Europe/London"
-      - "WEBHOOK_URL=https://n8n.jimeagle.com/"
-      - "DB_SQLITE_POOL_SIZE=1"
-    volumes:
-      - "${HOME}/N8n/Data:/home/node/.n8n"
-      - "${HOME}/N8n/Files:/files"
-
   nodered:
     image: "nodered/node-red:latest"
     container_name: "nodered"
