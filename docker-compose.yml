@@ -274,23 +274,6 @@ services:
       retries: 5
       timeout: 3s
 
-  scrutiny:
-    image: "ghcr.io/analogj/scrutiny:master-omnibus"
-    container_name: "scrutiny"
-    hostname: "scrutiny"
-    restart: "unless-stopped"
-    cap_add:
-      - "SYS_RAWIO"
-    environment:
-      - "SCRUTINY_WEB_SRC_TOKEN"
-    ports:
-      - "8080:8080" # webapp
-    volumes:
-      - "/run/udev:/run/udev:ro"
-      - "./scrutiny:/opt/scrutiny/config"
-    devices:
-      - "/dev/sda2:/dev/sda"
-
   slink:
     image: "anirdev/slink:latest"
     container_name: "slink"
