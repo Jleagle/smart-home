@@ -218,8 +218,8 @@ google_assistant:
     #        - "Air Con"
 
     # Switches
-    #    switch.smart_socket_2_socket_1_2:
-    #      name: "Christmas Tree"
+    switch.smart_socket_2_socket_1_2:
+      name: "Christmas Tree"
     switch.teckin_plug_3:
       name: "Dresser"
       room: "Dining Room"
