@@ -204,6 +204,8 @@ google_assistant:
     # Switches
     switch.shelly_garden_switch_0:
       name: "Garden Light"
+    switch.shelly_garden_switch_1:
+      name: "Side Light"
 
     # Tuya
     light.floor_lights:
