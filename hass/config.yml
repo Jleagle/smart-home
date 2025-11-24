@@ -212,10 +212,10 @@ google_assistant:
     # Tuya
     light.floor_lights:
       name: "Floor Light"
-    #    climate.air_condition_a010:
-    #      name: "Air Conditioner"
-    #      aliases:
-    #        - "Air Con"
+    climate.air_condition_a010:
+      name: "Air Conditioner"
+      aliases:
+        - "Air Con"
 
     # Switches
     switch.smart_socket_2_socket_1_2:
