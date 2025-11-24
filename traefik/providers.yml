@@ -391,7 +391,7 @@ http:
     receiver-service:
       loadBalancer:
         servers:
-          - url: "http://192.168.0.17:10443"
+          - url: "https://192.168.0.17:10443"
     router-service:
       loadBalancer:
         servers:
