@@ -60,11 +60,6 @@ http:
     - "192.168.0.7"
     - "::1"
 
-#spotcast:
-#  sp_dc: !secret spotcast_sp_dc
-#  sp_key: !secret spotcast_sp_key
-#  country: "GB"
-
 script:
   set_marantz_to_xbox:
     alias: "Set Marantz Input to Xbox"
