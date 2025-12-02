@@ -21,7 +21,6 @@ my:
 network:
 person:
 scene:
-#script:
 ssdp:
 sun:
 stream:
@@ -65,6 +64,24 @@ http:
 #  sp_dc: !secret spotcast_sp_dc
 #  sp_key: !secret spotcast_sp_key
 #  country: "GB"
+
+script:
+  set_marantz_to_xbox:
+    alias: "Set Marantz Input to Xbox"
+    sequence:
+      - service: "media_player.select_source"
+        target:
+          entity_id: "media_player.marantz_nr1200"
+        data:
+          source: "XBOX"
+  set_marantz_to_appletv:
+    alias: "Set Marantz Input to Apple TV"
+    sequence:
+      - service: "media_player.select_source"
+        target:
+          entity_id: "media_player.marantz_nr1200"
+        data:
+          source: "Apple TV"
 
 # https://github.com/basnijholt/adaptive-lighting#readme
 # https://basnijholt.github.io/adaptive-lighting/
@@ -243,6 +260,12 @@ google_assistant:
       name: "Pause TV"
     input_button.play_tv:
       name: "Play TV"
+
+    # Scripts
+    script.set_marantz_to_xbox:
+      name: "Play Xbox"
+    script.set_marantz_to_appletv:
+      name: "Apple TV"
 
 switch:
   - platform: "wake_on_lan"
