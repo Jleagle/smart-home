@@ -258,7 +258,7 @@ google_assistant:
 
     # Scripts
     script.set_marantz_to_xbox:
-      name: "Play Xbox"
+      name: "Xbox"
     script.set_marantz_to_appletv:
       name: "Apple TV"
 
