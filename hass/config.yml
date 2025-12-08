@@ -228,6 +228,11 @@ google_assistant:
         - "Air Con"
 
     # Switches
+    #    switch.wake_pc:
+    #      name: "PC"
+    #    switch.wake_tv:
+    #      name: "TV"
+
     switch.smart_socket_2_socket_1_2:
       name: "Christmas Tree"
     switch.teckin_plug_3:
