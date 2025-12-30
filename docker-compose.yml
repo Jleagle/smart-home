@@ -63,12 +63,6 @@ services:
     volumes:
       - "${HOME}/ChangeDetection:/datastore"
 
-  epicgames:
-    image: "ghcr.io/claabs/epicgames-freegames-node:latest"
-    container_name: "epicgames"
-    hostname: "epicgames"
-    restart: "unless-stopped"
-
   frigate:
     image: "ghcr.io/blakeblackshear/frigate:stable"
     container_name: "frigate"
