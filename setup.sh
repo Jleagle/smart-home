@@ -27,7 +27,8 @@ mkdir -p ~/Plex/Config
 mkdir -p ~/Plex/Transcoding
 mkdir -p ~/Prowlarr
 mkdir -p ~/Radarr
-mkdir -p ~/RealDebrid
+mkdir -p ~/RealDebrid/DB
+mkdir -p ~/RealDebrid/Downloads
 mkdir -p ~/Redis/Data
 mkdir -p ~/Slink/Database
 mkdir -p ~/Slink/Images
