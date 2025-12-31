@@ -112,15 +112,6 @@ http:
         certResolver: "myresolver"
       entryPoints:
         - "websecure"
-    #    mass-route:
-    #      rule: "Host(`mass.jimeagle.com`)"
-    #      service: "mass-service"
-    #      middlewares:
-    #        - "tinyauth"
-    #      tls:
-    #        certResolver: "myresolver"
-    #      entryPoints:
-    #        - "websecure"
     influx-route:
       rule: "Host(`influx.jimeagle.com`)"
       service: "influx-service"
