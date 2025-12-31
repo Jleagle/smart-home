@@ -187,6 +187,15 @@ http:
         certResolver: "myresolver"
       entryPoints:
         - "websecure"
+    realdebrid-route:
+      rule: "Host(`realdebrid.jimeagle.com`)"
+      service: "realdebrid-service"
+      middlewares:
+        - "tinyauth"
+      tls:
+        certResolver: "myresolver"
+      entryPoints:
+        - "websecure"
     radarr-route:
       rule: "Host(`radarr.jimeagle.com`)"
       service: "radarr-service"
@@ -375,6 +384,10 @@ http:
       loadBalancer:
         servers:
           - url: "http://localhost:9696"
+    realdebrid-service:
+      loadBalancer:
+        servers:
+          - url: "http://localhost:6500"
     radarr-service:
       loadBalancer:
         servers:
