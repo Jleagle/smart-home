@@ -254,8 +254,8 @@ services:
       - "PGID=1000"
       - "TZ=Europe/London"
     volumes:
-      - "${HOME}/Radarr/DB:/data/db"
-      - "${HOME}/Radarr/Downloads:/data/downloads"
+      - "${HOME}/RealDebrid/DB:/data/db"
+      - "${HOME}/RealDebrid/Downloads:/data/downloads"
 
   redis:
     image: "redis:7"
