@@ -242,6 +242,21 @@ services:
       # https://wiki.servarr.com/en/useful-tools#using-environment-variables-for-config
       - "RADARR__AUTH__REQUIRED=Remote"
 
+  realdebrid:
+    image: "rogerfar/rdtclient:latest"
+    container_name: "realdebrid"
+    hostname: "realdebrid"
+    restart: "unless-stopped"
+    ports:
+      - "6500:6500"
+    environment:
+      - "PUID=1000"
+      - "PGID=1000"
+      - "TZ=Europe/London"
+    volumes:
+      - "${HOME}/Radarr/DB:/data/db"
+      - "${HOME}/Radarr/Downloads:/data/downloads"
+
   redis:
     image: "redis:7"
     container_name: "redis"
