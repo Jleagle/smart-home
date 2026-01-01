@@ -233,6 +233,7 @@ services:
     volumes:
       - "${HOME}/Radarr:/config"
       - "${HOME}/NZBGet/Downloads:/downloads"
+      - "${HOME}/RealDebrid/Downloads:/downloads-rd"
       - "${HOME}/Media/Movies:/movies"
       - "/etc/localtime:/etc/localtime:ro"
     environment:
@@ -322,6 +323,7 @@ services:
     volumes:
       - "${HOME}/Sonarr:/config"
       - "${HOME}/NZBGet/Downloads:/downloads"
+      - "${HOME}/RealDebrid/Downloads:/downloads-rd"
       - "${HOME}/Media/Television:/tv"
       - "/etc/localtime:/etc/localtime:ro"
 
