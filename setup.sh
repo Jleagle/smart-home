@@ -28,7 +28,8 @@ mkdir -p ~/Plex/Transcoding
 mkdir -p ~/Prowlarr
 mkdir -p ~/Radarr
 mkdir -p ~/RealDebrid/DB
-mkdir -p ~/RealDebrid/Downloads
+mkdir -p ~/RealDebrid/Downloads/radarr
+mkdir -p ~/RealDebrid/Downloads/sonarr
 mkdir -p ~/Redis/Data
 mkdir -p ~/Slink/Database
 mkdir -p ~/Slink/Images
