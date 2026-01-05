@@ -124,6 +124,19 @@ services:
     volumes:
       - "${HOME}/UptimeKuma:/app/data"
 
+  maintainerr:
+    image: "ghcr.io/maintainerr/maintainerr:latest"
+    hostname: "maintainerr"
+    container_name: "maintainerr"
+    restart: "unless-stopped"
+    user: "1000:1000"
+    volumes:
+      - "${HOME}/Maintainerr:/opt/data"
+    ports:
+      - "6246:6246"
+    environment:
+      - "TZ=Europe/London"
+
   mosquitto:
     image: "eclipse-mosquitto:latest"
     container_name: "mosquitto"

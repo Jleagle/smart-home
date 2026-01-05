@@ -13,6 +13,7 @@ mkdir -p ~/Hass
 mkdir -p ~/Huntarr
 mkdir -p ~/ISponsorBlockTV
 mkdir -p ~/Jellyfin
+mkdir -p ~/Maintainerr
 mkdir -p ~/Media/Frigate
 mkdir -p ~/Media/Movies
 mkdir -p ~/Media/Slskd

@@ -130,6 +130,13 @@ http:
         certResolver: "myresolver"
       entryPoints:
         - "websecure"
+    maintainerr-route:
+      rule: "Host(`maintainerr.jimeagle.com`)"
+      service: "maintainerr-service"
+      tls:
+        certResolver: "myresolver"
+      entryPoints:
+        - "websecure"
     movies-route:
       rule: "Host(`movies.jimeagle.com`)"
       service: "movies-service"
@@ -360,6 +367,10 @@ http:
       loadBalancer:
         servers:
           - url: "http://localhost:3002"
+    maintainerr-service:
+      loadBalancer:
+        servers:
+          - url: "http://localhost:6246"
     movies-service:
       loadBalancer:
         servers:
