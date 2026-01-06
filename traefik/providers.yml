@@ -25,10 +25,17 @@ http:
       entryPoints:
         - "websecure"
     aiostreams-route:
-      rule: "Host(`aiostreams.jimeagle.com`)"
+      rule: "Host(`aiostreams.jimeagle.com`) && !PathPrefix(`/stremio/`)"
       service: "aiostreams-service"
       middlewares:
         - "tinyauth"
+      tls:
+        certResolver: "myresolver"
+      entryPoints:
+        - "websecure"
+    aiostreams-route-public:
+      rule: "Host(`aiostreams.jimeagle.com`) && PathPrefix(`/stremio/`)"
+      service: "aiostreams-service"
       tls:
         certResolver: "myresolver"
       entryPoints:
