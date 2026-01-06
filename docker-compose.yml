@@ -19,6 +19,22 @@ services:
       - "${HOME}/AdGuard/Work:/opt/adguardhome/work"
       - "${HOME}/AdGuard/Conf:/opt/adguardhome/conf"
 
+  aiostreams:
+    image: "ghcr.io/viren070/aiostreams:latest"
+    container_name: "aiostreams"
+    hostname: "aiostreams"
+    restart: "unless-stopped"
+    ports:
+      - "3007:3000"
+    environment:
+      - "TZ=Europe/London"
+      - "LOG_TIMEZONE=Europe/London"
+      - "ADDON_NAME=Seven"
+      - "ADDON_ID=aiostreams.jimeagle.com"
+      - "BASE_URL=https://aiostreams.jimeagle.com"
+    volumes:
+      - "${HOME}/AIOStreams:/app/data"
+
   autoheal:
     image: "willfarrell/autoheal:latest"
     container_name: "autoheal"

@@ -24,6 +24,15 @@ http:
         certResolver: "myresolver"
       entryPoints:
         - "websecure"
+    aiostreams-route:
+      rule: "Host(`aiostreams.jimeagle.com`)"
+      service: "aiostreams-service"
+      middlewares:
+        - "tinyauth"
+      tls:
+        certResolver: "myresolver"
+      entryPoints:
+        - "websecure"
     beszel-route:
       rule: "Host(`beszel.jimeagle.com`)"
       service: "beszel-service"
@@ -315,6 +324,10 @@ http:
       loadBalancer:
         servers:
           - url: "http://localhost:8089"
+    aiostreams-service:
+      loadBalancer:
+        servers:
+          - url: "http://localhost:3007"
     beszel-service:
       loadBalancer:
         servers:
