@@ -503,6 +503,21 @@ services:
       - "APIKEY=${SERPBEAR_APIKEY}"
       - "NEXT_PUBLIC_APP_URL=https://serpbear.jimeagle.com/"
 
+  slskd:
+    image: "slskd/slskd"
+    container_name: "slskd"
+    hostname: "slskd"
+    restart: "unless-stopped"
+    ports:
+      - "5030:5030"
+      - "50300:50300"
+    volumes:
+      - "${HOME}/Slskd:/app"
+      - "${HOME}/Media/Slskd:/downloads"
+    environment:
+      - "SLSKD_REMOTE_CONFIGURATION=true"
+      - "SLSKD_SHARED_DIR=/downloads"
+
   traefik-hub-agent:
     image: "ghcr.io/traefik/hub-agent-traefik:latest"
     container_name: "traefik-hub-agent"
