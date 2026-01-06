@@ -32,6 +32,7 @@ services:
       - "ADDON_NAME=Seven"
       - "ADDON_ID=aiostreams.jimeagle.com"
       - "BASE_URL=https://aiostreams.jimeagle.com"
+      - "SECRET_KEY=${AIO_SECRET_KEY}"
     volumes:
       - "${HOME}/AIOStreams:/app/data"
 
