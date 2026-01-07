@@ -34,6 +34,7 @@ services:
       - "HOST_NAME=https://aiometadata.jimeagle.com"
       - "NODE_ENV=production"
       - "REDIS_URL="
+      - "DATABASE_URI=sqlite://addon/data/db.sqlite"
 
   aiostreams:
     image: "ghcr.io/viren070/aiostreams:latest"
