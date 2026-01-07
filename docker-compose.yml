@@ -33,7 +33,7 @@ services:
       - "PORT=1337"
       - "HOST_NAME=https://aiometadata.jimeagle.com"
       - "NODE_ENV=production"
-      - "REDIS_URL="
+      - "REDIS_URL=${AIO_REDIS}"
       - "DATABASE_URI=sqlite://addon/data/db.sqlite"
 
   aiostreams:
