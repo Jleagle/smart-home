@@ -19,6 +19,22 @@ services:
       - "${HOME}/AdGuard/Work:/opt/adguardhome/work"
       - "${HOME}/AdGuard/Conf:/opt/adguardhome/conf"
 
+  aiometadata:
+    image: "ghcr.io/cedya77/aiometadata:latest"
+    container_name: "aiometadata"
+    hostname: "aiometadata"
+    restart: "unless-stopped"
+    ports:
+      - "3008:1337"
+    volumes:
+      - "${HOME}/AIOMetaData:/app/addon/data"
+    environment:
+      - "TZ=Europe/London"
+      - "PORT=1337"
+      - "HOST_NAME=https://aiometadata.jimeagle.com"
+      - "NODE_ENV=production"
+      - "REDIS_URL="
+
   aiostreams:
     image: "ghcr.io/viren070/aiostreams:latest"
     container_name: "aiostreams"

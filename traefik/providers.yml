@@ -24,6 +24,22 @@ http:
         certResolver: "myresolver"
       entryPoints:
         - "websecure"
+    aiometadata-route:
+      rule: "Host(`aiometadata.jimeagle.com`) && !PathPrefix(`/stremio/`)"
+      service: "aiometadata-service"
+      middlewares:
+        - "tinyauth"
+      tls:
+        certResolver: "myresolver"
+      entryPoints:
+        - "websecure"
+    aiometadata-route-public:
+      rule: "Host(`aiometadata.jimeagle.com`) && PathPrefix(`/stremio/`)"
+      service: "aiometadata-service"
+      tls:
+        certResolver: "myresolver"
+      entryPoints:
+        - "websecure"
     aiostreams-route:
       rule: "Host(`aiostreams.jimeagle.com`) && !PathPrefix(`/stremio/`)"
       service: "aiostreams-service"
@@ -331,6 +347,10 @@ http:
       loadBalancer:
         servers:
           - url: "http://localhost:8089"
+    aiometadata-service:
+      loadBalancer:
+        servers:
+          - url: "http://localhost:3008"
     aiostreams-service:
       loadBalancer:
         servers:

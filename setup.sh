@@ -2,6 +2,7 @@
 
 mkdir -p ~/AdGuard/Conf
 mkdir -p ~/AdGuard/Work
+mkdir -p ~/AIOMetaData
 mkdir -p ~/AIOStreams
 mkdir -p ~/Beszel
 mkdir -p ~/Frigate
