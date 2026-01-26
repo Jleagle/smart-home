@@ -443,7 +443,7 @@ services:
       - "TZ=Europe/London"
 
   traefik:
-    image: "traefik:v3.3"
+    image: "traefik:latest"
     container_name: "traefik"
     hostname: "traefik"
     restart: "unless-stopped"
