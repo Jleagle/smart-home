@@ -34,7 +34,7 @@ certificatesResolvers:
       email: "jimeagle@gmail.com"
       dnsChallenge:
         provider: "cloudflare"
-        delayBeforeCheck: 10
+        delayBeforeCheck: "10"
         resolvers:
           - "1.1.1.1:53"
           - "8.8.8.8:53"
