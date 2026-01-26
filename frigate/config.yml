@@ -113,5 +113,5 @@ telemetry:
   version_check: false
   stats:
     amd_gpu_stats: false
-    intel_gpu_stats: false
+    intel_gpu_stats: true
     network_bandwidth: false
