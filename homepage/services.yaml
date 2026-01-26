@@ -17,9 +17,17 @@
     - AdGuard:
         href: https://adguard.jimeagle.com/
         container: adguard
+    - Uptime Kuma:
+        href: https://kuma.jimeagle.com/
+        container: kuma
+    - Beszel:
+        href: https://beszel.jimeagle.com/
+        container: beszel
+    - Change Detection:
+        href: https://changedetection.jimeagle.com/
+        container: changedetection
     - Router:
         href: https://router.jimeagle.com/
-        container: router
 
 - Media:
     - Sonarr:
@@ -36,6 +44,20 @@
           type: radarr
           url: http://radarr:7878
           key: {{HOMEPAGE_VAR_RADARR}}
+    - Prowlarr:
+        href: https://prowlarr.jimeagle.com/
+        container: prowlarr
+        widget:
+          type: prowlarr
+          url: http://prowlarr:9696
+          key: {{HOMEPAGE_VAR_PROWLARR}}
+    - Overseerr:
+        href: https://overseerr.jimeagle.com/
+        container: overseerr
+        widget:
+          type: overseerr
+          url: http://overseerr:5055
+          key: {{HOMEPAGE_VAR_OVERSEERR}}
     - NZBGet:
         href: https://nzbget.jimeagle.com/
         container: nzbget
@@ -44,26 +66,25 @@
           url: http://nzbget:6789
           username: {{HOMEPAGE_VAR_NZBGET_UN}}
           password: {{HOMEPAGE_VAR_NZBGET_PW}}
-    - Tautulli:
-        href: https://tautulli.jimeagle.com/
-        container: tautulli
-        widget:
-          type: tautulli
-          url: http://tautulli:8181
-          key: {{HOMEPAGE_VAR_TAUTULLI}}
+    - RealDebrid:
+        href: https://realdebrid.jimeagle.com/
+        container: realdebrid
+    - Maintainerr:
+        href: https://maintainerr.jimeagle.com/
+        container: maintainerr
 
-- Dev:
-    #    - SerpBear:
-    #        href: https://serpbear.jimeagle.com/
-    #        container: serpbear
-    - Zinc:
-        href: https://zinc.jimeagle.com/
-        container: zinc
-    - Influx:
-        href: https://influx.jimeagle.com/
-        container: influx
+- Stremio:
+    - AIO Metadata:
+        href: https://aiometadata.jimeagle.com/
+        container: aiometadata
+    - AIO Streams:
+        href: https://aiostreams.jimeagle.com/
+        container: aiostreams
 
-- Misc:
-    - Grafana:
-        href: https://grafana.jimeagle.com/
-        container: grafana
+- Tools:
+    - Slink:
+        href: https://slink.jimeagle.com/
+        container: slink
+    - Strava:
+        href: https://strava.jimeagle.com/
+        container: strava
