@@ -306,7 +306,7 @@ services:
       - "/dev/dri:/dev/dri" # Quicksync
 
   prowlarr:
-    image: "linuxserver/prowlarr:develop"
+    image: "linuxserver/prowlarr:latest"
     container_name: "prowlarr"
     hostname: "prowlarr"
     restart: "unless-stopped"
@@ -443,7 +443,7 @@ services:
       - "TZ=Europe/London"
 
   traefik:
-    image: "traefik:v2.9"
+    image: "traefik:v3.3"
     container_name: "traefik"
     hostname: "traefik"
     restart: "unless-stopped"
