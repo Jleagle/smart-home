@@ -2,6 +2,12 @@ include:
   #  - "docker-compose.doubletake.yml"
   - "docker-compose.share.yml"
 
+x-logging: &default-logging
+  driver: "json-file"
+  options:
+    max-size: "10m"
+    max-file: "3"
+
 services:
 
   adguard:
@@ -121,6 +127,7 @@ services:
       - "FRIGATE_GENAI_KEY"
       - "FRIGATE_DRIVEWAY_USERNAME"
       - "FRIGATE_DRIVEWAY_PASSWORD"
+    logging: *default-logging
 
   hass:
     image: "homeassistant/home-assistant:latest"
@@ -139,6 +146,7 @@ services:
       - "/etc/localtime:/etc/localtime:ro"
     environment:
       - "TZ=Europe/London"
+    logging: *default-logging
 
   isponsorblocktv:
     image: "ghcr.io/dmunozv04/isponsorblocktv"
@@ -204,6 +212,7 @@ services:
       - "./node-red/settings.js:/data/settings.js:ro"
     extra_hosts:
       - 'host.docker.internal:host-gateway'
+    logging: *default-logging
 
   nzbget:
     image: "linuxserver/nzbget:latest"
@@ -396,6 +405,7 @@ services:
       - "./traefik/traefik.yml:/etc/traefik/traefik.yml:ro"
       - "./traefik/providers.yml:/etc/traefik/providers.yml:ro"
       - "/var/run/docker.sock:/var/run/docker.sock:ro"
+    logging: *default-logging
 
   tinyauth:
     image: "ghcr.io/steveiliop56/tinyauth:v3"
