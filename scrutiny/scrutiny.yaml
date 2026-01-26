@@ -41,7 +41,7 @@ web:
   # the `token`
     influxdb:
     scheme: 'http'
-    host: localhost
+    host: influx
     port: 8086
     #token: 'env'
     org: 'Seven'

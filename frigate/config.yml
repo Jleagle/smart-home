@@ -1,7 +1,7 @@
 # https://docs.frigate.video/configuration/index
 
 mqtt:
-  host: "192.168.0.7"
+  host: "mosquitto"
 
 genai:
   enabled: false
