@@ -10,6 +10,7 @@
 #  instrumentisto/restic backup /data
 
 # dc down
+# Note: Remove --dry-run to actually perform the backup
 rsync \
 	--dry-run \
 	--archive \
