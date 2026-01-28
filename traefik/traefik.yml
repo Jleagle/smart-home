@@ -8,6 +8,9 @@ api:
   insecure: false
   dashboard: false
 
+ping:
+  entryPoint: "websecure"
+
 accessLog: { }
 
 entryPoints:
