@@ -24,8 +24,8 @@ entryPoints:
           permanent: true
   websecure:
     address: ":443"
-    http3:
-      advertisedPort: 443
+#    http3:
+#      advertisedPort: 443
 
 providers:
   file:
