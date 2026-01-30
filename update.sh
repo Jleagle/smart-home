@@ -14,5 +14,8 @@ docker compose pull
 echo "Starting services..."
 docker compose up --detach --remove-orphans
 
+echo "Restarting Traefik..."
+docker compose restart traefik
+
 echo "Cleaning up old images..."
 docker system prune --force
