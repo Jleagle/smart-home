@@ -1,71 +1,69 @@
 # https://docs.frigate.video/configuration/index
 
 mqtt:
-  host: "mosquitto"
+  host: mosquitto
 
 genai:
   enabled: false
-  provider: "gemini"
-  api_key: "{FRIGATE_GENAI_KEY}"
-  model: "gemini-2.0-flash"
+  provider: gemini
+  api_key: '{FRIGATE_GENAI_KEY}'
+  model: gemini-2.0-flash
 
 semantic_search: # Needed for genai to work
   enabled: false
   reindex: false
-  model_size: "small"
+  model_size: small
 
 birdseye:
   enabled: false
-  mode: "motion"
+  mode: motion
 
 ffmpeg:
   # https://docs.frigate.video/configuration/hardware_acceleration
   # https://docs.frigate.video/configuration/ffmpeg_presets/
-  hwaccel_args: "preset-intel-qsv-h264"
-  input_args: "preset-rtsp-restream"
+  hwaccel_args: preset-intel-qsv-h264
+  input_args: preset-rtsp-restream
   output_args:
-    record: "preset-record-generic-audio-aac"
+    record: preset-record-generic-audio-aac
 
 objects:
   track:
-    - "person"
-    - "dog"
+    - person
+    - dog
 
 record:
   enabled: true
-  events:
-    retain:
-      mode: "active_objects"
-      objects:
-        person: 3
-        dog: 3
-
+  alerts:
+    retain: { }
+  detections:
+    retain: { }
 motion:
   mask:
-    - "0.149,0.934,0.254,0.935,0.254,0.975,0.151,0.977" # Time
-    - "0,0.517,0,0,1,0,1,0.206,0.476,0.236,0.477,0.512" # Bush
+    - 0.149,0.934,0.254,0.935,0.254,0.975,0.151,0.977   # Time
+    - 0,0.517,0,0,1,0,1,0.206,0.476,0.236,0.477,0.512   # Bush
 
 cameras:
   driveway:
     ffmpeg:
       inputs:
-        - path: "rtsp://{FRIGATE_DRIVEWAY_USERNAME}:{FRIGATE_DRIVEWAY_PASSWORD}@192.168.0.12:554/Preview_01_main"
+        - path: rtsp://{FRIGATE_DRIVEWAY_USERNAME}:{FRIGATE_DRIVEWAY_PASSWORD}@192.168.0.12:554/Preview_01_main
           roles:
-            - "record"
-        - path: "rtsp://{FRIGATE_DRIVEWAY_USERNAME}:{FRIGATE_DRIVEWAY_PASSWORD}@192.168.0.12:554/Preview_01_sub"
+            - record
+        - path: rtsp://{FRIGATE_DRIVEWAY_USERNAME}:{FRIGATE_DRIVEWAY_PASSWORD}@192.168.0.12:554/Preview_01_sub
           roles:
-            - "detect"
+            - detect
     zones:
       zone1:
-        coordinates: "1,0.789,1,1,0,1,0,0.647"
+        coordinates: 1,0.789,1,1,0,1,0,0.647
     genai:
       enabled: false
       use_snapshot: true
-      prompt: "Describe the person in the sequence of images in one sentence. Try to include the company they work for and if they are holding anything."
+      prompt: Describe the person in the sequence of images in one sentence. Try
+        to include the company they work for and if they are holding anything.
       objects:
-        - "person"
+        - person
       required_zones:
-        - "zone1"
+        - zone1
       debug_save_thumbnails: false
 
 # Optional: Configuration for the jpg snapshots written to the clips directory for each tracked object
@@ -85,7 +83,7 @@ snapshots:
   height: 175
   # Optional: Restrict snapshots to objects that entered any of the listed zones (default: no required zones)
   required_zones:
-    - "zone1"
+    - zone1
   # Optional: Camera override for retention settings (default: global values)
   retain:
     default: 10
@@ -93,21 +91,21 @@ snapshots:
 review:
   alerts:
     required_zones:
-      - "zone1"
+      - zone1
   detections:
     required_zones:
-      - "zone1"
+      - zone1
 
 detectors:
   coral:
-    type: "edgetpu"
-    device: "pci"
+    type: edgetpu
+    device: pci
     num_threads: 2
 
 ui:
-  timezone: "Europe/London"
-  time_format: "24hour"
-  strftime_fmt: "%Y-%m-%d %H:%M"
+  timezone: Europe/London
+  time_format: 24hour
+  strftime_fmt: '%Y-%m-%d %H:%M'
 
 telemetry:
   version_check: false
@@ -115,3 +113,6 @@ telemetry:
     amd_gpu_stats: false
     intel_gpu_stats: true
     network_bandwidth: false
+detect:
+  enabled: true
+version: 0.16-0
