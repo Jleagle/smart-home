@@ -479,3 +479,17 @@ services:
       - "SESSION_EXPIRY=432000"
       - "GOOGLE_CLIENT_ID=${GOOGLE_CLIENT_ID}"
       - "GOOGLE_CLIENT_SECRET=${GOOGLE_CLIENT_SECRET}"
+
+  whatsapp-bridge:
+    image: "ghcr.io/raulpetruta/ha-wa-bridge:latest"
+    container_name: "whatsapp-bridge"
+    hostname: "whatsapp-bridge"
+    restart: "unless-stopped"
+    ports:
+      - "3009:3000"
+    volumes:
+      - "${HOME}/WhatsAppBridge/auth:/usr/src/app/.wwebjs_auth"
+      - "${HOME}/WhatsAppBridge/cache:/usr/src/app/.wwebjs_cache"
+    environment:
+      - "PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true"
+      - "PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium"

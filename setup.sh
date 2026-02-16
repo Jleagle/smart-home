@@ -31,6 +31,8 @@ mkdir -p ~/Sonarr
 mkdir -p ~/Strava
 mkdir -p ~/Traefik
 mkdir -p ~/UptimeKuma
+mkdir -p ~/WhatsAppBridge/auth
+mkdir -p ~/WhatsAppBridge/cache
 #mkdir -p ~/AssistantRelay/Responses
 #mkdir -p ~/Authentik/Certs
 #mkdir -p ~/Authentik/Media
