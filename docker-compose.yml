@@ -480,6 +480,20 @@ services:
       - "GOOGLE_CLIENT_ID=${GOOGLE_CLIENT_ID}"
       - "GOOGLE_CLIENT_SECRET=${GOOGLE_CLIENT_SECRET}"
 
+  usenet-ultimate:
+    image: "ghcr.io/dsmart33/usenet-ultimate:latest"
+    container_name: "usenet-ultimate"
+    hostname: "usenet-ultimate"
+    restart: "unless-stopped"
+    ports:
+      - "1338:1338"
+    volumes:
+      - "${HOME}/UsenetUltimate:/app/config"
+    environment:
+      - "PORT=1338"
+    logging: *default-logging
+
+
   whatsapp-bridge:
     image: "ghcr.io/raulpetruta/ha-wa-bridge:latest"
     container_name: "whatsapp-bridge"

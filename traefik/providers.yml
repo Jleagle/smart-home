@@ -337,6 +337,15 @@ http:
         certResolver: "myresolver"
       entryPoints:
         - "websecure"
+    usenetultimate-route:
+      rule: "Host(`usenetultimate.jimeagle.com`)"
+      service: "usenetultimate-service"
+      middlewares:
+        - "tinyauth"
+      tls:
+        certResolver: "myresolver"
+      entryPoints:
+        - "websecure"
 
   services:
     2fauth-service:
@@ -483,3 +492,7 @@ http:
       loadBalancer:
         servers:
           - url: "http://localhost:3005"
+    usenetultimate-service:
+      loadBalancer:
+        servers:
+          - url: "http://localhost:1338"

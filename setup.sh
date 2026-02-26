@@ -30,6 +30,7 @@ mkdir -p ~/Slink/Images
 mkdir -p ~/Sonarr
 mkdir -p ~/Strava
 mkdir -p ~/Traefik
+mkdir -p ~/UsenetUltimate
 mkdir -p ~/UptimeKuma
 mkdir -p ~/WhatsAppBridge/auth
 mkdir -p ~/WhatsAppBridge/cache
