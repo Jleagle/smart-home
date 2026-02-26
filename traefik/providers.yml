@@ -6,15 +6,6 @@ http:
         address: "http://localhost:3005/api/auth/traefik"
 
   routers:
-    #    2fauth-route:
-    #      rule: "Host(`2fauth.jimeagle.com`)"
-    #      service: "2fauth-service"
-    #      middlewares:
-    #        - "tinyauth"
-    #      tls:
-    #        certResolver: "myresolver"
-    #      entryPoints:
-    #        - "websecure"
     adguard-route:
       rule: "Host(`adguard.jimeagle.com`)"
       service: "adguard-service"
@@ -74,33 +65,6 @@ http:
         certResolver: "myresolver"
       entryPoints:
         - "websecure"
-    #    changedetection-route:
-    #      rule: "Host(`changedetection.jimeagle.com`)"
-    #      service: "changedetection-service"
-    #      middlewares:
-    #        - "tinyauth"
-    #      tls:
-    #        certResolver: "myresolver"
-    #      entryPoints:
-    #        - "websecure"
-    #    doubletake-route:
-    #      rule: "Host(`doubletake.jimeagle.com`)"
-    #      service: "doubletake-service"
-    #      middlewares:
-    #        - "tinyauth"
-    #      tls:
-    #        certResolver: "myresolver"
-    #      entryPoints:
-    #        - "websecure"
-    #    esphome-route:
-    #      rule: "Host(`esphome.jimeagle.com`)"
-    #      service: "esphome-service"
-    #      middlewares:
-    #        - "tinyauth"
-    #      tls:
-    #        certResolver: "myresolver"
-    #      entryPoints:
-    #        - "websecure"
     frigate-route:
       rule: "Host(`frigate.jimeagle.com`)"
       service: "frigate-service"
@@ -110,15 +74,6 @@ http:
         certResolver: "myresolver"
       entryPoints:
         - "websecure"
-    #    grafana-route:
-    #      rule: "Host(`grafana.jimeagle.com`)"
-    #      service: "grafana-service"
-    #      middlewares:
-    #        - "tinyauth"
-    #      tls:
-    #        certResolver: "myresolver"
-    #      entryPoints:
-    #        - "websecure"
     hass-route:
       rule: "Host(`hass.jimeagle.com`)"
       service: "hass-service"
@@ -128,31 +83,6 @@ http:
         certResolver: "myresolver"
       entryPoints:
         - "websecure"
-    #    huntarr-route:
-    #      rule: "Host(`huntarr.jimeagle.com`)"
-    #      service: "huntarr-service"
-    #      middlewares:
-    #        - "tinyauth"
-    #      tls:
-    #        certResolver: "myresolver"
-    #      entryPoints:
-    #        - "websecure"
-    #    jellyfin-route:
-    #      rule: "Host(`jelly.jimeagle.com`)"
-    #      service: "jellyfin-service"
-    #      tls:
-    #        certResolver: "myresolver"
-    #      entryPoints:
-    #        - "websecure"
-    #    influx-route:
-    #      rule: "Host(`influx.jimeagle.com`)"
-    #      service: "influx-service"
-    #      middlewares:
-    #        - "tinyauth"
-    #      tls:
-    #        certResolver: "myresolver"
-    #      entryPoints:
-    #        - "websecure"
     kuma-route:
       rule: "Host(`kuma.jimeagle.com`)"
       service: "kuma-service"
@@ -176,15 +106,6 @@ http:
         certResolver: "myresolver"
       entryPoints:
         - "websecure"
-    #    n8n-route:
-    #      rule: "Host(`n8n.jimeagle.com`)"
-    #      service: "n8n-service"
-    #      middlewares:
-    #        - "tinyauth"
-    #      tls:
-    #        certResolver: "myresolver"
-    #      entryPoints:
-    #        - "websecure"
     nodered-route:
       rule: "Host(`nodered.jimeagle.com`) && !PathPrefix(`/reviews/`)"
       service: "nodered-service"
@@ -262,15 +183,6 @@ http:
         certResolver: "myresolver"
       entryPoints:
         - "websecure"
-    #    scrutiny-route:
-    #      rule: "Host(`scrutiny.jimeagle.com`)"
-    #      service: "scrutiny-service"
-    #      middlewares:
-    #        - "tinyauth"
-    #      tls:
-    #        certResolver: "myresolver"
-    #      entryPoints:
-    #        - "websecure"
     slink-route:
       rule: "Host(`slink.jimeagle.com`) && !PathPrefix(`/images/`)"
       service: "slink-service"
@@ -294,15 +206,6 @@ http:
         certResolver: "myresolver"
       entryPoints:
         - "websecure"
-    #    slskd-route:
-    #      rule: "Host(`slskd.jimeagle.com`)"
-    #      service: "slskd-service"
-    #      middlewares:
-    #        - "tinyauth"
-    #      tls:
-    #        certResolver: "myresolver"
-    #      entryPoints:
-    #        - "websecure"
     sonarr-route:
       rule: "Host(`sonarr.jimeagle.com`)"
       service: "sonarr-service"
@@ -321,15 +224,6 @@ http:
         certResolver: "myresolver"
       entryPoints:
         - "websecure"
-    #    tautulli-route:
-    #      rule: "Host(`tautulli.jimeagle.com`)"
-    #      service: "tautulli-service"
-    #      middlewares:
-    #        - "tinyauth"
-    #      tls:
-    #        certResolver: "myresolver"
-    #      entryPoints:
-    #        - "websecure"
     tinyauth-route:
       rule: "Host(`login.jimeagle.com`)"
       service: "tinyauth-service"
@@ -404,10 +298,6 @@ http:
       loadBalancer:
         servers:
           - url: "http://localhost:8096"
-    #    mass-service:
-    #      loadBalancer:
-    #        servers:
-    #          - url: "http://localhost:8095"
     influx-service:
       loadBalancer:
         servers:
