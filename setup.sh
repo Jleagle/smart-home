@@ -15,6 +15,7 @@ mkdir -p ~/Media/Slskd
 mkdir -p ~/Media/Television
 mkdir -p ~/Media/YouTube
 mkdir -p ~/NodeRed
+mkdir -p ~/NzbDav
 mkdir -p ~/NZBGet/Config
 mkdir -p ~/NZBGet/Downloads
 mkdir -p ~/Plex/Config

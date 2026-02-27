@@ -1,6 +1,7 @@
 include:
   #  - "docker-compose.doubletake.yml"
   - "docker-compose.share.yml"
+  - "docker-compose.streamio.yml"
 
 x-logging: &default-logging
   driver: "json-file"
@@ -30,40 +31,6 @@ services:
       timeout: 10s
       retries: 3
       start_period: 10s
-
-  aiometadata:
-    image: "ghcr.io/cedya77/aiometadata:latest"
-    container_name: "aiometadata"
-    hostname: "aiometadata"
-    restart: "unless-stopped"
-    ports:
-      - "3008:1337"
-    volumes:
-      - "${HOME}/AIOMetaData:/app/addon/data"
-    environment:
-      - "TZ=Europe/London"
-      - "PORT=1337"
-      - "HOST_NAME=https://aiometadata.jimeagle.com"
-      - "NODE_ENV=production"
-      - "REDIS_URL=${AIO_REDIS}"
-      - "DATABASE_URI=sqlite://addon/data/db.sqlite"
-
-  aiostreams:
-    image: "ghcr.io/viren070/aiostreams:latest"
-    container_name: "aiostreams"
-    hostname: "aiostreams"
-    restart: "unless-stopped"
-    ports:
-      - "3007:3000"
-    environment:
-      - "TZ=Europe/London"
-      - "LOG_TIMEZONE=Europe/London"
-      - "ADDON_NAME=Seven"
-      - "ADDON_ID=aiostreams.jimeagle.com"
-      - "BASE_URL=https://aiostreams.jimeagle.com"
-      - "SECRET_KEY=${AIO_SECRET_KEY}"
-    volumes:
-      - "${HOME}/AIOStreams:/app/data"
 
   autoheal:
     image: "willfarrell/autoheal:latest"
@@ -479,20 +446,6 @@ services:
       - "SESSION_EXPIRY=432000"
       - "GOOGLE_CLIENT_ID=${GOOGLE_CLIENT_ID}"
       - "GOOGLE_CLIENT_SECRET=${GOOGLE_CLIENT_SECRET}"
-
-  usenet-ultimate:
-    image: "ghcr.io/dsmart33/usenet-ultimate:latest"
-    container_name: "usenet-ultimate"
-    hostname: "usenet-ultimate"
-    restart: "unless-stopped"
-    ports:
-      - "1338:1338"
-    volumes:
-      - "${HOME}/UsenetUltimate:/app/config"
-    environment:
-      - "PORT=1338"
-    logging: *default-logging
-
 
   whatsapp-bridge:
     image: "ghcr.io/raulpetruta/ha-wa-bridge:latest"

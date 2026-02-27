@@ -122,6 +122,15 @@ http:
         certResolver: "myresolver"
       entryPoints:
         - "websecure"
+    nzbdav-route:
+      rule: "Host(`nzbdav.jimeagle.com`)"
+      service: "nzbdav-service"
+      middlewares:
+        - "tinyauth"
+      tls:
+        certResolver: "myresolver"
+      entryPoints:
+        - "websecure"
     nzbget-route:
       rule: "Host(`nzbget.jimeagle.com`)"
       service: "nzbget-service"
@@ -322,6 +331,10 @@ http:
       loadBalancer:
         servers:
           - url: "http://localhost:1880"
+    nzbdav-service:
+      loadBalancer:
+        servers:
+          - url: "http://localhost:3010"
     nzbget-service:
       loadBalancer:
         servers:
