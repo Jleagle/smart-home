@@ -37,6 +37,7 @@ services:
   nzbdav:
     image: "nzbdav/nzbdav:latest"
     container_name: "nzbdav"
+    hostname: "nzbdav"
     restart: "unless-stopped"
     ports:
       - "3010:3000"
