@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+cd /home/james/Repo
+
 # Pull latest changes from git
 if [ -f "./pull.sh" ]; then
   bash ./pull.sh
