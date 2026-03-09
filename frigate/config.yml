@@ -103,9 +103,10 @@ detectors:
     num_threads: 2
 
 ui:
-  timezone: Europe/London
-  time_format: 24hour
-  strftime_fmt: '%Y-%m-%d %H:%M'
+  # timezone: Europe/London
+  # time_format: 24hour
+  time_style: medium
+  unit_system: metric
 
 telemetry:
   version_check: false
