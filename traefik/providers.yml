@@ -395,6 +395,10 @@ http:
       loadBalancer:
         servers:
           - url: "http://localhost:3005"
+    usenetstreamer-service:
+      loadBalancer:
+        servers:
+          - url: "http://localhost:7000"
     usenetultimate-service:
       loadBalancer:
         servers:
