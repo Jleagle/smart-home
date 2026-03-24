@@ -240,6 +240,22 @@ http:
         certResolver: "myresolver"
       entryPoints:
         - "websecure"
+    usenetstreamer-route:
+      rule: "Host(`usenetstreamer.jimeagle.com`) && !(PathPrefix(`/manifest.json`) || PathPrefix(`/stream/`) || PathPrefix(`/nzb/`) || PathPrefix(`/assets/`))"
+      service: "usenetstreamer-service"
+      middlewares:
+        - "tinyauth"
+      tls:
+        certResolver: "myresolver"
+      entryPoints:
+        - "websecure"
+    usenetstreamer-route-public:
+      rule: "Host(`usenetstreamer.jimeagle.com`) && (PathPrefix(`/manifest.json`) || PathPrefix(`/stream/`) || PathPrefix(`/nzb/`) || PathPrefix(`/assets/`))"
+      service: "usenetstreamer-service"
+      tls:
+        certResolver: "myresolver"
+      entryPoints:
+        - "websecure"
     usenetultimate-route:
       rule: "Host(`usenetultimate.jimeagle.com`)"
       service: "usenetultimate-service"
