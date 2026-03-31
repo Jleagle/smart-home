@@ -416,7 +416,6 @@ services:
       - "STRAVA_CLIENT_ID=150624"
       - "STRAVA_CLIENT_SECRET=${STRAVA_CLIENT_SECRET}"
       - "STRAVA_REFRESH_TOKEN=${STRAVA_REFRESH_TOKEN}"
-      - "IMPORT_AND_BUILD_SCHEDULE='0 4 * * *'"
       - "TZ=Europe/London"
 
   traefik:
