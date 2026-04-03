@@ -251,7 +251,7 @@ services:
       - "LOG_LEVEL=debug"
       - "TZ=Europe/London"
     volumes:
-      - "${HOME}/Overseerr:/config"
+      - "${HOME}/Overseerr:/app/config"
     healthcheck:
       test: wget --no-verbose --tries=1 --spider http://localhost:5055/api/v1/status || exit 1
       start_period: 20s
