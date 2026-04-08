@@ -240,16 +240,16 @@ http:
         certResolver: "myresolver"
       entryPoints:
         - "websecure"
-    usenetstreamer-route:
-      rule: "Host(`usenetstreamer.jimeagle.com`)"
+    usenetstreamer-route-public:
+      rule: "Host(`usenetstreamer.jimeagle.com`) && PathPrefix(`/stremio/`)"
       service: "usenetstreamer-service"
       tls:
         certResolver: "myresolver"
       entryPoints:
         - "websecure"
-    usenetultimate-route:
-      rule: "Host(`usenetultimate.jimeagle.com`)"
-      service: "usenetultimate-service"
+    usenetstreamer-route:
+      rule: "Host(`usenetstreamer.jimeagle.com`) && !PathPrefix(`/stremio/`)"
+      service: "usenetstreamer-service"
       middlewares:
         - "tinyauth"
       tls:
