@@ -74,18 +74,3 @@ services:
       CONFIG_DIR: "/data/config"
     volumes:
       - "${HOME}/UsenetStreamer:/data/config"
-
-  #  realdebrid:
-  #    image: "rogerfar/rdtclient:latest"
-  #    container_name: "realdebrid"
-  #    hostname: "realdebrid"
-  #    restart: "unless-stopped"
-  #    ports:
-  #      - "6500:6500"
-  #    environment:
-  #      - "PUID=1000"
-  #      - "PGID=1000"
-  #      - "TZ=Europe/London"
-  #    volumes:
-  #      - "${HOME}/RealDebrid/DB:/data/db"
-  #      - "${HOME}/RealDebrid/Downloads:/data/downloads"
