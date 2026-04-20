@@ -754,6 +754,18 @@ services:
         target: /opt/unbound/etc/unbound/a-records.conf
     restart: unless-stopped
 
+  usenet-ultimate:
+    image: "ghcr.io/dsmart33/usenet-ultimate:latest"
+    container_name: "usenet-ultimate"
+    hostname: "usenet-ultimate"
+    restart: "unless-stopped"
+    ports:
+      - "1338:1338"
+    volumes:
+      - "${HOME}/UsenetUltimate:/app/config"
+    environment:
+      - "PORT=1338"
+
   varken:
     image: "boerderij/varken:latest"
     hostname: "varken"

@@ -48,18 +48,6 @@ services:
     volumes:
       - "${HOME}/NzbDav:/config"
 
-  #  usenet-ultimate:
-  #    image: "ghcr.io/dsmart33/usenet-ultimate:latest"
-  #    container_name: "usenet-ultimate"
-  #    hostname: "usenet-ultimate"
-  #    restart: "unless-stopped"
-  #    ports:
-  #      - "1338:1338"
-  #    volumes:
-  #      - "${HOME}/UsenetUltimate:/app/config"
-  #    environment:
-  #      - "PORT=1338"
-
   usenetstreamer:
     image: "ghcr.io/sanket9225/usenetstreamer:latest"
     container_name: "usenetstreamer"
