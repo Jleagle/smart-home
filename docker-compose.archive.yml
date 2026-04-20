@@ -138,9 +138,10 @@ services:
     hostname: "esphome"
     restart: "unless-stopped"
     network_mode: "host"
+    environment:
+      - "TZ=Europe/London"
     volumes:
       - "${HOME}/ESPHome:/config"
-      - "/etc/localtime:/etc/localtime:ro"
 
   influx:
     image: "influxdb:2.5"
@@ -383,6 +384,7 @@ services:
     ports:
       - "5678:5678"
     environment:
+      - "TZ=Europe/London"
       - "DOMAIN_NAME=jimeagle.com"
       - "GENERIC_TIMEZONE=Europe/London"
       - "N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=true"
@@ -392,7 +394,6 @@ services:
       - "N8N_RUNNERS_ENABLED=true"
       - "NODE_ENV=production"
       - "SUBDOMAIN=n8n"
-      - "TZ=Europe/London"
       - "WEBHOOK_URL=https://n8n.jimeagle.com/"
       - "DB_SQLITE_POOL_SIZE=1"
     volumes:
@@ -421,13 +422,13 @@ services:
     container_name: "noip"
     restart: "unless-stopped"
     environment:
+      - "TZ=Europe/London"
       - "USERNAME=${NOIP_USERNAME}"
       - "PASSWORD=${NOIP_PASSWORD}"
       - "DOMAINS=${NOIP_DOMAINS}"
       - "INTERVAL=30m"
     volumes:
       - "${DOCKER_DATA}/no-ip/config:/config"
-      - "/etc/localtime:/etc/localtime:ro"
 
   pihole:
     image: "pihole/pihole:latest"
@@ -610,9 +611,9 @@ services:
       - "8267:8267" # Internal node port
       - "8268:8268" # Example extra node port
     environment:
-      - "TZ=Europe/London"
       - "PUID=1000"
       - "PGID=1000"
+      - "TZ=Europe/London"
       - "UMASK_SET=002"
       - "serverIP=0.0.0.0"
       - "serverPort=8266"
@@ -632,9 +633,9 @@ services:
     restart: "unless-stopped"
     #network_mode: "service:tdarr"
     environment:
-      - "TZ=Europe/London"
       - "PUID=1000"
       - "PGID=1000"
+      - "TZ=Europe/London"
       - "UMASK_SET=002"
       - "nodeID=MainNode"
       - "serverIP=0.0.0.0"

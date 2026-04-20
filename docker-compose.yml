@@ -98,13 +98,13 @@ services:
     volumes:
       - "${HOME}/Media/Frigate:/media/frigate"
       - "./frigate:/config"
-      - "/etc/localtime:/etc/localtime:ro"
     tmpfs:
       - "/tmp/cache"
     ports:
       - "1935:1935" # RTMP feeds
       - "5000:5000" # API
     environment:
+      - "TZ=Europe/London"
       - "PLUS_API_KEY=${FRIGATE_PLUS_KEY}"
       - "FRIGATE_GENAI_KEY"
       - "FRIGATE_DRIVEWAY_USERNAME"
@@ -130,7 +130,6 @@ services:
       - "${HOME}/Hass/Config:/config"
       - "${HOME}/Hass/google_assistant_key.json:/config/google_assistant_key.json:ro"
       - "./hass/config.yml:/config/configuration.yaml"
-      - "/etc/localtime:/etc/localtime:ro"
     environment:
       - "TZ=Europe/London"
     healthcheck:
@@ -201,9 +200,9 @@ services:
     ports:
       - "1880:1880"
     environment:
+      - "TZ=Europe/London"
       - "HTTP_USERNAME=${NODE_RED_HTTP_USERNAME}"
       - "HTTP_PASSWORD=${NODE_RED_HTTP_PASSWORD}"
-      - "TZ=Europe/London"
     volumes:
       - "${HOME}/NodeRed:/data"
       - "${HOME}/Media/Frigate:/media/frigate:ro"
@@ -247,9 +246,9 @@ services:
     ports:
       - "5055:5055"
     environment:
+      - "TZ=Europe/London"
       - "PORT=5055"
       - "LOG_LEVEL=debug"
-      - "TZ=Europe/London"
     volumes:
       - "${HOME}/Overseerr:/app/config"
     healthcheck:
@@ -312,7 +311,6 @@ services:
       - "${HOME}/NZBGet/Downloads:/downloads"
       - "${HOME}/RealDebrid/Downloads:/downloads-rd"
       - "${HOME}/Media/Movies:/movies"
-      - "/etc/localtime:/etc/localtime:ro"
     environment:
       - "PGID=1000"
       - "PUID=1000"
@@ -392,7 +390,6 @@ services:
       - "${HOME}/NZBGet/Downloads:/downloads"
       - "${HOME}/RealDebrid/Downloads:/downloads-rd"
       - "${HOME}/Media/Television:/tv"
-      - "/etc/localtime:/etc/localtime:ro"
     healthcheck:
       test: [ "CMD-SHELL", "wget --quiet --tries=1 --spider http://localhost:8989/ping || exit 1" ]
       interval: 30s
@@ -412,10 +409,10 @@ services:
     ports:
       - "8082:8080"
     environment:
+      - "TZ=Europe/London"
       - "STRAVA_CLIENT_ID=150624"
       - "STRAVA_CLIENT_SECRET=${STRAVA_CLIENT_SECRET}"
       - "STRAVA_REFRESH_TOKEN=${STRAVA_REFRESH_TOKEN}"
-      - "TZ=Europe/London"
 
   traefik:
     image: "traefik:latest"
