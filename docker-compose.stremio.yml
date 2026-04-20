@@ -47,6 +47,8 @@ services:
       - "UPGRADE=0.6.0"
     volumes:
       - "${HOME}/NzbDav:/config"
+      - "${HOME}/Media:/media" # For finding broken media
+      - "${HOME}/NzbDav/Downloads:/mnt"
 
   usenetstreamer:
     image: "ghcr.io/sanket9225/usenetstreamer:latest"

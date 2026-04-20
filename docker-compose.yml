@@ -310,6 +310,7 @@ services:
       - "${HOME}/Radarr:/config"
       - "${HOME}/NZBGet/Downloads:/downloads"
       - "${HOME}/RealDebrid/Downloads:/downloads-rd"
+      - "${HOME}/NzbDav/Downloads:/downloads-dav"
       - "${HOME}/Media/Movies:/movies"
     environment:
       - "PGID=1000"
@@ -389,6 +390,7 @@ services:
       - "${HOME}/Sonarr:/config"
       - "${HOME}/NZBGet/Downloads:/downloads"
       - "${HOME}/RealDebrid/Downloads:/downloads-rd"
+      - "${HOME}/NzbDav/Downloads:/downloads-dav"
       - "${HOME}/Media/Television:/tv"
     healthcheck:
       test: [ "CMD-SHELL", "wget --quiet --tries=1 --spider http://localhost:8989/ping || exit 1" ]
