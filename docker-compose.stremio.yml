@@ -49,6 +49,12 @@ services:
       - "${HOME}/NzbDav:/config"
       - "${HOME}/Media:/media" # For finding broken media
       - "${HOME}/NzbDav/Downloads:/mnt"
+    healthcheck:
+      test: curl -f http://localhost:3000/health || exit 1
+      interval: 1m
+      retries: 3
+      start_period: 5s
+      timeout: 5s
 
   usenetstreamer:
     image: "ghcr.io/sanket9225/usenetstreamer:latest"
