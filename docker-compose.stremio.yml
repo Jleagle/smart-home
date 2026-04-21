@@ -70,3 +70,38 @@ services:
       CONFIG_DIR: "/data/config"
     volumes:
       - "${HOME}/UsenetStreamer:/data/config"
+
+  rclone:
+    image: "rclone/rclone:latest"
+    container_name: "rclone"
+    restart: "unless-stopped"
+    environment:
+      - "PUID=1000"
+      - "PGID=1000"
+      - "TZ=Europe/London"
+    volumes:
+      - "${HOME}/NzbDav/Downloads:/mnt:rshared"
+      - "./rclone/rclone.conf:/config/rclone/rclone.conf"
+    cap_add:
+      - "SYS_ADMIN"
+    security_opt:
+      - "apparmor:unconfined"
+    devices:
+      - "/dev/fuse:/dev/fuse:rwm"
+    depends_on:
+      nzbdav:
+        condition: "service_healthy"
+        restart: true
+    command: >
+      mount nzbdav: /mnt/remote/nzbdav
+        --uid=1000
+        --gid=1000
+        --allow-other
+        --links
+        --use-cookies
+        --vfs-cache-mode=full
+        --vfs-cache-max-size=20G
+        --vfs-cache-max-age=24h
+        --buffer-size=0M
+        --vfs-read-ahead=512M
+        --dir-cache-time=20s
