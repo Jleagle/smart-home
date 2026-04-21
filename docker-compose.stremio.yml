@@ -101,6 +101,7 @@ services:
         --links
         --use-cookies
         --rc
+        --rc-addr=0.0.0.0:5572
         --vfs-cache-mode=full
         --vfs-cache-max-size=20G
         --vfs-cache-max-age=24h
