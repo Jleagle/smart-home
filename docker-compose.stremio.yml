@@ -100,6 +100,7 @@ services:
         --allow-other
         --links
         --use-cookies
+        --rc
         --vfs-cache-mode=full
         --vfs-cache-max-size=20G
         --vfs-cache-max-age=24h
