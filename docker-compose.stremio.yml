@@ -48,7 +48,7 @@ services:
     volumes:
       - "${HOME}/NzbDav:/config"
       - "${HOME}/Media:/media" # For finding broken media
-      - "${HOME}/NzbDav/Downloads:/mnt"
+      - "/mnt/nzbdav:/mnt/nzbdav:rshared"
     healthcheck:
       test: curl -f http://localhost:3000/health || exit 1
       interval: 1m
@@ -80,7 +80,7 @@ services:
       - "PGID=1000"
       - "TZ=Europe/London"
     volumes:
-      - "${HOME}/NzbDav/Downloads:/mnt:rshared"
+      - "/mnt/nzbdav:/mnt/nzbdav:rshared"
       - "./rclone/rclone.conf:/config/rclone/rclone.conf"
     cap_add:
       - "SYS_ADMIN"
