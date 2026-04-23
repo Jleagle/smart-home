@@ -48,7 +48,11 @@ services:
     volumes:
       - "${HOME}/NzbDav:/config"
       - "${HOME}/Media:/media" # For finding broken media
-      - "/mnt/nzbdav:/mnt/nzbdav:rshared"
+      - "/mnt:/mnt:rshared"
+    depends_on:
+      nzbdav:
+        condition: service_healthy
+        restart: true
     healthcheck:
       test: curl -f http://localhost:3000/health || exit 1
       interval: 1m
@@ -80,7 +84,7 @@ services:
       - "PGID=1000"
       - "TZ=Europe/London"
     volumes:
-      - "/mnt/nzbdav:/mnt/nzbdav:rshared"
+      - "/mnt:/mnt:rshared"
       - "./rclone/rclone.conf:/config/rclone/rclone.conf"
     cap_add:
       - "SYS_ADMIN"
@@ -89,12 +93,8 @@ services:
     devices:
       - "/dev/fuse:/dev/fuse:rwm"
     privileged: true
-    depends_on:
-      nzbdav:
-        condition: "service_healthy"
-        restart: true
     command: >
-      mount nzbdav: /mnt/nzbdav
+      mount nzbdav: /mnt/remote/nzbdav
         --uid=1000
         --gid=1000
         --allow-other

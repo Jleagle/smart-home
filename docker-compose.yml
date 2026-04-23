@@ -311,7 +311,7 @@ services:
       - "${HOME}/NZBGet/Downloads:/downloads"
       - "${HOME}/RealDebrid/Downloads:/downloads-rd"
       - "${HOME}/Media/Movies:/movies"
-      - "/mnt/nzbdav:/mnt/nzbdav:rshared"
+      - "/mnt:/mnt:rshared"
     environment:
       - "PGID=1000"
       - "PUID=1000"
@@ -391,7 +391,7 @@ services:
       - "${HOME}/NZBGet/Downloads:/downloads"
       - "${HOME}/RealDebrid/Downloads:/downloads-rd"
       - "${HOME}/Media/Television:/tv"
-      - "/mnt/nzbdav:/mnt/nzbdav:rshared"
+      - "/mnt:/mnt:rshared"
     healthcheck:
       test: [ "CMD-SHELL", "wget --quiet --tries=1 --spider http://localhost:8989/ping || exit 1" ]
       interval: 30s
