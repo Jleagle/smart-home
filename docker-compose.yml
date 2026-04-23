@@ -270,13 +270,11 @@ services:
       - "TZ=Europe/London"
       - "VERSION=public"
     volumes:
-      #- "${HOME}/Plex/Transcoding:/transcode"
-      #- "/dev/shm:/transcode"
       - "${HOME}/Plex/Config:/config"
       - "${HOME}/Media/Television:/data/tvshows"
       - "${HOME}/Media/Movies:/data/movies"
       - "${HOME}/Media/YouTube:/data/youtube"
-      - "${HOME}/Media/Frigate:/data/frigate"
+      - "/mnt:/mnt:rshared"
     devices:
       - "/dev/dri:/dev/dri" # Quicksync
 
