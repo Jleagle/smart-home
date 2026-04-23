@@ -49,10 +49,6 @@ services:
       - "${HOME}/NzbDav:/config"
       - "${HOME}/Media:/media" # For finding broken media
       - "/mnt:/mnt:rshared"
-    depends_on:
-      nzbdav:
-        condition: service_healthy
-        restart: true
     healthcheck:
       test: curl -f http://localhost:3000/health || exit 1
       interval: 1m
@@ -93,6 +89,10 @@ services:
     devices:
       - "/dev/fuse:/dev/fuse:rwm"
     privileged: true
+    depends_on:
+      nzbdav:
+        condition: service_healthy
+        restart: true
     command: >
       mount nzbdav: /mnt/remote/nzbdav
         --uid=1000
