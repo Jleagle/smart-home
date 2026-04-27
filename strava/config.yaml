@@ -143,6 +143,12 @@ import:
   # Each segment only needs to be imported once, so this will not affect the import time for subsequent imports.
   optInToSegmentDetailImport: false
 
+zwift:
+  # Optional, your Zwift level (1 - 100). Will be used to render your Zwift badge. Leave empty to disable this feature
+  level: null
+  # Optional, your Zwift racing score (0 - 1000). Will be used to add to your Zwift badge if zwift.level is filled out.
+  racingScore: null
+
 daemon:
   # A list of actions that the application runs at regular intervals according to their defined schedule.
   # Notification-related actions require the integrations.notifications.ntfyUrl setting to be configured.
