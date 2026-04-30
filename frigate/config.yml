@@ -46,6 +46,7 @@ go2rtc:
   streams:
     driveway:
       - rtsp://{FRIGATE_DRIVEWAY_USERNAME}:{FRIGATE_DRIVEWAY_PASSWORD}@192.168.0.12:554/Preview_01_main
+      - ffmpeg:driveway#video=h264#audio=aac
 
 cameras:
   driveway:
