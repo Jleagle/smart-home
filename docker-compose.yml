@@ -103,6 +103,7 @@ services:
     ports:
       - "1935:1935" # RTMP feeds
       - "5000:5000" # API
+      - "1984:1984" # go2rtc
     environment:
       - "TZ=Europe/London"
       - "PLUS_API_KEY=${FRIGATE_PLUS_KEY}"
