@@ -58,7 +58,6 @@ cameras:
         - path: rtsp://{FRIGATE_DRIVEWAY_USERNAME}:{FRIGATE_DRIVEWAY_PASSWORD}@192.168.0.12:554/Preview_01_sub
           roles:
             - detect
-            - audio
     zones:
       zone1:
         coordinates: 1,0.789,1,1,0,1,0,0.647
