@@ -324,6 +324,19 @@ services:
     devices:
       - "/dev/dri:/dev/dri" # Quicksync
 
+  maintainerr:
+    image: "ghcr.io/maintainerr/maintainerr:latest"
+    hostname: "maintainerr"
+    container_name: "maintainerr"
+    restart: "unless-stopped"
+    user: "1000:1000"
+    volumes:
+      - "${HOME}/Maintainerr:/opt/data"
+    ports:
+      - "6246:6246"
+    environment:
+      - "TZ=Europe/London"
+
   mass:
     image: "ghcr.io/music-assistant/server:latest"
     container_name: "mass"
