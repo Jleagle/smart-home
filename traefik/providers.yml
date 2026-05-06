@@ -129,6 +129,15 @@ http:
         certResolver: "myresolver"
       entryPoints:
         - "websecure"
+    profilarr-route:
+      rule: "Host(`profilarr.jimeagle.com`)"
+      service: "profilarr-service"
+      middlewares:
+        - "tinyauth"
+      tls:
+        certResolver: "myresolver"
+      entryPoints:
+        - "websecure"
     prowlarr-route:
       rule: "Host(`prowlarr.jimeagle.com`)"
       service: "prowlarr-service"
@@ -323,6 +332,10 @@ http:
       loadBalancer:
         servers:
           - url: "http://localhost:5055"
+    profilarr-service:
+      loadBalancer:
+        servers:
+          - url: "http://localhost:6868"
     prowlarr-service:
       loadBalancer:
         servers:

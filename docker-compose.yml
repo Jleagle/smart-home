@@ -286,6 +286,23 @@ services:
       timeout: 10s
       retries: 3
 
+  profilarr:
+    image: "ghcr.io/dictionarry-hub/profilarr:latest"
+    container_name: "profilarr"
+    hostname: "profilarr"
+    restart: "unless-stopped"
+    ports:
+      - "6868:6868"
+    environment:
+      - "PUID=1000"
+      - "PGID=1000"
+      - "UMASK=022"
+      - "PORT=6868"
+      - "HOST=0.0.0.0"
+      - "TZ=Europe/London"
+    volumes:
+      - "${HOME}/Profilarr:/config"
+
   radarr:
     image: "linuxserver/radarr:latest"
     container_name: "radarr"

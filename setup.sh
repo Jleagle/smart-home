@@ -20,6 +20,7 @@ mkdir -p ~/NZBGet/Config
 mkdir -p ~/NZBGet/Downloads
 mkdir -p ~/Plex/Config
 mkdir -p ~/Plex/Transcoding
+mkdir -p ~/Profilarr
 mkdir -p ~/Prowlarr
 mkdir -p ~/Radarr
 mkdir -p ~/RealDebrid/DB
