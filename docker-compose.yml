@@ -287,7 +287,7 @@ services:
       retries: 3
 
   profilarr:
-    image: "ghcr.io/dictionarry-hub/profilarr:latest"
+    image: "santiagosayshey/profilarr:latest"
     container_name: "profilarr"
     hostname: "profilarr"
     restart: "unless-stopped"
