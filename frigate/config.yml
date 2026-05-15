@@ -34,9 +34,9 @@ objects:
 record:
   enabled: true
   alerts:
-    retain: { }
+    retain: {}
   detections:
-    retain: { }
+    retain: {}
 motion:
   mask:
     - 0.149,0.934,0.254,0.935,0.254,0.975,0.151,0.977   # Time
@@ -51,11 +51,13 @@ cameras:
   driveway:
     ffmpeg:
       inputs:
-        - path: rtsp://{FRIGATE_DRIVEWAY_USERNAME}:{FRIGATE_DRIVEWAY_PASSWORD}@192.168.0.12:554/Preview_01_main
+        - path:
+            rtsp://{FRIGATE_DRIVEWAY_USERNAME}:{FRIGATE_DRIVEWAY_PASSWORD}@192.168.0.12:554/Preview_01_main
           roles:
             - record
             - audio
-        - path: rtsp://{FRIGATE_DRIVEWAY_USERNAME}:{FRIGATE_DRIVEWAY_PASSWORD}@192.168.0.12:554/Preview_01_sub
+        - path:
+            rtsp://{FRIGATE_DRIVEWAY_USERNAME}:{FRIGATE_DRIVEWAY_PASSWORD}@192.168.0.12:554/Preview_01_sub
           roles:
             - detect
     zones:
