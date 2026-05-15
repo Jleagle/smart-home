@@ -77,7 +77,6 @@ mkdir -p ~/WhatsAppBridge/cache
 #mkdir -p ~/Zinc
 
 touch ~/Auth/config.json
-touch ~/Frigate/config.yml
 touch ~/Hass/assistant_service_account.json
 touch ~/Traefik/acme.json
 #touch ~/AssistantRelay/config.json
