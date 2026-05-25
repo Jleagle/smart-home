@@ -1,18 +1,9 @@
 #!/usr/bin/env bash
 
-# https://restic.readthedocs.io/en/latest/index.html
-
-#docker run --rm -v ${HOME}:/data \
-#  -e RESTIC_REPOSITORY=s3:s3.amazonaws.com/bucket_name \
-#  -e RESTIC_PASSWORD=my-secure-password \
-#  -e AWS_ACCESS_KEY_ID=my-aws-access-key \
-#  -e AWS_SECRET_ACCESS_KEY=my-aws-secret-key \
-#  instrumentisto/restic backup /data
-
-# dc down
 # Note: Remove --dry-run to actually perform the backup
+# dc down first
+
 rsync \
-	--dry-run \
 	--archive \
 	--compress \
 	--progress \
@@ -20,10 +11,14 @@ rsync \
 	--human-readable \
 	--rsync-path="sudo rsync" \
 	--rsh 'ssh -oPort=2222' \
-	--exclude="Media" \
 	--exclude="Tautulli/cache/" \
 	--exclude="Repo/" \
-	--exclude="Plex/Config/Library/Application\ Support/Plex\ Media\ Server/Media/" \
-	--exclude="Plex/Config/Library/Application\ Support/Plex\ Media\ Server/Cache/" \
-	seven:/home/james ~/Downloads/Seven/
-# ./update.sh
+	--exclude=".cache/JetBrains/" \
+	--exclude="Hass/Config/.cache/" \
+	--exclude="Plex/Config/Library/Application Support/Plex Media Server/Cache" \
+	--exclude="Plex/Config/Library/Application Support/Plex Media Server/CrashReports" \
+	--exclude="Plex/Config/Library/Application Support/Plex Media Server/Drivers" \
+	--exclude="Plex/Config/Library/Application Support/Plex Media Server/Logs" \
+	--exclude="Plex/Config/Library/Application Support/Plex Media Server/Media/" \
+	--exclude="Plex/Config/Library/Application Support/Plex Media Server/Metadata" \
+	seven-remote:/home/james ~/Downloads/Seven/
