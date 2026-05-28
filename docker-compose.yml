@@ -1,7 +1,6 @@
 include:
   #  - "docker-compose.doubletake.yml"
   - "docker-compose.share.yml"
-  - "docker-compose.stremio.yml"
 
 x-logging: &default-logging
   driver: "json-file"
@@ -205,6 +204,28 @@ services:
       retries: 3
     logging: *default-logging
 
+  nzbdav:
+    image: "nzbdav/nzbdav:latest"
+    container_name: "nzbdav"
+    hostname: "nzbdav"
+    restart: "unless-stopped"
+    ports:
+      - "3010:3000"
+    environment:
+      - "PUID=1000"
+      - "PGID=1000"
+      - "UPGRADE=0.6.0"
+    volumes:
+      - "${HOME}/NzbDav:/config"
+      - "${HOME}/Media:/media" # For finding broken media
+      - "/mnt:/mnt:rshared"
+    healthcheck:
+      test: curl -f http://localhost:3000/health || exit 1
+      interval: 1m
+      retries: 3
+      start_period: 5s
+      timeout: 5s
+
   nzbget:
     image: "linuxserver/nzbget:latest"
     container_name: "nzbget"
@@ -328,6 +349,43 @@ services:
       interval: 30s
       timeout: 10s
       retries: 3
+
+  rclone:
+    image: "rclone/rclone:latest"
+    container_name: "rclone"
+    restart: "unless-stopped"
+    environment:
+      - "PUID=1000"
+      - "PGID=1000"
+      - "TZ=Europe/London"
+    volumes:
+      - "/mnt:/mnt:rshared"
+      - "./rclone/rclone.conf:/config/rclone/rclone.conf"
+    cap_add:
+      - "SYS_ADMIN"
+    security_opt:
+      - "apparmor:unconfined"
+    devices:
+      - "/dev/fuse:/dev/fuse:rwm"
+    depends_on:
+      nzbdav:
+        condition: service_healthy
+        restart: true
+    command: >
+      mount nzbdav: /mnt/remote/nzbdav
+        --uid=1000
+        --gid=1000
+        --allow-other
+        --links
+        --use-cookies
+        --rc
+        --rc-addr=0.0.0.0:5572
+        --vfs-cache-mode=full
+        --vfs-cache-max-size=20G
+        --vfs-cache-max-age=24h
+        --buffer-size=0M
+        --vfs-read-ahead=512M
+        --dir-cache-time=20s
 
   realdebrid:
     image: "rogerfar/rdtclient:latest"
@@ -457,6 +515,21 @@ services:
       - "SESSION_EXPIRY=432000"
       - "GOOGLE_CLIENT_ID=${GOOGLE_CLIENT_ID}"
       - "GOOGLE_CLIENT_SECRET=${GOOGLE_CLIENT_SECRET}"
+
+  usenetstreamer:
+    image: "ghcr.io/sanket9225/usenetstreamer:latest"
+    container_name: "usenetstreamer"
+    restart: "unless-stopped"
+    ports:
+      - "7000:7000"
+    environment:
+      ADDON_SHARED_SECRET: "${USENET_STREAMER_SECRET}"
+      ADDON_BASE_URL: "https://usenetstreamer.jimeagle.com/"
+      NZBDAV_URL: "http://nzbdav:3000"
+      NZBDAV_WEBDAV_URL: "http://nzbdav:3000"
+      CONFIG_DIR: "/data/config"
+    volumes:
+      - "${HOME}/UsenetStreamer:/data/config"
 
   whatsapp-bridge:
     image: "ghcr.io/raulpetruta/ha-wa-bridge:latest"
