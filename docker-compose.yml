@@ -354,6 +354,7 @@ services:
     image: "rclone/rclone:latest"
     container_name: "rclone"
     restart: "unless-stopped"
+    stop_grace_period: "30s"
     environment:
       - "PUID=1000"
       - "PGID=1000"
@@ -371,21 +372,25 @@ services:
       nzbdav:
         condition: service_healthy
         restart: true
-    command: >
-      mount nzbdav: /mnt/remote/nzbdav
-        --uid=1000
-        --gid=1000
-        --allow-other
-        --links
-        --use-cookies
-        --rc
-        --rc-addr=0.0.0.0:5572
-        --vfs-cache-mode=full
-        --vfs-cache-max-size=20G
-        --vfs-cache-max-age=24h
-        --buffer-size=0M
-        --vfs-read-ahead=512M
-        --dir-cache-time=20s
+    entrypoint:
+      - "/bin/sh"
+      - "-c"
+      - |
+        grep -q " /mnt/remote/nzbdav " /proc/mounts && fusermount3 -u -z /mnt/remote/nzbdav || true
+        exec rclone mount nzbdav: /mnt/remote/nzbdav \
+          --uid=1000 \
+          --gid=1000 \
+          --allow-other \
+          --links \
+          --use-cookies \
+          --rc \
+          --rc-addr=0.0.0.0:5572 \
+          --vfs-cache-mode=full \
+          --vfs-cache-max-size=20G \
+          --vfs-cache-max-age=24h \
+          --buffer-size=0M \
+          --vfs-read-ahead=512M \
+          --dir-cache-time=20s
 
   realdebrid:
     image: "rogerfar/rdtclient:latest"
