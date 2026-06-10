@@ -29,6 +29,15 @@ http:
         certResolver: "myresolver"
       entryPoints:
         - "websecure"
+    bazarr-route:
+      rule: "Host(`bazarr.jimeagle.com`)"
+      service: "bazarr-service"
+      middlewares:
+        - "tinyauth"
+      tls:
+        certResolver: "myresolver"
+      entryPoints:
+        - "websecure"
     beszel-route:
       rule: "Host(`beszel.jimeagle.com`)"
       service: "beszel-service"
@@ -256,6 +265,10 @@ http:
       loadBalancer:
         servers:
           - url: "http://localhost:3007"
+    bazarr-service:
+      loadBalancer:
+        servers:
+          - url: "http://localhost:6767"
     beszel-service:
       loadBalancer:
         servers:

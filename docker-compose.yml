@@ -51,6 +51,22 @@ services:
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock"
 
+  bazarr:
+    image: "linuxserver/bazarr:latest"
+    container_name: "bazarr"
+    hostname: "bazarr"
+    restart: "unless-stopped"
+    ports:
+      - "6767:6767"
+    environment:
+      - "PUID=1000"
+      - "PGID=1000"
+      - "TZ=Europe/London"
+    volumes:
+      - "${HOME}/Bazarr:/config"
+      - "${HOME}/Media/Movies:/movies"
+      - "${HOME}/Media/Television:/tv"
+
   beszel:
     image: "henrygd/beszel"
     container_name: "beszel"

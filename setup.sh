@@ -4,6 +4,7 @@ mkdir -p ~/AdGuard/Conf
 mkdir -p ~/AdGuard/Work
 mkdir -p ~/AIOMetaData
 mkdir -p ~/AIOStreams
+mkdir -p ~/Bazarr
 mkdir -p ~/Beszel
 mkdir -p ~/Frigate
 mkdir -p ~/Hass
@@ -41,7 +42,6 @@ mkdir -p ~/WhatsAppBridge/cache
 #mkdir -p ~/Authentik/Certs
 #mkdir -p ~/Authentik/Media
 #mkdir -p ~/Authentik/Templates
-#mkdir -p ~/Bazarr
 #mkdir -p ~/ChangeDetection
 #mkdir -p ~/CodeProjectAI
 #mkdir -p ~/DDNS
