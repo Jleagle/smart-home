@@ -69,8 +69,8 @@ mkdir -p ~/WhatsAppBridge/cache
 #mkdir -p ~/Postgres/Data
 #mkdir -p ~/SerpBear
 #mkdir -p ~/Slskd
-#mkdir -p ~/Syncthing/Config
-#mkdir -p ~/Syncthing/Data
+mkdir -p ~/Syncthing/Config
+mkdir -p ~/Syncthing/Data
 #mkdir -p ~/Tautulli
 #mkdir -p ~/Technitium
 #mkdir -p ~/Varken

@@ -501,6 +501,24 @@ services:
       - "STRAVA_CLIENT_SECRET=${STRAVA_CLIENT_SECRET}"
       - "STRAVA_REFRESH_TOKEN=${STRAVA_REFRESH_TOKEN}"
 
+  syncthing:
+    image: "lscr.io/linuxserver/syncthing:latest"
+    container_name: "syncthing"
+    hostname: "syncthing"
+    restart: "unless-stopped"
+    ports:
+      - "8384:8384"
+      - "22000:22000/tcp"
+      - "22000:22000/udp"
+      - "21027:21027/udp"
+    environment:
+      - "PUID=1000"
+      - "PGID=1000"
+      - "TZ=Europe/London"
+    volumes:
+      - "${HOME}/Syncthing/Config:/config"
+      - "${HOME}/Syncthing/Data:/data1"
+
   traefik:
     image: "traefik:latest"
     container_name: "traefik"
