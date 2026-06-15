@@ -233,6 +233,15 @@ http:
         certResolver: "myresolver"
       entryPoints:
         - "websecure"
+    syncthing-route:
+      rule: "Host(`syncthing.jimeagle.com`)"
+      service: "syncthing-service"
+      middlewares:
+        - "tinyauth"
+      tls:
+        certResolver: "myresolver"
+      entryPoints:
+        - "websecure"
     tinyauth-route:
       rule: "Host(`login.jimeagle.com`)"
       service: "tinyauth-service"
@@ -393,6 +402,10 @@ http:
       loadBalancer:
         servers:
           - url: "http://localhost:8082"
+    syncthing-service:
+      loadBalancer:
+        servers:
+          - url: "http://localhost:8384"
     tautulli-service:
       loadBalancer:
         servers:
