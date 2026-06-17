@@ -394,20 +394,20 @@ services:
       - |
         grep -q " /mnt/remote/nzbdav " /proc/mounts && fusermount3 -u -z /mnt/remote/nzbdav || true
         exec rclone mount nzbdav: /mnt/remote/nzbdav \
-          --uid=1000 \
-          --gid=1000 \
           --allow-other \
+          --buffer-size=0M \
+          --dir-cache-time=20s \
+          --gid=1000 \
           --links \
-          --use-cookies \
           --rc \
           --rc-addr=0.0.0.0:5572 \
           --rc-no-auth \
-          --vfs-cache-mode=full \
-          --vfs-cache-max-size=20G \
+          --uid=1000 \
+          --use-cookies \
           --vfs-cache-max-age=24h \
-          --buffer-size=0M \
-          --vfs-read-ahead=512M \
-          --dir-cache-time=20s
+          --vfs-cache-max-size=20G \
+          --vfs-cache-mode=full \
+          --vfs-read-ahead=512M
 
   realdebrid:
     image: "rogerfar/rdtclient:latest"
