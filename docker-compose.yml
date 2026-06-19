@@ -405,7 +405,7 @@ services:
           --uid=1000 \
           --use-cookies \
           --vfs-cache-max-age=24h \
-          --vfs-cache-max-size=20G \
+          --vfs-cache-max-size=50G \
           --vfs-cache-mode=full \
           --vfs-read-ahead=512M
 
