@@ -395,7 +395,7 @@ services:
         grep -q " /mnt/remote/nzbdav " /proc/mounts && fusermount3 -u -z /mnt/remote/nzbdav || true
         exec rclone mount nzbdav: /mnt/remote/nzbdav \
           --allow-other \
-          --buffer-size=0M \
+          --buffer-size=64M \
           --dir-cache-time=20s \
           --gid=1000 \
           --links \
