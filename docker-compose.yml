@@ -396,18 +396,23 @@ services:
         exec rclone mount nzbdav: /mnt/remote/nzbdav \
           --allow-other \
           --buffer-size=64M \
+          --contimeout=5s \
           --dir-cache-time=20s \
           --gid=1000 \
           --links \
+          --no-modtime \
+          --read-only \
           --rc \
           --rc-addr=0.0.0.0:5572 \
           --rc-no-auth \
+          --timeout=10s \
           --uid=1000 \
           --use-cookies \
           --vfs-cache-max-age=24h \
           --vfs-cache-max-size=50G \
           --vfs-cache-mode=full \
-          --vfs-read-ahead=512M
+          --vfs-read-ahead=512M \
+          --vfs-read-wait=5ms
 
   realdebrid:
     image: "rogerfar/rdtclient:latest"
