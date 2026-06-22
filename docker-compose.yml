@@ -401,7 +401,6 @@ services:
           --gid=1000 \
           --links \
           --no-modtime \
-          --read-only \
           --rc \
           --rc-addr=0.0.0.0:5572 \
           --rc-no-auth \
