@@ -545,21 +545,6 @@ services:
       - "GOOGLE_CLIENT_ID=${GOOGLE_CLIENT_ID}"
       - "GOOGLE_CLIENT_SECRET=${GOOGLE_CLIENT_SECRET}"
 
-  usenetstreamer:
-    image: "ghcr.io/sanket9225/usenetstreamer:latest"
-    container_name: "usenetstreamer"
-    restart: "unless-stopped"
-    ports:
-      - "7000:7000"
-    environment:
-      ADDON_SHARED_SECRET: "${USENET_STREAMER_SECRET}"
-      ADDON_BASE_URL: "https://usenetstreamer.jimeagle.com/"
-      NZBDAV_URL: "http://nzbdav:3000"
-      NZBDAV_WEBDAV_URL: "http://nzbdav:3000"
-      CONFIG_DIR: "/data/config"
-    volumes:
-      - "${HOME}/UsenetStreamer:/data/config"
-
   whatsapp-bridge:
     image: "ghcr.io/raulpetruta/ha-wa-bridge:latest"
     container_name: "whatsapp-bridge"

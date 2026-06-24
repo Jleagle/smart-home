@@ -767,6 +767,21 @@ services:
         target: /opt/unbound/etc/unbound/a-records.conf
     restart: unless-stopped
 
+  usenetstreamer:
+    image: "ghcr.io/sanket9225/usenetstreamer:latest"
+    container_name: "usenetstreamer"
+    restart: "unless-stopped"
+    ports:
+      - "7000:7000"
+    environment:
+      ADDON_SHARED_SECRET: "${USENET_STREAMER_SECRET}"
+      ADDON_BASE_URL: "https://usenetstreamer.jimeagle.com/"
+      NZBDAV_URL: "http://nzbdav:3000"
+      NZBDAV_WEBDAV_URL: "http://nzbdav:3000"
+      CONFIG_DIR: "/data/config"
+    volumes:
+      - "${HOME}/UsenetStreamer:/data/config"
+
   usenet-ultimate:
     image: "ghcr.io/dsmart33/usenet-ultimate:latest"
     container_name: "usenet-ultimate"
