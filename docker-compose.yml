@@ -411,6 +411,7 @@ services:
           --vfs-cache-max-size=50G \
           --vfs-cache-mode=full \
           --vfs-read-ahead=512M \
+          --vfs-read-chunk-size=128M \
           --vfs-read-wait=5ms
 
   redis:
