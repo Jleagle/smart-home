@@ -397,7 +397,7 @@ services:
           --allow-other \
           --buffer-size=64M \
           --contimeout=5s \
-          --dir-cache-time=20s \
+          --dir-cache-time=24h \
           --gid=1000 \
           --links \
           --no-modtime \
@@ -412,7 +412,7 @@ services:
           --vfs-cache-mode=full \
           --vfs-read-ahead=512M \
           --vfs-read-chunk-size=128M \
-          --vfs-read-wait=5ms
+          --vfs-read-wait=20ms
 
   redis:
     image: "redis:7"
