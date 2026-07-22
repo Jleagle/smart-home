@@ -474,7 +474,7 @@ services:
       retries: 3
 
   strava:
-    image: "robiningelbrecht/strava-statistics:latest"
+    image: "ghcr.io/dreeveapp/dreeve:latest"
     container_name: "strava"
     hostname: "strava"
     restart: "unless-stopped"
@@ -490,6 +490,29 @@ services:
       - "STRAVA_CLIENT_ID=150624"
       - "STRAVA_CLIENT_SECRET=${STRAVA_CLIENT_SECRET}"
       - "STRAVA_REFRESH_TOKEN=${STRAVA_REFRESH_TOKEN}"
+      - "IMPORT_MODE=stravaApi"
+      - "APP_URL=https://strava.jimeagle.com/"
+      - "APP_SECRET=${STRAVA_APP_SECRET}"
+      - "ADMIN_USERNAME=${STRAVA_ADMIN_USERNAME}"
+      - "ADMIN_PASSWORD_HASH=${STRAVA_ADMIN_PASSWORD_HASH}"
+
+  strava-daemon:
+    image: ghcr.io/dreeveapp/dreeve:latest
+    volumes:
+      - "./strava/:/var/www/config/app/"
+      - "${HOME}/Strava/build:/var/www/build"
+      - "${HOME}/Strava/database:/var/www/storage/database"
+      - "${HOME}/Strava/files:/var/www/storage/files"
+    environment:
+      - "TZ=Europe/London"
+      - "STRAVA_CLIENT_ID=150624"
+      - "STRAVA_CLIENT_SECRET=${STRAVA_CLIENT_SECRET}"
+      - "STRAVA_REFRESH_TOKEN=${STRAVA_REFRESH_TOKEN}"
+      - "IMPORT_MODE=stravaApi"
+      - "APP_URL=https://strava.jimeagle.com/"
+      - "APP_SECRET=${STRAVA_APP_SECRET}"
+      - "ADMIN_USERNAME=${STRAVA_ADMIN_USERNAME}"
+      - "ADMIN_PASSWORD_HASH=${STRAVA_ADMIN_PASSWORD_HASH}"
 
   syncthing:
     image: "lscr.io/linuxserver/syncthing:latest"
