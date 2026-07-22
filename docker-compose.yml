@@ -495,9 +495,15 @@ services:
       - "APP_SECRET=${STRAVA_APP_SECRET}"
       - "ADMIN_USERNAME=${STRAVA_ADMIN_USERNAME}"
       - "ADMIN_PASSWORD_HASH=${STRAVA_ADMIN_PASSWORD_HASH}"
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:2019/metrics" ]
+      start_period: 60s
 
   strava-daemon:
-    image: ghcr.io/dreeveapp/dreeve:latest
+    image: "ghcr.io/dreeveapp/dreeve:latest"
+    container_name: "strava-daemon"
+    hostname: "strava-daemon"
+    restart: "unless-stopped"
     volumes:
       - "./strava/:/var/www/config/app/"
       - "${HOME}/Strava/build:/var/www/build"
@@ -513,6 +519,10 @@ services:
       - "APP_SECRET=${STRAVA_APP_SECRET}"
       - "ADMIN_USERNAME=${STRAVA_ADMIN_USERNAME}"
       - "ADMIN_PASSWORD_HASH=${STRAVA_ADMIN_PASSWORD_HASH}"
+    command: [ 'bin/console', 'app:daemon:run' ]
+    healthcheck:
+      test: [ "CMD", "sh", "-c", "test -f /var/www/storage/database/dreeve.db && echo 'ok' || exit 1" ]
+      start_period: 5s
 
   syncthing:
     image: "lscr.io/linuxserver/syncthing:latest"
