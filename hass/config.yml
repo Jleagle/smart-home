@@ -53,12 +53,6 @@ frontend:
 tts:
   - platform: "google_translate"
 
-http:
-  use_x_forwarded_for: true
-  trusted_proxies:
-    - "192.168.0.7"
-    - "::1"
-
 script:
   set_marantz_to_xbox:
     alias: "Set Marantz Input to Xbox"
