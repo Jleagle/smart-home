@@ -49,7 +49,6 @@ homeassistant:
 
 frontend:
   themes: !include_dir_merge_named themes
-  javascript_version: latest
 
 tts:
   - platform: "google_translate"
