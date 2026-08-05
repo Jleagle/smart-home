@@ -15,7 +15,7 @@ entities:
     haptic: success
     state: true
     entities:
-      - entity: light.shellydimmer2_48551900c175
+      - entity: light.shellydimmerg3_dcb4d9c2e64c
 
   - title: Office
     haptic: success

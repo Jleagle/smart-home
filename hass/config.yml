@@ -100,7 +100,7 @@ adaptive_lighting:
     sunrise_time: "06:00:00"
     sunset_time: "20:00:00"
     lights:
-      - "light.shellydimmer2_48551900c175"
+      - "light.shellydimmerg3_dcb4d9c2e64c"
   - name: "biglight"
     brightness_mode: "linear"
     brightness_mode_time_light: "3600"
@@ -192,7 +192,7 @@ google_assistant:
       name: "Ceiling Light"
     switch.shelly_bathroom_fan_switch_0: # Bathroom Fan
       name: "Fan"
-    light.shellydimmer2_48551900c175: # Bedroom
+    light.shellydimmerg3_dcb4d9c2e64c: # Bedroom
       name: "Ceiling Light"
     light.shelly_dining_room: # Dining Room
       name: "Ceiling Light"
