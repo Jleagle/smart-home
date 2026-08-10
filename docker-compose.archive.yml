@@ -105,6 +105,16 @@ services:
     environment:
       - "TUNNEL_TOKEN=${CLOUDFLARE_TUNNEL_TOKEN}"
 
+  changedetection:
+    image: "ghcr.io/dgtlmoon/changedetection.io:latest"
+    container_name: "changedetection"
+    hostname: "changedetection"
+    restart: "unless-stopped"
+    ports:
+      - "5001:5000"
+    volumes:
+      - "${HOME}/ChangeDetection:/datastore"
+
   ddclient:
     image: "lscr.io/linuxserver/ddclient:latest"
     container_name: "ddclient"
@@ -890,3 +900,17 @@ services:
       - "ZINC_FIRST_ADMIN_USER=admin"
       - "ZINC_FIRST_ADMIN_PASSWORD=${ZINC_ADMIN_PASSWORD}"
       - "ZINC_TELEMETRY=false"
+
+  whatsapp-bridge:
+    image: "ghcr.io/raulpetruta/ha-wa-bridge:latest"
+    container_name: "whatsapp-bridge"
+    hostname: "whatsapp-bridge"
+    restart: "unless-stopped"
+    ports:
+      - "3009:3000"
+    volumes:
+      - "${HOME}/WhatsAppBridge/auth:/usr/src/app/.wwebjs_auth"
+      - "${HOME}/WhatsAppBridge/cache:/usr/src/app/.wwebjs_cache"
+    environment:
+      - "PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true"
+      - "PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium"

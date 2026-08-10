@@ -91,16 +91,6 @@ services:
       KEY: "${BESZEL_KEY}"
       TZ: "Europe/London"
 
-  changedetection:
-    image: "ghcr.io/dgtlmoon/changedetection.io:latest"
-    container_name: "changedetection"
-    hostname: "changedetection"
-    restart: "unless-stopped"
-    ports:
-      - "5001:5000"
-    volumes:
-      - "${HOME}/ChangeDetection:/datastore"
-
   frigate:
     image: "ghcr.io/blakeblackshear/frigate:stable"
     container_name: "frigate"
@@ -547,17 +537,3 @@ services:
       - "SESSION_EXPIRY=432000"
       - "GOOGLE_CLIENT_ID=${GOOGLE_CLIENT_ID}"
       - "GOOGLE_CLIENT_SECRET=${GOOGLE_CLIENT_SECRET}"
-
-  whatsapp-bridge:
-    image: "ghcr.io/raulpetruta/ha-wa-bridge:latest"
-    container_name: "whatsapp-bridge"
-    hostname: "whatsapp-bridge"
-    restart: "unless-stopped"
-    ports:
-      - "3009:3000"
-    volumes:
-      - "${HOME}/WhatsAppBridge/auth:/usr/src/app/.wwebjs_auth"
-      - "${HOME}/WhatsAppBridge/cache:/usr/src/app/.wwebjs_cache"
-    environment:
-      - "PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true"
-      - "PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium"
