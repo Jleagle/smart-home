@@ -510,11 +510,7 @@ services:
     image: "mbentley/timemachine:latest"
     container_name: "timemachine"
     restart: "unless-stopped"
-    ports:
-      - "137:137/udp"
-      - "138:138/udp"
-      - "139:139"
-      - "445:445"
+    network_mode: "host"
     environment:
       - "TM_USERNAME=${TIMEMACHINE_USERNAME}"
       - "TM_PASSWORD=${TIMEMACHINE_PASSWORD}"
@@ -524,7 +520,7 @@ services:
       - "VOLUME_SIZE_LIMIT=1T"
       - "HIDE_SHARES=no"
     volumes:
-      - "${HOME}/TimeMachine:/opt/timemachine"
+      - "${HOME}/TimeMachine:/opt/${TIMEMACHINE_USERNAME}"
 
   tinyauth:
     image: "ghcr.io/steveiliop56/tinyauth:v3"
