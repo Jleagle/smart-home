@@ -211,7 +211,7 @@ services:
     logging: *default-logging
 
   nzbdav:
-    image: "nzbdav/nzbdav:latest"
+    image: "ghcr.io/infinidysk/infinidysk:latest"
     container_name: "nzbdav"
     hostname: "nzbdav"
     restart: "unless-stopped"
@@ -221,15 +221,18 @@ services:
       - "PUID=1000"
       - "PGID=1000"
       - "UPGRADE=0.6.0"
+      - "TZ=Europe/London"
     volumes:
       - "${HOME}/NzbDav:/config"
       - "${HOME}/Media:/media" # For finding broken media
       - "/mnt:/mnt:rshared"
     healthcheck:
-      test: curl -f http://localhost:3000/health || exit 1
-      interval: 1m
+      test:
+        - "CMD-SHELL"
+        - "curl -fsSL http://localhost:3000/healthz > /dev/null || exit 1"
+      interval: 30s
       retries: 3
-      start_period: 5s
+      start_period: 60s
       timeout: 5s
 
   nzbget:
