@@ -387,24 +387,28 @@ services:
       - |
         grep -q " /mnt/remote/nzbdav " /proc/mounts && fusermount3 -u -z /mnt/remote/nzbdav || true
         exec rclone mount nzbdav: /mnt/remote/nzbdav \
+          --allow-non-empty \
           --allow-other \
           --buffer-size=64M \
           --contimeout=5s \
-          --dir-cache-time=24h \
           --gid=1000 \
           --links \
           --no-modtime \
+          --poll-interval=0 \
           --rc \
           --rc-addr=0.0.0.0:5572 \
           --rc-no-auth \
           --timeout=10s \
+          --tpslimit-burst=10 \
+          --tpslimit=10 \
           --uid=1000 \
           --use-cookies \
           --vfs-cache-max-age=24h \
-          --vfs-cache-max-size=50G \
+          --vfs-cache-max-size=100G \
           --vfs-cache-mode=full \
           --vfs-read-ahead=512M \
-          --vfs-read-chunk-size=128M \
+          --vfs-read-chunk-size-limit=32M \
+          --vfs-read-chunk-size=32M \
           --vfs-read-wait=20ms
 
   redis:
