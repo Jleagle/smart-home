@@ -389,8 +389,9 @@ services:
         exec rclone mount nzbdav: /mnt/remote/nzbdav \
           --allow-non-empty \
           --allow-other \
-          --buffer-size=64M \
+          --buffer-size=0 \
           --contimeout=5s \
+          --dir-cache-time=1w \
           --gid=1000 \
           --links \
           --no-modtime \
@@ -403,7 +404,7 @@ services:
           --tpslimit=10 \
           --uid=1000 \
           --use-cookies \
-          --vfs-cache-max-age=24h \
+          --vfs-cache-max-age=1w \
           --vfs-cache-max-size=100G \
           --vfs-cache-mode=full \
           --vfs-read-ahead=512M \
