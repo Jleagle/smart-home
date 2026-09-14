@@ -47,6 +47,15 @@ http:
         certResolver: "myresolver"
       entryPoints:
         - "websecure"
+    blockbusterr-route:
+      rule: "Host(`blockbusterr.jimeagle.com`)"
+      service: "blockbusterr-service"
+      middlewares:
+        - "tinyauth"
+      tls:
+        certResolver: "myresolver"
+      entryPoints:
+        - "websecure"
     cameras-route:
       rule: "Host(`cameras.jimeagle.com`)"
       service: "cameras-service"
@@ -282,6 +291,10 @@ http:
       loadBalancer:
         servers:
           - url: "http://localhost:8090"
+    blockbusterr-service:
+      loadBalancer:
+        servers:
+          - url: "http://localhost:9090"
     cameras-service:
       loadBalancer:
         servers:

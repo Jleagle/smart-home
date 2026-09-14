@@ -91,6 +91,20 @@ services:
       KEY: "${BESZEL_KEY}"
       TZ: "Europe/London"
 
+  blockbusterr:
+    image: "ghcr.io/mahcks/blockbusterr:latest"
+    container_name: "blockbusterr"
+    restart: "unless-stopped"
+    volumes:
+      - "${HOME}/Blockbusterr:/app/data"
+      - "./blockbusterr/config:/app/config:ro"
+    environment:
+      RADARR_URL: "http://radarr:7878"
+      RADARR_API_KEY: "${BLOCKBUSTERR_RADARR_API_KEY}"
+      SONARR_URL: "http://sonarr:8989"
+      SONARR_API_KEY: "${BLOCKBUSTERR_SONARR_API_KEY}"
+      TZ: "Europe/London"
+
   frigate:
     image: "ghcr.io/blakeblackshear/frigate:stable"
     container_name: "frigate"
