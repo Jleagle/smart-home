@@ -95,6 +95,8 @@ services:
     image: "ghcr.io/mahcks/blockbusterr:latest"
     container_name: "blockbusterr"
     restart: "unless-stopped"
+    ports:
+      - "9090:9090"
     volumes:
       - "${HOME}/Blockbusterr:/app/data"
       - "./blockbusterr/config:/app/config:ro"
