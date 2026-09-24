@@ -1,6 +1,6 @@
-include:
-  #  - "docker-compose.doubletake.yml"
-  - "docker-compose.share.yml"
+#include:
+#  - "docker-compose.doubletake.yml"
+#  - "docker-compose.share.yml"
 
 x-logging: &default-logging
   driver: "json-file"

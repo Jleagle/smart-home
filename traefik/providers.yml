@@ -15,20 +15,6 @@ http:
         certResolver: "myresolver"
       entryPoints:
         - "websecure"
-    aiometadata-route:
-      rule: "Host(`aiometadata.jimeagle.com`)"
-      service: "aiometadata-service"
-      tls:
-        certResolver: "myresolver"
-      entryPoints:
-        - "websecure"
-    aiostreams-route:
-      rule: "Host(`aiostreams.jimeagle.com`)"
-      service: "aiostreams-service"
-      tls:
-        certResolver: "myresolver"
-      entryPoints:
-        - "websecure"
     bazarr-route:
       rule: "Host(`bazarr.jimeagle.com`)"
       service: "bazarr-service"
@@ -88,20 +74,6 @@ http:
       service: "kuma-service"
       middlewares:
         - "tinyauth"
-      tls:
-        certResolver: "myresolver"
-      entryPoints:
-        - "websecure"
-    maintainerr-route:
-      rule: "Host(`maintainerr.jimeagle.com`)"
-      service: "maintainerr-service"
-      tls:
-        certResolver: "myresolver"
-      entryPoints:
-        - "websecure"
-    movies-route:
-      rule: "Host(`movies.jimeagle.com`)"
-      service: "movies-service"
       tls:
         certResolver: "myresolver"
       entryPoints:
@@ -217,13 +189,6 @@ http:
         certResolver: "myresolver"
       entryPoints:
         - "websecure"
-    shows-route:
-      rule: "Host(`shows.jimeagle.com`)"
-      service: "shows-service"
-      tls:
-        certResolver: "myresolver"
-      entryPoints:
-        - "websecure"
     sonarr-route:
       rule: "Host(`sonarr.jimeagle.com`)"
       service: "sonarr-service"
@@ -258,13 +223,6 @@ http:
         certResolver: "myresolver"
       entryPoints:
         - "websecure"
-    usenetstreamer-route:
-      rule: "Host(`usenetstreamer.jimeagle.com`)"
-      service: "usenetstreamer-service"
-      tls:
-        certResolver: "myresolver"
-      entryPoints:
-        - "websecure"
 
   services:
     2fauth-service:
@@ -275,14 +233,6 @@ http:
       loadBalancer:
         servers:
           - url: "http://localhost:8089"
-    aiometadata-service:
-      loadBalancer:
-        servers:
-          - url: "http://localhost:3008"
-    aiostreams-service:
-      loadBalancer:
-        servers:
-          - url: "http://localhost:3007"
     bazarr-service:
       loadBalancer:
         servers:
@@ -339,14 +289,6 @@ http:
       loadBalancer:
         servers:
           - url: "http://localhost:3002"
-    maintainerr-service:
-      loadBalancer:
-        servers:
-          - url: "http://localhost:6246"
-    movies-service:
-      loadBalancer:
-        servers:
-          - url: "http://localhost:7879"
     n8n-service:
       loadBalancer:
         servers:
@@ -399,10 +341,6 @@ http:
       loadBalancer:
         servers:
           - url: "http://localhost:3006"
-    shows-service:
-      loadBalancer:
-        servers:
-          - url: "http://localhost:8990"
     slskd-service:
       loadBalancer:
         servers:
@@ -427,10 +365,6 @@ http:
       loadBalancer:
         servers:
           - url: "http://localhost:3005"
-    usenetstreamer-service:
-      loadBalancer:
-        servers:
-          - url: "http://localhost:7000"
     usenetultimate-service:
       loadBalancer:
         servers:
