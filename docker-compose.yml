@@ -330,7 +330,7 @@ services:
       retries: 3
 
   profilarr:
-    image: "santiagosayshey/profilarr:latest"
+    image: "ghcr.io/dictionarry-hub/profilarr:latest"
     container_name: "profilarr"
     hostname: "profilarr"
     restart: "unless-stopped"
@@ -342,6 +342,7 @@ services:
       - "UMASK=022"
       - "PORT=6868"
       - "HOST=0.0.0.0"
+      - "ORIGIN=https://profilarr.jimeagle.com"
       - "TZ=Europe/London"
     volumes:
       - "${HOME}/Profilarr:/config"
