@@ -135,6 +135,16 @@ services:
       retries: 3
     logging: *default-logging
 
+  frigate-share:
+    image: "ghcr.io/jleagle/frigate-share:main"
+    container_name: "frigate-share"
+    hostname: "frigate-share"
+    restart: "unless-stopped"
+    ports:
+      - "5002:5002"
+    environment:
+      - "TZ=Europe/London"
+
   hass:
     image: "homeassistant/home-assistant:latest"
     container_name: "hass"
