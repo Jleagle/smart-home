@@ -207,6 +207,23 @@ services:
       - "${HOME}/Mosquitto/Data:/mosquitto/data"
       - "./mosquitto/mosquitto.conf:/mosquitto/config/mosquitto.conf"
 
+  musicassistant:
+    image: "ghcr.io/music-assistant/server:latest"
+    container_name: "musicassistant"
+    hostname: "musicassistant"
+    restart: "unless-stopped"
+    network_mode: "host" # Needed for player discovery (mDNS) and streaming to players
+    cap_add:
+      - "SYS_ADMIN"
+      - "DAC_READ_SEARCH"
+    security_opt:
+      - "apparmor:unconfined"
+    volumes:
+      - "${HOME}/MusicAssistant:/data"
+    environment:
+      - "TZ=Europe/London"
+    logging: *default-logging
+
   nodered:
     image: "nodered/node-red:latest"
     container_name: "nodered"

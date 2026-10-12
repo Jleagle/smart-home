@@ -78,6 +78,15 @@ http:
         certResolver: "myresolver"
       entryPoints:
         - "websecure"
+    musicassistant-route:
+      rule: "Host(`musicassistant.jimeagle.com`)"
+      service: "musicassistant-service"
+      middlewares:
+        - "tinyauth"
+      tls:
+        certResolver: "myresolver"
+      entryPoints:
+        - "websecure"
     nodered-route:
       rule: "Host(`nodered.jimeagle.com`) && !PathPrefix(`/reviews/`)"
       service: "nodered-service"
@@ -289,6 +298,10 @@ http:
       loadBalancer:
         servers:
           - url: "http://kuma:3001"
+    musicassistant-service:
+      loadBalancer:
+        servers:
+          - url: "http://host.docker.internal:8095"
     n8n-service:
       loadBalancer:
         servers:
