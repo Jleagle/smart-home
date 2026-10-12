@@ -469,7 +469,12 @@ services:
     container_name: "traefik"
     hostname: "traefik"
     restart: "unless-stopped"
-    network_mode: "host"
+    ports:
+      - "80:80"
+      - "443:443/tcp"
+      - "443:443/udp"
+    extra_hosts:
+      - 'host.docker.internal:host-gateway'
     command: "--api.insecure=true --providers.docker"
     environment:
       CLOUDFLARE_DNS_API_TOKEN: "${CLOUDFLARE_DNS_API_TOKEN}"

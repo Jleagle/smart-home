@@ -3,7 +3,7 @@ http:
   middlewares:
     tinyauth:
       forwardAuth:
-        address: "http://localhost:3005/api/auth/traefik"
+        address: "http://host.docker.internal:3005/api/auth/traefik"
 
   routers:
     adguard-route:
@@ -228,103 +228,103 @@ http:
     2fauth-service:
       loadBalancer:
         servers:
-          - url: "http://localhost:8000"
+          - url: "http://host.docker.internal:8000"
     adguard-service:
       loadBalancer:
         servers:
-          - url: "http://localhost:8089"
+          - url: "http://adguard:80"
     bazarr-service:
       loadBalancer:
         servers:
-          - url: "http://localhost:6767"
+          - url: "http://bazarr:6767"
     beszel-service:
       loadBalancer:
         servers:
-          - url: "http://localhost:8090"
+          - url: "http://beszel:8090"
     blockbusterr-service:
       loadBalancer:
         servers:
-          - url: "http://localhost:9090"
+          - url: "http://blockbusterr:9090"
     cameras-service:
       loadBalancer:
         servers:
-          - url: "http://localhost:5002"
+          - url: "http://frigate-share:5002"
     changedetection-service:
       loadBalancer:
         servers:
-          - url: "http://localhost:5001"
+          - url: "http://host.docker.internal:5001"
     doubletake-service:
       loadBalancer:
         servers:
-          - url: "http://localhost:3000"
+          - url: "http://host.docker.internal:3000"
     esphome-service:
       loadBalancer:
         servers:
-          - url: "http://localhost:6052"
+          - url: "http://host.docker.internal:6052"
     frigate-service:
       loadBalancer:
         servers:
-          - url: "http://localhost:5000"
+          - url: "http://frigate:5000"
     grafana-service:
       loadBalancer:
         servers:
-          - url: "http://localhost:3001"
+          - url: "http://host.docker.internal:3001"
     hass-service:
       loadBalancer:
         servers:
-          - url: "http://localhost:8123"
+          - url: "http://host.docker.internal:8123"
     huntarr-service:
       loadBalancer:
         servers:
-          - url: "http://localhost:9705"
+          - url: "http://host.docker.internal:9705"
     jellyfin-service:
       loadBalancer:
         servers:
-          - url: "http://localhost:8096"
+          - url: "http://host.docker.internal:8096"
     influx-service:
       loadBalancer:
         servers:
-          - url: "http://localhost:8086"
+          - url: "http://host.docker.internal:8086"
     kuma-service:
       loadBalancer:
         servers:
-          - url: "http://localhost:3002"
+          - url: "http://kuma:3001"
     n8n-service:
       loadBalancer:
         servers:
-          - url: "http://localhost:5678"
+          - url: "http://host.docker.internal:5678"
     nodered-service:
       loadBalancer:
         servers:
-          - url: "http://localhost:1880"
+          - url: "http://nodered:1880"
     nzbdav-service:
       loadBalancer:
         servers:
-          - url: "http://localhost:3010"
+          - url: "http://nzbdav:3000"
     nzbget-service:
       loadBalancer:
         servers:
-          - url: "http://localhost:6789"
+          - url: "http://nzbget:6789"
     overseerr-service:
       loadBalancer:
         servers:
-          - url: "http://localhost:5055"
+          - url: "http://seerr:5055"
     profilarr-service:
       loadBalancer:
         servers:
-          - url: "http://localhost:6868"
+          - url: "http://profilarr:6868"
     prowlarr-service:
       loadBalancer:
         servers:
-          - url: "http://localhost:9696"
+          - url: "http://prowlarr:9696"
     realdebrid-service:
       loadBalancer:
         servers:
-          - url: "http://localhost:6500"
+          - url: "http://host.docker.internal:6500"
     radarr-service:
       loadBalancer:
         servers:
-          - url: "http://localhost:7878"
+          - url: "http://radarr:7878"
     receiver-service:
       loadBalancer:
         servers:
@@ -336,36 +336,36 @@ http:
     scrutiny-service:
       loadBalancer:
         servers:
-          - url: "http://localhost:8080"
+          - url: "http://host.docker.internal:8080"
     slink-service:
       loadBalancer:
         servers:
-          - url: "http://localhost:3006"
+          - url: "http://host.docker.internal:3006"
     slskd-service:
       loadBalancer:
         servers:
-          - url: "http://localhost:5030"
+          - url: "http://host.docker.internal:5030"
     sonarr-service:
       loadBalancer:
         servers:
-          - url: "http://localhost:8989"
+          - url: "http://sonarr:8989"
     strava-service:
       loadBalancer:
         servers:
-          - url: "http://localhost:8082"
+          - url: "http://host.docker.internal:8082"
     syncthing-service:
       loadBalancer:
         servers:
-          - url: "http://localhost:8384"
+          - url: "http://syncthing:8384"
     tautulli-service:
       loadBalancer:
         servers:
-          - url: "http://localhost:8181"
+          - url: "http://host.docker.internal:8181"
     tinyauth-service:
       loadBalancer:
         servers:
-          - url: "http://localhost:3005"
+          - url: "http://host.docker.internal:3005"
     usenetultimate-service:
       loadBalancer:
         servers:
-          - url: "http://localhost:1338"
+          - url: "http://host.docker.internal:1338"
