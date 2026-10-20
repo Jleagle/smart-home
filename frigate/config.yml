@@ -39,8 +39,14 @@ record:
     retain: {}
 motion:
   mask:
-    - 0.149,0.934,0.254,0.935,0.254,0.975,0.151,0.977   # Time
-    - 0,0.517,0,0,1,0,1,0.206,0.476,0.236,0.477,0.512   # Bush
+    motion_mask_1:
+      friendly_name: Time
+      enabled: true
+      coordinates: 0.149,0.934,0.254,0.935,0.254,0.975,0.151,0.977
+    motion_mask_2:
+      friendly_name: Bush
+      enabled: true
+      coordinates: 0,0.517,0,0,1,0,1,0.206,0.476,0.236,0.477,0.512
 
 go2rtc:
   streams:
@@ -80,7 +86,7 @@ snapshots:
   # Optional: Enable writing jpg snapshot to /media/frigate/clips (default: shown below)
   enabled: true
   # Optional: save a clean PNG copy of the snapshot image (default: shown below)
-  clean_copy: true
+  # clean_copy: true
   # Optional: print a timestamp on the snapshots (default: shown below)
   timestamp: false
   # Optional: draw bounding box on the snapshots (default: shown below)
@@ -113,7 +119,7 @@ detectors:
 ui:
   # timezone: Europe/London
   # time_format: 24hour
-  time_style: medium
+  # time_style: medium
   unit_system: metric
 
 telemetry:
@@ -124,4 +130,4 @@ telemetry:
     network_bandwidth: false
 detect:
   enabled: true
-version: 0.17-0
+version: 0.18-0
