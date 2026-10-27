@@ -175,7 +175,6 @@ services:
     container_name: "isponsorblocktv"
     hostname: "isponsorblocktv"
     restart: "unless-stopped"
-    network_mode: "host"
     volumes:
       - "${HOME}/ISponsorBlockTV:/app/data"
     environment:
