@@ -279,7 +279,6 @@ services:
     container_name: "nodered"
     hostname: "nodered"
     restart: "unless-stopped"
-    user: "root"
     ports:
       - "1880:1880"
     environment:
