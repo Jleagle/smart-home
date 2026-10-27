@@ -291,9 +291,7 @@ services:
       - "${HOME}/Media:/media" # For finding broken media
       - "/mnt:/mnt:rshared"
     healthcheck:
-      test:
-        - "CMD-SHELL"
-        - "curl -fsSL http://localhost:3000/healthz > /dev/null || exit 1"
+      test: [ "CMD-SHELL", "curl -fsSL http://localhost:3000/healthz > /dev/null || exit 1" ]
       interval: 30s
       retries: 3
       start_period: 60s
