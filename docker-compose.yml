@@ -18,16 +18,6 @@ services:
     ports:
       - "53:53/tcp"
       - "53:53/udp"
-      #- "67:67/udp"     # add if you intend to use AdGuard Home as a DHCP server.
-      #- "68:68/tcp"     # add if you intend to use AdGuard Home as a DHCP server.
-      #- "68:68/udp"     # add if you intend to use AdGuard Home as a DHCP server. # In use by host
-      - "853:853/tcp"   # add if you are going to run AdGuard Home as a DNS-over-TLS server.
-      - "784:784/udp"   # add if you are going to run AdGuard Home as a DNS-over-QUIC server. You may only leave one or two of these.
-      - "853:853/udp"   # add if you are going to run AdGuard Home as a DNS-over-QUIC server. You may only leave one or two of these.
-      - "8853:8853/udp" # add if you are going to run AdGuard Home as a DNS-over-QUIC server. You may only leave one or two of these.
-      - "5443:5443/tcp" # add if you are going to run AdGuard Home as a DNSCrypt server.
-      - "5443:5443/udp" # add if you are going to run AdGuard Home as a DNSCrypt server.
-      - "8089:80"
     environment:
       - "TZ=Europe/London"
     volumes:
@@ -56,8 +46,6 @@ services:
     container_name: "bazarr"
     hostname: "bazarr"
     restart: "unless-stopped"
-    ports:
-      - "6767:6767"
     environment:
       - "PUID=1000"
       - "PGID=1000"
@@ -78,8 +66,6 @@ services:
     container_name: "beszel"
     hostname: "beszel"
     restart: "unless-stopped"
-    ports:
-      - "8090:8090"
     volumes:
       - "${HOME}/Beszel:/beszel_data"
     extra_hosts:
@@ -113,8 +99,6 @@ services:
     image: "ghcr.io/mahcks/blockbusterr:latest"
     container_name: "blockbusterr"
     restart: "unless-stopped"
-    ports:
-      - "9090:9090"
     volumes:
       - "${HOME}/Blockbusterr:/app/data"
       - "./blockbusterr/config:/app/config:ro"
@@ -166,8 +150,6 @@ services:
     container_name: "frigate-share"
     hostname: "frigate-share"
     restart: "unless-stopped"
-    ports:
-      - "5002:5002"
     environment:
       - "TZ=Europe/London"
 
@@ -222,8 +204,6 @@ services:
     hostname: "kuma"
     container_name: "kuma"
     restart: "unless-stopped"
-    ports:
-      - "3002:3001"
     volumes:
       - "${HOME}/UptimeKuma:/app/data"
     healthcheck:
@@ -279,8 +259,6 @@ services:
     container_name: "nodered"
     hostname: "nodered"
     restart: "unless-stopped"
-    ports:
-      - "1880:1880"
     environment:
       - "TZ=Europe/London"
       - "HTTP_USERNAME=${NODE_RED_HTTP_USERNAME}"
@@ -303,8 +281,6 @@ services:
     container_name: "nzbdav"
     hostname: "nzbdav"
     restart: "unless-stopped"
-    ports:
-      - "3010:3000"
     environment:
       - "PUID=1000"
       - "PGID=1000"
@@ -328,8 +304,6 @@ services:
     container_name: "nzbget"
     hostname: "nzbget"
     restart: "unless-stopped"
-    ports:
-      - "6789:6789"
     environment:
       - "PGID=1000"
       - "PUID=1000"
@@ -350,8 +324,6 @@ services:
     hostname: "seerr"
     restart: "unless-stopped"
     init: true
-    ports:
-      - "5055:5055"
     environment:
       - "TZ=Europe/London"
       - "PORT=5055"
@@ -397,8 +369,6 @@ services:
     container_name: "prowlarr"
     hostname: "prowlarr"
     restart: "unless-stopped"
-    ports:
-      - "9696:9696"
     environment:
       - "PUID=1000"
       - "PGID=1000"
@@ -416,8 +386,6 @@ services:
     container_name: "profilarr"
     hostname: "profilarr"
     restart: "unless-stopped"
-    ports:
-      - "6868:6868"
     environment:
       - "PUID=1000"
       - "PGID=1000"
@@ -434,8 +402,6 @@ services:
     container_name: "radarr"
     hostname: "radarr"
     restart: "unless-stopped"
-    ports:
-      - "7878:7878"
     volumes:
       - "${HOME}/Radarr:/config"
       - "${HOME}/NZBGet/Downloads:/downloads"
@@ -504,8 +470,6 @@ services:
     container_name: "sonarr"
     hostname: "sonarr"
     restart: "unless-stopped"
-    ports:
-      - "8989:8989"
     environment:
       - "PGID=1000"
       - "PUID=1000"
@@ -530,7 +494,6 @@ services:
     hostname: "syncthing"
     restart: "unless-stopped"
     ports:
-      - "8384:8384"
       - "22000:22000/tcp"
       - "22000:22000/udp"
       - "21027:21027/udp"
@@ -601,8 +564,6 @@ services:
     container_name: "tinyauth"
     hostname: "tinyauth"
     restart: "unless-stopped"
-    ports:
-      - "3005:3005"
     volumes:
       - "${HOME}/Tinyauth:/data"
     environment:
