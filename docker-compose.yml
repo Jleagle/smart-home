@@ -559,7 +559,6 @@ services:
       - "443:443/udp"
     extra_hosts:
       - 'host.docker.internal:host-gateway'
-    command: "--api.insecure=true --providers.docker"
     environment:
       CLOUDFLARE_DNS_API_TOKEN: "${CLOUDFLARE_DNS_API_TOKEN}"
       CLOUDFLARE_ZONE_API_TOKEN: "${CLOUDFLARE_ZONE_API_TOKEN}"
