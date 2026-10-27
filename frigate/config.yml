@@ -52,6 +52,10 @@ go2rtc:
   streams:
     driveway:
       - rtsp://{FRIGATE_DRIVEWAY_USERNAME}:{FRIGATE_DRIVEWAY_PASSWORD}@192.168.0.12:554/Preview_01_sub
+  webrtc:
+    candidates:
+      - 192.168.0.7:8555
+      - stun:8555
 
 cameras:
   driveway:
