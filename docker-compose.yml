@@ -591,18 +591,33 @@ services:
     volumes:
       - "${HOME}/TimeMachine:/opt/${TIMEMACHINE_USERNAME}"
 
+    healthcheck:
+      test: [ "CMD", "smbstatus", "-b" ]
+      interval: 60s
+      timeout: 10s
+      retries: 3
+      start_period: 20s
   tinyauth:
-    image: "ghcr.io/steveiliop56/tinyauth:v3"
+    image: "ghcr.io/tinyauthapp/tinyauth:latest"
     container_name: "tinyauth"
     hostname: "tinyauth"
     restart: "unless-stopped"
     ports:
       - "3005:3005"
+    volumes:
+      - "${HOME}/Tinyauth:/data"
     environment:
-      - "SECRET=${TINYAUTH_SECRET}"
-      - "APP_URL=https://login.jimeagle.com"
-      - "OAUTH_WHITELIST=${TINYAUTH_EMAILS:-jimeagle@gmail.com}"
-      - "PORT=3005"
-      - "SESSION_EXPIRY=432000"
-      - "GOOGLE_CLIENT_ID=${GOOGLE_CLIENT_ID}"
-      - "GOOGLE_CLIENT_SECRET=${GOOGLE_CLIENT_SECRET}"
+      - "TINYAUTH_APPURL=https://login.jimeagle.com"
+      - "TINYAUTH_SERVER_PORT=3005"
+      - "TINYAUTH_AUTH_SESSIONEXPIRY=432000"
+      - "TINYAUTH_AUTH_TRUSTEDPROXIES=172.16.0.0/12,192.168.0.0/16,10.0.0.0/8,127.0.0.1/8"
+      - "TINYAUTH_OAUTH_WHITELIST=${TINYAUTH_EMAILS:-jimeagle@gmail.com}"
+      - "TINYAUTH_OAUTH_PROVIDERS_GOOGLE_CLIENTID=${GOOGLE_CLIENT_ID}"
+      - "TINYAUTH_OAUTH_PROVIDERS_GOOGLE_CLIENTSECRET=${GOOGLE_CLIENT_SECRET}"
+
+    healthcheck:
+      test: [ "CMD", "tinyauth", "healthcheck" ]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 30s

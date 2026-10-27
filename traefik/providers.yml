@@ -10,6 +10,9 @@ http:
           - "Set-Cookie"
           - "X-User"
           - "X-Email"
+          - "Remote-User"
+          - "Remote-Email"
+          - "Remote-Groups"
 
   serversTransports:
     insecureTransport:
