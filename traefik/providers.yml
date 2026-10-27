@@ -3,7 +3,17 @@ http:
   middlewares:
     tinyauth:
       forwardAuth:
-        address: "http://host.docker.internal:3005/api/auth/traefik"
+        address: "http://tinyauth:3005/api/auth/traefik"
+        trustForwardHeader: true
+        maxResponseBodySize: 1048576
+        authResponseHeaders:
+          - "Set-Cookie"
+          - "X-User"
+          - "X-Email"
+
+  serversTransports:
+    insecureTransport:
+      insecureSkipVerify: true
 
   routers:
     adguard-route:
@@ -63,8 +73,6 @@ http:
     hass-route:
       rule: "Host(`hass.jimeagle.com`)"
       service: "hass-service"
-      #      middlewares: // App needs access
-      #        - "tinyauth"
       tls:
         certResolver: "myresolver"
       entryPoints:
@@ -146,15 +154,6 @@ http:
         certResolver: "myresolver"
       entryPoints:
         - "websecure"
-    realdebrid-route:
-      rule: "Host(`realdebrid.jimeagle.com`)"
-      service: "realdebrid-service"
-      middlewares:
-        - "tinyauth"
-      tls:
-        certResolver: "myresolver"
-      entryPoints:
-        - "websecure"
     radarr-route:
       rule: "Host(`radarr.jimeagle.com`)"
       service: "radarr-service"
@@ -182,34 +181,9 @@ http:
         certResolver: "myresolver"
       entryPoints:
         - "websecure"
-    slink-route:
-      rule: "Host(`slink.jimeagle.com`) && !PathPrefix(`/images/`)"
-      service: "slink-service"
-      middlewares:
-        - "tinyauth"
-      tls:
-        certResolver: "myresolver"
-      entryPoints:
-        - "websecure"
-    slink-route-public:
-      rule: "Host(`slink.jimeagle.com`) && PathPrefix(`/images/`)"
-      service: "slink-service"
-      tls:
-        certResolver: "myresolver"
-      entryPoints:
-        - "websecure"
     sonarr-route:
       rule: "Host(`sonarr.jimeagle.com`)"
       service: "sonarr-service"
-      middlewares:
-        - "tinyauth"
-      tls:
-        certResolver: "myresolver"
-      entryPoints:
-        - "websecure"
-    strava-route:
-      rule: "Host(`strava.jimeagle.com`)"
-      service: "strava-service"
       middlewares:
         - "tinyauth"
       tls:
@@ -234,10 +208,6 @@ http:
         - "websecure"
 
   services:
-    2fauth-service:
-      loadBalancer:
-        servers:
-          - url: "http://host.docker.internal:8000"
     adguard-service:
       loadBalancer:
         servers:
@@ -258,42 +228,14 @@ http:
       loadBalancer:
         servers:
           - url: "http://frigate-share:5002"
-    changedetection-service:
-      loadBalancer:
-        servers:
-          - url: "http://host.docker.internal:5001"
-    doubletake-service:
-      loadBalancer:
-        servers:
-          - url: "http://host.docker.internal:3000"
-    esphome-service:
-      loadBalancer:
-        servers:
-          - url: "http://host.docker.internal:6052"
     frigate-service:
       loadBalancer:
         servers:
           - url: "http://frigate:5000"
-    grafana-service:
-      loadBalancer:
-        servers:
-          - url: "http://host.docker.internal:3001"
     hass-service:
       loadBalancer:
         servers:
-          - url: "http://host.docker.internal:8123"
-    huntarr-service:
-      loadBalancer:
-        servers:
-          - url: "http://host.docker.internal:9705"
-    jellyfin-service:
-      loadBalancer:
-        servers:
-          - url: "http://host.docker.internal:8096"
-    influx-service:
-      loadBalancer:
-        servers:
-          - url: "http://host.docker.internal:8086"
+          - url: "http://192.168.0.7:8123"
     kuma-service:
       loadBalancer:
         servers:
@@ -301,11 +243,7 @@ http:
     musicassistant-service:
       loadBalancer:
         servers:
-          - url: "http://host.docker.internal:8095"
-    n8n-service:
-      loadBalancer:
-        servers:
-          - url: "http://host.docker.internal:5678"
+          - url: "http://192.168.0.7:8095"
     nodered-service:
       loadBalancer:
         servers:
@@ -330,55 +268,28 @@ http:
       loadBalancer:
         servers:
           - url: "http://prowlarr:9696"
-    realdebrid-service:
-      loadBalancer:
-        servers:
-          - url: "http://host.docker.internal:6500"
     radarr-service:
       loadBalancer:
         servers:
           - url: "http://radarr:7878"
     receiver-service:
       loadBalancer:
+        serversTransport: "insecureTransport"
         servers:
           - url: "https://192.168.0.17:10443"
     router-service:
       loadBalancer:
         servers:
           - url: "http://192.168.0.1:80"
-    scrutiny-service:
-      loadBalancer:
-        servers:
-          - url: "http://host.docker.internal:8080"
-    slink-service:
-      loadBalancer:
-        servers:
-          - url: "http://host.docker.internal:3006"
-    slskd-service:
-      loadBalancer:
-        servers:
-          - url: "http://host.docker.internal:5030"
     sonarr-service:
       loadBalancer:
         servers:
           - url: "http://sonarr:8989"
-    strava-service:
-      loadBalancer:
-        servers:
-          - url: "http://host.docker.internal:8082"
     syncthing-service:
       loadBalancer:
         servers:
           - url: "http://syncthing:8384"
-    tautulli-service:
-      loadBalancer:
-        servers:
-          - url: "http://host.docker.internal:8181"
     tinyauth-service:
       loadBalancer:
         servers:
-          - url: "http://host.docker.internal:3005"
-    usenetultimate-service:
-      loadBalancer:
-        servers:
-          - url: "http://host.docker.internal:1338"
+          - url: "http://tinyauth:3005"
