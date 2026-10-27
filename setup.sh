@@ -6,6 +6,7 @@ mkdir -p ~/AIOMetaData
 mkdir -p ~/AIOStreams
 mkdir -p ~/Bazarr
 mkdir -p ~/Beszel
+mkdir -p ~/Blockbusterr
 mkdir -p ~/Frigate
 mkdir -p ~/Hass
 mkdir -p ~/ISponsorBlockTV
@@ -15,11 +16,14 @@ mkdir -p ~/Media/Movies
 mkdir -p ~/Media/Slskd
 mkdir -p ~/Media/Television
 mkdir -p ~/Media/YouTube
+mkdir -p ~/Mosquitto/Data
+mkdir -p ~/Mosquitto/Log
 mkdir -p ~/MusicAssistant
 mkdir -p ~/NodeRed
 mkdir -p ~/NzbDav
 mkdir -p ~/NZBGet/Config
 mkdir -p ~/NZBGet/Downloads
+mkdir -p ~/Overseerr
 mkdir -p ~/Plex/Config
 mkdir -p ~/Plex/Transcoding
 mkdir -p ~/Profilarr
@@ -34,6 +38,7 @@ mkdir -p ~/Slink/Images
 mkdir -p ~/Sonarr
 mkdir -p ~/Strava
 mkdir -p ~/TimeMachine
+mkdir -p ~/Tinyauth
 mkdir -p ~/Traefik
 mkdir -p ~/UsenetStreamer
 mkdir -p ~/UsenetUltimate
@@ -62,8 +67,6 @@ mkdir -p ~/WhatsAppBridge/cache
 #mkdir -p ~/Matrix
 #mkdir -p ~/Mealie
 #mkdir -p ~/Minecraft
-#mkdir -p ~/Mosquitto/Data
-#mkdir -p ~/Mosquitto/Log
 #mkdir -p ~/N8n/Data
 #mkdir -p ~/N8n/Files
 #mkdir -p ~/PiHole
@@ -78,11 +81,11 @@ mkdir -p ~/Syncthing/Data
 #mkdir -p ~/Varken
 #mkdir -p ~/Zinc
 
-touch ~/Auth/config.json
+#touch ~/Auth/config.json
 touch ~/Hass/assistant_service_account.json
+touch ~/Mosquitto/Log/mosquitto.log
 touch ~/Traefik/acme.json
 #touch ~/AssistantRelay/config.json
 #touch ~/DDNS/records.yaml
-#touch ~/Mosquitto/Log/mosquitto.log
 
 chmod 600 ~/Traefik/acme.json
