@@ -583,6 +583,10 @@ services:
     restart: "unless-stopped"
     volumes:
       - "./unbound:/etc/unbound/custom.conf.d:ro"
+    depends_on:
+      redis:
+        condition: service_healthy
+        restart: true
     healthcheck:
       test: [ "CMD", "drill-hc", "@127.0.0.1", "dnssec.works" ]
       interval: 30s
