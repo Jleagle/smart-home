@@ -2,13 +2,11 @@
 
 cd /home/james/Repo
 
-# Pull latest changes from git
-if [ -f "./pull.sh" ]; then
-  bash ./pull.sh
-fi
+. ~/.bashrc
 
-# Load bashrc if needed (optional, might not be necessary in non-interactive shell)
-[ -f ~/.bashrc ] && . ~/.bashrc
+echo "Pulling git"
+git fetch origin
+git reset --hard origin/main
 
 echo "Pulling latest images..."
 docker compose pull
