@@ -2,8 +2,6 @@
 
 mkdir -p ~/AdGuard/Conf
 mkdir -p ~/AdGuard/Work
-mkdir -p ~/AIOMetaData
-mkdir -p ~/AIOStreams
 mkdir -p ~/Bazarr
 mkdir -p ~/Beszel
 mkdir -p ~/Blockbusterr
@@ -28,13 +26,9 @@ mkdir -p ~/Plex/Config
 mkdir -p ~/Plex/Transcoding
 mkdir -p ~/Profilarr
 mkdir -p ~/Prowlarr
+mkdir -p ~/Pulse
 mkdir -p ~/Radarr
-mkdir -p ~/RealDebrid/DB
-mkdir -p ~/RealDebrid/Downloads/radarr
-mkdir -p ~/RealDebrid/Downloads/sonarr
 mkdir -p ~/Redis/Data
-mkdir -p ~/Slink/Database
-mkdir -p ~/Slink/Images
 mkdir -p ~/Sonarr
 mkdir -p ~/Strava
 mkdir -p ~/TimeMachine
@@ -43,49 +37,12 @@ mkdir -p ~/Traefik
 mkdir -p ~/UsenetStreamer
 mkdir -p ~/UsenetUltimate
 mkdir -p ~/UptimeKuma
-mkdir -p ~/WhatsAppBridge/auth
-mkdir -p ~/WhatsAppBridge/cache
-#mkdir -p ~/AssistantRelay/Responses
-#mkdir -p ~/Authentik/Certs
-#mkdir -p ~/Authentik/Media
-#mkdir -p ~/Authentik/Templates
-#mkdir -p ~/ChangeDetection
-#mkdir -p ~/CodeProjectAI
-#mkdir -p ~/DDNS
-#mkdir -p ~/Deepstack
-#mkdir -p ~/DoubleTake
-#mkdir -p ~/Elastic
-#mkdir -p ~/FlexTV
-#mkdir -p ~/Go2rtc/Config
-#mkdir -p ~/Grafana/Data
-#mkdir -p ~/Homepage
-#mkdir -p ~/Huntarr
-#mkdir -p ~/Influx
-#mkdir -p ~/Jellyfin
-#mkdir -p ~/Kibana
-#mkdir -p ~/Mass
-#mkdir -p ~/Matrix
-#mkdir -p ~/Mealie
-#mkdir -p ~/Minecraft
-#mkdir -p ~/N8n/Data
-#mkdir -p ~/N8n/Files
-#mkdir -p ~/PiHole
-#mkdir -p ~/PlexMeta
-#mkdir -p ~/Postgres/Data
-#mkdir -p ~/SerpBear
-#mkdir -p ~/Slskd
 mkdir -p ~/Syncthing/Config
 mkdir -p ~/Syncthing/Data
-#mkdir -p ~/Tautulli
-#mkdir -p ~/Technitium
-#mkdir -p ~/Varken
-#mkdir -p ~/Zinc
 
-#touch ~/Auth/config.json
 touch ~/Hass/assistant_service_account.json
 touch ~/Mosquitto/Log/mosquitto.log
+touch ~/Pulse/config.json
 touch ~/Traefik/acme.json
-#touch ~/AssistantRelay/config.json
-#touch ~/DDNS/records.yaml
 
 chmod 600 ~/Traefik/acme.json
