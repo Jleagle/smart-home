@@ -391,6 +391,27 @@ services:
     volumes:
       - "${HOME}/Profilarr:/config"
 
+  pulse:
+    image: "ghcr.io/jleagle/pulse:main"
+    container_name: "pulse"
+    hostname: "pulse"
+    restart: "unless-stopped"
+    environment:
+      - "TZ=Europe/London"
+      - "PORT=8080"
+      - "CLIENT_ID=${PULSE_CLIENT_ID}"
+      - "CLIENT_SECRET=${PULSE_CLIENT_SECRET}"
+      - "REDIRECT_URL=https://pulse.jimeagle.com/oauth/callback"
+    volumes:
+      - "${HOME}/Pulse/Data:/app/data"
+      - "${HOME}/Pulse/config.json:/app/config.json"
+    healthcheck:
+      test: [ "CMD", "wget", "-q", "--spider", "http://127.0.0.1:8080/api/status" ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 15s
+
   radarr:
     image: "lscr.io/linuxserver/radarr:latest"
     container_name: "radarr"

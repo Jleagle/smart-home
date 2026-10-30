@@ -82,6 +82,9 @@
         container: aiostreams
 
 - Tools:
+    - Pulse:
+        href: https://pulse.jimeagle.com/
+        container: pulse
     - Slink:
         href: https://slink.jimeagle.com/
         container: slink

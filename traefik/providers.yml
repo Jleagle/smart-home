@@ -157,6 +157,15 @@ http:
         certResolver: "myresolver"
       entryPoints:
         - "websecure"
+    pulse-route:
+      rule: "Host(`pulse.jimeagle.com`)"
+      service: "pulse-service"
+      middlewares:
+        - "tinyauth"
+      tls:
+        certResolver: "myresolver"
+      entryPoints:
+        - "websecure"
     radarr-route:
       rule: "Host(`radarr.jimeagle.com`)"
       service: "radarr-service"
@@ -271,6 +280,10 @@ http:
       loadBalancer:
         servers:
           - url: "http://prowlarr:9696"
+    pulse-service:
+      loadBalancer:
+        servers:
+          - url: "http://pulse:8080"
     radarr-service:
       loadBalancer:
         servers:

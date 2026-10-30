@@ -26,7 +26,7 @@ mkdir -p ~/Plex/Config
 mkdir -p ~/Plex/Transcoding
 mkdir -p ~/Profilarr
 mkdir -p ~/Prowlarr
-mkdir -p ~/Pulse
+mkdir -p ~/Pulse/Data
 mkdir -p ~/Radarr
 mkdir -p ~/Redis/Data
 mkdir -p ~/Sonarr
