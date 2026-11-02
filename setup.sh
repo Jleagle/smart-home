@@ -28,6 +28,7 @@ mkdir -p ~/Profilarr
 mkdir -p ~/Prowlarr
 mkdir -p ~/Pulse/Data
 mkdir -p ~/Radarr
+mkdir -p ~/Rclone/Cache
 mkdir -p ~/Redis/Data
 mkdir -p ~/Sonarr
 mkdir -p ~/Strava

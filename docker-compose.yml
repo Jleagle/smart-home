@@ -445,6 +445,7 @@ services:
       - "PGID=1000"
       - "TZ=Europe/London"
     volumes:
+      - "${HOME}/Rclone/Cache:/cache"
       - "/mnt:/mnt:rshared"
       - "./rclone/rclone.conf:/config/rclone/rclone.conf"
       - "./rclone/entrypoint.sh:/entrypoint.sh:ro"
