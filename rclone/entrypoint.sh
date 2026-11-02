@@ -21,13 +21,14 @@ grep -q " /mnt/remote/nzbdav " /proc/mounts && fusermount3 -u -z /mnt/remote/nzb
 # --vfs-cache-max-size/age: Retain up to 100G of cached data for up to 1 week
 # --vfs-read-ahead=512M: Pre-fetch up to 512M ahead to prevent buffering during playback
 # --vfs-read-chunk-size...: Download files in fixed 32M chunks for efficient streaming
-# --vfs-read-wait=20ms: Wait 20ms for sequential read before fetching more (rclone default)
+# --vfs-read-wait=20ms: Wait 20ms for sequential read before fetching more
 
 exec rclone mount nzbdav: /mnt/remote/nzbdav \
   --allow-non-empty \
   --allow-other \
   --buffer-size=0 \
   --cache-dir=/cache \
+  --contimeout=5s \
   --dir-cache-time=1w \
   --gid=1000 \
   --links \
@@ -36,17 +37,16 @@ exec rclone mount nzbdav: /mnt/remote/nzbdav \
   --rc \
   --rc-addr=0.0.0.0:5572 \
   --rc-no-auth \
+  --timeout=10s \
+  --tpslimit-burst=10 \
+  --tpslimit=10 \
   --uid=1000 \
   --use-cookies \
   --vfs-cache-max-age=1w \
   --vfs-cache-max-size=100G \
   --vfs-cache-mode=full \
-  --vfs-read-ahead=512M
+  --vfs-read-ahead=512M \
+  --vfs-read-chunk-size-limit=32M \
+  --vfs-read-chunk-size=32M \
+  --vfs-read-wait=20ms
   # --transfers=8 \
-  # --vfs-read-wait=20ms \
-  # --contimeout=5s \
-  # --timeout=10s \
-  # --tpslimit-burst=10 \
-  # --tpslimit=10 \
-  # --vfs-read-chunk-size-limit=32M \
-  # --vfs-read-chunk-size=32M
