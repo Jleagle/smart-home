@@ -57,6 +57,7 @@ services:
       timeout: 10s
       retries: 3
       start_period: 40s
+
   beszel:
     image: "henrygd/beszel"
     container_name: "beszel"
@@ -73,6 +74,7 @@ services:
       timeout: 5s
       retries: 3
       start_period: 15s
+
   beszel-agent:
     image: "henrygd/beszel-agent"
     container_name: "beszel-agent"
@@ -91,6 +93,7 @@ services:
       timeout: 5s
       retries: 3
       start_period: 15s
+
   blockbusterr:
     image: "ghcr.io/mahcks/blockbusterr:latest"
     container_name: "blockbusterr"
@@ -155,6 +158,7 @@ services:
       timeout: 10s
       retries: 3
       start_period: 15s
+
   hass:
     image: "homeassistant/home-assistant:latest"
     container_name: "hass"
@@ -195,6 +199,7 @@ services:
       timeout: 5s
       retries: 3
       start_period: 20s
+
   kuma:
     image: "louislam/uptime-kuma:latest"
     hostname: "kuma"
@@ -227,6 +232,7 @@ services:
       timeout: 10s
       retries: 3
       start_period: 10s
+
   musicassistant:
     image: "ghcr.io/music-assistant/server:latest"
     container_name: "musicassistant"
@@ -250,6 +256,7 @@ services:
       timeout: 10s
       retries: 3
       start_period: 40s
+
   nodered:
     image: "nodered/node-red:latest"
     container_name: "nodered"
@@ -358,6 +365,7 @@ services:
       timeout: 10s
       retries: 3
       start_period: 60s
+
   prowlarr:
     image: "linuxserver/prowlarr:latest"
     container_name: "prowlarr"
@@ -460,13 +468,13 @@ services:
         condition: service_healthy
         restart: true
     entrypoint: [ "/entrypoint.sh" ]
-
     healthcheck:
       test: [ "CMD-SHELL", "grep -q ' /mnt/remote/nzbdav ' /proc/mounts && rclone rc core/version || exit 1" ]
       interval: 30s
       timeout: 10s
       retries: 3
       start_period: 20s
+
   redis:
     image: "redis:7"
     container_name: "redis"
@@ -527,6 +535,7 @@ services:
       timeout: 10s
       retries: 3
       start_period: 20s
+
   traefik:
     image: "traefik:latest"
     container_name: "traefik"
@@ -575,6 +584,7 @@ services:
       timeout: 10s
       retries: 3
       start_period: 20s
+
   tinyauth:
     image: "ghcr.io/tinyauthapp/tinyauth:latest"
     container_name: "tinyauth"
