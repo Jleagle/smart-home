@@ -25,3 +25,9 @@ Active host crontab (`crontab -e`):
 * * * * * curl -fsS -m 10 --retry 5 -o /dev/null https://hc-ping.com/4e2c0f5f-d560-4d5b-94b8-3654088267d0
 0 0 * * * cd /home/james/Repo && docker compose exec strava bin/console app:strava:import-data && docker compose exec strava bin/console app:strava:build-files
 ```
+
+## Fluent Bit → Google Cloud Logging
+
+`fluent-bit` tails every container's json-file log and ships it to Cloud Logging, with one log name per container.
+
+Create a service account with the **Logs Writer** role (`roles/logging.logWriter`), download a JSON key and place it at `~/FluentBit/google.json`. Logs appear under the key's project in Logs Explorer as `logName="projects/<project>/logs/<container>"`.

@@ -5,6 +5,7 @@ mkdir -p ~/AdGuard/Work
 mkdir -p ~/Bazarr
 mkdir -p ~/Beszel
 mkdir -p ~/Blockbusterr
+mkdir -p ~/FluentBit/State
 mkdir -p ~/Frigate
 mkdir -p ~/Hass
 mkdir -p ~/ISponsorBlockTV
