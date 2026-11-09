@@ -370,8 +370,8 @@ services:
       - "${HOME}/Media/Television:/data/tvshows"
       - "${HOME}/Media/Movies:/data/movies"
       - "${HOME}/Media/YouTube:/data/youtube"
-      - "/dev/shm:/transcode"
       - "/mnt:/mnt:rshared"
+      # Transcode to disk instead of /dev/shm (RAM) to avoid memory exhaustion and chunk eviction when clients buffer
     devices:
       - "/dev/dri:/dev/dri" # Quicksync
 
