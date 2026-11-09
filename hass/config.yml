@@ -231,20 +231,20 @@ google_assistant:
     switch.teckin_plug_3:
       name: "Dresser"
       room: "Dining Room"
-    switch.tapo_plug_1:
+    switch.bedroom_blanket_gillian:
       name: "Electric Blanket Gillian"
       room: "Bedroom"
       aliases:
         - "Heated Blanket Gillian"
-    switch.tapo_plug_2:
+    switch.bedroom_blanket_james:
       name: "Electric Blanket James"
       room: "Bedroom"
       aliases:
         - "Heated Blanket James"
-    switch.tapo_plug_3:
+    switch.living_room_small_light:
       name: "Small Light"
       room: "Living Room"
-    switch.tapo_plug_4:
+    switch.living_room_salt_lamp:
       name: "Salt Lamp"
       room: "Living Room"
 
