@@ -202,7 +202,7 @@ google_assistant:
       name: "Ceiling Light"
     light.shelly_dining_room: # Dining Room
       name: "Ceiling Light"
-    light.shellydimmer2_C45BBE572627: # Living Room
+    light.shellydimmer2_c45bbe572627: # Living Room
       name: "Ceiling Light"
     light.shellydimmer2_e89f6d8559a2: # Spare Room
       name: "Ceiling Light"
