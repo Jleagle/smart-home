@@ -14,6 +14,19 @@ input_number:
 input_select:
 input_text:
 logbook:
+recorder:
+  purge_keep_days: 7
+  auto_purge: true
+  commit_interval: 15
+  exclude:
+    domains:
+      - weather
+      - update
+    entity_globs:
+      - sensor.*_device_temperature
+      - sensor.*_signal_level
+      - sensor.*_wifi_signal*
+      - switch.adaptive_lighting_*
 #map:
 #media_source:
 mobile_app:
