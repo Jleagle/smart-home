@@ -216,6 +216,37 @@ services:
       retries: 3
       start_period: 20s
 
+  kometa:
+    image: "kometateam/kometa:latest"
+    container_name: "kometa"
+    hostname: "kometa"
+    restart: "unless-stopped"
+    environment:
+      - "TZ=Europe/London"
+    volumes:
+      - "${HOME}/Kometa:/config"
+    extra_hosts:
+      - 'host.docker.internal:host-gateway'
+
+  kometa-ui:
+    image: "kometateam/quickstart:latest"
+    container_name: "kometa-ui"
+    hostname: "kometa-ui"
+    restart: "unless-stopped"
+    environment:
+      - "TZ=Europe/London"
+    volumes:
+      - "${HOME}/KometaUI:/config"
+      - "${HOME}/Kometa:/kometa"
+    extra_hosts:
+      - 'host.docker.internal:host-gateway'
+    healthcheck:
+      test: [ "CMD-SHELL", "curl -fsS http://127.0.0.1:7171/kometa-status || exit 1" ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+
   kuma:
     image: "louislam/uptime-kuma:latest"
     hostname: "kuma"

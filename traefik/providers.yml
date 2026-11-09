@@ -89,6 +89,15 @@ http:
         certResolver: "myresolver"
       entryPoints:
         - "websecure"
+    kometa-route:
+      rule: "Host(`kometa.jimeagle.com`) || Host(`kometa-ui.jimeagle.com`)"
+      service: "kometa-service"
+      middlewares:
+        - "tinyauth"
+      tls:
+        certResolver: "myresolver"
+      entryPoints:
+        - "websecure"
     musicassistant-route:
       rule: "Host(`musicassistant.jimeagle.com`)"
       service: "musicassistant-service"
@@ -252,6 +261,10 @@ http:
       loadBalancer:
         servers:
           - url: "http://kuma:3001"
+    kometa-service:
+      loadBalancer:
+        servers:
+          - url: "http://kometa-ui:7171"
     musicassistant-service:
       loadBalancer:
         servers:

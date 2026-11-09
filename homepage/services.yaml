@@ -72,6 +72,9 @@
     - Maintainerr:
         href: https://maintainerr.jimeagle.com/
         container: maintainerr
+    - Kometa:
+        href: https://kometa.jimeagle.com/
+        container: kometa-ui
 
 - Stremio:
     - AIO Metadata:

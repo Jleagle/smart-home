@@ -9,6 +9,8 @@ mkdir -p ~/FluentBit/State
 mkdir -p ~/Frigate
 mkdir -p ~/Hass
 mkdir -p ~/ISponsorBlockTV
+mkdir -p ~/Kometa
+mkdir -p ~/KometaUI
 mkdir -p ~/Maintainerr
 mkdir -p ~/Media/Frigate
 mkdir -p ~/Media/Movies
