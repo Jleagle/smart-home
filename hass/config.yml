@@ -248,11 +248,9 @@ google_assistant:
       name: "Pause TV"
     input_button.play_tv:
       name: "Play TV"
-
-    # Scripts
-    script.set_marantz_to_xbox:
+    button.xbox:
       name: "Xbox"
-    script.set_marantz_to_appletv:
+    button.apple_tv:
       name: "Apple TV"
 
 switch:
