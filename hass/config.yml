@@ -66,24 +66,6 @@ frontend:
 tts:
   - platform: "google_translate"
 
-script:
-  set_marantz_to_xbox:
-    alias: "Set Marantz Input to Xbox"
-    sequence:
-      - service: "media_player.select_source"
-        target:
-          entity_id: "media_player.marantz_nr1200"
-        data:
-          source: "XBOX"
-  set_marantz_to_appletv:
-    alias: "Set Marantz Input to Apple TV"
-    sequence:
-      - service: "media_player.select_source"
-        target:
-          entity_id: "media_player.marantz_nr1200"
-        data:
-          source: "Apple TV"
-
 # https://github.com/basnijholt/adaptive-lighting#readme
 # https://basnijholt.github.io/adaptive-lighting/
 adaptive_lighting:
