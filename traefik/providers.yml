@@ -90,7 +90,7 @@ http:
       entryPoints:
         - "websecure"
     kometa-route:
-      rule: "Host(`kometa.jimeagle.com`) || Host(`kometa-ui.jimeagle.com`)"
+      rule: "Host(`kometa.jimeagle.com`)"
       service: "kometa-service"
       middlewares:
         - "tinyauth"
