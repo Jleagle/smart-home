@@ -274,3 +274,16 @@ group:
     entities:
       - "person.james_eagle"
       - "person.gillian_mckinley"
+
+# Pulses for 5 seconds when Node-RED fires the "driveway_person_alert" event.
+# It is the doorbell sensor of the "Driveway Fluent" HomeKit camera, so each
+# pulse makes the Apple TV pop up the driveway camera.
+template:
+  - triggers:
+      - trigger: "event"
+        event_type: "driveway_person_alert"
+    binary_sensor:
+      - name: "Driveway Person Alert"
+        unique_id: "driveway_person_alert"
+        state: "true"
+        auto_off: 5
