@@ -102,8 +102,6 @@ snapshots:
   bounding_box: true
   # Optional: crop the snapshot (default: shown below)
   crop: false
-  # Optional: height to resize the snapshot to (default: original size)
-  height: 175
   # Optional: Restrict snapshots to objects that entered any of the listed zones (default: no required zones)
   required_zones:
     - zone1
