@@ -315,7 +315,6 @@ services:
       - "HTTP_PASSWORD=${NODE_RED_HTTP_PASSWORD}"
     volumes:
       - "${HOME}/NodeRed:/data"
-      - "${HOME}/Media/Frigate:/media/frigate:ro"
       - "./node-red/settings.js:/data/settings.js:ro"
     extra_hosts:
       - 'host.docker.internal:host-gateway'

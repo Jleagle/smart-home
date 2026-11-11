@@ -108,17 +108,10 @@ http:
       entryPoints:
         - "websecure"
     nodered-route:
-      rule: "Host(`nodered.jimeagle.com`) && !PathPrefix(`/reviews/`)"
+      rule: "Host(`nodered.jimeagle.com`)"
       service: "nodered-service"
       middlewares:
         - "tinyauth"
-      tls:
-        certResolver: "myresolver"
-      entryPoints:
-        - "websecure"
-    nodered-route-public:
-      rule: "Host(`nodered.jimeagle.com`) && PathPrefix(`/reviews/`)"
-      service: "nodered-service"
       tls:
         certResolver: "myresolver"
       entryPoints:
