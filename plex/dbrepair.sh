@@ -3,33 +3,42 @@
 set -euo pipefail
 
 PLEX_CONTAINER="plex"
-PLEX_CONFIG_HOST="${HOME}/Plex/Config"
+REPO="ChuckPa/DBRepair"
 
-echo "Checking if Plex container ($PLEX_CONTAINER) is running..."
-if ! docker ps --format '{{.Names}}' | grep -Eq "^${PLEX_CONTAINER}$"; then
+if [ "$(docker inspect -f '{{.State.Running}}' "$PLEX_CONTAINER" 2>/dev/null)" != "true" ]; then
   echo "Error: Plex container '$PLEX_CONTAINER' is not running!" >&2
   exit 1
 fi
 
-echo "Downloading ChuckPa/DBRepair..."
-# Ensure the host config directory exists
-mkdir -p "$PLEX_CONFIG_HOST"
+# Release assets are named by the container's CPU architecture
+case "$(docker exec "$PLEX_CONTAINER" uname -m)" in
+  x86_64)  ARCH="x86_64" ;;
+  aarch64) ARCH="arm64" ;;
+  armv7l)  ARCH="arm32" ;;
+  *) echo "Error: unsupported container architecture" >&2; exit 1 ;;
+esac
 
-# Download the script to the host config folder (which is /config inside the container)
-curl -sL "https://raw.githubusercontent.com/ChuckPa/DBRepair/master/DBRepair.sh" -o "${PLEX_CONFIG_HOST}/DBRepair.sh"
-chmod +x "${PLEX_CONFIG_HOST}/DBRepair.sh"
+# Latest release tag (e.g. v26.10.00), taken from the releases/latest redirect
+TAG="$(curl -fsSLI -o /dev/null -w '%{url_effective}' "https://github.com/${REPO}/releases/latest")"
+TAG="${TAG##*/}"
 
-echo "Successfully installed DBRepair.sh to ${PLEX_CONFIG_HOST}/DBRepair.sh"
-echo "Running DBRepair with the automatic command sequence (stop -> auto -> start -> exit)..."
+WORKDIR="$(mktemp -d)"
+trap 'rm -rf "$WORKDIR"' EXIT
 
-# Determine if we should allocate a TTY
+echo "Downloading DBRepair ${TAG} (${ARCH})..."
+curl -fsSL --retry 3 -o "${WORKDIR}/DBRepair.zip" \
+  "https://github.com/${REPO}/releases/download/${TAG}/DBRepair-${TAG#v}-Linux-${ARCH}.zip"
+unzip -q "${WORKDIR}/DBRepair.zip" DBRepair -d "$WORKDIR"
+chmod +x "${WORKDIR}/DBRepair"
+docker cp "${WORKDIR}/DBRepair" "${PLEX_CONTAINER}:/DBRepair"
+
+# Allocate a TTY only when attached to one, so the script also runs from cron
+DOCKER_OPTS=(-i)
 if [ -t 0 ] && [ -t 1 ]; then
-  DOCKER_OPTS="-it"
-else
-  DOCKER_OPTS="-i"
+  DOCKER_OPTS+=(-t)
 fi
 
-# Execute the repair inside the container
-docker exec ${DOCKER_OPTS} "$PLEX_CONTAINER" /config/DBRepair.sh stop auto start exit
+echo "Running DBRepair (automatic: stop -> check/repair -> start)..."
+docker exec "${DOCKER_OPTS[@]}" "$PLEX_CONTAINER" /DBRepair automatic exit
 
 echo "DBRepair execution complete."
