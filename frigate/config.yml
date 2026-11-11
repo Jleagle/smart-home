@@ -123,7 +123,6 @@ detectors:
   coral:
     type: edgetpu
     device: pci
-    num_threads: 2
 
 ui:
   # timezone: Europe/London
