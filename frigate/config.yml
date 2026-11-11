@@ -52,6 +52,10 @@ go2rtc:
   streams:
     driveway:
       - rtsp://{FRIGATE_DRIVEWAY_USERNAME}:{FRIGATE_DRIVEWAY_PASSWORD}@192.168.0.12:554/Preview_01_sub
+      - "ffmpeg:driveway#audio=opus" # WebRTC needs opus, the camera sends AAC
+    driveway_main:
+      - rtsp://{FRIGATE_DRIVEWAY_USERNAME}:{FRIGATE_DRIVEWAY_PASSWORD}@192.168.0.12:554/Preview_01_main
+      - "ffmpeg:driveway_main#audio=opus"
   webrtc:
     candidates:
       - 192.168.0.7:8555
@@ -61,15 +65,17 @@ cameras:
   driveway:
     ffmpeg:
       inputs:
-        - path:
-            rtsp://{FRIGATE_DRIVEWAY_USERNAME}:{FRIGATE_DRIVEWAY_PASSWORD}@192.168.0.12:554/Preview_01_main
+        - path: rtsp://127.0.0.1:8554/driveway_main
           roles:
             - record
             - audio
-        - path:
-            rtsp://{FRIGATE_DRIVEWAY_USERNAME}:{FRIGATE_DRIVEWAY_PASSWORD}@192.168.0.12:554/Preview_01_sub
+        - path: rtsp://127.0.0.1:8554/driveway
           roles:
             - detect
+    live:
+      streams:
+        Sub: driveway
+        Main: driveway_main
     zones:
       zone1:
         coordinates: 1,0.789,1,1,0,1,0,0.647
