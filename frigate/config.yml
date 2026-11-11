@@ -83,8 +83,13 @@ cameras:
       genai:
         enabled: true
         use_snapshot: true
-        prompt: Describe the person in the sequence of images in one sentence. Try
-          to include the company they work for and if they are holding anything.
+        prompt: >-
+          Write a one-sentence caption, at most 25 words, for this still image
+          from a home driveway security camera. Start with the person and say
+          what they are doing, what they are wearing and anything they are
+          carrying. Name the company they work for only if a logo, uniform or
+          vehicle shows it clearly; otherwise leave it out. Describe only what
+          is visible, in plain text.
         objects:
           - person
         required_zones:
