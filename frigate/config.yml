@@ -4,15 +4,10 @@ mqtt:
   host: mosquitto
 
 #genai:
-#  enabled: false
-#  provider: gemini
-#  api_key: '{FRIGATE_GENAI_KEY}'
-#  model: gemini-2.5-flash
-
-semantic_search: # Needed for genai to work
-  enabled: false
-  reindex: false
-  model_size: small
+#  gemini:
+#    provider: gemini
+#    api_key: '{FRIGATE_GENAI_KEY}'
+#    model: gemini-2.5-flash
 
 birdseye:
   enabled: false
@@ -33,10 +28,7 @@ objects:
 
 record:
   enabled: true
-  alerts:
-    retain: {}
-  detections:
-    retain: {}
+
 motion:
   mask:
     motion_mask_1:
@@ -78,34 +70,25 @@ cameras:
     zones:
       zone1:
         coordinates: 1,0.789,1,1,0,1,0,0.647
-#    genai:
-#      enabled: false
-#      use_snapshot: true
-#      prompt: Describe the person in the sequence of images in one sentence. Try
-#        to include the company they work for and if they are holding anything.
-#      objects:
-#        - person
-#      required_zones:
-#        - zone1
-#      debug_save_thumbnails: false
+#    objects:
+#      genai:
+#        enabled: false
+#        use_snapshot: true
+#        prompt: Describe the person in the sequence of images in one sentence. Try
+#          to include the company they work for and if they are holding anything.
+#        objects:
+#          - person
+#        required_zones:
+#          - zone1
+#        debug_save_thumbnails: false
 
-# Optional: Configuration for the jpg snapshots written to the clips directory for each tracked object
-# NOTE: Can be overridden at the camera level
 snapshots:
-  # Optional: Enable writing jpg snapshot to /media/frigate/clips (default: shown below)
   enabled: true
-  # Optional: save a clean PNG copy of the snapshot image (default: shown below)
-  # clean_copy: true
-  # Optional: print a timestamp on the snapshots (default: shown below)
   timestamp: false
-  # Optional: draw bounding box on the snapshots (default: shown below)
   bounding_box: true
-  # Optional: crop the snapshot (default: shown below)
   crop: false
-  # Optional: Restrict snapshots to objects that entered any of the listed zones (default: no required zones)
   required_zones:
     - zone1
-  # Optional: Camera override for retention settings (default: global values)
   retain:
     default: 10
 
