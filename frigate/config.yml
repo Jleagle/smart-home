@@ -68,7 +68,6 @@ cameras:
         - path: rtsp://127.0.0.1:8554/driveway_main
           roles:
             - record
-            - audio
         - path: rtsp://127.0.0.1:8554/driveway
           roles:
             - detect
