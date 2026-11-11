@@ -3,11 +3,11 @@
 mqtt:
   host: mosquitto
 
-#genai:
-#  gemini:
-#    provider: gemini
-#    api_key: '{FRIGATE_GENAI_KEY}'
-#    model: gemini-2.5-flash
+genai:
+  gemini:
+    provider: gemini
+    api_key: '{FRIGATE_GENAI_KEY}'
+    model: gemini-3.5-flash-lite
 
 birdseye:
   enabled: false
@@ -79,17 +79,16 @@ cameras:
       detections:
         required_zones:
           - zone1
-#    objects:
-#      genai:
-#        enabled: false
-#        use_snapshot: true
-#        prompt: Describe the person in the sequence of images in one sentence. Try
-#          to include the company they work for and if they are holding anything.
-#        objects:
-#          - person
-#        required_zones:
-#          - zone1
-#        debug_save_thumbnails: false
+    objects:
+      genai:
+        enabled: true
+        use_snapshot: true
+        prompt: Describe the person in the sequence of images in one sentence. Try
+          to include the company they work for and if they are holding anything.
+        objects:
+          - person
+        required_zones:
+          - zone1
 
 snapshots:
   enabled: true
