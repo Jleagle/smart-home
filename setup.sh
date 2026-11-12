@@ -21,6 +21,8 @@ mkdir -p ~/Mosquitto/Data
 mkdir -p ~/Mosquitto/Log
 mkdir -p ~/MusicAssistant
 mkdir -p ~/NodeRed
+mkdir -p ~/Ntfy/Cache
+mkdir -p ~/Ntfy/Data
 mkdir -p ~/NzbDav
 mkdir -p ~/NZBGet/Config
 mkdir -p ~/NZBGet/Downloads

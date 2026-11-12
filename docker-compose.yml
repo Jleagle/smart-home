@@ -325,6 +325,35 @@ services:
       retries: 3
     logging: *default-logging
 
+  ntfy:
+    image: "binwiederhier/ntfy:latest"
+    container_name: "ntfy"
+    hostname: "ntfy"
+    restart: "unless-stopped"
+    command: "serve"
+    environment:
+      - "TZ=Europe/London"
+      # https://docs.ntfy.sh/config/
+      - "NTFY_BASE_URL=https://ntfy.jimeagle.com"
+      - "NTFY_BEHIND_PROXY=true"
+      - "NTFY_CACHE_FILE=/var/cache/ntfy/cache.db"
+      - "NTFY_AUTH_FILE=/var/lib/ntfy/user.db"
+      # Anyone can subscribe to "movies". Publishing needs a user, see the README.
+      - "NTFY_AUTH_DEFAULT_ACCESS=deny-all"
+      - "NTFY_AUTH_ACCESS=everyone:movies:ro"
+      # Wakes the iOS app; only a hash of the topic is sent upstream.
+      - "NTFY_UPSTREAM_BASE_URL=https://ntfy.sh"
+    volumes:
+      - "${HOME}/Ntfy/Cache:/var/cache/ntfy"
+      - "${HOME}/Ntfy/Data:/var/lib/ntfy"
+    healthcheck:
+      test: [ "CMD-SHELL", "wget -q --tries=1 http://localhost:80/v1/health -O - | grep -Eo '\"healthy\"\\s*:\\s*true' || exit 1" ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    logging: *default-logging
+
   nzbdav:
     image: "ghcr.io/infinidysk/infinidysk:latest"
     container_name: "nzbdav"

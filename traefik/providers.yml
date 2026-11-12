@@ -116,6 +116,13 @@ http:
         certResolver: "myresolver"
       entryPoints:
         - "websecure"
+    ntfy-route:
+      rule: "Host(`ntfy.jimeagle.com`)"
+      service: "ntfy-service"
+      tls:
+        certResolver: "myresolver"
+      entryPoints:
+        - "websecure"
     nzbdav-route:
       rule: "Host(`nzbdav.jimeagle.com`)"
       service: "nzbdav-service"
@@ -266,6 +273,10 @@ http:
       loadBalancer:
         servers:
           - url: "http://nodered:1880"
+    ntfy-service:
+      loadBalancer:
+        servers:
+          - url: "http://ntfy:80"
     nzbdav-service:
       loadBalancer:
         servers:
