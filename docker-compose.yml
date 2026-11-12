@@ -338,10 +338,8 @@ services:
       - "NTFY_BEHIND_PROXY=true"
       - "NTFY_CACHE_FILE=/var/cache/ntfy/cache.db"
       - "NTFY_AUTH_FILE=/var/lib/ntfy/user.db"
-      # Anyone can subscribe to "movies". Publishing needs a user, see the README.
       - "NTFY_AUTH_DEFAULT_ACCESS=deny-all"
-      - "NTFY_AUTH_ACCESS=everyone:movies:ro"
-      # Wakes the iOS app; only a hash of the topic is sent upstream.
+      - "NTFY_AUTH_ACCESS=everyone:plex:ro"
       - "NTFY_UPSTREAM_BASE_URL=https://ntfy.sh"
     volumes:
       - "${HOME}/Ntfy/Cache:/var/cache/ntfy"
