@@ -145,6 +145,7 @@ services:
       - "1935:1935" # RTMP feeds
       - "5000:5000" # API
       - "1984:1984" # go2rtc
+      - "127.0.0.1:8554:8554" # RTSP restream, read by Home Assistant on the host network
       - "8555:8555/tcp"
       - "8555:8555/udp"
     environment:
