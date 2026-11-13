@@ -430,6 +430,7 @@ services:
       - "${HOME}/Media/YouTube:/data/youtube"
       - "/mnt:/mnt:rshared"
       # Transcode to disk instead of /dev/shm (RAM) to avoid memory exhaustion and chunk eviction when clients buffer
+      - "${HOME}/Plex/Transcoding:/transcode"
     devices:
       - "/dev/dri:/dev/dri" # Quicksync
 
