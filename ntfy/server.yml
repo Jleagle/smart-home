@@ -1,0 +1,32 @@
+# ntfy configuration
+# https://docs.ntfy.sh/config/
+
+# Externally visible base URL for this host
+base-url: "https://ntfy.jimeagle.com"
+
+# HTTP listen address
+listen-http: ":80"
+
+# Trust reverse proxy X-Forwarded-* headers (Traefik)
+behind-proxy: true
+
+# Message cache
+cache-file: "/var/cache/ntfy/cache.db"
+
+# Authentication & access control
+auth-file: "/var/lib/ntfy/user.db"
+auth-default-access: "deny-all"
+enable-login: true
+
+# Declarative topic access rules
+auth-access:
+  - "everyone:movies:ro"
+  - "everyone:shows:ro"
+
+# Forward poll requests upstream (needed for iOS push notifications)
+upstream-base-url: "https://ntfy.sh"
+
+# Web Push for browser background notifications (closed tab)
+# Public and private keys are supplied via NTFY_WEB_PUSH_PUBLIC_KEY and NTFY_WEB_PUSH_PRIVATE_KEY
+web-push-file: "/var/lib/ntfy/webpush.db"
+web-push-email-address: "jimeagle@gmail.com"

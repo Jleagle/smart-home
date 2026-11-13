@@ -310,6 +310,8 @@ services:
     container_name: "nodered"
     hostname: "nodered"
     restart: "unless-stopped"
+    ports:
+      - "127.0.0.1:1880:1880"
     environment:
       - "TZ=Europe/London"
       - "HTTP_USERNAME=${NODE_RED_HTTP_USERNAME}"
@@ -334,17 +336,12 @@ services:
     command: "serve"
     environment:
       - "TZ=Europe/London"
-      # https://docs.ntfy.sh/config/
-      - "NTFY_BASE_URL=https://ntfy.jimeagle.com"
-      - "NTFY_BEHIND_PROXY=true"
-      - "NTFY_CACHE_FILE=/var/cache/ntfy/cache.db"
-      - "NTFY_AUTH_FILE=/var/lib/ntfy/user.db"
-      - "NTFY_AUTH_DEFAULT_ACCESS=deny-all"
-      - "NTFY_AUTH_ACCESS=everyone:plex:ro"
-      - "NTFY_UPSTREAM_BASE_URL=https://ntfy.sh"
+      - "NTFY_WEB_PUSH_PUBLIC_KEY=${NTFY_WEB_PUSH_PUBLIC_KEY}"
+      - "NTFY_WEB_PUSH_PRIVATE_KEY=${NTFY_WEB_PUSH_PRIVATE_KEY}"
     volumes:
       - "${HOME}/Ntfy/Cache:/var/cache/ntfy"
       - "${HOME}/Ntfy/Data:/var/lib/ntfy"
+      - "./ntfy/server.yml:/etc/ntfy/server.yml:ro"
     healthcheck:
       test: [ "CMD-SHELL", "wget -q --tries=1 http://localhost:80/v1/health -O - | grep -Eo '\"healthy\"\\s*:\\s*true' || exit 1" ]
       interval: 30s
