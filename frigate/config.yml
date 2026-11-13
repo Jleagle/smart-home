@@ -84,12 +84,12 @@ cameras:
         enabled: true
         use_snapshot: true
         prompt: >-
-          Write a one-sentence caption, at most 25 words, for this still image
-          from a home driveway security camera. Start with the person and say
-          what they are doing, what they are wearing and anything they are
-          carrying. Name the company they work for only if a logo, uniform or
-          vehicle shows it clearly; otherwise leave it out. Describe only what
-          is visible, in plain text.
+          Describe the person in this image in one short sentence, at most 15
+          words. Start with the person and say what they are doing and
+          anything they are carrying. Mention clothing only when it is a
+          uniform, and name a company only if a logo, uniform or vehicle shows
+          it clearly. Describe the person only; leave out the image, the
+          camera, the lighting and the time of day. Plain text.
         objects:
           - person
         required_zones:
