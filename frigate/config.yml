@@ -24,7 +24,6 @@ ffmpeg:
 objects:
   track:
     - person
-    - dog
 
 record:
   enabled: true
