@@ -12,6 +12,7 @@ behind-proxy: true
 
 # Message cache
 cache-file: "/var/cache/ntfy/cache.db"
+cache-duration: "28d"
 
 # Authentication & access control
 auth-file: "/var/lib/ntfy/user.db"
