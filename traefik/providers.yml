@@ -1,3 +1,8 @@
+tls:
+  options:
+    default:
+      minVersion: "VersionTLS12"
+
 http:
 
   middlewares:
@@ -24,8 +29,6 @@ http:
       service: "adguard-service"
       middlewares:
         - "tinyauth"
-      tls:
-        certResolver: "myresolver"
       entryPoints:
         - "websecure"
     bazarr-route:
@@ -33,8 +36,6 @@ http:
       service: "bazarr-service"
       middlewares:
         - "tinyauth"
-      tls:
-        certResolver: "myresolver"
       entryPoints:
         - "websecure"
     beszel-route:
@@ -42,8 +43,6 @@ http:
       service: "beszel-service"
       middlewares:
         - "tinyauth"
-      tls:
-        certResolver: "myresolver"
       entryPoints:
         - "websecure"
     blockbusterr-route:
@@ -51,8 +50,6 @@ http:
       service: "blockbusterr-service"
       middlewares:
         - "tinyauth"
-      tls:
-        certResolver: "myresolver"
       entryPoints:
         - "websecure"
     cameras-route:
@@ -60,8 +57,6 @@ http:
       service: "cameras-service"
       middlewares:
         - "tinyauth"
-      tls:
-        certResolver: "myresolver"
       entryPoints:
         - "websecure"
     frigate-route:
@@ -69,15 +64,11 @@ http:
       service: "frigate-service"
       middlewares:
         - "tinyauth"
-      tls:
-        certResolver: "myresolver"
       entryPoints:
         - "websecure"
     hass-route:
       rule: "Host(`hass.jimeagle.com`)"
       service: "hass-service"
-      tls:
-        certResolver: "myresolver"
       entryPoints:
         - "websecure"
     kuma-route:
@@ -85,8 +76,6 @@ http:
       service: "kuma-service"
       middlewares:
         - "tinyauth"
-      tls:
-        certResolver: "myresolver"
       entryPoints:
         - "websecure"
     kometa-route:
@@ -94,8 +83,6 @@ http:
       service: "kometa-service"
       middlewares:
         - "tinyauth"
-      tls:
-        certResolver: "myresolver"
       entryPoints:
         - "websecure"
     musicassistant-route:
@@ -103,8 +90,6 @@ http:
       service: "musicassistant-service"
       middlewares:
         - "tinyauth"
-      tls:
-        certResolver: "myresolver"
       entryPoints:
         - "websecure"
     nodered-route:
@@ -112,15 +97,11 @@ http:
       service: "nodered-service"
       middlewares:
         - "tinyauth"
-      tls:
-        certResolver: "myresolver"
       entryPoints:
         - "websecure"
     ntfy-route:
       rule: "Host(`ntfy.jimeagle.com`)"
       service: "ntfy-service"
-      tls:
-        certResolver: "myresolver"
       entryPoints:
         - "websecure"
     nzbdav-route:
@@ -128,8 +109,6 @@ http:
       service: "nzbdav-service"
       middlewares:
         - "tinyauth"
-      tls:
-        certResolver: "myresolver"
       entryPoints:
         - "websecure"
     nzbget-route:
@@ -137,15 +116,11 @@ http:
       service: "nzbget-service"
       middlewares:
         - "tinyauth"
-      tls:
-        certResolver: "myresolver"
       entryPoints:
         - "websecure"
     overseerr-route:
       rule: "Host(`overseerr.jimeagle.com`)"
       service: "overseerr-service"
-      tls:
-        certResolver: "myresolver"
       entryPoints:
         - "websecure"
     profilarr-route:
@@ -153,8 +128,6 @@ http:
       service: "profilarr-service"
       middlewares:
         - "tinyauth"
-      tls:
-        certResolver: "myresolver"
       entryPoints:
         - "websecure"
     prowlarr-route:
@@ -162,8 +135,6 @@ http:
       service: "prowlarr-service"
       middlewares:
         - "tinyauth"
-      tls:
-        certResolver: "myresolver"
       entryPoints:
         - "websecure"
     pulse-route:
@@ -171,8 +142,6 @@ http:
       service: "pulse-service"
       middlewares:
         - "tinyauth"
-      tls:
-        certResolver: "myresolver"
       entryPoints:
         - "websecure"
     radarr-route:
@@ -180,8 +149,6 @@ http:
       service: "radarr-service"
       middlewares:
         - "tinyauth"
-      tls:
-        certResolver: "myresolver"
       entryPoints:
         - "websecure"
     receiver-route:
@@ -189,8 +156,6 @@ http:
       service: "receiver-service"
       middlewares:
         - "tinyauth"
-      tls:
-        certResolver: "myresolver"
       entryPoints:
         - "websecure"
     router-route:
@@ -198,8 +163,6 @@ http:
       service: "router-service"
       middlewares:
         - "tinyauth"
-      tls:
-        certResolver: "myresolver"
       entryPoints:
         - "websecure"
     sonarr-route:
@@ -207,8 +170,6 @@ http:
       service: "sonarr-service"
       middlewares:
         - "tinyauth"
-      tls:
-        certResolver: "myresolver"
       entryPoints:
         - "websecure"
     syncthing-route:
@@ -216,15 +177,11 @@ http:
       service: "syncthing-service"
       middlewares:
         - "tinyauth"
-      tls:
-        certResolver: "myresolver"
       entryPoints:
         - "websecure"
     tinyauth-route:
       rule: "Host(`login.jimeagle.com`)"
       service: "tinyauth-service"
-      tls:
-        certResolver: "myresolver"
       entryPoints:
         - "websecure"
 
