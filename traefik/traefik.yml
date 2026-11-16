@@ -9,12 +9,15 @@ api:
   dashboard: false
 
 ping:
-  entryPoint: "websecure"
+  entryPoint: "ping"
 
 accessLog:
   bufferingSize: 100
 
 entryPoints:
+  ping:
+    address: ":8082"
+
   web:
     address: ":80"
     # forwardedHeaders is omitted here because port 80 only performs an HTTP->HTTPS
