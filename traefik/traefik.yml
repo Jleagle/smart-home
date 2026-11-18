@@ -32,6 +32,7 @@ entryPoints:
   websecure:
     address: ":443"
     http:
+      sanitizePath: false
       tls:
         certResolver: "myresolver"
     forwardedHeaders:
