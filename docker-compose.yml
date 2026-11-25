@@ -127,7 +127,7 @@ services:
     logging: *default-logging
 
   frigate:
-    image: "ghcr.io/blakeblackshear/frigate:stable"
+    build: "./frigate"
     container_name: "frigate"
     hostname: "frigate"
     restart: "unless-stopped"

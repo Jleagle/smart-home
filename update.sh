@@ -27,6 +27,9 @@ BEFORE=$(get_versions)
 echo "Pulling latest images..."
 docker compose pull
 
+echo "Building custom images..."
+docker compose build --pull
+
 echo "Starting services..."
 docker compose up --detach --remove-orphans
 
